@@ -1,8 +1,8 @@
 package protoeasy // import "go.pedge.io/protoeasy"
 
 const (
-	DefaultCompilerOptionsFile = ".protoeasy.yml"
-	DefaultFileFormat          = FileFormatYML
+	DefaultDirectivesFile = ".protoeasy.yml"
+	DefaultFileFormat     = FileFormatYML
 
 	FileFormatYML  FileFormat = 0
 	FileFormatJSON FileFormat = 1
@@ -47,32 +47,51 @@ func NewProtologPlugin(options ProtologPluginOptions) Plugin {
 	return newProtologPlugin(options)
 }
 
-type CompilerOptions struct {
+type Directives struct {
 	Includes             []string
-	Dirs                 []string
 	StripPackageComments bool
 	Go                   *GoPluginOptions
 	GrpcGateway          *GrpcGatewayPluginOptions
 	Protolog             *ProtologPluginOptions
 }
 
-type CompilerOptionsProvider interface {
-	Get() (*CompilerOptions, error)
+type DirectivesProvider interface {
+	Get(dir string) (*Directives, error)
 }
 
-type CompilerOptionsProviderOptions struct {
+type DirectivesProviderOptions struct {
 	File       string
 	FileFormat FileFormat
 }
 
-func NewCompilerOptionsProvider(options CompilerOptionsProviderOptions) CompilerOptionsProvider {
-	return newCompilerOptionsProvider(options)
+func NewDirectivesProvider(options DirectivesProviderOptions) DirectivesProvider {
+	return newDirectivesProvider(options)
+}
+
+type ArgsProvider interface {
+	Get(directives *Directives, protoFiles []string) ([]string, error)
+}
+
+type ArgsProviderOptions struct{}
+
+func NewArgsProvider(options ArgsProviderOptions) ArgsProvider {
+	return newArgsProvider(options)
 }
 
 type Compiler interface {
-	Compile(dir string) error
+	Compile(directivesDir string, dirs []string) error
 }
 
-func NewCompiler(options CompilerOptions) Compiler {
-	return newCompiler(options)
+type CompilerOptions struct{}
+
+func NewCompiler(
+	directivesProvider DirectivesProvider,
+	argsProvider ArgsProvider,
+	options CompilerOptions,
+) Compiler {
+	return newCompiler(
+		directivesProvider,
+		argsProvider,
+		options,
+	)
 }
