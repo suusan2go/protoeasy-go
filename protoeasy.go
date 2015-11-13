@@ -28,8 +28,8 @@ type GoPluginOptions struct {
 	Modifiers          []string
 }
 
-func NewGoPlugin(options GoPluginOptions) Plugin {
-	return newGoPlugin(options)
+func NewGoPlugin(goPath string, options GoPluginOptions) Plugin {
+	return newGoPlugin(goPath, options)
 }
 
 type GrpcGatewayPluginOptions struct {
@@ -64,8 +64,8 @@ type DirectivesProviderOptions struct {
 	FileFormat FileFormat
 }
 
-func NewDirectivesProvider(options DirectivesProviderOptions) DirectivesProvider {
-	return newDirectivesProvider(options)
+func NewDirectivesProvider(goPath string, options DirectivesProviderOptions) DirectivesProvider {
+	return newDirectivesProvider(goPath, options)
 }
 
 type ArgsProvider interface {
