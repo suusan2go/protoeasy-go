@@ -21,38 +21,21 @@ type Plugin interface {
 }
 
 type GoPluginOptions struct {
-	ImportPrefix       string
-	ImportPath         string
-	Plugins            []string
-	NoDefaultModifiers bool
-	Modifiers          []string
+	ImportPath           string
+	Grpc                 bool
+	GrpcGateway          bool
+	Protolog             bool
+	Modifiers            []string
+	StripPackageComments bool
 }
 
 func NewGoPlugin(goPath string, options GoPluginOptions) Plugin {
 	return newGoPlugin(goPath, options)
 }
 
-type GrpcGatewayPluginOptions struct {
-	NoDefaultModifiers bool
-	Modifiers          []string
-}
-
-func NewGrpcGatewayPlugin(options GrpcGatewayPluginOptions) Plugin {
-	return newGrpcGatewayPlugin(options)
-}
-
-type ProtologPluginOptions struct{}
-
-func NewProtologPlugin(options ProtologPluginOptions) Plugin {
-	return newProtologPlugin(options)
-}
-
 type Directives struct {
-	Includes             []string
-	StripPackageComments bool
-	Go                   *GoPluginOptions
-	GrpcGateway          *GrpcGatewayPluginOptions
-	Protolog             *ProtologPluginOptions
+	Includes []string
+	Go       *GoPluginOptions
 }
 
 type DirectivesProvider interface {
