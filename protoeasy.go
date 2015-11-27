@@ -92,7 +92,7 @@ func NewGoPlugin(options GoPluginOptions) Plugin {
 	return newGoPlugin(options)
 }
 
-type CompilerDirectives struct {
+type CompileOptions struct {
 	ExcludeFilePatterns     []string
 	ProtoPaths              []string
 	OutDirPath              string
@@ -115,7 +115,7 @@ type CompilerDirectives struct {
 }
 
 type Compiler interface {
-	Compile(dirPath string, directives *CompilerDirectives) error
+	Compile(dirPath string, options *CompileOptions) error
 }
 
 type CompilerOptions struct{}

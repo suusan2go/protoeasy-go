@@ -23,8 +23,8 @@ func newCompiler(
 	}
 }
 
-func (c *compiler) Compile(dirPath string, directives *CompilerDirectives) error {
-	argsList, err := c.argsList(dirPath, directives)
+func (c *compiler) Compile(dirPath string, options *CompileOptions) error {
+	argsList, err := c.argsList(dirPath, options)
 	if err != nil {
 		return err
 	}
@@ -36,24 +36,24 @@ func (c *compiler) Compile(dirPath string, directives *CompilerDirectives) error
 	return nil
 }
 
-func (c *compiler) argsList(dirPath string, directives *CompilerDirectives) ([][]string, error) {
+func (c *compiler) argsList(dirPath string, options *CompileOptions) ([][]string, error) {
 	var err error
 	dirPath, err = filepath.Abs(dirPath)
 	if err != nil {
 		return nil, err
 	}
 	outDirPath := dirPath
-	if directives.OutDirPath != "" {
-		outDirPath, err = filepath.Abs(directives.OutDirPath)
+	if options.OutDirPath != "" {
+		outDirPath, err = filepath.Abs(options.OutDirPath)
 		if err != nil {
 			return nil, err
 		}
 	}
-	plugins, err := getPlugins(directives)
+	plugins, err := getPlugins(options)
 	if err != nil {
 		return nil, err
 	}
-	protoSpec, err := c.protoSpecProvider.Get(dirPath, directives.ExcludeFilePatterns)
+	protoSpec, err := c.protoSpecProvider.Get(dirPath, options.ExcludeFilePatterns)
 	if err != nil {
 		return nil, err
 	}
@@ -66,7 +66,7 @@ func (c *compiler) argsList(dirPath string, directives *CompilerDirectives) ([][
 		} else {
 			args = append(args, "-I/usr/include")
 		}
-		for _, protoPath := range directives.ProtoPaths {
+		for _, protoPath := range options.ProtoPaths {
 			protoPath, err = filepath.Abs(dirPath)
 			if err != nil {
 				return nil, err
@@ -88,97 +88,97 @@ func (c *compiler) argsList(dirPath string, directives *CompilerDirectives) ([][
 	return argsList, nil
 }
 
-func getPlugins(directives *CompilerDirectives) ([]Plugin, error) {
+func getPlugins(options *CompileOptions) ([]Plugin, error) {
 	var plugins []Plugin
-	if directives.Cpp {
+	if options.Cpp {
 		plugins = append(
 			plugins,
 			NewCppPlugin(
 				CppPluginOptions{
 					GrpcPluginOptions: GrpcPluginOptions{
 						PluginOptions: PluginOptions{
-							RelOutDirPath: directives.CppRelOutDirPath,
+							RelOutDirPath: options.CppRelOutDirPath,
 						},
-						Grpc: directives.Grpc,
+						Grpc: options.Grpc,
 					},
 				},
 			),
 		)
 	}
-	if directives.Csharp {
+	if options.Csharp {
 		plugins = append(
 			plugins,
 			NewCsharpPlugin(
 				CsharpPluginOptions{
 					GrpcPluginOptions: GrpcPluginOptions{
 						PluginOptions: PluginOptions{
-							RelOutDirPath: directives.CsharpRelOutDirPath,
+							RelOutDirPath: options.CsharpRelOutDirPath,
 						},
-						Grpc: directives.Grpc,
+						Grpc: options.Grpc,
 					},
 				},
 			),
 		)
 	}
-	if directives.ObjectiveC {
+	if options.ObjectiveC {
 		plugins = append(
 			plugins,
 			NewObjectiveCPlugin(
 				ObjectiveCPluginOptions{
 					GrpcPluginOptions: GrpcPluginOptions{
 						PluginOptions: PluginOptions{
-							RelOutDirPath: directives.ObjectiveCRelOutDirPath,
+							RelOutDirPath: options.ObjectiveCRelOutDirPath,
 						},
-						Grpc: directives.Grpc,
+						Grpc: options.Grpc,
 					},
 				},
 			),
 		)
 	}
-	if directives.Python {
+	if options.Python {
 		plugins = append(
 			plugins,
 			NewPythonPlugin(
 				PythonPluginOptions{
 					GrpcPluginOptions: GrpcPluginOptions{
 						PluginOptions: PluginOptions{
-							RelOutDirPath: directives.PythonRelOutDirPath,
+							RelOutDirPath: options.PythonRelOutDirPath,
 						},
-						Grpc: directives.Grpc,
+						Grpc: options.Grpc,
 					},
 				},
 			),
 		)
 	}
-	if directives.Ruby {
+	if options.Ruby {
 		plugins = append(
 			plugins,
 			NewRubyPlugin(
 				RubyPluginOptions{
 					GrpcPluginOptions: GrpcPluginOptions{
 						PluginOptions: PluginOptions{
-							RelOutDirPath: directives.RubyRelOutDirPath,
+							RelOutDirPath: options.RubyRelOutDirPath,
 						},
-						Grpc: directives.Grpc,
+						Grpc: options.Grpc,
 					},
 				},
 			),
 		)
 	}
-	if directives.Go {
+	if options.Go {
 		plugins = append(
 			plugins,
 			NewGoPlugin(
 				GoPluginOptions{
 					GrpcPluginOptions: GrpcPluginOptions{
 						PluginOptions: PluginOptions{
-							RelOutDirPath: directives.GoRelOutDirPath,
+							RelOutDirPath: options.GoRelOutDirPath,
 						},
-						Grpc: directives.Grpc,
+						Grpc: options.Grpc,
 					},
-					ImportPath:  directives.GoImportPath,
-					GrpcGateway: directives.GrpcGateway,
-					Protolog:    directives.Protolog,
+					ImportPath:  options.GoImportPath,
+					GrpcGateway: options.GrpcGateway,
+					Protolog:    options.Protolog,
 				},
 			),
 		)
