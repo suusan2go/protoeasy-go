@@ -1,8 +1,13 @@
 package protoeasy
 
 import (
+	"errors"
 	"fmt"
+	"os"
 	"path/filepath"
+	"strings"
+
+	"go.pedge.io/protolog"
 )
 
 var (
@@ -32,7 +37,22 @@ var (
 		"src",
 		"src/github.com/gengo/grpc-gateway/third_party/googleapis",
 	}
+
+	errGoPathNotSet = errors.New("protoeasy: GOPATH not set")
 )
+
+func getGoPath() (string, error) {
+	goPath := os.Getenv("GOPATH")
+	if goPath == "" {
+		return "", errGoPathNotSet
+	}
+	split := strings.Split(goPath, ":")
+	if len(split) > 1 {
+		protolog.Warnf("protoeasy: GOPATH %s has multiple directories, using first directory %s", goPath, split[0])
+		return split[0], nil
+	}
+	return goPath, nil
+}
 
 func getGoPathIncludes(goPath string, relativeIncludes []string) []string {
 	includes := make([]string, len(relativeIncludes))
