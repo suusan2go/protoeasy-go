@@ -2,7 +2,6 @@ package protoeasy
 
 import (
 	"errors"
-	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
@@ -54,25 +53,12 @@ func getGoPath() (string, error) {
 	return goPath, nil
 }
 
-func getGoPathIncludes(goPath string, relativeIncludes []string) []string {
-	includes := make([]string, len(relativeIncludes))
-	for i, relativeInclude := range relativeIncludes {
-		includes[i] = filepath.Join(goPath, relativeInclude)
-	}
-	return includes
-}
-
 func newGoModifierOptions(dir string, files []string, goPackage string) map[string]string {
 	m := make(map[string]string)
 	for _, file := range files {
-		key, value := newGoModifierOption(filepath.Join(dir, file), goPackage)
-		m[key] = value
+		m[filepath.Join(dir, file)] = goPackage
 	}
 	return m
-}
-
-func newGoModifierOption(file string, goPackage string) (string, string) {
-	return fmt.Sprintf("M%s", file), goPackage
 }
 
 func mergeStringStringMaps(maps ...map[string]string) map[string]string {
@@ -83,4 +69,8 @@ func mergeStringStringMaps(maps ...map[string]string) map[string]string {
 		}
 	}
 	return newMap
+}
+
+func copyStringStringMap(m map[string]string) map[string]string {
+	return mergeStringStringMaps(m)
 }

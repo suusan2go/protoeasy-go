@@ -50,6 +50,7 @@ type RubyPluginOptions struct {
 
 type GoPluginOptions struct {
 	GrpcPluginOptions
+	ImportPath         string
 	GrpcGateway        bool
 	Protolog           bool
 	NoDefaultModifiers bool
@@ -95,6 +96,7 @@ type CompilerDirectives struct {
 	RubyRelOutDirPath       string
 	Go                      bool
 	GoRelOutDirPath         string
+	GoImportPath            string
 	Grpc                    bool
 	GrpcGateway             bool
 	Protolog                bool

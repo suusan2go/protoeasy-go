@@ -3,14 +3,17 @@ package main
 import (
 	"fmt"
 	"os"
-	"strings"
 
 	"go.pedge.io/pkg/cobra"
+	"go.pedge.io/pkg/exec"
 	"go.pedge.io/protoeasy"
+	"go.pedge.io/protolog"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 )
+
+type options struct{}
 
 func main() {
 	if err := do(); err != nil {
@@ -21,7 +24,9 @@ func main() {
 }
 
 func do() error {
+	protolog.SetLevel(protolog.Level_LEVEL_DEBUG)
 	compilerDirectives := &protoeasy.CompilerDirectives{}
+	options := &options{}
 
 	rootCmd := &cobra.Command{
 		Use:   "app",
@@ -30,16 +35,17 @@ func do() error {
 		Run: pkgcobra.RunFixedArgs(
 			1,
 			func(args []string) error {
-				return compile(args[0], compilerDirectives)
+				return compile(args[0], compilerDirectives, options)
 			},
 		),
 	}
 	bindCompilerDirectives(rootCmd.Flags(), compilerDirectives)
+	bindOptions(rootCmd.Flags(), options)
 
 	return rootCmd.Execute()
 }
 
-func compile(dirPath string, compilerDirectives *protoeasy.CompilerDirectives) error {
+func compile(dirPath string, compilerDirectives *protoeasy.CompilerDirectives, options *options) error {
 	argsList, err := protoeasy.NewCompiler(
 		protoeasy.NewProtoSpecProvider(
 			protoeasy.ProtoSpecProviderOptions{},
@@ -53,12 +59,14 @@ func compile(dirPath string, compilerDirectives *protoeasy.CompilerDirectives) e
 		return err
 	}
 	for _, args := range argsList {
-		fmt.Println(strings.Join(args, " "))
+		if err := pkgexec.Run(args...); err != nil {
+			return err
+		}
 	}
 	return nil
 }
 
-func bindCompilerDirectives(flagSet *pflag.FlagSet, compilerDirectives *protoeasy.CompilerDirectives) error {
+func bindCompilerDirectives(flagSet *pflag.FlagSet, compilerDirectives *protoeasy.CompilerDirectives) {
 	flagSet.StringSliceVar(&compilerDirectives.ExcludeFilePatterns, "exclude", []string{}, "Exclude file patterns.")
 	flagSet.StringSliceVarP(&compilerDirectives.ProtoPaths, "proto_path", "I", []string{}, "Additional directories for proto imports.")
 	flagSet.StringVar(&compilerDirectives.OutDirPath, "out", "", "Customize out directory path.")
@@ -74,8 +82,11 @@ func bindCompilerDirectives(flagSet *pflag.FlagSet, compilerDirectives *protoeas
 	flagSet.StringVar(&compilerDirectives.RubyRelOutDirPath, "ruby_rel_out", "", "Output ruby files.")
 	flagSet.BoolVar(&compilerDirectives.Go, "go", false, "Output go files.")
 	flagSet.StringVar(&compilerDirectives.GoRelOutDirPath, "go_rel_out", "", "Output go files.")
+	flagSet.StringVar(&compilerDirectives.GoImportPath, "go_import_path", "", "Go package.")
 	flagSet.BoolVar(&compilerDirectives.Grpc, "grpc", false, "Output grpc files.")
 	flagSet.BoolVar(&compilerDirectives.GrpcGateway, "grpc-gateway", false, "Output grpc-gateway files.")
 	flagSet.BoolVar(&compilerDirectives.Protolog, "protolog", false, "Output protolog files.")
-	return nil
+}
+
+func bindOptions(flagSet *pflag.FlagSet, options *options) {
 }

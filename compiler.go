@@ -1,6 +1,10 @@
 package protoeasy
 
-import "path/filepath"
+import (
+	"fmt"
+	"path/filepath"
+	"runtime"
+)
 
 type compiler struct {
 	protoSpecProvider ProtoSpecProvider
@@ -40,13 +44,19 @@ func (c *compiler) ArgsList(dirPath string, directives *CompilerDirectives) ([][
 	}
 	var argsList [][]string
 	for relDirPath, files := range protoSpec.RelDirPathToFiles {
-		args := []string{"protoc"}
+		args := []string{"protoc", fmt.Sprintf("-I%s", dirPath)}
+		// TODO(pedge)
+		if runtime.GOOS == "darwin" {
+			args = append(args, "-I/usr/local/include")
+		} else {
+			args = append(args, "-I/usr/include")
+		}
 		for _, protoPath := range directives.ProtoPaths {
 			protoPath, err = filepath.Abs(dirPath)
 			if err != nil {
 				return nil, err
 			}
-			args = append(args, "-I", protoPath)
+			args = append(args, fmt.Sprintf("-I%s", protoPath))
 		}
 		for _, plugin := range plugins {
 			iArgs, err := plugin.Args(protoSpec, relDirPath, outDirPath)
@@ -151,6 +161,7 @@ func getPlugins(directives *CompilerDirectives) ([]Plugin, error) {
 						},
 						Grpc: directives.Grpc,
 					},
+					ImportPath:  directives.GoImportPath,
 					GrpcGateway: directives.GrpcGateway,
 					Protolog:    directives.Protolog,
 				},
