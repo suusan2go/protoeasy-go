@@ -4,12 +4,10 @@ import (
 	"fmt"
 	"os"
 
-	"go.pedge.io/pkg/cobra"
 	"go.pedge.io/pkg/exec"
 	"go.pedge.io/protoeasy"
 	"go.pedge.io/protolog"
 
-	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 )
 
@@ -28,21 +26,15 @@ func do() error {
 	compilerDirectives := &protoeasy.CompilerDirectives{}
 	options := &options{}
 
-	rootCmd := &cobra.Command{
-		Use:   "app",
-		Short: "Compile protocol buffers files",
-		Long:  "Compile protocol buffers files",
-		Run: pkgcobra.RunFixedArgs(
-			1,
-			func(args []string) error {
-				return compile(args[0], compilerDirectives, options)
-			},
-		),
+	bindCompilerDirectives(pflag.CommandLine, compilerDirectives)
+	bindOptions(pflag.CommandLine, options)
+	pflag.Parse()
+	args := pflag.CommandLine.Args()
+	if len(args) != 1 {
+		return fmt.Errorf("%s: must pass only one argument, the directory, but passed %v", os.Args[0], args)
 	}
-	bindCompilerDirectives(rootCmd.Flags(), compilerDirectives)
-	bindOptions(rootCmd.Flags(), options)
 
-	return rootCmd.Execute()
+	return compile(args[0], compilerDirectives, options)
 }
 
 func compile(dirPath string, compilerDirectives *protoeasy.CompilerDirectives, options *options) error {
