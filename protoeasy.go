@@ -3,6 +3,15 @@ Package protoeasy is intended to make using protoc simpler, if certain conventio
 */
 package protoeasy // import "go.pedge.io/protoeasy"
 
+var (
+	DefaultCompiler = NewCompiler(
+		NewProtoSpecProvider(
+			ProtoSpecProviderOptions{},
+		),
+		CompilerOptions{},
+	)
+)
+
 type ProtoSpec struct {
 	DirPath           string
 	RelDirPathToFiles map[string][]string
@@ -106,7 +115,7 @@ type CompilerDirectives struct {
 }
 
 type Compiler interface {
-	ArgsList(dirPath string, directives *CompilerDirectives) ([][]string, error)
+	Compile(dirPath string, directives *CompilerDirectives) error
 }
 
 type CompilerOptions struct{}

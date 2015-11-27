@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"path/filepath"
 	"runtime"
+
+	"go.pedge.io/pkg/exec"
 )
 
 type compiler struct {
@@ -21,7 +23,20 @@ func newCompiler(
 	}
 }
 
-func (c *compiler) ArgsList(dirPath string, directives *CompilerDirectives) ([][]string, error) {
+func (c *compiler) Compile(dirPath string, directives *CompilerDirectives) error {
+	argsList, err := c.argsList(dirPath, directives)
+	if err != nil {
+		return err
+	}
+	for _, args := range argsList {
+		if err := pkgexec.Run(args...); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func (c *compiler) argsList(dirPath string, directives *CompilerDirectives) ([][]string, error) {
 	var err error
 	dirPath, err = filepath.Abs(dirPath)
 	if err != nil {

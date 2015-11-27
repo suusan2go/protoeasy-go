@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 
-	"go.pedge.io/pkg/exec"
 	"go.pedge.io/protoeasy"
 	"go.pedge.io/protolog"
 
@@ -34,28 +33,7 @@ func do() error {
 		return fmt.Errorf("%s: must pass only one argument, the directory, but passed %v", os.Args[0], args)
 	}
 
-	return compile(args[0], compilerDirectives, options)
-}
-
-func compile(dirPath string, compilerDirectives *protoeasy.CompilerDirectives, options *options) error {
-	argsList, err := protoeasy.NewCompiler(
-		protoeasy.NewProtoSpecProvider(
-			protoeasy.ProtoSpecProviderOptions{},
-		),
-		protoeasy.CompilerOptions{},
-	).ArgsList(
-		dirPath,
-		compilerDirectives,
-	)
-	if err != nil {
-		return err
-	}
-	for _, args := range argsList {
-		if err := pkgexec.Run(args...); err != nil {
-			return err
-		}
-	}
-	return nil
+	return protoeasy.DefaultCompiler.Compile(args[0], compilerDirectives)
 }
 
 func bindCompilerDirectives(flagSet *pflag.FlagSet, compilerDirectives *protoeasy.CompilerDirectives) {
