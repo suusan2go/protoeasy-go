@@ -8,22 +8,22 @@ import (
 	"go.pedge.io/pkg/exec"
 )
 
-type compiler struct {
+type serverCompiler struct {
 	protoSpecProvider ProtoSpecProvider
-	options           CompilerOptions
+	options           ServerCompilerOptions
 }
 
-func newCompiler(
+func newServerCompiler(
 	protoSpecProvider ProtoSpecProvider,
-	options CompilerOptions,
-) *compiler {
-	return &compiler{
+	options ServerCompilerOptions,
+) *serverCompiler {
+	return &serverCompiler{
 		protoSpecProvider,
 		options,
 	}
 }
 
-func (c *compiler) Compile(dirPath string, outDirPath string, directives *Directives) error {
+func (c *serverCompiler) Compile(dirPath string, outDirPath string, directives *Directives) error {
 	argsList, err := c.argsList(dirPath, outDirPath, directives)
 	if err != nil {
 		return err
@@ -36,7 +36,7 @@ func (c *compiler) Compile(dirPath string, outDirPath string, directives *Direct
 	return nil
 }
 
-func (c *compiler) argsList(dirPath string, outDirPath string, directives *Directives) ([][]string, error) {
+func (c *serverCompiler) argsList(dirPath string, outDirPath string, directives *Directives) ([][]string, error) {
 	var err error
 	dirPath, err = filepath.Abs(dirPath)
 	if err != nil {

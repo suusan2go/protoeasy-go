@@ -40,7 +40,7 @@ func do() error {
 		outDirPath = options.OutDirPath
 	}
 
-	return protoeasy.DefaultCompiler.Compile(dirPath, outDirPath, directives)
+	return protoeasy.DefaultServerCompiler.Compile(dirPath, outDirPath, directives)
 }
 
 func bindDirectives(flagSet *pflag.FlagSet, directives *protoeasy.Directives) {

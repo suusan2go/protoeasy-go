@@ -4,11 +4,11 @@ Package protoeasy is intended to make using protoc simpler, if certain conventio
 package protoeasy // import "go.pedge.io/protoeasy"
 
 var (
-	DefaultCompiler = NewCompiler(
+	DefaultServerCompiler = NewServerCompiler(
 		NewProtoSpecProvider(
 			ProtoSpecProviderOptions{},
 		),
-		CompilerOptions{},
+		ServerCompilerOptions{},
 	)
 )
 
@@ -96,13 +96,13 @@ type Compiler interface {
 	Compile(dirPath string, outDirPath string, directives *Directives) error
 }
 
-type CompilerOptions struct{}
+type ServerCompilerOptions struct{}
 
-func NewCompiler(
+func NewServerCompiler(
 	protoSpecProvider ProtoSpecProvider,
-	options CompilerOptions,
+	options ServerCompilerOptions,
 ) Compiler {
-	return newCompiler(
+	return newServerCompiler(
 		protoSpecProvider,
 		options,
 	)
@@ -110,4 +110,16 @@ func NewCompiler(
 
 func NewAPIServer(compiler Compiler) APIServer {
 	return newAPIServer(compiler)
+}
+
+type ClientCompilerOptions struct{}
+
+func NewClientCompiler(
+	apiClient APIClient,
+	options ClientCompilerOptions,
+) Compiler {
+	return newClientCompiler(
+		apiClient,
+		options,
+	)
 }

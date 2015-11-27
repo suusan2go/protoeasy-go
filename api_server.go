@@ -6,13 +6,8 @@ import (
 	"os"
 	"time"
 
-	"go.pedge.io/pkg/archive"
 	"go.pedge.io/proto/rpclog"
 	"golang.org/x/net/context"
-)
-
-var (
-	archiver = pkgarchive.NewTarArchiver(pkgarchive.ArchiverOptions{})
 )
 
 type apiServer struct {
@@ -44,13 +39,13 @@ func (a *apiServer) Compile(ctx context.Context, request *CompileRequest) (respo
 			retErr = err
 		}
 	}()
-	if err := archiver.Decompress(bytes.NewReader(request.Tar), dirPath); err != nil {
+	if err := untar(bytes.NewReader(request.Tar), dirPath); err != nil {
 		return nil, err
 	}
 	if err := a.compiler.Compile(dirPath, outDirPath, request.Directives); err != nil {
 		return nil, err
 	}
-	readCloser, err := archiver.Compress(outDirPath)
+	readCloser, err := tar(outDirPath, []string{"."})
 	if err != nil {
 		return nil, err
 	}
