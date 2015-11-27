@@ -4,25 +4,32 @@ import (
 	"fmt"
 	"os"
 
+	"google.golang.org/grpc"
+
+	"go.pedge.io/env"
+	"go.pedge.io/proto/server"
 	"go.pedge.io/protoeasy"
 	"go.pedge.io/protolog"
 
 	"github.com/spf13/pflag"
 )
 
+type appEnv struct {
+	Address string `env:"PROTOEASY_ADDRESS"`
+}
+
 type options struct {
+	Daemon     bool
+	Port       uint16
 	OutDirPath string
 }
 
 func main() {
-	if err := do(); err != nil {
-		fmt.Fprintf(os.Stderr, "%s\n", err.Error())
-		os.Exit(1)
-	}
-	os.Exit(0)
+	env.Main(do, &appEnv{})
 }
 
-func do() error {
+func do(appEnvObj interface{}) error {
+	appEnv := appEnvObj.(*appEnv)
 	protolog.SetLevel(protolog.Level_LEVEL_DEBUG)
 	directives := &protoeasy.Directives{}
 	options := &options{}
@@ -30,6 +37,24 @@ func do() error {
 	bindDirectives(pflag.CommandLine, directives)
 	bindOptions(pflag.CommandLine, options)
 	pflag.Parse()
+
+	compiler := protoeasy.DefaultServerCompiler
+
+	if options.Daemon {
+		return protoserver.Serve(
+			options.Port,
+			func(s *grpc.Server) {
+				protoeasy.RegisterAPIServer(
+					s,
+					protoeasy.NewAPIServer(
+						compiler,
+					),
+				)
+			},
+			protoserver.ServeOptions{},
+		)
+	}
+
 	args := pflag.CommandLine.Args()
 	if len(args) != 1 {
 		return fmt.Errorf("%s: must pass one argument, the directory, but passed %v", os.Args[0], args)
@@ -40,7 +65,20 @@ func do() error {
 		outDirPath = options.OutDirPath
 	}
 
-	return protoeasy.DefaultServerCompiler.Compile(dirPath, outDirPath, directives)
+	if appEnv.Address != "" {
+		clientConn, err := grpc.Dial(appEnv.Address, grpc.WithInsecure())
+		if err != nil {
+			return err
+		}
+		compiler = protoeasy.NewClientCompiler(
+			protoeasy.NewAPIClient(
+				clientConn,
+			),
+			protoeasy.ClientCompilerOptions{},
+		)
+	}
+
+	return compiler.Compile(dirPath, outDirPath, directives)
 }
 
 func bindDirectives(flagSet *pflag.FlagSet, directives *protoeasy.Directives) {
@@ -64,5 +102,7 @@ func bindDirectives(flagSet *pflag.FlagSet, directives *protoeasy.Directives) {
 }
 
 func bindOptions(flagSet *pflag.FlagSet, options *options) {
+	flagSet.BoolVarP(&options.Daemon, "daemon", "d", false, "Run in daemon mode.")
+	flagSet.Uint16VarP(&options.Port, "port", "p", 6789, "The port for daemon mode.")
 	flagSet.StringVar(&options.OutDirPath, "out", "", "Customize out directory path.")
 }
