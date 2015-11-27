@@ -3,7 +3,6 @@ package protoeasy // import "go.pedge.io/protoeasy"
 type ProtoSpec struct {
 	DirPath           string
 	RelDirPathToFiles map[string][]string
-	OutDirPath        string
 }
 
 type ProtoSpecProvider interface {
@@ -17,7 +16,7 @@ func NewProtoSpecProvider(options ProtoSpecProviderOptions) ProtoSpecProvider {
 }
 
 type Plugin interface {
-	Args(protoSpec *ProtoSpec) ([]string, error)
+	Args(protoSpec *ProtoSpec, outDirPath string) ([]string, error)
 }
 
 type GoPluginOptions struct {
@@ -27,8 +26,8 @@ type GoPluginOptions struct {
 	NoDefaultModifiers bool
 }
 
-func NewGoPlugin(goPath string, options GoPluginOptions) Plugin {
-	return newGoPlugin(goPath, options)
+func NewGoPlugin(options GoPluginOptions) Plugin {
+	return newGoPlugin(options)
 }
 
 type CppPluginOptions struct {
@@ -39,20 +38,27 @@ func NewCppPlugin(options CppPluginOptions) Plugin {
 	return newCppPlugin(options)
 }
 
+type CompilerDirectives struct {
+	ProtoPaths  []string
+	Cpp         bool
+	Go          bool
+	Grpc        bool
+	GrpcGateway bool
+	Protolog    bool
+}
+
 type Compiler interface {
-	Args(dirPath string) ([]string, error)
+	Args(dirPath string, outDirPath string, directives *CompilerDirectives) ([]string, error)
 }
 
 type CompilerOptions struct{}
 
 func NewCompiler(
 	protoSpecProvider ProtoSpecProvider,
-	plugins []Plugin,
 	options CompilerOptions,
 ) Compiler {
 	return newCompiler(
 		protoSpecProvider,
-		plugins,
 		options,
 	)
 }

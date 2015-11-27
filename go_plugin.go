@@ -1,14 +1,13 @@
 package protoeasy
 
 type goPlugin struct {
-	goPath  string
 	options GoPluginOptions
 }
 
-func newGoPlugin(goPath string, options GoPluginOptions) *goPlugin {
-	return &goPlugin{goPath, options}
+func newGoPlugin(options GoPluginOptions) *goPlugin {
+	return &goPlugin{options}
 }
 
-func (p *goPlugin) Args(protoSpec *ProtoSpec) ([]string, error) {
+func (p *goPlugin) Args(protoSpec *ProtoSpec, outDirPath string) ([]string, error) {
 	return nil, nil
 }
