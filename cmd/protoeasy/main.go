@@ -12,14 +12,6 @@ import (
 	"github.com/spf13/pflag"
 )
 
-var (
-	compilerDirectives = &protoeasy.CompilerDirectives{}
-)
-
-func init() {
-	bindCompilerDirectives(compilerDirectives, pflag.CommandLine)
-}
-
 func main() {
 	if err := do(); err != nil {
 		fmt.Fprintf(os.Stderr, "%s\n", err.Error())
@@ -29,6 +21,8 @@ func main() {
 }
 
 func do() error {
+	compilerDirectives := &protoeasy.CompilerDirectives{}
+
 	rootCmd := &cobra.Command{
 		Use:   "app",
 		Short: "Compile protocol buffers files",
@@ -48,16 +42,24 @@ func do() error {
 			},
 		),
 	}
+
+	pflag.StringSliceVar(&compilerDirectives.ExcludeFilePatterns, "exclude", []string{}, "Exclude file patterns.")
+	pflag.StringSliceVarP(&compilerDirectives.ProtoPaths, "proto_path", "I", []string{}, "Additional directories for proto imports.")
+	pflag.BoolVar(&compilerDirectives.Cpp, "cpp", false, "Output cpp files.")
+	pflag.BoolVar(&compilerDirectives.Go, "go", false, "Output go files.")
+	pflag.BoolVar(&compilerDirectives.Grpc, "grpc", false, "Output grpc files.")
+	pflag.BoolVar(&compilerDirectives.GrpcGateway, "grpc-gateway", false, "Output grpc-gateway files.")
+	pflag.BoolVar(&compilerDirectives.Protolog, "protolog", false, "Output protolog files.")
 	return rootCmd.Execute()
 }
 
 func compile(dirPath string, outDirPath string, compilerDirectives *protoeasy.CompilerDirectives) error {
-	args, err := protoeasy.NewCompiler(
+	argsList, err := protoeasy.NewCompiler(
 		protoeasy.NewProtoSpecProvider(
 			protoeasy.ProtoSpecProviderOptions{},
 		),
 		protoeasy.CompilerOptions{},
-	).Args(
+	).ArgsList(
 		dirPath,
 		outDirPath,
 		compilerDirectives,
@@ -65,15 +67,8 @@ func compile(dirPath string, outDirPath string, compilerDirectives *protoeasy.Co
 	if err != nil {
 		return err
 	}
-	fmt.Println(strings.Join(args, " "))
+	for _, args := range argsList {
+		fmt.Println(strings.Join(args, " "))
+	}
 	return nil
-}
-
-func bindCompilerDirectives(compilerDirectives *protoeasy.CompilerDirectives, flagSet *pflag.FlagSet) {
-	flagSet.StringSliceVarP(&compilerDirectives.ProtoPaths, "proto_path", "I", []string{}, "Additional directories for proto imports.")
-	flagSet.BoolVar(&compilerDirectives.Cpp, "cpp", false, "Output cpp files.")
-	flagSet.BoolVar(&compilerDirectives.Go, "go", false, "Output go files.")
-	flagSet.BoolVar(&compilerDirectives.Grpc, "grpc", false, "Output grpc files.")
-	flagSet.BoolVar(&compilerDirectives.GrpcGateway, "grpc-gateway", false, "Output grpc-gateway files.")
-	flagSet.BoolVar(&compilerDirectives.Protolog, "protolog", false, "Output protolog files.")
 }

@@ -6,7 +6,7 @@ type ProtoSpec struct {
 }
 
 type ProtoSpecProvider interface {
-	Get(dirPath string) (*ProtoSpec, error)
+	Get(dirPath string, excludeFilePatterns []string) (*ProtoSpec, error)
 }
 
 type ProtoSpecProviderOptions struct{}
@@ -16,7 +16,7 @@ func NewProtoSpecProvider(options ProtoSpecProviderOptions) ProtoSpecProvider {
 }
 
 type Plugin interface {
-	Args(protoSpec *ProtoSpec, outDirPath string) ([]string, error)
+	Args(protoSpec *ProtoSpec, relDirPath string, outDirPath string) ([]string, error)
 }
 
 type GoPluginOptions struct {
@@ -39,16 +39,17 @@ func NewCppPlugin(options CppPluginOptions) Plugin {
 }
 
 type CompilerDirectives struct {
-	ProtoPaths  []string
-	Cpp         bool
-	Go          bool
-	Grpc        bool
-	GrpcGateway bool
-	Protolog    bool
+	ExcludeFilePatterns []string
+	ProtoPaths          []string
+	Cpp                 bool
+	Go                  bool
+	Grpc                bool
+	GrpcGateway         bool
+	Protolog            bool
 }
 
 type Compiler interface {
-	Args(dirPath string, outDirPath string, directives *CompilerDirectives) ([]string, error)
+	ArgsList(dirPath string, outDirPath string, directives *CompilerDirectives) ([][]string, error)
 }
 
 type CompilerOptions struct{}
