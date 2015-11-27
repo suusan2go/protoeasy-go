@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"strings"
 
 	"go.pedge.io/pkg/cobra"
 	"go.pedge.io/protoeasy"
@@ -51,9 +52,20 @@ func do() error {
 }
 
 func compile(dirPath string, outDirPath string, compilerDirectives *protoeasy.CompilerDirectives) error {
-	fmt.Println(dirPath)
-	fmt.Println(outDirPath)
-	fmt.Printf("%+v\n", compilerDirectives)
+	args, err := protoeasy.NewCompiler(
+		protoeasy.NewProtoSpecProvider(
+			protoeasy.ProtoSpecProviderOptions{},
+		),
+		protoeasy.CompilerOptions{},
+	).Args(
+		dirPath,
+		outDirPath,
+		compilerDirectives,
+	)
+	if err != nil {
+		return err
+	}
+	fmt.Println(strings.Join(args, " "))
 	return nil
 }
 
