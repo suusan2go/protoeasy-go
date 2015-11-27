@@ -27,33 +27,19 @@ func do() error {
 		Use:   "app",
 		Short: "Compile protocol buffers files",
 		Long:  "Compile protocol buffers files",
-		Run: pkgcobra.RunBoundedArgs(
-			pkgcobra.Bounds{
-				Min: 1,
-				Max: 2,
-			},
+		Run: pkgcobra.RunFixedArgs(
+			1,
 			func(args []string) error {
-				dirPath := args[0]
-				outDirPath := args[0]
-				if len(args) == 2 {
-					outDirPath = args[1]
-				}
-				return compile(dirPath, outDirPath, compilerDirectives)
+				return compile(args[0], compilerDirectives)
 			},
 		),
 	}
+	bindCompilerDirectives(rootCmd.Flags(), compilerDirectives)
 
-	pflag.StringSliceVar(&compilerDirectives.ExcludeFilePatterns, "exclude", []string{}, "Exclude file patterns.")
-	pflag.StringSliceVarP(&compilerDirectives.ProtoPaths, "proto_path", "I", []string{}, "Additional directories for proto imports.")
-	pflag.BoolVar(&compilerDirectives.Cpp, "cpp", false, "Output cpp files.")
-	pflag.BoolVar(&compilerDirectives.Go, "go", false, "Output go files.")
-	pflag.BoolVar(&compilerDirectives.Grpc, "grpc", false, "Output grpc files.")
-	pflag.BoolVar(&compilerDirectives.GrpcGateway, "grpc-gateway", false, "Output grpc-gateway files.")
-	pflag.BoolVar(&compilerDirectives.Protolog, "protolog", false, "Output protolog files.")
 	return rootCmd.Execute()
 }
 
-func compile(dirPath string, outDirPath string, compilerDirectives *protoeasy.CompilerDirectives) error {
+func compile(dirPath string, compilerDirectives *protoeasy.CompilerDirectives) error {
 	argsList, err := protoeasy.NewCompiler(
 		protoeasy.NewProtoSpecProvider(
 			protoeasy.ProtoSpecProviderOptions{},
@@ -61,7 +47,6 @@ func compile(dirPath string, outDirPath string, compilerDirectives *protoeasy.Co
 		protoeasy.CompilerOptions{},
 	).ArgsList(
 		dirPath,
-		outDirPath,
 		compilerDirectives,
 	)
 	if err != nil {
@@ -70,5 +55,27 @@ func compile(dirPath string, outDirPath string, compilerDirectives *protoeasy.Co
 	for _, args := range argsList {
 		fmt.Println(strings.Join(args, " "))
 	}
+	return nil
+}
+
+func bindCompilerDirectives(flagSet *pflag.FlagSet, compilerDirectives *protoeasy.CompilerDirectives) error {
+	flagSet.StringSliceVar(&compilerDirectives.ExcludeFilePatterns, "exclude", []string{}, "Exclude file patterns.")
+	flagSet.StringSliceVarP(&compilerDirectives.ProtoPaths, "proto_path", "I", []string{}, "Additional directories for proto imports.")
+	flagSet.StringVar(&compilerDirectives.OutDirPath, "out", "", "Customize out directory path.")
+	flagSet.BoolVar(&compilerDirectives.Cpp, "cpp", false, "Output cpp files.")
+	flagSet.StringVar(&compilerDirectives.CppRelOutDirPath, "cpp_rel_out", "", "Output cpp files.")
+	flagSet.BoolVar(&compilerDirectives.Csharp, "csharp", false, "Output csharp files.")
+	flagSet.StringVar(&compilerDirectives.CsharpRelOutDirPath, "csharp_rel_out", "", "Output csharp files.")
+	flagSet.BoolVar(&compilerDirectives.ObjectiveC, "objectivec", false, "Output objectivec files.")
+	flagSet.StringVar(&compilerDirectives.ObjectiveCRelOutDirPath, "objectivec_rel_out", "", "Output objectivec files.")
+	flagSet.BoolVar(&compilerDirectives.Python, "python", false, "Output python files.")
+	flagSet.StringVar(&compilerDirectives.PythonRelOutDirPath, "python_rel_out", "", "Output python files.")
+	flagSet.BoolVar(&compilerDirectives.Ruby, "ruby", false, "Output ruby files.")
+	flagSet.StringVar(&compilerDirectives.RubyRelOutDirPath, "ruby_rel_out", "", "Output ruby files.")
+	flagSet.BoolVar(&compilerDirectives.Go, "go", false, "Output go files.")
+	flagSet.StringVar(&compilerDirectives.GoRelOutDirPath, "go_rel_out", "", "Output go files.")
+	flagSet.BoolVar(&compilerDirectives.Grpc, "grpc", false, "Output grpc files.")
+	flagSet.BoolVar(&compilerDirectives.GrpcGateway, "grpc-gateway", false, "Output grpc-gateway files.")
+	flagSet.BoolVar(&compilerDirectives.Protolog, "protolog", false, "Output protolog files.")
 	return nil
 }

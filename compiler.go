@@ -17,17 +17,20 @@ func newCompiler(
 	}
 }
 
-func (c *compiler) ArgsList(dirPath string, outDirPath string, directives *CompilerDirectives) ([][]string, error) {
+func (c *compiler) ArgsList(dirPath string, directives *CompilerDirectives) ([][]string, error) {
 	var err error
 	dirPath, err = filepath.Abs(dirPath)
 	if err != nil {
 		return nil, err
 	}
-	outDirPath, err = filepath.Abs(outDirPath)
-	if err != nil {
-		return nil, err
+	outDirPath := dirPath
+	if directives.OutDirPath != "" {
+		outDirPath, err = filepath.Abs(directives.OutDirPath)
+		if err != nil {
+			return nil, err
+		}
 	}
-	plugins, err := c.getPlugins(directives)
+	plugins, err := getPlugins(directives)
 	if err != nil {
 		return nil, err
 	}
@@ -60,14 +63,79 @@ func (c *compiler) ArgsList(dirPath string, outDirPath string, directives *Compi
 	return argsList, nil
 }
 
-func (c *compiler) getPlugins(directives *CompilerDirectives) ([]Plugin, error) {
+func getPlugins(directives *CompilerDirectives) ([]Plugin, error) {
 	var plugins []Plugin
 	if directives.Cpp {
 		plugins = append(
 			plugins,
 			NewCppPlugin(
 				CppPluginOptions{
-					Grpc: directives.Grpc,
+					GrpcPluginOptions: GrpcPluginOptions{
+						PluginOptions: PluginOptions{
+							RelOutDirPath: directives.CppRelOutDirPath,
+						},
+						Grpc: directives.Grpc,
+					},
+				},
+			),
+		)
+	}
+	if directives.Csharp {
+		plugins = append(
+			plugins,
+			NewCsharpPlugin(
+				CsharpPluginOptions{
+					GrpcPluginOptions: GrpcPluginOptions{
+						PluginOptions: PluginOptions{
+							RelOutDirPath: directives.CsharpRelOutDirPath,
+						},
+						Grpc: directives.Grpc,
+					},
+				},
+			),
+		)
+	}
+	if directives.ObjectiveC {
+		plugins = append(
+			plugins,
+			NewObjectiveCPlugin(
+				ObjectiveCPluginOptions{
+					GrpcPluginOptions: GrpcPluginOptions{
+						PluginOptions: PluginOptions{
+							RelOutDirPath: directives.ObjectiveCRelOutDirPath,
+						},
+						Grpc: directives.Grpc,
+					},
+				},
+			),
+		)
+	}
+	if directives.Python {
+		plugins = append(
+			plugins,
+			NewPythonPlugin(
+				PythonPluginOptions{
+					GrpcPluginOptions: GrpcPluginOptions{
+						PluginOptions: PluginOptions{
+							RelOutDirPath: directives.PythonRelOutDirPath,
+						},
+						Grpc: directives.Grpc,
+					},
+				},
+			),
+		)
+	}
+	if directives.Ruby {
+		plugins = append(
+			plugins,
+			NewRubyPlugin(
+				RubyPluginOptions{
+					GrpcPluginOptions: GrpcPluginOptions{
+						PluginOptions: PluginOptions{
+							RelOutDirPath: directives.RubyRelOutDirPath,
+						},
+						Grpc: directives.Grpc,
+					},
 				},
 			),
 		)
@@ -77,7 +145,12 @@ func (c *compiler) getPlugins(directives *CompilerDirectives) ([]Plugin, error) 
 			plugins,
 			NewGoPlugin(
 				GoPluginOptions{
-					Grpc:        directives.Grpc,
+					GrpcPluginOptions: GrpcPluginOptions{
+						PluginOptions: PluginOptions{
+							RelOutDirPath: directives.GoRelOutDirPath,
+						},
+						Grpc: directives.Grpc,
+					},
 					GrpcGateway: directives.GrpcGateway,
 					Protolog:    directives.Protolog,
 				},
