@@ -9,10 +9,6 @@ func newGoPlugin(goPath string, options GoPluginOptions) *goPlugin {
 	return &goPlugin{goPath, options}
 }
 
-func (p *goPlugin) Name() string {
-	return "go"
-}
-
-func (p *goPlugin) Flags(protoFiles []string) (*PluginFlags, error) {
+func (p *goPlugin) Args(protoSpec *ProtoSpec) ([]string, error) {
 	return nil, nil
 }

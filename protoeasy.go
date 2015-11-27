@@ -1,80 +1,58 @@
 package protoeasy // import "go.pedge.io/protoeasy"
 
-const (
-	DefaultDirectivesFile = ".protoeasy.yml"
-	DefaultFileFormat     = FileFormatYML
+type ProtoSpec struct {
+	DirPath           string
+	RelDirPathToFiles map[string][]string
+	OutDirPath        string
+}
 
-	FileFormatYML  FileFormat = 0
-	FileFormatJSON FileFormat = 1
-)
+type ProtoSpecProvider interface {
+	Get(dirPath string) (*ProtoSpec, error)
+}
 
-type FileFormat int
+type ProtoSpecProviderOptions struct{}
 
-type PluginFlags struct {
-	Includes []string
-	Options  map[string]string
+func NewProtoSpecProvider(options ProtoSpecProviderOptions) ProtoSpecProvider {
+	return newProtoSpecProvider(options)
 }
 
 type Plugin interface {
-	Name() string
-	Flags(protoFiles []string) (*PluginFlags, error)
+	Args(protoSpec *ProtoSpec) ([]string, error)
 }
 
 type GoPluginOptions struct {
-	ImportPath           string
-	Grpc                 bool
-	GrpcGateway          bool
-	Protolog             bool
-	Modifiers            []string
-	StripPackageComments bool
+	Grpc               bool
+	GrpcGateway        bool
+	Protolog           bool
+	NoDefaultModifiers bool
 }
 
 func NewGoPlugin(goPath string, options GoPluginOptions) Plugin {
 	return newGoPlugin(goPath, options)
 }
 
-type Directives struct {
-	Includes []string
-	Go       *GoPluginOptions
+type CppPluginOptions struct {
+	Grpc bool
 }
 
-type DirectivesProvider interface {
-	Get(dir string) (*Directives, error)
-}
-
-type DirectivesProviderOptions struct {
-	File       string
-	FileFormat FileFormat
-}
-
-func NewDirectivesProvider(goPath string, options DirectivesProviderOptions) DirectivesProvider {
-	return newDirectivesProvider(goPath, options)
-}
-
-type ArgsProvider interface {
-	Get(directives *Directives, protoFiles []string) ([]string, error)
-}
-
-type ArgsProviderOptions struct{}
-
-func NewArgsProvider(options ArgsProviderOptions) ArgsProvider {
-	return newArgsProvider(options)
+func NewCppPlugin(options CppPluginOptions) Plugin {
+	return newCppPlugin(options)
 }
 
 type Compiler interface {
-	Compile(directivesDir string, dirs []string) error
+	Args(dirPath string) ([]string, error)
 }
 
 type CompilerOptions struct{}
 
 func NewCompiler(
-	directivesProvider DirectivesProvider,
-	argsProvider ArgsProvider,
+	protoSpecProvider ProtoSpecProvider,
+	plugins []Plugin,
 	options CompilerOptions,
 ) Compiler {
 	return newCompiler(
-		directivesProvider,
-		argsProvider,
+		protoSpecProvider,
+		plugins,
 		options,
 	)
 }
