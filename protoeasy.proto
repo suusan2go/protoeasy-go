@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package protoeasy;
+
+message Directives {
+  bool cpp = 1;
+  string cpp_rel_out_dir_path = 2;
+  bool csharp = 3;
+  string csharp_rel_out_dir_path = 4;
+  bool objectivec = 5;
+  string objectivec_rel_out_dir_path = 6;
+  bool python = 7;
+  string python_rel_out_dir_path = 8;
+  bool ruby = 9;
+  string ruby_rel_out_dir_path = 10;
+  bool go = 11;
+  string go_rel_out_dir_path = 12;
+  string go_import_path = 14;
+  bool grpc = 15;
+  bool grpc_gateway = 16;
+  bool protolog = 17;
+  repeated string exclude_pattern = 18;
+}
+
+message CompileRequest {
+  bytes tar = 1;
+  Directives directives = 2;
+}
+
+message CompileResponse {
+  bytes tar = 1;
+}
+
+service API {
+  rpc Compile(CompileRequest) returns (CompileResponse) {}
+}

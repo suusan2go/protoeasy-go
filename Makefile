@@ -18,6 +18,10 @@ build: deps
 install: deps
 	go install ./...
 
+proto: install
+	protoeasy --go --grpc --go_import_path go.pedge.io/protoeasy .
+	find . -name *\.pb\*\.go | xargs strip-package-comments
+
 lint: testdeps
 	go get -v github.com/golang/lint/golint
 	for file in $$(find . -name '*.go' | grep -v '\.pb\.go' | grep -v '\.pb\.gw\.go' | grep -v '\.pb\.log\.go'); do \
@@ -50,6 +54,8 @@ clean:
 	testdeps \
 	updatetestdeps \
 	build \
+	install \
+	proto \
 	lint \
 	vet \
 	errcheck \

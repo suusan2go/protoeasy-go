@@ -92,30 +92,8 @@ func NewGoPlugin(options GoPluginOptions) Plugin {
 	return newGoPlugin(options)
 }
 
-type CompileOptions struct {
-	ExcludeFilePatterns     []string
-	ProtoPaths              []string
-	OutDirPath              string
-	Cpp                     bool
-	CppRelOutDirPath        string
-	Csharp                  bool
-	CsharpRelOutDirPath     string
-	ObjectiveC              bool
-	ObjectiveCRelOutDirPath string
-	Python                  bool
-	PythonRelOutDirPath     string
-	Ruby                    bool
-	RubyRelOutDirPath       string
-	Go                      bool
-	GoRelOutDirPath         string
-	GoImportPath            string
-	Grpc                    bool
-	GrpcGateway             bool
-	Protolog                bool
-}
-
 type Compiler interface {
-	Compile(dirPath string, options *CompileOptions) error
+	Compile(dirPath string, outDirPath string, directives *Directives) error
 }
 
 type CompilerOptions struct{}
@@ -128,4 +106,8 @@ func NewCompiler(
 		protoSpecProvider,
 		options,
 	)
+}
+
+func NewAPIServer(compiler Compiler) APIServer {
+	return newAPIServer(compiler)
 }
