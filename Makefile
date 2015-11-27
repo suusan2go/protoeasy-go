@@ -18,9 +18,18 @@ build: deps
 install: deps
 	go install ./...
 
+launch: install
+	protoeasy -d
+
 proto: install
 	protoeasy --go --grpc --go_import_path go.pedge.io/protoeasy .
 	find . -name *\.pb\*\.go | xargs strip-package-comments
+
+docker-build:
+	docker build -t pedge/protoeasy .
+
+docker-launch: docker-build
+	docker run -d -p 6789:6789 pedge/protoeasy make launch
 
 lint: testdeps
 	go get -v github.com/golang/lint/golint
