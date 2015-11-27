@@ -1,3 +1,6 @@
+/*
+Package protoeasy is intended to make using protoc simpler, if certain conventions are followed.
+*/
 package protoeasy // import "go.pedge.io/protoeasy"
 
 type ProtoSpec struct {
