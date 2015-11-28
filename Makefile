@@ -72,7 +72,7 @@ docker-push: docker-build
 docker-pull:
 	docker pull quay.io/pedge/protoeasy
 
-docker-launch: docker-build
+docker-launch:
 	docker rm -f protoeasy || true
 	docker run -d -p 6789:6789 --name=protoeasy quay.io/pedge/protoeasy
 
