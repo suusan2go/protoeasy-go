@@ -18,18 +18,24 @@ build: deps
 install: deps
 	go install ./...
 
-launch: install
-	protoeasy -d
-
 proto: install
+	go get -v go.pedge.io/pkg/cmd/strip-package-comments
 	protoeasy --go --grpc --go_import_path go.pedge.io/protoeasy .
 	find . -name *\.pb\*\.go | xargs strip-package-comments
 
-docker-build:
-	docker build -t pedge/protoeasy .
-
-docker-launch: docker-build
-	docker run -d -p 6789:6789 pedge/protoeasy make launch
+example: install
+	rm -rf _example-out
+	protoeasy \
+		--out=_example-out \
+		--cpp --cpp_rel_out=cpp \
+		--csharp --csharp_rel_out=csharp \
+		--objectivec --objectivec_rel_out=objectivec \
+		--python --python_rel_out=python \
+		--ruby --ruby_rel_out=ruby \
+		--go --go_rel_out=go --go_import_path=go.pedge.io/protoeasy/example/example-out/go \
+		--grpc \
+		--grpc-gateway \
+		example
 
 lint: testdeps
 	go get -v github.com/golang/lint/golint
@@ -55,22 +61,22 @@ test: testdeps pretest
 
 clean:
 	go clean ./...
-	rm -rf example/out
-
-
-example: install
 	rm -rf _example-out
-	protoeasy \
-		--out=_example-out \
-		--cpp --cpp_rel_out=cpp \
-		--csharp --csharp_rel_out=csharp \
-		--objectivec --objectivec_rel_out=objectivec \
-		--python --python_rel_out=python \
-		--ruby --ruby_rel_out=ruby \
-		--go --go_rel_out=go --go_import_path=go.pedge.io/protoeasy/example/example-out/go \
-		--grpc \
-		--grpc-gateway \
-		example
+
+docker-build:
+	docker build -t quay.io/pedge/protoeasy .
+
+docker-push: docker-build
+	docker push quay.io/pedge/protoeasy
+
+docker-pull:
+	docker pull quay.io/pedge/protoeasy
+
+docker-launch: docker-build
+	docker run -d -p 6789:6789 quay.io/pedge/protoeasy
+
+docker-test: docker-build
+	docker run quay.io/pedge/protoeasy make test
 
 .PHONY: \
 	all \
@@ -80,14 +86,16 @@ example: install
 	updatetestdeps \
 	build \
 	install \
-	launch \
 	proto \
-	docker-build \
-	docker-launch\
+	example \
 	lint \
 	vet \
 	errcheck \
 	pretest \
 	test \
 	clean \
-	example
+	docker-build \
+	docker-push \
+	docker-pull \
+	docker-launch \
+	docker-test

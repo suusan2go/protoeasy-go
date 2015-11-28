@@ -41,8 +41,10 @@ RUN \
     go.pedge.io/googleapis/... \
     go.pedge.io/protolog/cmd/protoc-gen-protolog/... \
     github.com/gengo/grpc-gateway/protoc-gen-grpc-gateway/... \
-    google.golang.org/grpc/...
+    google.golang.org/grpc
 
 RUN mkdir -p /go/src/go.pedge.io/protoeasy
 ADD . /go/src/go.pedge.io/protoeasy/
 WORKDIR /go/src/go.pedge.io/protoeasy
+RUN make install
+CMD ["protoeasy", "-d"]
