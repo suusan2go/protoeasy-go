@@ -6,21 +6,22 @@ import (
 	"os"
 	"time"
 
-	"go.pedge.io/proto/rpclog"
+	"go.pedge.io/protolog"
 	"golang.org/x/net/context"
 )
 
 type apiServer struct {
-	protorpclog.Logger
 	compiler Compiler
 }
 
 func newAPIServer(compiler Compiler) *apiServer {
-	return &apiServer{protorpclog.NewLogger("protoeasy.API"), compiler}
+	return &apiServer{compiler}
 }
 
 func (a *apiServer) Compile(ctx context.Context, request *CompileRequest) (response *CompileResponse, retErr error) {
-	defer func(start time.Time) { a.Log(request.Directives, nil, retErr, time.Since(start)) }(time.Now())
+	defer func(start time.Time) {
+		protolog.Infof("compile: took %v, got %v with %d bytes, ran %d commands, returned %d bytes\n", time.Since(start), request.Directives, len(request.Tar), len(response.Args), len(response.Tar))
+	}(time.Now())
 	dirPath, err := ioutil.TempDir("", "")
 	if err != nil {
 		return nil, err
