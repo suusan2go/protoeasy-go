@@ -2,7 +2,6 @@ dependencies:
   override:
     - mkdir -p "${GOPATH}/src/go.pedge.io/protoeasy"
     - rsync -azC --delete ./ "${GOPATH}/src/go.pedge.io/protoeasy/"
-    - make -C "${GOPATH}/src/go.pedge.io/protoeasy" testdeps
 test:
   override:
     - make -C "${GOPATH}/src/go.pedge.io/protoeasy" test
