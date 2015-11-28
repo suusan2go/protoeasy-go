@@ -36,9 +36,9 @@ var (
 			[]string{
 				"annotations.proto",
 				"http.proto",
-			}
+			},
 			"go.pedge.io/googleapis/google/api",
-		)
+		),
 	)
 )
 
