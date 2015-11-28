@@ -32,7 +32,7 @@ install:
 proto: install
 	go get -v go.pedge.io/pkg/cmd/strip-package-comments
 	protoeasy --go --grpc --go_import_path go.pedge.io/protoeasy --exclude vendor --exclude example .
-	find . -name *\.pb\*\.go | xargs strip-package-comments
+	find . -name *\.pb\*\.go | grep -v vendor | xargs strip-package-comments
 
 example: install
 	rm -rf _example-out
