@@ -130,3 +130,7 @@ func mergeStringStringMaps(maps ...map[string]string) map[string]string {
 func copyStringStringMap(m map[string]string) map[string]string {
 	return mergeStringStringMaps(m)
 }
+
+func logArgs(args []string) {
+	protolog.Infoln(strings.Join(args, " "))
+}

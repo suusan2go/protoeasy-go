@@ -22,13 +22,18 @@ message Directives {
   repeated string exclude_pattern = 18;
 }
 
+message Args {
+  repeated string value = 1;
+}
+
 message CompileRequest {
   bytes tar = 1;
   Directives directives = 2;
 }
 
 message CompileResponse {
-  bytes tar = 1;
+  repeated Args args = 1;
+  bytes tar = 2;
 }
 
 service API {

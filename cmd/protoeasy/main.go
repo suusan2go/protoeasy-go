@@ -57,7 +57,8 @@ func do(appEnvObj interface{}) error {
 		)
 	}
 
-	return compiler.Compile(dirPath, outDirPath, directives)
+	_, err := compiler.Compile(dirPath, outDirPath, directives)
+	return err
 }
 
 func bindDirectives(flagSet *pflag.FlagSet, directives *protoeasy.Directives) {

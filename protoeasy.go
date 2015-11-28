@@ -93,7 +93,8 @@ func NewGoPlugin(options GoPluginOptions) Plugin {
 }
 
 type Compiler interface {
-	Compile(dirPath string, outDirPath string, directives *Directives) error
+	// Returns a list of the commands run
+	Compile(dirPath string, outDirPath string, directives *Directives) ([][]string, error)
 }
 
 type ServerCompilerOptions struct{}

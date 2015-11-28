@@ -24,29 +24,30 @@ func newServerCompiler(
 	}
 }
 
-func (c *serverCompiler) Compile(dirPath string, outDirPath string, directives *Directives) error {
+func (c *serverCompiler) Compile(dirPath string, outDirPath string, directives *Directives) ([][]string, error) {
 	var err error
 	dirPath, err = filepath.Abs(dirPath)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	outDirPath, err = filepath.Abs(outDirPath)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	argsList, err := c.argsList(dirPath, outDirPath, directives)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	if err := makeOutDirs(outDirPath, directives); err != nil {
-		return err
+		return nil, err
 	}
 	for _, args := range argsList {
+		logArgs(args)
 		if err := pkgexec.Run(args...); err != nil {
-			return err
+			return nil, err
 		}
 	}
-	return nil
+	return argsList, nil
 }
 
 func (c *serverCompiler) argsList(dirPath string, outDirPath string, directives *Directives) ([][]string, error) {

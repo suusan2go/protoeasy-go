@@ -42,8 +42,15 @@ func (a *apiServer) Compile(ctx context.Context, request *CompileRequest) (respo
 	if err := untar(bytes.NewReader(request.Tar), dirPath); err != nil {
 		return nil, err
 	}
-	if err := a.compiler.Compile(dirPath, outDirPath, request.Directives); err != nil {
+	argsList, err := a.compiler.Compile(dirPath, outDirPath, request.Directives)
+	if err != nil {
 		return nil, err
+	}
+	protoArgs := make([]*Args, len(argsList))
+	for i, args := range argsList {
+		protoArgs[i] = &Args{
+			Value: args,
+		}
 	}
 	readCloser, err := tar(outDirPath, []string{"."})
 	if err != nil {
@@ -59,6 +66,7 @@ func (a *apiServer) Compile(ctx context.Context, request *CompileRequest) (respo
 		return nil, err
 	}
 	return &CompileResponse{
-		Tar: data,
+		Args: protoArgs,
+		Tar:  data,
 	}, nil
 }
