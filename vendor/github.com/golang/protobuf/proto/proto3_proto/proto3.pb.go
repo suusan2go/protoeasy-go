@@ -2,6 +2,17 @@
 // source: proto3_proto/proto3.proto
 // DO NOT EDIT!
 
+/*
+Package proto3_proto is a generated protocol buffer package.
+
+It is generated from these files:
+	proto3_proto/proto3.proto
+
+It has these top-level messages:
+	Message
+	Nested
+	MessageWithMap
+*/
 package proto3_proto
 
 import proto "github.com/golang/protobuf/proto"

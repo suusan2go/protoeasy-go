@@ -2,6 +2,15 @@
 // source: perf.proto
 // DO NOT EDIT!
 
+/*
+Package codec_perf is a generated protocol buffer package.
+
+It is generated from these files:
+	perf.proto
+
+It has these top-level messages:
+	Buffer
+*/
 package codec_perf
 
 import proto "github.com/golang/protobuf/proto"

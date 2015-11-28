@@ -4,10 +4,10 @@ import (
 	"errors"
 	"io"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"strings"
 
+	"go.pedge.io/pkg/exec"
 	"go.pedge.io/protolog"
 
 	"github.com/docker/docker/pkg/archive"
@@ -110,7 +110,7 @@ func getGoPath() (string, error) {
 }
 
 func which(executable string) (string, error) {
-	output, err := exec.Command("which", executable).Output()
+	output, err := pkgexec.RunOutput("which", executable)
 	if err != nil {
 		return "", err
 	}

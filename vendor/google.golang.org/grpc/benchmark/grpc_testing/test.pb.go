@@ -2,6 +2,28 @@
 // source: test.proto
 // DO NOT EDIT!
 
+/*
+Package grpc_testing is a generated protocol buffer package.
+
+It is generated from these files:
+	test.proto
+
+It has these top-level messages:
+	StatsRequest
+	ServerStats
+	Payload
+	HistogramData
+	ClientConfig
+	Mark
+	ClientArgs
+	ClientStats
+	ClientStatus
+	ServerConfig
+	ServerArgs
+	ServerStatus
+	SimpleRequest
+	SimpleResponse
+*/
 package grpc_testing
 
 import proto "github.com/golang/protobuf/proto"

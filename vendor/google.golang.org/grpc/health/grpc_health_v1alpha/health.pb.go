@@ -2,6 +2,16 @@
 // source: health.proto
 // DO NOT EDIT!
 
+/*
+Package grpc_health_v1alpha is a generated protocol buffer package.
+
+It is generated from these files:
+	health.proto
+
+It has these top-level messages:
+	HealthCheckRequest
+	HealthCheckResponse
+*/
 package grpc_health_v1alpha
 
 import proto "github.com/golang/protobuf/proto"

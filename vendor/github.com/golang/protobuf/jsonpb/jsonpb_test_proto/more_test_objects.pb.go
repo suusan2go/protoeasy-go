@@ -2,6 +2,24 @@
 // source: more_test_objects.proto
 // DO NOT EDIT!
 
+/*
+Package jsonpb is a generated protocol buffer package.
+
+It is generated from these files:
+	more_test_objects.proto
+	test_objects.proto
+
+It has these top-level messages:
+	Simple3
+	Mappy
+	Simple
+	Repeats
+	Widget
+	Maps
+	MsgWithOneof
+	Real
+	Complex
+*/
 package jsonpb
 
 import proto "github.com/golang/protobuf/proto"

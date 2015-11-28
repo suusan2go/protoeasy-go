@@ -2,6 +2,16 @@
 // source: helloworld.proto
 // DO NOT EDIT!
 
+/*
+Package helloworld is a generated protocol buffer package.
+
+It is generated from these files:
+	helloworld.proto
+
+It has these top-level messages:
+	HelloRequest
+	HelloReply
+*/
 package helloworld
 
 import proto "github.com/golang/protobuf/proto"

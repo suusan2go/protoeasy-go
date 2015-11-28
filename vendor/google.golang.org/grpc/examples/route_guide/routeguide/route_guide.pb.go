@@ -2,6 +2,19 @@
 // source: google.golang.org/grpc/examples/route_guide/routeguide/route_guide.proto
 // DO NOT EDIT!
 
+/*
+Package routeguide is a generated protocol buffer package.
+
+It is generated from these files:
+	google.golang.org/grpc/examples/route_guide/routeguide/route_guide.proto
+
+It has these top-level messages:
+	Point
+	Rectangle
+	Feature
+	RouteNote
+	RouteSummary
+*/
 package routeguide
 
 import proto "github.com/golang/protobuf/proto"
