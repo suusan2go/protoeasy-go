@@ -43,6 +43,7 @@ RUN \
     github.com/gengo/grpc-gateway/protoc-gen-grpc-gateway/... \
     google.golang.org/grpc
 
+ENV GO15VENDOREXPERIMENT 1
 ENV PROTOEASY_PORT 6789
 RUN mkdir -p /go/src/go.pedge.io/protoeasy
 ADD . /go/src/go.pedge.io/protoeasy/
