@@ -44,6 +44,18 @@ func getAllRelProtoFilePaths(dirPath string) ([]string, error) {
 	return relProtoFilePaths, nil
 }
 
+func getRelDirPathToFiles(relFilePaths []string) map[string][]string {
+	relDirPathToFiles := make(map[string][]string)
+	for _, relFilePath := range relFilePaths {
+		relDirPath := filepath.Dir(relFilePath)
+		if _, ok := relDirPathToFiles[relDirPath]; !ok {
+			relDirPathToFiles[relDirPath] = make([]string, 0)
+		}
+		relDirPathToFiles[relDirPath] = append(relDirPathToFiles[relDirPath], filepath.Base(relFilePath))
+	}
+	return relDirPathToFiles
+}
+
 func filterFilePaths(filePaths []string, excludeFilePatterns []string) ([]string, error) {
 	var filteredFilePaths []string
 	for _, filePath := range filePaths {

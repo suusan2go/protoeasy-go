@@ -10,18 +10,11 @@ import (
 )
 
 type serverCompiler struct {
-	protoSpecProvider ProtoSpecProvider
-	options           ServerCompilerOptions
+	options ServerCompilerOptions
 }
 
-func newServerCompiler(
-	protoSpecProvider ProtoSpecProvider,
-	options ServerCompilerOptions,
-) *serverCompiler {
-	return &serverCompiler{
-		protoSpecProvider,
-		options,
-	}
+func newServerCompiler(options ServerCompilerOptions) *serverCompiler {
+	return &serverCompiler{options}
 }
 
 func (c *serverCompiler) Compile(dirPath string, outDirPath string, directives *Directives) ([][]string, error) {
@@ -55,7 +48,7 @@ func (c *serverCompiler) argsList(dirPath string, outDirPath string, directives 
 	if err != nil {
 		return nil, err
 	}
-	protoSpec, err := c.protoSpecProvider.Get(dirPath, directives.ExcludePattern)
+	protoSpec, err := getProtoSpec(dirPath, directives.ExcludePattern)
 	if err != nil {
 		return nil, err
 	}
@@ -86,6 +79,21 @@ func (c *serverCompiler) argsList(dirPath string, outDirPath string, directives 
 		}
 	}
 	return argsList, nil
+}
+
+func getProtoSpec(dirPath string, excludeFilePatterns []string) (*ProtoSpec, error) {
+	relFilePaths, err := getAllRelProtoFilePaths(dirPath)
+	if err != nil {
+		return nil, err
+	}
+	relFilePaths, err = filterFilePaths(relFilePaths, excludeFilePatterns)
+	if err != nil {
+		return nil, err
+	}
+	return &ProtoSpec{
+		DirPath:           dirPath,
+		RelDirPathToFiles: getRelDirPathToFiles(relFilePaths),
+	}, nil
 }
 
 func getPlugins(directives *Directives) ([]Plugin, error) {
