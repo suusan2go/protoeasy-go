@@ -38,7 +38,6 @@ RUN \
     github.com/golang/protobuf/proto/... \
     github.com/golang/protobuf/protoc-gen-go/... \
     go.pedge.io/google-protobuf/... \
-    go.pedge.io/googleapis/... \
     go.pedge.io/protolog/cmd/protoc-gen-protolog/... \
     github.com/gengo/grpc-gateway/protoc-gen-grpc-gateway/... \
     google.golang.org/grpc
