@@ -59,9 +59,9 @@ func (c *serverCompiler) argsList(dirPath string, outDirPath string, directives 
 	for relDirPath, files := range protoSpec.RelDirPathToFiles {
 		for _, plugin := range plugins {
 			args := []string{"protoc", fmt.Sprintf("-I%s", dirPath)}
-			args = append(args, fmt.Sprintf("-I%s", filepath.Join(goPath, "src/go.pedge.io/google-protobuf")))
-			args = append(args, fmt.Sprintf("-I%s", filepath.Join(goPath, "src/github.com/golang/protobuf/protoc-gen-go/descriptor")))
-			args = append(args, fmt.Sprintf("-I%s", filepath.Join(goPath, "src/github.com/gengo/grpc-gateway/third_party/googleapis")))
+			args = append(args, fmt.Sprintf("-I%s", filepath.Join(goPath, "src/go.pedge.io/protoeasy/vendor/go.pedge.io/google-protobuf")))
+			args = append(args, fmt.Sprintf("-I%s", filepath.Join(goPath, "src/go.pedge.io/protoeasy/vendor/github.com/golang/protobuf/protoc-gen-go/descriptor")))
+			args = append(args, fmt.Sprintf("-I%s", filepath.Join(goPath, "src/go.pedge.io/protoeasy/vendor/github.com/gengo/grpc-gateway/third_party/googleapis")))
 			iArgs, err := plugin.Args(protoSpec, relDirPath, outDirPath)
 			if err != nil {
 				return nil, err

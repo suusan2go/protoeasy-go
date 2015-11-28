@@ -54,11 +54,7 @@ func (p *goPlugin) Args(protoSpec *ProtoSpec, relDirPath string, outDirPath stri
 	if p.options.RelOutDirPath != "" {
 		outDirPath = filepath.Join(outDirPath, p.options.RelOutDirPath)
 	}
-	goPath, err := getGoPath()
-	if err != nil {
-		return nil, err
-	}
-	args := []string{fmt.Sprintf("-I%s", filepath.Join(goPath, "src"))}
+	var args []string
 	modifiers := p.getModifiers(protoSpec)
 	var goOutOpts []string
 	for key, value := range modifiers {
