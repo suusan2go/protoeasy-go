@@ -54,10 +54,11 @@ example: install
 		--objectivec --objectivec_rel_out=objectivec \
 		--python --python_rel_out=python \
 		--ruby --ruby_rel_out=ruby \
-		--go --go_rel_out=go --go_import_path=go.pedge.io/protoeasy/example/example-out/go \
+		--go --go_rel_out=go --go_import_path=go.pedge.io/protoeasy/_example-out/go \
 		--grpc \
 		--grpc-gateway \
 		example
+	cd _example-out/go && go build ./...
 
 lint:
 	go get -v github.com/golang/lint/golint
