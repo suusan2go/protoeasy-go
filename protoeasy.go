@@ -64,7 +64,6 @@ type GoPluginOptions struct {
 	GrpcPluginOptions
 	ImportPath         string
 	GrpcGateway        bool
-	Protolog           bool
 	NoDefaultModifiers bool
 }
 

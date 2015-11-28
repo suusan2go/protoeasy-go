@@ -73,9 +73,6 @@ func (p *goPlugin) Args(protoSpec *ProtoSpec, relDirPath string, outDirPath stri
 			args = append(args, fmt.Sprintf("--grpc-gateway_out=%s", outDirPath))
 		}
 	}
-	if p.options.Protolog {
-		args = append(args, fmt.Sprintf("--protolog_out=%s", outDirPath))
-	}
 	return args, nil
 }
 
