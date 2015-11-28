@@ -30,7 +30,7 @@ var (
 				"descriptor.proto",
 			},
 			"github.com/golang/protobuf/protoc-gen-go/descriptor",
-		)
+		),
 		newGoModifierOptions(
 			"google/api",
 			[]string{
