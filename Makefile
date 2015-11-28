@@ -20,14 +20,25 @@ vendor:
 	go get -v github.com/tools/godep
 	rm -rf Godeps
 	rm -rf vendor
-	GOOS=linux GOARCH=AMD64 godep save $(PKGS)
+	GOOS=linux GOARCH=AMD64 godep save \
+			 $(PKGS) \
+			 github.com/gengo/grpc-gateway/protoc-gen-grpc-gateway/... \
+			 github.com/gengo/grpc-gateway/third_party/googleapis/... \
+			 github.com/golang/protobuf/proto/... \
+			 github.com/golang/protobuf/protoc-gen-go/... \
+			 go.pedge.io/google-protobuf/... \
+			 go.pedge.io/googleapis/... \
+			 google.golang.org/grpc
 	rm -rf Godeps
 
 build:
 	go build $(PKGS)
 
 install:
-	go install $(PKGS)
+	go install \
+		$(PKGS) \
+		go.pedge.io/protoeasy/vendor/github.com/gengo/grpc-gateway/protoc-gen-grpc-gateway \
+		go.pedge.io/protoeasy/vendor/github.com/golang/protobuf/protoc-gen-go
 
 proto: install
 	go get -v go.pedge.io/pkg/cmd/strip-package-comments
