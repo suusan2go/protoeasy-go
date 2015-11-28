@@ -7,9 +7,7 @@ import (
 	"google.golang.org/grpc"
 
 	"go.pedge.io/env"
-	"go.pedge.io/proto/server"
 	"go.pedge.io/protoeasy"
-	"go.pedge.io/protolog"
 
 	"github.com/spf13/pflag"
 )
@@ -19,8 +17,6 @@ type appEnv struct {
 }
 
 type options struct {
-	Daemon     bool
-	Port       uint16
 	OutDirPath string
 }
 
@@ -30,30 +26,12 @@ func main() {
 
 func do(appEnvObj interface{}) error {
 	appEnv := appEnvObj.(*appEnv)
-	protolog.SetLevel(protolog.Level_LEVEL_DEBUG)
 	directives := &protoeasy.Directives{}
 	options := &options{}
 
 	bindDirectives(pflag.CommandLine, directives)
 	bindOptions(pflag.CommandLine, options)
 	pflag.Parse()
-
-	compiler := protoeasy.DefaultServerCompiler
-
-	if options.Daemon {
-		return protoserver.Serve(
-			options.Port,
-			func(s *grpc.Server) {
-				protoeasy.RegisterAPIServer(
-					s,
-					protoeasy.NewAPIServer(
-						compiler,
-					),
-				)
-			},
-			protoserver.ServeOptions{},
-		)
-	}
 
 	args := pflag.CommandLine.Args()
 	if len(args) != 1 {
@@ -65,6 +43,7 @@ func do(appEnvObj interface{}) error {
 		outDirPath = options.OutDirPath
 	}
 
+	compiler := protoeasy.DefaultServerCompiler
 	if appEnv.Address != "" {
 		clientConn, err := grpc.Dial(appEnv.Address, grpc.WithInsecure())
 		if err != nil {
@@ -102,7 +81,5 @@ func bindDirectives(flagSet *pflag.FlagSet, directives *protoeasy.Directives) {
 }
 
 func bindOptions(flagSet *pflag.FlagSet, options *options) {
-	flagSet.BoolVarP(&options.Daemon, "daemon", "d", false, "Run in daemon mode.")
-	flagSet.Uint16VarP(&options.Port, "port", "p", 6789, "The port for daemon mode.")
 	flagSet.StringVar(&options.OutDirPath, "out", "", "Customize out directory path.")
 }
