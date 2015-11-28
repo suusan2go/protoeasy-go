@@ -1,13 +1,9 @@
 package protoeasy
 
 import (
-	"errors"
 	"fmt"
-	"os"
 	"path/filepath"
 	"strings"
-
-	"go.pedge.io/protolog"
 )
 
 var (
@@ -29,16 +25,11 @@ var (
 			"go.pedge.io/google-protobuf",
 		),
 		map[string]string{
+			"google/api/annotations.proto":     "github.com/gengo/grpc-gateway/third_party/googleapis/google/api",
+			"google/api/http.proto":            "github.com/gengo/grpc-gateway/third_party/googleapis/google/api",
 			"google/protobuf/descriptor.proto": "github.com/golang/protobuf/protoc-gen-go/descriptor",
 		},
 	)
-
-	defaultGoPathRelativeIncludes = []string{
-		"src",
-		"src/github.com/gengo/grpc-gateway/third_party/googleapis",
-	}
-
-	errGoPathNotSet = errors.New("protoeasy: GOPATH not set")
 )
 
 type goPlugin struct {
@@ -59,11 +50,6 @@ func (p *goPlugin) Args(protoSpec *ProtoSpec, relDirPath string, outDirPath stri
 	}
 	args := []string{fmt.Sprintf("-I%s", filepath.Join(goPath, "src"))}
 	modifiers := p.getModifiers(protoSpec)
-	if p.options.GrpcGateway {
-		args = append(args, fmt.Sprintf("-I%s", filepath.Join(goPath, "src/github.com/gengo/grpc-gateway/third_party/googleapis")))
-		modifiers["google/api/http.proto"] = "github.com/gengo/grpc-gateway/third_party/googleapis/google/api"
-		modifiers["google/api/annotations.proto"] = "github.com/gengo/grpc-gateway/third_party/googleapis/google/api"
-	}
 	var goOutOpts []string
 	for key, value := range modifiers {
 		goOutOpts = append(goOutOpts, fmt.Sprintf("M%s=%s", key, value))
@@ -128,11 +114,12 @@ func (p *plugin) Args(protoSpec *ProtoSpec, relDirPath string, outDirPath string
 
 type grpcPlugin struct {
 	*plugin
-	options GrpcPluginOptions
+	grpcName string
+	options  GrpcPluginOptions
 }
 
-func newGrpcPlugin(name string, options GrpcPluginOptions) *grpcPlugin {
-	return &grpcPlugin{newPlugin(name, options.PluginOptions), options}
+func newGrpcPlugin(name string, grpcName string, options GrpcPluginOptions) *grpcPlugin {
+	return &grpcPlugin{newPlugin(name, options.PluginOptions), grpcName, options}
 }
 
 func (p *grpcPlugin) Args(protoSpec *ProtoSpec, relDirPath string, outDirPath string) ([]string, error) {
@@ -144,22 +131,13 @@ func (p *grpcPlugin) Args(protoSpec *ProtoSpec, relDirPath string, outDirPath st
 		if p.options.RelOutDirPath != "" {
 			outDirPath = filepath.Join(outDirPath, p.options.RelOutDirPath)
 		}
-		return append(args, fmt.Sprintf("--grpc_%s_out=%s", p.name, outDirPath)), nil
+		whichGrpcPlugin, err := which(fmt.Sprintf("grpc_%s_plugin", p.grpcName))
+		if err != nil {
+			return nil, err
+		}
+		return append(args, fmt.Sprintf("--grpc_out=%s", outDirPath), fmt.Sprintf("--plugin=protoc-gen-grpc=%s", whichGrpcPlugin)), nil
 	}
 	return args, nil
-}
-
-func getGoPath() (string, error) {
-	goPath := os.Getenv("GOPATH")
-	if goPath == "" {
-		return "", errGoPathNotSet
-	}
-	split := strings.Split(goPath, ":")
-	if len(split) > 1 {
-		protolog.Warnf("protoeasy: GOPATH %s has multiple directories, using first directory %s", goPath, split[0])
-		return split[0], nil
-	}
-	return goPath, nil
 }
 
 func newGoModifierOptions(dir string, files []string, goPackage string) map[string]string {
@@ -168,18 +146,4 @@ func newGoModifierOptions(dir string, files []string, goPackage string) map[stri
 		m[filepath.Join(dir, file)] = goPackage
 	}
 	return m
-}
-
-func mergeStringStringMaps(maps ...map[string]string) map[string]string {
-	newMap := make(map[string]string)
-	for _, m := range maps {
-		for key, value := range m {
-			newMap[key] = value
-		}
-	}
-	return newMap
-}
-
-func copyStringStringMap(m map[string]string) map[string]string {
-	return mergeStringStringMaps(m)
 }

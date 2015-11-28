@@ -1,12 +1,20 @@
 package protoeasy
 
 import (
+	"errors"
 	"io"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"strings"
 
+	"go.pedge.io/protolog"
+
 	"github.com/docker/docker/pkg/archive"
+)
+
+var (
+	errGoPathNotSet = errors.New("protoeasy: GOPATH not set")
 )
 
 func getAllRelProtoFilePaths(dirPath string) ([]string, error) {
@@ -86,4 +94,39 @@ func untar(reader io.Reader, dirPath string) error {
 			NoLchown: true,
 		},
 	)
+}
+
+func getGoPath() (string, error) {
+	goPath := os.Getenv("GOPATH")
+	if goPath == "" {
+		return "", errGoPathNotSet
+	}
+	split := strings.Split(goPath, ":")
+	if len(split) > 1 {
+		protolog.Warnf("protoeasy: GOPATH %s has multiple directories, using first directory %s", goPath, split[0])
+		return split[0], nil
+	}
+	return goPath, nil
+}
+
+func which(executable string) (string, error) {
+	output, err := exec.Command("which", executable).Output()
+	if err != nil {
+		return "", err
+	}
+	return strings.TrimSpace(string(output)), nil
+}
+
+func mergeStringStringMaps(maps ...map[string]string) map[string]string {
+	newMap := make(map[string]string)
+	for _, m := range maps {
+		for key, value := range m {
+			newMap[key] = value
+		}
+	}
+	return newMap
+}
+
+func copyStringStringMap(m map[string]string) map[string]string {
+	return mergeStringStringMaps(m)
 }

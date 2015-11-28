@@ -69,23 +69,23 @@ type GoPluginOptions struct {
 }
 
 func NewCppPlugin(options CppPluginOptions) Plugin {
-	return newGrpcPlugin("cpp", options.GrpcPluginOptions)
+	return newGrpcPlugin("cpp", "cpp", options.GrpcPluginOptions)
 }
 
 func NewCsharpPlugin(options CsharpPluginOptions) Plugin {
-	return newGrpcPlugin("csharp", options.GrpcPluginOptions)
+	return newGrpcPlugin("csharp", "csharp", options.GrpcPluginOptions)
 }
 
 func NewObjectiveCPlugin(options ObjectiveCPluginOptions) Plugin {
-	return newGrpcPlugin("objectivec", options.GrpcPluginOptions)
+	return newGrpcPlugin("objc", "objective_c", options.GrpcPluginOptions)
 }
 
 func NewPythonPlugin(options PythonPluginOptions) Plugin {
-	return newGrpcPlugin("python", options.GrpcPluginOptions)
+	return newGrpcPlugin("python", "python", options.GrpcPluginOptions)
 }
 
 func NewRubyPlugin(options RubyPluginOptions) Plugin {
-	return newGrpcPlugin("ruby", options.GrpcPluginOptions)
+	return newGrpcPlugin("ruby", "ruby", options.GrpcPluginOptions)
 }
 
 func NewGoPlugin(options GoPluginOptions) Plugin {

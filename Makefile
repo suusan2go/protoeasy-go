@@ -55,6 +55,22 @@ test: testdeps pretest
 
 clean:
 	go clean ./...
+	rm -rf example/out
+
+
+example: install
+	rm -rf _example-out
+	protoeasy \
+		--out=_example-out \
+		--cpp --cpp_rel_out=cpp \
+		--csharp --csharp_rel_out=csharp \
+		--objectivec --objectivec_rel_out=objectivec \
+		--python --python_rel_out=python \
+		--ruby --ruby_rel_out=ruby \
+		--go --go_rel_out=go --go_import_path=go.pedge.io/protoeasy/example/example-out/go \
+		--grpc \
+		--grpc-gateway \
+		example
 
 .PHONY: \
 	all \
@@ -64,10 +80,14 @@ clean:
 	updatetestdeps \
 	build \
 	install \
+	launch \
 	proto \
+	docker-build \
+	docker-launch\
 	lint \
 	vet \
 	errcheck \
 	pretest \
 	test \
-	clean
+	clean \
+	example

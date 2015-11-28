@@ -2,6 +2,7 @@ package protoeasy
 
 import (
 	"fmt"
+	"os"
 	"path/filepath"
 	"runtime"
 
@@ -24,8 +25,20 @@ func newServerCompiler(
 }
 
 func (c *serverCompiler) Compile(dirPath string, outDirPath string, directives *Directives) error {
+	var err error
+	dirPath, err = filepath.Abs(dirPath)
+	if err != nil {
+		return err
+	}
+	outDirPath, err = filepath.Abs(outDirPath)
+	if err != nil {
+		return err
+	}
 	argsList, err := c.argsList(dirPath, outDirPath, directives)
 	if err != nil {
+		return err
+	}
+	if err := makeOutDirs(outDirPath, directives); err != nil {
 		return err
 	}
 	for _, args := range argsList {
@@ -37,15 +50,6 @@ func (c *serverCompiler) Compile(dirPath string, outDirPath string, directives *
 }
 
 func (c *serverCompiler) argsList(dirPath string, outDirPath string, directives *Directives) ([][]string, error) {
-	var err error
-	dirPath, err = filepath.Abs(dirPath)
-	if err != nil {
-		return nil, err
-	}
-	outDirPath, err = filepath.Abs(outDirPath)
-	if err != nil {
-		return nil, err
-	}
 	plugins, err := getPlugins(directives)
 	if err != nil {
 		return nil, err
@@ -54,26 +58,31 @@ func (c *serverCompiler) argsList(dirPath string, outDirPath string, directives 
 	if err != nil {
 		return nil, err
 	}
+	goPath, err := getGoPath()
+	if err != nil {
+		return nil, err
+	}
 	var argsList [][]string
 	for relDirPath, files := range protoSpec.RelDirPathToFiles {
-		args := []string{"protoc", fmt.Sprintf("-I%s", dirPath)}
-		// TODO(pedge)
-		if runtime.GOOS == "darwin" {
-			args = append(args, "-I/usr/local/include")
-		} else {
-			args = append(args, "-I/usr/include")
-		}
 		for _, plugin := range plugins {
+			args := []string{"protoc", fmt.Sprintf("-I%s", dirPath)}
+			// TODO(pedge)
+			if runtime.GOOS == "darwin" {
+				args = append(args, "-I/usr/local/include")
+			} else {
+				args = append(args, "-I/usr/include")
+			}
+			args = append(args, fmt.Sprintf("-I%s", filepath.Join(goPath, "src/github.com/gengo/grpc-gateway/third_party/googleapis")))
 			iArgs, err := plugin.Args(protoSpec, relDirPath, outDirPath)
 			if err != nil {
 				return nil, err
 			}
 			args = append(args, iArgs...)
+			for _, file := range files {
+				args = append(args, filepath.Join(dirPath, relDirPath, file))
+			}
+			argsList = append(argsList, args)
 		}
-		for _, file := range files {
-			args = append(args, filepath.Join(dirPath, relDirPath, file))
-		}
-		argsList = append(argsList, args)
 	}
 	return argsList, nil
 }
@@ -174,4 +183,25 @@ func getPlugins(directives *Directives) ([]Plugin, error) {
 		)
 	}
 	return plugins, nil
+}
+
+func makeOutDirs(outDirPath string, directives *Directives) error {
+	if err := os.MkdirAll(outDirPath, 0755); err != nil {
+		return err
+	}
+	for _, relDirPath := range []string{
+		directives.CppRelOutDirPath,
+		directives.CsharpRelOutDirPath,
+		directives.ObjectivecRelOutDirPath,
+		directives.PythonRelOutDirPath,
+		directives.RubyRelOutDirPath,
+		directives.GoRelOutDirPath,
+	} {
+		if relDirPath != "" {
+			if err := os.MkdirAll(filepath.Join(outDirPath, relDirPath), 0755); err != nil {
+				return err
+			}
+		}
+	}
+	return nil
 }
