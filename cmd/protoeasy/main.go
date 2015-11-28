@@ -78,7 +78,6 @@ func bindDirectives(flagSet *pflag.FlagSet, directives *protoeasy.Directives) {
 	flagSet.StringVar(&directives.GoImportPath, "go_import_path", "", "Go package.")
 	flagSet.BoolVar(&directives.Grpc, "grpc", false, "Output grpc files.")
 	flagSet.BoolVar(&directives.GrpcGateway, "grpc-gateway", false, "Output grpc-gateway files.")
-	flagSet.BoolVar(&directives.Protolog, "protolog", false, "Output protolog files.")
 }
 
 func bindOptions(flagSet *pflag.FlagSet, options *options) {
