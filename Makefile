@@ -1,26 +1,37 @@
-all: test
+PKGS := $(shell go list ./... | grep -v 'go.pedge.io/protoeasy/vendor')
+
+export GO15VENDOREXPERIMENT=1
+
+all: test install
 
 deps:
-	go get -d -v ./...
+	GO15VENDOREXPERIMENT=0 go get -d -v $(PKGS)
 
 updatedeps:
-	go get -d -v -u -f ./...
+	GO15VENDOREXPERIMENT=0 go get -d -v -u -f $(PKGS)
 
 testdeps:
-	go get -d -v -t ./...
+	GO15VENDOREXPERIMENT=0 go get -d -v -t $(PKGS)
 
 updatetestdeps:
-	go get -d -v -t -u -f ./...
+	GO15VENDOREXPERIMENT=0 go get -d -v -t -u -f $(PKGS)
 
-build: deps
-	go build ./...
+vendor:
+	go get -v github.com/tools/godep
+	rm -rf Godeps
+	rm -rf vendor
+	GOOS=linux GOARCH=AMD64 godep save $(PKGS)
+	rm -rf Godeps
 
-install: deps
-	go install ./...
+build:
+	go build $(PKGS)
+
+install:
+	go install $(PKGS)
 
 proto: install
 	go get -v go.pedge.io/pkg/cmd/strip-package-comments
-	protoeasy --go --grpc --go_import_path go.pedge.io/protoeasy .
+	protoeasy --go --grpc --go_import_path go.pedge.io/protoeasy --exclude vendor --exclude example .
 	find . -name *\.pb\*\.go | xargs strip-package-comments
 
 example: install
@@ -37,7 +48,7 @@ example: install
 		--grpc-gateway \
 		example
 
-lint: testdeps
+lint:
 	go get -v github.com/golang/lint/golint
 	for file in $$(find . -name '*.go' | grep -v '\.pb\.go' | grep -v '\.pb\.gw\.go' | grep -v '\.pb\.log\.go'); do \
 		golint $$file; \
@@ -46,21 +57,21 @@ lint: testdeps
 		fi; \
 	done
 
-vet: testdeps
-	go vet ./...
+vet:
+	go vet $(PKGS)
 
-errcheck: testdeps
+errcheck:
 	go get -v github.com/kisielk/errcheck
-	errcheck ./...
+	errcheck $(PKGS)
 
 #pretest: lint vet errcheck
 pretest: vet errcheck
 
-test: testdeps pretest
-	go test ./...
+test: pretest
+	go test $(PKGS)
 
 clean:
-	go clean ./...
+	go clean $(PKGS)
 	rm -rf _example-out
 
 docker-build:
@@ -85,6 +96,7 @@ docker-test: docker-build
 	updatedeps \
 	testdeps \
 	updatetestdeps \
+	vendor \
 	build \
 	install \
 	proto \
