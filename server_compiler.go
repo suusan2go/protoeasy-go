@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"runtime"
 
 	"go.pedge.io/pkg/exec"
 )
@@ -60,13 +59,9 @@ func (c *serverCompiler) argsList(dirPath string, outDirPath string, directives 
 	for relDirPath, files := range protoSpec.RelDirPathToFiles {
 		for _, plugin := range plugins {
 			args := []string{"protoc", fmt.Sprintf("-I%s", dirPath)}
-			// TODO(pedge)
-			if runtime.GOOS == "darwin" {
-				args = append(args, "-I/usr/local/include")
-			} else {
-				args = append(args, "-I/usr/include")
-			}
-			args = append(args, fmt.Sprintf("-I%s", filepath.Join(goPath, "src/github.com/gengo/grpc-gateway/third_party/googleapis")))
+			args = append(args, fmt.Sprintf("-I%s", filepath.Join(goPath, "src/go.pedge.io/google-protobuf")))
+			args = append(args, fmt.Sprintf("-I%s", filepath.Join(goPath, "src/github.com/golang/protobuf/protoc-gen-go/descriptor")))
+			args = append(args, fmt.Sprintf("-I%s", filepath.Join(goPath, "src/go.pedge.io/googleapis")))
 			iArgs, err := plugin.Args(protoSpec, relDirPath, outDirPath)
 			if err != nil {
 				return nil, err

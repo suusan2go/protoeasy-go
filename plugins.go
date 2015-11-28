@@ -24,11 +24,21 @@ var (
 			},
 			"go.pedge.io/google-protobuf",
 		),
-		map[string]string{
-			"google/api/annotations.proto":     "github.com/gengo/grpc-gateway/third_party/googleapis/google/api",
-			"google/api/http.proto":            "github.com/gengo/grpc-gateway/third_party/googleapis/google/api",
-			"google/protobuf/descriptor.proto": "github.com/golang/protobuf/protoc-gen-go/descriptor",
-		},
+		newGoModifierOptions(
+			"google/protobuf",
+			[]string{
+				"descriptor.proto",
+			},
+			"github.com/golang/protobuf/protoc-gen-go/descriptor",
+		)
+		newGoModifierOptions(
+			"google/api",
+			[]string{
+				"annotations.proto",
+				"http.proto",
+			}
+			"go.pedge.io/googleapis/google/api",
+		)
 	)
 )
 
