@@ -7,5 +7,5 @@ dependencies:
     - docker build -t quay.io/pedge/protoeasy-proto2 -f Dockerfile.proto2 .
 test:
   override:
-    - docker run quay.io/pedge/protoeasy example-complete
-    - docker run quay.io/pedge/protoeasy-proto2 example-proto2
+    - docker run quay.io/pedge/protoeasy make example-complete
+    - docker run quay.io/pedge/protoeasy-proto2 make example-proto2
