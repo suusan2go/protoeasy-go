@@ -20,8 +20,8 @@ to a server for consistency and so that protoc and any associated plugins do not
 
 Have you ever had one of the following issues:
 
-* You're the resident protobuf expert on your team, and every time there is a change or you get a new teammate,
-you already know what the next hour of your life will be.
+* You're the resident protobuf expert on your team, and every time there is a change to a protocol buffers package
+or you get a new teammate, you already know what the next hour of your life will be.
 * You move to a new development machine, and can't remember how you got protoc installed properly, and now
 your old build scripts do not work anymore.
 * You upgrade proto3 on your computer, and suddenly protoc is broken.
