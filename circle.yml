@@ -9,3 +9,10 @@ test:
   override:
     - docker run quay.io/pedge/protoeasy make example-complete
     - docker run quay.io/pedge/protoeasy-proto2 make example-proto2
+deployment:
+  hub:
+    branch: master
+    commands:
+      - docker login quay.io -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - docker push quay.io/pedge/protoeasy
+      - docker push quay.io/pedge/protoeasy-proto2
