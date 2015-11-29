@@ -3,6 +3,7 @@ package protoeasy
 import (
 	"fmt"
 	"path/filepath"
+	"sort"
 	"strings"
 )
 
@@ -129,25 +130,18 @@ func (p *goPlugin) Flags(protoSpec *ProtoSpec, relDirPath string, outDirPath str
 	}
 	var args []string
 	modifiers := p.getModifiers(protoSpec)
-	var goOutOpts []string
-	for key, value := range modifiers {
-		goOutOpts = append(goOutOpts, fmt.Sprintf("M%s=%s", key, value))
-	}
+	goOutOpts := modifiers
 	if p.options.Grpc {
-		goOutOpts = append(goOutOpts, "plugins=grpc")
+		goOutOpts = fmt.Sprintf("%s,plugins=grpc", goOutOpts)
 	}
 	if len(goOutOpts) > 0 {
-		args = append(args, fmt.Sprintf("--go_out=%s:%s", strings.Join(goOutOpts, ","), outDirPath))
+		args = append(args, fmt.Sprintf("--go_out=%s:%s", goOutOpts, outDirPath))
 	} else {
 		args = append(args, fmt.Sprintf("--go_out=%s", outDirPath))
 	}
 	if p.options.GrpcGateway {
-		var grpcGatewayOutOpts []string
-		for key, value := range modifiers {
-			grpcGatewayOutOpts = append(grpcGatewayOutOpts, fmt.Sprintf("M%s=%s", key, value))
-		}
-		if len(grpcGatewayOutOpts) > 0 {
-			args = append(args, fmt.Sprintf("--grpc-gateway_out=%s:%s", strings.Join(grpcGatewayOutOpts, ","), outDirPath))
+		if len(modifiers) > 0 {
+			args = append(args, fmt.Sprintf("--grpc-gateway_out=%s:%s", modifiers, outDirPath))
 		} else {
 			args = append(args, fmt.Sprintf("--grpc-gateway_out=%s", outDirPath))
 		}
@@ -155,7 +149,7 @@ func (p *goPlugin) Flags(protoSpec *ProtoSpec, relDirPath string, outDirPath str
 	return args, nil
 }
 
-func (p *goPlugin) getModifiers(protoSpec *ProtoSpec) map[string]string {
+func (p *goPlugin) getModifiers(protoSpec *ProtoSpec) string {
 	var modifiers map[string]string
 	if p.options.NoDefaultModifiers {
 		modifiers = make(map[string]string)
@@ -174,7 +168,19 @@ func (p *goPlugin) getModifiers(protoSpec *ProtoSpec) map[string]string {
 			}
 		}
 	}
-	return modifiers
+	// this is just so the command line is easier to read and deterministic
+	modifierKeys := make([]string, len(modifiers))
+	i := 0
+	for key := range modifiers {
+		modifierKeys[i] = key
+		i++
+	}
+	sort.Strings(modifierKeys)
+	modifierStrings := make([]string, len(modifierKeys))
+	for i, modifierKey := range modifierKeys {
+		modifierStrings[i] = fmt.Sprintf("M%s=%s", modifierKey, modifiers[modifierKey])
+	}
+	return strings.Join(modifierStrings, ",")
 }
 
 type plugin struct {
