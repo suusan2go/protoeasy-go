@@ -1,34 +1,36 @@
 package protoeasy
 
 import (
-	"fmt"
 	"io/ioutil"
 	"os"
 	"time"
 
-	"go.pedge.io/protolog"
+	"go.pedge.io/proto/rpclog"
+
 	"golang.org/x/net/context"
 )
 
 type apiServer struct {
+	protorpclog.Logger
 	compiler Compiler
 }
 
 func newAPIServer(compiler Compiler) *apiServer {
-	return &apiServer{compiler}
+	return &apiServer{protorpclog.NewLogger("protoeasy.API"), compiler}
 }
 
 func (a *apiServer) Compile(ctx context.Context, request *CompileRequest) (response *CompileResponse, retErr error) {
-	defer func(start time.Time) { logCompile(request, response, retErr, time.Since(start)) }(time.Now())
-	if request == nil {
-		return nil, newErrNil("request")
-	}
-	if request.Archive == nil {
-		return nil, newErrNil("request.Archive")
-	}
-	if request.Directives == nil {
-		return nil, newErrNil("request.Directives")
-	}
+	defer func(start time.Time) {
+		var compileOptions *CompileOptions
+		if request != nil {
+			compileOptions = request.CompileOptions
+		}
+		var compileInfo *CompileInfo
+		if response != nil {
+			compileInfo = response.CompileInfo
+		}
+		a.Log(compileOptions, compileInfo, retErr, time.Since(start))
+	}(time.Now())
 	dirPath, err := ioutil.TempDir("", "protoeasy-input")
 	if err != nil {
 		return nil, err
@@ -47,44 +49,21 @@ func (a *apiServer) Compile(ctx context.Context, request *CompileRequest) (respo
 			retErr = err
 		}
 	}()
-	if err := untar(request.Archive, dirPath); err != nil {
+	if err := untar(request.Tar, dirPath); err != nil {
 		return nil, err
 	}
-	commands, err := a.compiler.Compile(dirPath, outDirPath, request.Directives)
+	commands, err := a.compiler.Compile(dirPath, outDirPath, request.CompileOptions)
 	if err != nil {
 		return nil, err
 	}
-	archive, err := tar(outDirPath, []string{"."})
+	tar, err := tar(outDirPath, []string{"."})
 	if err != nil {
 		return nil, err
 	}
 	return &CompileResponse{
-		Command: commands,
-		Archive: archive,
+		Tar: tar,
+		CompileInfo: &CompileInfo{
+			Command: commands,
+		},
 	}, nil
-}
-
-func logCompile(request *CompileRequest, response *CompileResponse, err error, duration time.Duration) {
-	// TODO(pedge): this whole thing needs work, this is just to get it logging as of now
-	got := "<nil>"
-	with := 0
-	ran := 0
-	returned := 0
-	errString := ""
-	if request != nil {
-		got = fmt.Sprintf("%v", request.Directives)
-		if request.Archive != nil {
-			with = len(request.Archive.Value)
-		}
-	}
-	if response != nil {
-		ran = len(response.Command)
-		if response.Archive != nil {
-			returned = len(response.Archive.Value)
-		}
-	}
-	if err != nil {
-		errString = fmt.Sprintf(", had error %s", err.Error())
-	}
-	protolog.Infof("protoeasy.API#Compile: took %v, got %v with %d bytes, ran %d commands, returned %d bytes%s\n", duration, got, with, ran, returned, errString)
 }

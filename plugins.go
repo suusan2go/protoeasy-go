@@ -7,123 +7,6 @@ import (
 	"strings"
 )
 
-var (
-	defaultGoModifierOptions = mergeStringStringMaps(
-		newGoModifierOptions(
-			"google/protobuf",
-			[]string{
-				"any.proto",
-				"api.proto",
-				"duration.proto",
-				"empty.proto",
-				"field_mask.proto",
-				"source_context.proto",
-				"struct.proto",
-				"timestamp.proto",
-				"type.proto",
-				"wrappers.proto",
-			},
-			"go.pedge.io/google-protobuf",
-		),
-		newGoModifierOptions(
-			"google/protobuf",
-			[]string{
-				"descriptor.proto",
-			},
-			"github.com/golang/protobuf/protoc-gen-go/descriptor",
-		),
-		newGoModifierOptions(
-			"google/api",
-			[]string{
-				"annotations.proto",
-				"http.proto",
-			},
-			"github.com/gengo/grpc-gateway/third_party/googleapis/google/api",
-		),
-		newGoModifierOptions(
-			"google/datastore/v1beta3",
-			[]string{
-				"datastore.proto",
-				"entity.proto",
-				"query.proto",
-			},
-			"go.pedge.io/googleapis/google/datastore/v1beta3",
-		),
-		newGoModifierOptions(
-			"google/devtools/cloudtrace/v1",
-			[]string{
-				"trace.proto",
-			},
-			"go.pedge.io/googleapis/google/devtools/cloudtrace/v1",
-		),
-		newGoModifierOptions(
-			"google/example/library/v1",
-			[]string{
-				"library.proto",
-			},
-			"go.pedge.io/googleapis/google/example/library/v1",
-		),
-		newGoModifierOptions(
-			"google/iam/v1",
-			[]string{
-				"iam_policy.proto",
-				"policy.proto",
-			},
-			"go.pedge.io/googleapis/google/iam/v1",
-		),
-		newGoModifierOptions(
-			"google/longrunning",
-			[]string{
-				"operations.proto",
-			},
-			"go.pedge.io/googleapis/google/longrunning",
-		),
-		newGoModifierOptions(
-			"google/pubsub/v1",
-			[]string{
-				"pubsub.proto",
-			},
-			"go.pedge.io/googleapis/google/pubsub/v1",
-		),
-		newGoModifierOptions(
-			"google/pubsub/v1beta2",
-			[]string{
-				"pubsub.proto",
-			},
-			"go.pedge.io/googleapis/google/pubsub/v1beta2",
-		),
-		newGoModifierOptions(
-			"google/rpc",
-			[]string{
-				"code.proto",
-				"error_details.proto",
-				"status.proto",
-			},
-			"go.pedge.io/googleapis/google/rpc",
-		),
-		newGoModifierOptions(
-			"google/type",
-			[]string{
-				"color.proto",
-				"date.proto",
-				"dayofweek.proto",
-				"latlng.proto",
-				"money.proto",
-				"timeofday.proto",
-			},
-			"go.pedge.io/googleapis/google/type",
-		),
-	)
-)
-
-func newGoModifierOptions(dir string, files []string, goPackage string) map[string]string {
-	m := make(map[string]string)
-	for _, file := range files {
-		m[filepath.Join(dir, file)] = goPackage
-	}
-	return m
-}
-
 // plugin is an individual flag provider for a specific language.
 type plugin interface {
 	// Flags gets the protoc flags for the plugin.
@@ -131,40 +14,34 @@ type plugin interface {
 }
 
 type goPlugin struct {
-	options *GoPluginOptions
+	options *CompileOptions
 }
 
-func newGoPlugin(options *GoPluginOptions) *goPlugin {
-	// since we switch to using generated protos, we have pointers now
-	// for options instead of structs, so we do this to be safe, even
-	// though we handle it in the rest of the code
+func newGoPlugin(options *CompileOptions) *goPlugin {
 	if options == nil {
-		options = &GoPluginOptions{}
-	}
-	if options.GrpcPluginOptions == nil {
-		options.GrpcPluginOptions = &GrpcPluginOptions{}
-	}
-	if options.GrpcPluginOptions.PluginOptions == nil {
-		options.GrpcPluginOptions.PluginOptions = &PluginOptions{}
+		options = &CompileOptions{}
 	}
 	return &goPlugin{options}
 }
 
 func (p *goPlugin) Flags(protoSpec *protoSpec, relDirPath string, outDirPath string) ([]string, error) {
-	relOutDirPath := getRelOutDirPath(p.options.GrpcPluginOptions)
-	if relOutDirPath != "" {
-		outDirPath = filepath.Join(outDirPath, relOutDirPath)
+	if p.options.GoRelOut != "" {
+		outDirPath = filepath.Join(outDirPath, p.options.GoRelOut)
 	}
 	var args []string
 	modifiers := p.getModifiers(protoSpec)
 	goOutOpts := modifiers
-	if isGrpc(p.options.GrpcPluginOptions) {
+	if p.options.Grpc {
 		goOutOpts = fmt.Sprintf("%s,plugins=grpc", goOutOpts)
 	}
+	goPluginType := p.options.GoPluginType
+	if goPluginType == GoPluginType_GO_PLUGIN_TYPE_NONE {
+		goPluginType = GoPluginType_GO_PLUGIN_TYPE_GO
+	}
 	if len(goOutOpts) > 0 {
-		args = append(args, fmt.Sprintf("--%s_out=%s:%s", p.options.PluginType.SimpleString(), goOutOpts, outDirPath))
+		args = append(args, fmt.Sprintf("--%s_out=%s:%s", goPluginType.SimpleString(), goOutOpts, outDirPath))
 	} else {
-		args = append(args, fmt.Sprintf("--%s_out=%s", p.options.PluginType.SimpleString(), outDirPath))
+		args = append(args, fmt.Sprintf("--%s_out=%s", goPluginType.SimpleString(), outDirPath))
 	}
 	if p.options.GrpcGateway {
 		if len(modifiers) > 0 {
@@ -178,18 +55,18 @@ func (p *goPlugin) Flags(protoSpec *protoSpec, relDirPath string, outDirPath str
 
 func (p *goPlugin) getModifiers(protoSpec *protoSpec) string {
 	var modifiers map[string]string
-	if p.options.NoDefaultModifiers {
+	if p.options.GoNoDefaultModifiers {
 		modifiers = make(map[string]string)
 	} else {
 		modifiers = copyStringStringMap(defaultGoModifierOptions)
 	}
-	for key, value := range p.options.Modifiers {
+	for key, value := range p.options.GoModifiers {
 		modifiers[key] = value
 	}
 	for relDirPath, files := range protoSpec.RelDirPathToFiles {
 		importPath := relDirPath
-		if p.options.ImportPath != "" {
-			importPath = filepath.Join(p.options.ImportPath, relDirPath)
+		if p.options.GoImportPath != "" {
+			importPath = filepath.Join(p.options.GoImportPath, relDirPath)
 		}
 		// TODO(pedge)
 		if importPath != "" && importPath != "." {
@@ -214,20 +91,21 @@ func (p *goPlugin) getModifiers(protoSpec *protoSpec) string {
 }
 
 type basePlugin struct {
-	name    string
-	options *PluginOptions
+	name          string
+	options       *CompileOptions
+	relOutDirPath string
 }
 
-func newBasePlugin(name string, options *PluginOptions) *basePlugin {
+func newBasePlugin(name string, options *CompileOptions, relOutDirPath string) *basePlugin {
 	if options == nil {
-		options = &PluginOptions{}
+		options = &CompileOptions{}
 	}
-	return &basePlugin{name, options}
+	return &basePlugin{name, options, relOutDirPath}
 }
 
 func (p *basePlugin) Flags(protoSpec *protoSpec, relDirPath string, outDirPath string) ([]string, error) {
-	if p.options.RelOutDirPath != "" {
-		outDirPath = filepath.Join(outDirPath, p.options.RelOutDirPath)
+	if p.relOutDirPath != "" {
+		outDirPath = filepath.Join(outDirPath, p.relOutDirPath)
 	}
 	return []string{fmt.Sprintf("--%s_out=%s", p.name, outDirPath)}, nil
 }
@@ -235,17 +113,13 @@ func (p *basePlugin) Flags(protoSpec *protoSpec, relDirPath string, outDirPath s
 type grpcPlugin struct {
 	*basePlugin
 	grpcName string
-	options  *GrpcPluginOptions
 }
 
-func newGrpcPlugin(name string, grpcName string, options *GrpcPluginOptions) *grpcPlugin {
+func newGrpcPlugin(name string, grpcName string, options *CompileOptions, relOutDirPath string) *grpcPlugin {
 	if options == nil {
-		options = &GrpcPluginOptions{}
+		options = &CompileOptions{}
 	}
-	if options.PluginOptions == nil {
-		options.PluginOptions = &PluginOptions{}
-	}
-	return &grpcPlugin{newBasePlugin(name, options.PluginOptions), grpcName, options}
+	return &grpcPlugin{newBasePlugin(name, options, relOutDirPath), grpcName}
 }
 
 func (p *grpcPlugin) Flags(protoSpec *protoSpec, relDirPath string, outDirPath string) ([]string, error) {
@@ -253,10 +127,9 @@ func (p *grpcPlugin) Flags(protoSpec *protoSpec, relDirPath string, outDirPath s
 	if err != nil {
 		return nil, err
 	}
-	if isGrpc(p.options) {
-		relOutDirPath := getRelOutDirPath(p.options)
-		if relOutDirPath != "" {
-			outDirPath = filepath.Join(outDirPath, relOutDirPath)
+	if p.options.Grpc {
+		if p.relOutDirPath != "" {
+			outDirPath = filepath.Join(outDirPath, p.relOutDirPath)
 		}
 		whichGrpcPlugin, err := which(fmt.Sprintf("grpc_%s_plugin", p.grpcName))
 		if err != nil {
@@ -267,37 +140,22 @@ func (p *grpcPlugin) Flags(protoSpec *protoSpec, relDirPath string, outDirPath s
 	return args, nil
 }
 
-func newCppPlugin(options *CppPluginOptions) plugin {
-	if options == nil {
-		options = &CppPluginOptions{}
-	}
-	return newGrpcPlugin("cpp", "cpp", options.GrpcPluginOptions)
+func newCppPlugin(options *CompileOptions) plugin {
+	return newGrpcPlugin("cpp", "cpp", options, options.CppRelOut)
 }
 
-func newCsharpPlugin(options *CsharpPluginOptions) plugin {
-	if options == nil {
-		options = &CsharpPluginOptions{}
-	}
-	return newGrpcPlugin("csharp", "csharp", options.GrpcPluginOptions)
+func newCsharpPlugin(options *CompileOptions) plugin {
+	return newGrpcPlugin("csharp", "csharp", options, options.CsharpRelOut)
 }
 
-func newObjcPlugin(options *ObjcPluginOptions) plugin {
-	if options == nil {
-		options = &ObjcPluginOptions{}
-	}
-	return newGrpcPlugin("objc", "objective_c", options.GrpcPluginOptions)
+func newObjcPlugin(options *CompileOptions) plugin {
+	return newGrpcPlugin("objc", "objective_c", options, options.ObjcRelOut)
 }
 
-func newPythonPlugin(options *PythonPluginOptions) plugin {
-	if options == nil {
-		options = &PythonPluginOptions{}
-	}
-	return newGrpcPlugin("python", "python", options.GrpcPluginOptions)
+func newPythonPlugin(options *CompileOptions) plugin {
+	return newGrpcPlugin("python", "python", options, options.PythonRelOut)
 }
 
-func newRubyPlugin(options *RubyPluginOptions) plugin {
-	if options == nil {
-		options = &RubyPluginOptions{}
-	}
-	return newGrpcPlugin("ruby", "ruby", options.GrpcPluginOptions)
+func newRubyPlugin(options *CompileOptions) plugin {
+	return newGrpcPlugin("ruby", "ruby", options, options.RubyRelOut)
 }

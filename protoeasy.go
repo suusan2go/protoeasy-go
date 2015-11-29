@@ -22,13 +22,15 @@ import (
 var (
 	//DefaultServerCompiler is the default Compiler for a server.
 	DefaultServerCompiler = NewServerCompiler(CompilerOptions{})
+	// DefaultAPIServer is the default API Server.
+	DefaultAPIServer = NewAPIServer(DefaultServerCompiler)
 )
 
 // Compiler compiles protocol buffer files.
 type Compiler interface {
 	// Compile compiles the protocol buffer files in dirPath and outputs the generated
-	// files to outDirPath, using the given Directives. It returns a list of the commands run.
-	Compile(dirPath string, outDirPath string, directives *Directives) ([]*Command, error)
+	// files to outDirPath, using the given CompileOptions.
+	Compile(dirPath string, outDirPath string, compileOptions *CompileOptions) ([]*Command, error)
 }
 
 // CompilerOptions are options for a Compiler.

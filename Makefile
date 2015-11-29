@@ -2,7 +2,7 @@ PKGS := $(shell go list ./... | grep -v 'go.pedge.io/protoeasy/vendor')
 
 export GO15VENDOREXPERIMENT=1
 
-all: build docker-build docker-launch install installplugins proto example
+all: build docker-build docker-launch install installplugins proto example-complete
 
 deps:
 	GO15VENDOREXPERIMENT=0 go get -d -v $(PKGS)
