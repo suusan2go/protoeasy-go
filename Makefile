@@ -3,6 +3,7 @@ PKGS := $(shell go list ./... | grep -v 'go.pedge.io/protoeasy/vendor')
 EXTRA_PKGS := \
 	github.com/gengo/grpc-gateway/protoc-gen-grpc-gateway/... \
 	github.com/gengo/grpc-gateway/third_party/googleapis/... \
+	github.com/gengo/grpc-gateway/runtime/... \
 	github.com/golang/protobuf/proto/... \
 	github.com/golang/protobuf/protoc-gen-go/... \
 	github.com/gogo/protobuf/protoc-gen-gofast/... \
@@ -76,7 +77,7 @@ example-complete: install
 		--grpc \
 		--grpc-gateway \
 		example/complete
-	cd _example-out/complete/go && go build ./...
+	go build ./_example-out/complete/go/...
 
 example-proto2: install
 	rm -rf _example-out/proto2

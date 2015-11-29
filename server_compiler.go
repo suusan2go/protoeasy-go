@@ -55,15 +55,14 @@ func (c *serverCompiler) commands(dirPath string, outDirPath string, compileOpti
 	for relDirPath, files := range protoSpec.RelDirPathToFiles {
 		for _, plugin := range plugins {
 			args := []string{"protoc", fmt.Sprintf("-I%s", dirPath)}
-			args = append(args, fmt.Sprintf("-I%s", filepath.Join(goPath, "src/go.pedge.io/protoeasy/vendor/go.pedge.io/google-protobuf")))
-			args = append(args, fmt.Sprintf("-I%s", filepath.Join(goPath, "src/go.pedge.io/protoeasy/vendor/github.com/golang/protobuf/protoc-gen-go/descriptor")))
-			args = append(args, fmt.Sprintf("-I%s", filepath.Join(goPath, "src/go.pedge.io/protoeasy/vendor/github.com/gengo/grpc-gateway/third_party/googleapis")))
-			args = append(args, fmt.Sprintf("-I%s", filepath.Join(goPath, "src/go.pedge.io/protoeasy/vendor/go.pedge.io/googleapis")))
-			iArgs, err := plugin.Flags(protoSpec, relDirPath, outDirPath)
+			for _, goPathRelInclude := range defaultGoPathRelIncludes {
+				args = append(args, fmt.Sprintf("-I%s", filepath.Join(goPath, goPathRelInclude)))
+			}
+			flags, err := plugin.Flags(protoSpec, relDirPath, outDirPath)
 			if err != nil {
 				return nil, err
 			}
-			args = append(args, iArgs...)
+			args = append(args, flags...)
 			for _, file := range files {
 				args = append(args, filepath.Join(dirPath, relDirPath, file))
 			}

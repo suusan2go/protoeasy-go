@@ -8,6 +8,13 @@ import (
 var (
 	errGoPathNotSet = errors.New("protoeasy: GOPATH not set")
 
+	defaultGoPathRelIncludes = []string{
+		"src/go.pedge.io/protoeasy/vendor/go.pedge.io/google-protobuf",
+		"src/go.pedge.io/protoeasy/vendor/github.com/golang/protobuf/protoc-gen-go/descriptor",
+		"src/go.pedge.io/protoeasy/vendor/github.com/gengo/grpc-gateway/third_party/googleapis",
+		"src/go.pedge.io/protoeasy/vendor/go.pedge.io/googleapis",
+	}
+
 	defaultGoModifierOptions = mergeStringStringMaps(
 		newGoModifierOptions(
 			"google/protobuf",

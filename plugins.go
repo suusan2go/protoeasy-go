@@ -13,6 +13,26 @@ type plugin interface {
 	Flags(protoSpec *protoSpec, relDirPath string, outDirPath string) ([]string, error)
 }
 
+func newCppPlugin(options *CompileOptions) plugin {
+	return newGrpcPlugin("cpp", "cpp", options, options.CppRelOut)
+}
+
+func newCsharpPlugin(options *CompileOptions) plugin {
+	return newGrpcPlugin("csharp", "csharp", options, options.CsharpRelOut)
+}
+
+func newObjcPlugin(options *CompileOptions) plugin {
+	return newGrpcPlugin("objc", "objective_c", options, options.ObjcRelOut)
+}
+
+func newPythonPlugin(options *CompileOptions) plugin {
+	return newGrpcPlugin("python", "python", options, options.PythonRelOut)
+}
+
+func newRubyPlugin(options *CompileOptions) plugin {
+	return newGrpcPlugin("ruby", "ruby", options, options.RubyRelOut)
+}
+
 type goPlugin struct {
 	options *CompileOptions
 }
@@ -28,34 +48,38 @@ func (p *goPlugin) Flags(protoSpec *protoSpec, relDirPath string, outDirPath str
 	if p.options.GoRelOut != "" {
 		outDirPath = filepath.Join(outDirPath, p.options.GoRelOut)
 	}
-	var args []string
-	modifiers := p.getModifiers(protoSpec)
-	goOutOpts := modifiers
-	if p.options.Grpc {
-		goOutOpts = fmt.Sprintf("%s,plugins=grpc", goOutOpts)
-	}
 	goPluginType := p.options.GoPluginType
 	if goPluginType == GoPluginType_GO_PLUGIN_TYPE_NONE {
 		goPluginType = GoPluginType_GO_PLUGIN_TYPE_GO
 	}
+	noDefaultModifiers := p.options.GoNoDefaultModifiers
+	if goPluginType != GoPluginType_GO_PLUGIN_TYPE_GO {
+		noDefaultModifiers = true
+	}
+	modifiers := p.getModifiers(protoSpec, noDefaultModifiers)
+	goOutOpts := modifiers
+	if p.options.Grpc {
+		goOutOpts = fmt.Sprintf("%s,plugins=grpc", goOutOpts)
+	}
+	var flags []string
 	if len(goOutOpts) > 0 {
-		args = append(args, fmt.Sprintf("--%s_out=%s:%s", goPluginType.SimpleString(), goOutOpts, outDirPath))
+		flags = append(flags, fmt.Sprintf("--%s_out=%s:%s", goPluginType.SimpleString(), goOutOpts, outDirPath))
 	} else {
-		args = append(args, fmt.Sprintf("--%s_out=%s", goPluginType.SimpleString(), outDirPath))
+		flags = append(flags, fmt.Sprintf("--%s_out=%s", goPluginType.SimpleString(), outDirPath))
 	}
 	if p.options.GrpcGateway {
 		if len(modifiers) > 0 {
-			args = append(args, fmt.Sprintf("--grpc-gateway_out=%s:%s", modifiers, outDirPath))
+			flags = append(flags, fmt.Sprintf("--grpc-gateway_out=%s:%s", modifiers, outDirPath))
 		} else {
-			args = append(args, fmt.Sprintf("--grpc-gateway_out=%s", outDirPath))
+			flags = append(flags, fmt.Sprintf("--grpc-gateway_out=%s", outDirPath))
 		}
 	}
-	return args, nil
+	return flags, nil
 }
 
-func (p *goPlugin) getModifiers(protoSpec *protoSpec) string {
+func (p *goPlugin) getModifiers(protoSpec *protoSpec, noDefaultModifiers bool) string {
 	var modifiers map[string]string
-	if p.options.GoNoDefaultModifiers {
+	if noDefaultModifiers {
 		modifiers = make(map[string]string)
 	} else {
 		modifiers = copyStringStringMap(defaultGoModifierOptions)
@@ -138,24 +162,4 @@ func (p *grpcPlugin) Flags(protoSpec *protoSpec, relDirPath string, outDirPath s
 		return append(args, fmt.Sprintf("--grpc_out=%s", outDirPath), fmt.Sprintf("--plugin=protoc-gen-grpc=%s", whichGrpcPlugin)), nil
 	}
 	return args, nil
-}
-
-func newCppPlugin(options *CompileOptions) plugin {
-	return newGrpcPlugin("cpp", "cpp", options, options.CppRelOut)
-}
-
-func newCsharpPlugin(options *CompileOptions) plugin {
-	return newGrpcPlugin("csharp", "csharp", options, options.CsharpRelOut)
-}
-
-func newObjcPlugin(options *CompileOptions) plugin {
-	return newGrpcPlugin("objc", "objective_c", options, options.ObjcRelOut)
-}
-
-func newPythonPlugin(options *CompileOptions) plugin {
-	return newGrpcPlugin("python", "python", options, options.PythonRelOut)
-}
-
-func newRubyPlugin(options *CompileOptions) plugin {
-	return newGrpcPlugin("ruby", "ruby", options, options.RubyRelOut)
 }

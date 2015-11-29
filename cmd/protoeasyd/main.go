@@ -8,11 +8,13 @@ import (
 	"google.golang.org/grpc"
 
 	"go.pedge.io/env"
+	"go.pedge.io/pkg/log"
 	"go.pedge.io/protoeasy"
 )
 
 type appEnv struct {
-	Port uint16 `env:"PROTOEASY_PORT,default=6789"`
+	Port   uint16 `env:"PROTOEASY_PORT,default=6789"`
+	LogEnv pkglog.Env
 }
 
 func main() {
@@ -21,15 +23,10 @@ func main() {
 
 func do(appEnvObj interface{}) error {
 	appEnv := appEnvObj.(*appEnv)
-	server := grpc.NewServer(
-		grpc.MaxConcurrentStreams(math.MaxUint32),
-	)
-	protoeasy.RegisterAPIServer(
-		server,
-		protoeasy.NewAPIServer(
-			protoeasy.DefaultServerCompiler,
-		),
-	)
+	pkglog.SetupLogging("protoeasyd", appEnv.LogEnv)
+
+	server := grpc.NewServer(grpc.MaxConcurrentStreams(math.MaxUint32))
+	protoeasy.RegisterAPIServer(server, protoeasy.DefaultAPIServer)
 	listener, err := net.Listen("tcp", fmt.Sprintf(":%d", appEnv.Port))
 	if err != nil {
 		return err

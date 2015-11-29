@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"go.pedge.io/proto/rpclog"
+	"go.pedge.io/proto/time"
 
 	"golang.org/x/net/context"
 )
@@ -20,7 +21,8 @@ func newAPIServer(compiler Compiler) *apiServer {
 }
 
 func (a *apiServer) Compile(ctx context.Context, request *CompileRequest) (response *CompileResponse, retErr error) {
-	defer func(start time.Time) {
+	start := time.Now()
+	defer func() {
 		var compileOptions *CompileOptions
 		if request != nil {
 			compileOptions = request.CompileOptions
@@ -30,7 +32,7 @@ func (a *apiServer) Compile(ctx context.Context, request *CompileRequest) (respo
 			compileInfo = response.CompileInfo
 		}
 		a.Log(compileOptions, compileInfo, retErr, time.Since(start))
-	}(time.Now())
+	}()
 	dirPath, err := ioutil.TempDir("", "protoeasy-input")
 	if err != nil {
 		return nil, err
@@ -63,7 +65,10 @@ func (a *apiServer) Compile(ctx context.Context, request *CompileRequest) (respo
 	return &CompileResponse{
 		Tar: tar,
 		CompileInfo: &CompileInfo{
-			Command: commands,
+			Command:         commands,
+			InputSizeBytes:  uint64(len(request.Tar)),
+			OutputSizeBytes: uint64(len(tar)),
+			Duration:        prototime.DurationToProto(time.Since(start)),
 		},
 	}, nil
 }
