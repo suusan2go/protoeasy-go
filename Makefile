@@ -69,10 +69,20 @@ example-complete: install
 		--go --go-rel-out=go --go-import-path=go.pedge.io/protoeasy/_example-out/complete/go \
 		--grpc \
 		--grpc-gateway \
-		--go-modifier a.proto=a/b/c \
-		--go-modifier b.proto=d/e \
-		example
+		example/complete
 	cd _example-out/complete/go && go build ./...
+
+example-proto2: install
+	rm -rf _example-out/proto2
+	protoeasy \
+		--out=_example-out/proto2 \
+		--cpp --cpp-rel-out=cpp \
+		--python --python-rel-out=python \
+		--go --go-rel-out=go --go-import-path=go.pedge.io/protoeasy/_example-out/proto2/go \
+		--go-protoc-plugin=gogo \
+		--grpc \
+		example/proto2
+	cd _example-out/proto2/go && go build ./...
 
 lint:
 	go get -v github.com/golang/lint/golint
@@ -140,6 +150,7 @@ docker-launch-proto2:
 	installplugins \
 	proto \
 	example-complete \
+	example-proto2 \
 	lint \
 	vet \
 	errcheck \
