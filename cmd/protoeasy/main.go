@@ -92,7 +92,7 @@ func bindDirectives(flagSet *pflag.FlagSet, directives *protoeasy.Directives) {
 }
 
 func bindOptions(flagSet *pflag.FlagSet, options *options) {
-	flagSet.StringVar(&options.GoProtocPlugin, "go-protoc-plugin", "go", fmt.Sprintf("The go protoc plugin to use, allowed values are %s", strings.Join(protoeasy.AllGoProtocPluginSimpleStrings(), ",")))
+	flagSet.StringVar(&options.GoProtocPlugin, "go-protoc-plugin", "go", fmt.Sprintf("The go protoc plugin to use, allowed values are %s, if not go, --go-no-default-modifiers is implied", strings.Join(protoeasy.AllGoProtocPluginSimpleStrings(), ",")))
 	flagSet.StringVar(&options.OutDirPath, "out", "", "Customize out directory path.")
 }
 
@@ -105,5 +105,8 @@ func optionsToDirectives(options *options, directives *protoeasy.Directives) err
 		return err
 	}
 	directives.GoProtocPlugin = goProtocPlugin
+	if goProtocPlugin != protoeasy.GoProtocPlugin_GO_PROTOC_PLUGIN_GO {
+		directives.GoNoDefaultModifiers = true
+	}
 	return nil
 }
