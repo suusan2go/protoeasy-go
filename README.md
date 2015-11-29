@@ -271,7 +271,7 @@ ps -ef | grep docker
 #root     16450     1  0 Nov28 ?        00:06:01 /usr/bin/docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock
 ```
 
-Many Docker VirtualBox setups are similar to this, including I belive the one created from Docker Machine.
+Many Docker VirtualBox setups are similar to this, including I believe the one created from Docker Machine.
 
 In my `~/.bash_aliases`, I have:
 
