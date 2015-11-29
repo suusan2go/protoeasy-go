@@ -9,6 +9,7 @@ to a server for consistency and so that protoc and any associated plugins do not
 * [Motivation](#motivation)
 * [Tutorial](#tutorial)
   * [Installation](#installation)
+  * [Short Introduction](#short-introduction)
   * [Basics](#basics)
   * [Go](#go)
   * [Automatically Imported Packages](#automatically-imported-packages)
@@ -45,9 +46,7 @@ Then protoeasy is for you!
 Install `protoeasy` using `make install`, assuming `${GOPATH}/bin` is on your `${PATH}`. This also
 will install `protoc-gen-go` and `protoc-gen-grpc-gateway`.
 
-#### Basics
-
-Short:
+#### Short Introduction
 
 Assuming:
 
@@ -67,6 +66,8 @@ all your protocol buffers paths are relative to ext/proto:
 cd "${GOPATH}/src/github.com/alice/helloworld"
 protoeasy --go --grpc --go_import_path github.com/alice/helloworld/ext/proto ext/proto
 ```
+
+#### Basics
 
 Protoeasy compiles entire directories of protocol buffer files, as opposed to individual files. To use protoeasy:
 
