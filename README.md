@@ -46,6 +46,27 @@ Install `protoeasy` using `make install`. Assuming `${GOPATH}/bin` is on your `$
 
 #### Basics
 
+Short:
+
+Assuming:
+
+* You want to compile for Go and gRPC
+* Your Go project is github.com/alice/helloworld
+* Your protocol buffers import paths are relative to the root directory github.com/alice/helloworld
+
+```
+cd "${GOPATH}/src/github.com/alice/helloworld"
+protoeasy --go --grpc --go_import_path github.com/alice/helloworld .
+```
+
+If your protocol buffers are also in a sub-directory ext/proto within github.com/alice/helloworld, and
+all your protocol buffers paths are relative to ext/proto:
+
+```
+cd "${GOPATH}/src/github.com/alice/helloworld"
+protoeasy --go --grpc --go_import_path github.com/alice/helloworld/ext/proto ext/proto
+```
+
 Protoeasy compiles entire directories of protocol buffer files, as opposed to individual files. To use protoeasy:
 
 * All protocol buffers files in the same sub-directory must have the same protocol buffers package.
@@ -237,7 +258,16 @@ a Docker image `quay.io/pedge/protoeasy`, created from the [Dockerfile](Dockerfi
 necessary for compilation already installed, and which runs the [protoeasyd](cmd/protoeasyd) daemon. The `protoeasy` binary
 will automatically connect to this daemon and delegate compilation if the environment variable `PROTOEASY_ADDRESS` is set.
 
-First, get the Docker image:
+How this works:
+
+* The client (`protoeasy`) tarballs all `.proto` files in the specified directory and uploads this tarball to the server,
+along with the directives given from the flags.
+* The server creates two temporary directories, one for the uploaded tarball, and one to output generated files.
+* The server ntars the uploaded tarball, runs the `protoeasy` logic, and outputs the generated files.
+* The server tarballs the generated files, and sends them back to the client.
+* The client untars the generated files in the specified directory.
+
+To use this, first get the Docker image:
 
 ```
 docker pull quay.io/pedge/protoeasy
