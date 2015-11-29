@@ -6,6 +6,16 @@
 Protoeasy is intended to make compiling protocol buffers files easier, and to offload the compilation
 to a server for consistency and so that protoc and any associated plugins do not have to be installed locally.
 
+- [Motivation](#)
+- [Tutorial](#)
+  - [Installation](#)
+  - [Basics](#)
+  - [Go](#)
+  - [Automatically Imported Packages](#)
+  - [More Examples](#)
+  - [Client/Server Setup](#)
+- [Future Work](#)
+
 ### Motivation
 
 Have you ever had one of the following issues:
