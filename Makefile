@@ -26,6 +26,11 @@ vendor:
 			 github.com/gengo/grpc-gateway/third_party/googleapis/... \
 			 github.com/golang/protobuf/proto/... \
 			 github.com/golang/protobuf/protoc-gen-go/... \
+			 github.com/gogo/protobuf/protoc-gen-gofast/... \
+			 github.com/gogo/protobuf/protoc-gen-gogo/... \
+			 github.com/gogo/protobuf/protoc-gen-gogofast/... \
+			 github.com/gogo/protobuf/protoc-gen-gogofaster/... \
+			 github.com/gogo/protobuf/protoc-gen-gogoslick/... \
 			 go.pedge.io/google-protobuf/... \
 			 go.pedge.io/googleapis/... \
 			 google.golang.org/grpc
@@ -40,7 +45,12 @@ install:
 installplugins:
 	go install \
 		go.pedge.io/protoeasy/vendor/github.com/gengo/grpc-gateway/protoc-gen-grpc-gateway \
-		go.pedge.io/protoeasy/vendor/github.com/golang/protobuf/protoc-gen-go
+		go.pedge.io/protoeasy/vendor/github.com/golang/protobuf/protoc-gen-go \
+		go.pedge.io/protoeasy/vendor/github.com/gogo/protobuf/protoc-gen-gofast \
+		go.pedge.io/protoeasy/vendor/github.com/gogo/protobuf/protoc-gen-gogo \
+		go.pedge.io/protoeasy/vendor/github.com/gogo/protobuf/protoc-gen-gogofast \
+		go.pedge.io/protoeasy/vendor/github.com/gogo/protobuf/protoc-gen-gogofaster \
+		go.pedge.io/protoeasy/vendor/github.com/gogo/protobuf/protoc-gen-gogoslick
 
 proto: install
 	go get -v go.pedge.io/pkg/cmd/strip-package-comments
