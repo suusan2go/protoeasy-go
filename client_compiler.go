@@ -1,64 +1,49 @@
 package protoeasy
 
-import (
-	"bytes"
-	"io/ioutil"
-
-	"golang.org/x/net/context"
-)
+import "golang.org/x/net/context"
 
 type clientCompiler struct {
 	apiClient APIClient
-	options   ClientCompilerOptions
+	options   CompilerOptions
 }
 
-func newClientCompiler(
-	apiClient APIClient,
-	options ClientCompilerOptions,
-) *clientCompiler {
-	return &clientCompiler{
-		apiClient,
-		options,
+func newClientCompiler(apiClient APIClient, options CompilerOptions) *clientCompiler {
+	return &clientCompiler{apiClient, options}
+}
+
+func (c *clientCompiler) Compile(dirPath string, outDirPath string, directives *Directives) (retVal []*Command, retErr error) {
+	if directives == nil {
+		return nil, newErrNil("directives")
 	}
-}
-
-func (c *clientCompiler) Compile(dirPath string, outDirPath string, directives *Directives) (retVal [][]string, retErr error) {
 	relFilePaths, err := getAllRelProtoFilePaths(dirPath)
 	if err != nil {
 		return nil, err
 	}
-	readCloser, err := tar(dirPath, relFilePaths)
-	if err != nil {
-		return nil, err
-	}
-	defer func() {
-		if err := readCloser.Close(); err != nil && retErr == nil {
-			retErr = err
-		}
-	}()
-	data, err := ioutil.ReadAll(readCloser)
+	archive, err := tar(dirPath, relFilePaths)
 	if err != nil {
 		return nil, err
 	}
 	compileResponse, err := c.apiClient.Compile(
 		context.Background(),
 		&CompileRequest{
-			Tar:        data,
+			Archive:    archive,
 			Directives: directives,
 		},
 	)
 	if err != nil {
 		return nil, err
 	}
-	argsList := make([][]string, len(compileResponse.Args))
-	for i, args := range compileResponse.Args {
-		argsList[i] = args.Value
+	if compileResponse == nil {
+		return nil, newErrNil("compileResponse")
 	}
-	for _, args := range argsList {
-		logArgs(args)
+	if compileResponse.Archive == nil {
+		return nil, newErrNil("compileResponse.Archive")
 	}
-	if err := untar(bytes.NewReader(compileResponse.Tar), outDirPath); err != nil {
+	for _, command := range compileResponse.Command {
+		logCommand(command)
+	}
+	if err := untar(compileResponse.Archive, outDirPath); err != nil {
 		return nil, err
 	}
-	return argsList, nil
+	return compileResponse.Command, nil
 }

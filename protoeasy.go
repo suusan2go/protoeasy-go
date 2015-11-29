@@ -21,111 +21,21 @@ import (
 
 var (
 	//DefaultServerCompiler is the default Compiler for a server.
-	DefaultServerCompiler = NewServerCompiler(ServerCompilerOptions{})
+	DefaultServerCompiler = NewServerCompiler(CompilerOptions{})
 )
-
-// ProtoSpec specifies the absolute directory path being used as a base
-// for the current compilation, as well as the relative (to DirPath)
-// directory path to all protocol buffer files in each directory within DirPath.
-type ProtoSpec struct {
-	DirPath           string
-	RelDirPathToFiles map[string][]string
-}
-
-// Plugin is an individual flag provider for a specific language.
-type Plugin interface {
-	// Flags gets the protoc flags for the plugin.
-	Flags(protoSpec *ProtoSpec, relDirPath string, outDirPath string) ([]string, error)
-}
-
-// PluginOptions are options for all Plugins.
-type PluginOptions struct {
-	RelOutDirPath string
-}
-
-// GrpcPluginOptions are options for Plugins that are associated with gRPC.
-type GrpcPluginOptions struct {
-	PluginOptions
-	Grpc bool
-}
-
-// CppPluginOptions are options for the C++ Plugin.
-type CppPluginOptions struct {
-	GrpcPluginOptions
-}
-
-// CsharpPluginOptions are options for the C# Plugin.
-type CsharpPluginOptions struct {
-	GrpcPluginOptions
-}
-
-// ObjcPluginOptions are options for the Objective-C Plugin.
-type ObjcPluginOptions struct {
-	GrpcPluginOptions
-}
-
-// PythonPluginOptions are options for the Python plugin.
-type PythonPluginOptions struct {
-	GrpcPluginOptions
-}
-
-// RubyPluginOptions are options for the Ruby Plugin.
-type RubyPluginOptions struct {
-	GrpcPluginOptions
-}
-
-// GoPluginOptions are options for the Go Plugin.
-type GoPluginOptions struct {
-	GrpcPluginOptions
-	ImportPath         string
-	GrpcGateway        bool
-	NoDefaultModifiers bool
-	ProtocPlugin       GoProtocPlugin
-	Modifiers          map[string]string
-}
-
-// NewCppPlugin creates a new C++ Plugin.
-func NewCppPlugin(options CppPluginOptions) Plugin {
-	return newGrpcPlugin("cpp", "cpp", options.GrpcPluginOptions)
-}
-
-// NewCsharpPlugin creates a new C# Plugin.
-func NewCsharpPlugin(options CsharpPluginOptions) Plugin {
-	return newGrpcPlugin("csharp", "csharp", options.GrpcPluginOptions)
-}
-
-// NewObjcPlugin creates a new Objective-C Plugin.
-func NewObjcPlugin(options ObjcPluginOptions) Plugin {
-	return newGrpcPlugin("objc", "objective_c", options.GrpcPluginOptions)
-}
-
-// NewPythonPlugin creates a new Python Plugin.
-func NewPythonPlugin(options PythonPluginOptions) Plugin {
-	return newGrpcPlugin("python", "python", options.GrpcPluginOptions)
-}
-
-// NewRubyPlugin creates a new Ruby Plugin.
-func NewRubyPlugin(options RubyPluginOptions) Plugin {
-	return newGrpcPlugin("ruby", "ruby", options.GrpcPluginOptions)
-}
-
-// NewGoPlugin creates a new Go Plugin.
-func NewGoPlugin(options GoPluginOptions) Plugin {
-	return newGoPlugin(options)
-}
 
 // Compiler compiles protocol buffer files.
 type Compiler interface {
 	// Compile compiles the protocol buffer files in dirPath and outputs the generated
 	// files to outDirPath, using the given Directives. It returns a list of the commands run.
-	Compile(dirPath string, outDirPath string, directives *Directives) ([][]string, error)
+	Compile(dirPath string, outDirPath string, directives *Directives) ([]*Command, error)
 }
 
-// ServerCompilerOptions are options for a server Compiler.
-type ServerCompilerOptions struct{}
+// CompilerOptions are options for a Compiler.
+type CompilerOptions struct{}
 
 // NewServerCompiler returns a new server Compiler.
-func NewServerCompiler(options ServerCompilerOptions) Compiler {
+func NewServerCompiler(options CompilerOptions) Compiler {
 	return newServerCompiler(options)
 }
 
@@ -134,44 +44,35 @@ func NewAPIServer(compiler Compiler) APIServer {
 	return newAPIServer(compiler)
 }
 
-// ClientCompilerOptions are options for a client Compiler.
-type ClientCompilerOptions struct{}
-
 // NewClientCompiler returns a new client Compiler for the given APIClient.
-func NewClientCompiler(
-	apiClient APIClient,
-	options ClientCompilerOptions,
-) Compiler {
-	return newClientCompiler(
-		apiClient,
-		options,
-	)
+func NewClientCompiler(apiClient APIClient, options CompilerOptions) Compiler {
+	return newClientCompiler(apiClient, options)
 }
 
-// GoProtocPluginSimpleValueOf returns the GoProtocPlugin for the simple value.
-func GoProtocPluginSimpleValueOf(s string) (GoProtocPlugin, error) {
-	goProtocPluginObj, ok := GoProtocPlugin_value[fmt.Sprintf("GO_PROTOC_PLUGIN_%s", strings.ToUpper(s))]
+// GoPluginTypeSimpleValueOf returns the GoPluginType for the simple value.
+func GoPluginTypeSimpleValueOf(s string) (GoPluginType, error) {
+	goPluginTypeObj, ok := GoPluginType_value[fmt.Sprintf("GO_PLUGIN_TYPE_%s", strings.ToUpper(s))]
 	if !ok {
-		return GoProtocPlugin_GO_PROTOC_PLUGIN_NONE, fmt.Errorf("no protoeasy.GoProtocPlugin for %s", s)
+		return GoPluginType_GO_PLUGIN_TYPE_NONE, fmt.Errorf("no protoeasy.GoPluginType for %s", s)
 	}
-	return GoProtocPlugin(goProtocPluginObj), nil
+	return GoPluginType(goPluginTypeObj), nil
 }
 
-// SimpleString returns the simple value for the GoProtocPlugin.
-func (x GoProtocPlugin) SimpleString() string {
-	s, ok := GoProtocPlugin_name[int32(x)]
+// SimpleString returns the simple value for the GoPluginType.
+func (x GoPluginType) SimpleString() string {
+	s, ok := GoPluginType_name[int32(x)]
 	if !ok {
 		return strconv.Itoa(int(x))
 	}
-	return strings.TrimPrefix(strings.ToLower(s), "go_protoc_plugin_")
+	return strings.TrimPrefix(strings.ToLower(s), "go_plugin_type_")
 }
 
-// AllGoProtocPluginSimpleStrings returns the simple values for all GoProtocPlugins.
-func AllGoProtocPluginSimpleStrings() []string {
-	simpleStrings := make([]string, len(GoProtocPlugin_name)-1)
-	for i := range GoProtocPlugin_name {
+// AllGoPluginTypeSimpleStrings returns the simple values for all GoPluginTypes.
+func AllGoPluginTypeSimpleStrings() []string {
+	simpleStrings := make([]string, len(GoPluginType_name)-1)
+	for i := range GoPluginType_name {
 		if i != 0 {
-			simpleStrings[i-1] = ((GoProtocPlugin)(i)).SimpleString()
+			simpleStrings[i-1] = ((GoPluginType)(i)).SimpleString()
 		}
 	}
 	return simpleStrings

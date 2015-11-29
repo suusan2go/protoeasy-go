@@ -1,8 +1,10 @@
 package protoeasy
 
 import (
+	"bytes"
 	"errors"
-	"io"
+	"fmt"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -16,6 +18,18 @@ import (
 var (
 	errGoPathNotSet = errors.New("protoeasy: GOPATH not set")
 )
+
+// protoSpec specifies the absolute directory path being used as a base
+// for the current compilation, as well as the relative (to DirPath)
+// directory path to all protocol buffer files in each directory within DirPath.
+type protoSpec struct {
+	DirPath           string
+	RelDirPathToFiles map[string][]string
+}
+
+func newErrNil(msg string) error {
+	return fmt.Errorf("protoeasy: nil: %s", msg)
+}
 
 func getAllRelProtoFilePaths(dirPath string) ([]string, error) {
 	var relProtoFilePaths []string
@@ -87,8 +101,22 @@ func filePathMatches(filePath string, excludeFilePatterns []string) (bool, error
 	return false, nil
 }
 
-func tar(dirPath string, includeFiles []string) (io.ReadCloser, error) {
-	return archive.TarWithOptions(
+func getRelOutDirPath(grpcPluginOptions *GrpcPluginOptions) string {
+	if grpcPluginOptions != nil && grpcPluginOptions.PluginOptions != nil {
+		return grpcPluginOptions.PluginOptions.RelOutDirPath
+	}
+	return ""
+}
+
+func isGrpc(grpcPluginOptions *GrpcPluginOptions) bool {
+	if grpcPluginOptions != nil {
+		return grpcPluginOptions.Grpc
+	}
+	return false
+}
+
+func tar(dirPath string, includeFiles []string) (retVal *Archive, retErr error) {
+	readCloser, err := archive.TarWithOptions(
 		dirPath,
 		&archive.TarOptions{
 			IncludeFiles: includeFiles,
@@ -96,11 +124,30 @@ func tar(dirPath string, includeFiles []string) (io.ReadCloser, error) {
 			NoLchown:     true,
 		},
 	)
+	if err != nil {
+		return nil, err
+	}
+	defer func() {
+		if err := readCloser.Close(); err != nil && retErr == nil {
+			retErr = err
+		}
+	}()
+	value, err := ioutil.ReadAll(readCloser)
+	if err != nil {
+		return nil, err
+	}
+	return &Archive{
+		Type:  ArchiveType_ARCHIVE_TYPE_TAR,
+		Value: value,
+	}, nil
 }
 
-func untar(reader io.Reader, dirPath string) error {
+func untar(a *Archive, dirPath string) error {
+	if a.Type != ArchiveType_ARCHIVE_TYPE_TAR {
+		return fmt.Errorf("protoeasy: unknown ArchiveType: %v", a.Type)
+	}
 	return archive.Untar(
-		reader,
+		bytes.NewReader(a.Value),
 		dirPath,
 		&archive.TarOptions{
 			NoLchown: true,
@@ -143,6 +190,9 @@ func copyStringStringMap(m map[string]string) map[string]string {
 	return mergeStringStringMaps(m)
 }
 
-func logArgs(args []string) {
-	protolog.Infof("\n%s\n", strings.Join(args, " \\\n\t"))
+func logCommand(command *Command) {
+	if len(command.Arg) == 0 {
+		return
+	}
+	protolog.Infof("\n%s\n", strings.Join(command.Arg, " \\\n\t"))
 }

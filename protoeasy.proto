@@ -2,50 +2,102 @@ syntax = "proto3";
 
 package protoeasy;
 
-enum GoProtocPlugin {
-  GO_PROTOC_PLUGIN_NONE = 0;
-  GO_PROTOC_PLUGIN_GO = 1;
-  GO_PROTOC_PLUGIN_GOFAST = 2;
-  GO_PROTOC_PLUGIN_GOGO = 3;
-  GO_PROTOC_PLUGIN_GOGOFAST = 4;
-  GO_PROTOC_PLUGIN_GOGOFASTER = 5;
-  GO_PROTOC_PLUGIN_GOGOSLICK = 6;
+enum ArchiveType {
+  ARCHIVE_TYPE_NONE = 0;
+  ARCHIVE_TYPE_TAR = 1;
+}
+
+enum PluginType {
+  PLUGIN_TYPE_NONE = 0;
+  PLUGIN_TYPE_CPP = 1;
+  PLUGIN_TYPE_CSHARP = 2;
+  PLUGIN_TYPE_GO = 3;
+  PLUGIN_TYPE_OBJC = 4;
+  PLUGIN_TYPE_PYTHON = 5;
+  PLUGIN_TYPE_RUBY = 6;
+}
+
+enum GoPluginType {
+  GO_PLUGIN_TYPE_NONE = 0;
+  GO_PLUGIN_TYPE_GO = 1;
+  GO_PLUGIN_TYPE_GOFAST = 2;
+  GO_PLUGIN_TYPE_GOGO = 3;
+  GO_PLUGIN_TYPE_GOGOFAST = 4;
+  GO_PLUGIN_TYPE_GOGOFASTER = 5;
+  GO_PLUGIN_TYPE_GOGOSLICK = 6;
+}
+
+// moving the options to protos made options a pain
+// because now everything is pointers instead of structs
+// so there is a ton of code to handle this
+// rethink this
+
+message PluginOptions {
+  string rel_out_dir_path = 1;
+}
+
+message GrpcPluginOptions {
+  PluginOptions plugin_options = 1;
+  bool grpc = 2;
+}
+
+message CppPluginOptions {
+  GrpcPluginOptions grpc_plugin_options = 1;
+}
+
+message CsharpPluginOptions {
+  GrpcPluginOptions grpc_plugin_options = 1;
+}
+
+message GoPluginOptions {
+  GrpcPluginOptions grpc_plugin_options = 1;
+  bool grpc_gateway = 2;
+  string import_path = 3;
+  bool no_default_modifiers = 4;
+  map<string, string> modifiers = 5;
+  GoPluginType plugin_type = 6;
+}
+
+message ObjcPluginOptions {
+  GrpcPluginOptions grpc_plugin_options = 1;
+}
+
+message PythonPluginOptions {
+  GrpcPluginOptions grpc_plugin_options = 1;
+}
+
+message RubyPluginOptions {
+  GrpcPluginOptions grpc_plugin_options = 1;
 }
 
 message Directives {
-  bool cpp = 1;
-  string cpp_rel_out_dir_path = 2;
-  bool csharp = 3;
-  string csharp_rel_out_dir_path = 4;
-  bool objc = 5;
-  string objc_rel_out_dir_path = 6;
-  bool python = 7;
-  string python_rel_out_dir_path = 8;
-  bool ruby = 9;
-  string ruby_rel_out_dir_path = 10;
-  bool go = 11;
-  string go_rel_out_dir_path = 12;
-  string go_import_path = 14;
-  bool go_no_default_modifiers = 15;
-  GoProtocPlugin go_protoc_plugin = 16;
-  map<string, string> go_modifier = 17;
-  bool grpc = 18;
-  bool grpc_gateway = 19;
-  repeated string exclude_pattern = 20;
+  repeated PluginType plugin_type = 1;
+  repeated string exclude_pattern = 2;
+  CppPluginOptions cpp_plugin_options = 3;
+  CsharpPluginOptions csharp_plugin_options = 4;
+  GoPluginOptions go_plugin_options = 5;
+  ObjcPluginOptions objc_plugin_options = 6;
+  PythonPluginOptions python_plugin_options = 7;
+  RubyPluginOptions ruby_plugin_options = 8;
 }
 
-message Args {
-  repeated string value = 1;
+message Command {
+  repeated string arg = 1;
+}
+
+message Archive {
+  ArchiveType type = 1;
+  bytes value = 2;
 }
 
 message CompileRequest {
-  bytes tar = 1;
+  Archive archive = 1;
   Directives directives = 2;
 }
 
 message CompileResponse {
-  repeated Args args = 1;
-  bytes tar = 2;
+  Archive archive = 1;
+  repeated Command command = 2;
 }
 
 service API {

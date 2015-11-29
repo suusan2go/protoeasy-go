@@ -9,14 +9,14 @@ import (
 )
 
 type serverCompiler struct {
-	options ServerCompilerOptions
+	options CompilerOptions
 }
 
-func newServerCompiler(options ServerCompilerOptions) *serverCompiler {
+func newServerCompiler(options CompilerOptions) *serverCompiler {
 	return &serverCompiler{options}
 }
 
-func (c *serverCompiler) Compile(dirPath string, outDirPath string, directives *Directives) ([][]string, error) {
+func (c *serverCompiler) Compile(dirPath string, outDirPath string, directives *Directives) ([]*Command, error) {
 	var err error
 	dirPath, err = filepath.Abs(dirPath)
 	if err != nil {
@@ -26,23 +26,23 @@ func (c *serverCompiler) Compile(dirPath string, outDirPath string, directives *
 	if err != nil {
 		return nil, err
 	}
-	argsList, err := c.argsList(dirPath, outDirPath, directives)
+	commands, err := c.commands(dirPath, outDirPath, directives)
 	if err != nil {
 		return nil, err
 	}
 	if err := makeOutDirs(outDirPath, directives); err != nil {
 		return nil, err
 	}
-	for _, args := range argsList {
-		logArgs(args)
-		if err := pkgexec.Run(args...); err != nil {
+	for _, command := range commands {
+		logCommand(command)
+		if err := pkgexec.Run(command.Arg...); err != nil {
 			return nil, err
 		}
 	}
-	return argsList, nil
+	return commands, nil
 }
 
-func (c *serverCompiler) argsList(dirPath string, outDirPath string, directives *Directives) ([][]string, error) {
+func (c *serverCompiler) commands(dirPath string, outDirPath string, directives *Directives) ([]*Command, error) {
 	plugins, err := getPlugins(directives)
 	if err != nil {
 		return nil, err
@@ -55,7 +55,7 @@ func (c *serverCompiler) argsList(dirPath string, outDirPath string, directives 
 	if err != nil {
 		return nil, err
 	}
-	var argsList [][]string
+	var commands []*Command
 	for relDirPath, files := range protoSpec.RelDirPathToFiles {
 		for _, plugin := range plugins {
 			args := []string{"protoc", fmt.Sprintf("-I%s", dirPath)}
@@ -71,13 +71,13 @@ func (c *serverCompiler) argsList(dirPath string, outDirPath string, directives 
 			for _, file := range files {
 				args = append(args, filepath.Join(dirPath, relDirPath, file))
 			}
-			argsList = append(argsList, args)
+			commands = append(commands, &Command{Arg: args})
 		}
 	}
-	return argsList, nil
+	return commands, nil
 }
 
-func getProtoSpec(dirPath string, excludeFilePatterns []string) (*ProtoSpec, error) {
+func getProtoSpec(dirPath string, excludeFilePatterns []string) (*protoSpec, error) {
 	relFilePaths, err := getAllRelProtoFilePaths(dirPath)
 	if err != nil {
 		return nil, err
@@ -86,112 +86,31 @@ func getProtoSpec(dirPath string, excludeFilePatterns []string) (*ProtoSpec, err
 	if err != nil {
 		return nil, err
 	}
-	return &ProtoSpec{
+	return &protoSpec{
 		DirPath:           dirPath,
 		RelDirPathToFiles: getRelDirPathToFiles(relFilePaths),
 	}, nil
 }
 
-func getPlugins(directives *Directives) ([]Plugin, error) {
-	var plugins []Plugin
-	if directives.Cpp {
-		plugins = append(
-			plugins,
-			NewCppPlugin(
-				CppPluginOptions{
-					GrpcPluginOptions: GrpcPluginOptions{
-						PluginOptions: PluginOptions{
-							RelOutDirPath: directives.CppRelOutDirPath,
-						},
-						Grpc: directives.Grpc,
-					},
-				},
-			),
-		)
-	}
-	if directives.Csharp {
-		plugins = append(
-			plugins,
-			NewCsharpPlugin(
-				CsharpPluginOptions{
-					GrpcPluginOptions: GrpcPluginOptions{
-						PluginOptions: PluginOptions{
-							RelOutDirPath: directives.CsharpRelOutDirPath,
-						},
-						Grpc: directives.Grpc,
-					},
-				},
-			),
-		)
-	}
-	if directives.Objc {
-		plugins = append(
-			plugins,
-			NewObjcPlugin(
-				ObjcPluginOptions{
-					GrpcPluginOptions: GrpcPluginOptions{
-						PluginOptions: PluginOptions{
-							RelOutDirPath: directives.ObjcRelOutDirPath,
-						},
-						Grpc: directives.Grpc,
-					},
-				},
-			),
-		)
-	}
-	if directives.Python {
-		plugins = append(
-			plugins,
-			NewPythonPlugin(
-				PythonPluginOptions{
-					GrpcPluginOptions: GrpcPluginOptions{
-						PluginOptions: PluginOptions{
-							RelOutDirPath: directives.PythonRelOutDirPath,
-						},
-						Grpc: directives.Grpc,
-					},
-				},
-			),
-		)
-	}
-	if directives.Ruby {
-		plugins = append(
-			plugins,
-			NewRubyPlugin(
-				RubyPluginOptions{
-					GrpcPluginOptions: GrpcPluginOptions{
-						PluginOptions: PluginOptions{
-							RelOutDirPath: directives.RubyRelOutDirPath,
-						},
-						Grpc: directives.Grpc,
-					},
-				},
-			),
-		)
-	}
-	if directives.Go {
-		protocPlugin := directives.GoProtocPlugin
-		if protocPlugin == GoProtocPlugin_GO_PROTOC_PLUGIN_NONE {
-			protocPlugin = GoProtocPlugin_GO_PROTOC_PLUGIN_GO
+func getPlugins(directives *Directives) ([]plugin, error) {
+	var plugins []plugin
+	for _, pluginType := range directives.PluginType {
+		switch pluginType {
+		case PluginType_PLUGIN_TYPE_CPP:
+			plugins = append(plugins, newCppPlugin(directives.CppPluginOptions))
+		case PluginType_PLUGIN_TYPE_CSHARP:
+			plugins = append(plugins, newCsharpPlugin(directives.CsharpPluginOptions))
+		case PluginType_PLUGIN_TYPE_GO:
+			plugins = append(plugins, newGoPlugin(directives.GoPluginOptions))
+		case PluginType_PLUGIN_TYPE_OBJC:
+			plugins = append(plugins, newObjcPlugin(directives.ObjcPluginOptions))
+		case PluginType_PLUGIN_TYPE_PYTHON:
+			plugins = append(plugins, newPythonPlugin(directives.PythonPluginOptions))
+		case PluginType_PLUGIN_TYPE_RUBY:
+			plugins = append(plugins, newRubyPlugin(directives.RubyPluginOptions))
+		default:
+			return nil, fmt.Errorf("proteasy: invalid PluginType: %v", pluginType)
 		}
-		plugins = append(
-			plugins,
-			NewGoPlugin(
-				GoPluginOptions{
-					GrpcPluginOptions: GrpcPluginOptions{
-						PluginOptions: PluginOptions{
-							RelOutDirPath: directives.GoRelOutDirPath,
-						},
-						Grpc: directives.Grpc,
-					},
-					ImportPath:         directives.GoImportPath,
-					GrpcGateway:        directives.GrpcGateway,
-					NoDefaultModifiers: directives.GoNoDefaultModifiers,
-					ProtocPlugin:       protocPlugin,
-					Modifiers:          directives.GoModifier,
-				},
-			),
-		)
 	}
 	return plugins, nil
 }
@@ -200,19 +119,43 @@ func makeOutDirs(outDirPath string, directives *Directives) error {
 	if err := os.MkdirAll(outDirPath, 0755); err != nil {
 		return err
 	}
-	for _, relDirPath := range []string{
-		directives.CppRelOutDirPath,
-		directives.CsharpRelOutDirPath,
-		directives.ObjcRelOutDirPath,
-		directives.PythonRelOutDirPath,
-		directives.RubyRelOutDirPath,
-		directives.GoRelOutDirPath,
-	} {
-		if relDirPath != "" {
-			if err := os.MkdirAll(filepath.Join(outDirPath, relDirPath), 0755); err != nil {
-				return err
-			}
+	if directives.CppPluginOptions != nil {
+		if err := makeRelOutDirForGrpcPluginOptions(outDirPath, directives.CppPluginOptions.GrpcPluginOptions); err != nil {
+			return err
 		}
+	}
+	if directives.CsharpPluginOptions != nil {
+		if err := makeRelOutDirForGrpcPluginOptions(outDirPath, directives.CsharpPluginOptions.GrpcPluginOptions); err != nil {
+			return err
+		}
+	}
+	if directives.GoPluginOptions != nil {
+		if err := makeRelOutDirForGrpcPluginOptions(outDirPath, directives.GoPluginOptions.GrpcPluginOptions); err != nil {
+			return err
+		}
+	}
+	if directives.ObjcPluginOptions != nil {
+		if err := makeRelOutDirForGrpcPluginOptions(outDirPath, directives.ObjcPluginOptions.GrpcPluginOptions); err != nil {
+			return err
+		}
+	}
+	if directives.PythonPluginOptions != nil {
+		if err := makeRelOutDirForGrpcPluginOptions(outDirPath, directives.PythonPluginOptions.GrpcPluginOptions); err != nil {
+			return err
+		}
+	}
+	if directives.RubyPluginOptions != nil {
+		if err := makeRelOutDirForGrpcPluginOptions(outDirPath, directives.RubyPluginOptions.GrpcPluginOptions); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func makeRelOutDirForGrpcPluginOptions(outDirPath string, grpcPluginOptions *GrpcPluginOptions) error {
+	relOutDirPath := getRelOutDirPath(grpcPluginOptions)
+	if relOutDirPath != "" {
+		return os.MkdirAll(filepath.Join(outDirPath, relOutDirPath), 0755)
 	}
 	return nil
 }

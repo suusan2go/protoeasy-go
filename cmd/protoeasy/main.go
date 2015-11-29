@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"os"
-	"strings"
 
 	"google.golang.org/grpc"
 
@@ -11,7 +10,6 @@ import (
 	"go.pedge.io/protoeasy"
 
 	"github.com/spf13/cobra"
-	"github.com/spf13/pflag"
 )
 
 type appEnv struct {
@@ -21,6 +19,7 @@ type appEnv struct {
 type options struct {
 	GoModifiers    []string
 	GoProtocPlugin string
+	Grpc           bool
 	OutDirPath     string
 }
 
@@ -39,9 +38,9 @@ func do(appEnvObj interface{}) error {
 			if len(args) != 1 {
 				return fmt.Errorf("must pass one argument, the directory, but passed %d arguments", len(args))
 			}
-			if err := optionsToDirectives(options, directives); err != nil {
-				return err
-			}
+			//if err := optionsToDirectives(options, directives); err != nil {
+			//return err
+			//}
 			dirPath := args[0]
 			outDirPath := args[0]
 			if options.OutDirPath != "" {
@@ -58,7 +57,7 @@ func do(appEnvObj interface{}) error {
 					protoeasy.NewAPIClient(
 						clientConn,
 					),
-					protoeasy.ClientCompilerOptions{},
+					protoeasy.CompilerOptions{},
 				)
 			}
 
@@ -66,12 +65,13 @@ func do(appEnvObj interface{}) error {
 			return err
 		},
 	}
-	bindDirectives(rootCmd.Flags(), directives)
-	bindOptions(rootCmd.Flags(), options)
+	//bindDirectives(rootCmd.Flags(), directives)
+	//bindOptions(rootCmd.Flags(), options)
 
 	return rootCmd.Execute()
 }
 
+/*
 func bindDirectives(flagSet *pflag.FlagSet, directives *protoeasy.Directives) {
 	flagSet.StringSliceVar(&directives.ExcludePattern, "exclude", []string{}, "Exclude file patterns.")
 	flagSet.BoolVar(&directives.Cpp, "cpp", false, "Output cpp files.")
@@ -88,13 +88,13 @@ func bindDirectives(flagSet *pflag.FlagSet, directives *protoeasy.Directives) {
 	flagSet.StringVar(&directives.GoRelOutDirPath, "go-rel-out", "", "The directory, relative to the output directory, to output go files.")
 	flagSet.StringVar(&directives.GoImportPath, "go-import-path", "", "Go package.")
 	flagSet.BoolVar(&directives.GoNoDefaultModifiers, "go-no-default-modifiers", false, "Do not set the default Mfile=package modifiers for --go_out.")
-	flagSet.BoolVar(&directives.Grpc, "grpc", false, "Output grpc files.")
 	flagSet.BoolVar(&directives.GrpcGateway, "grpc-gateway", false, "Output grpc-gateway .gw.go files.")
 }
 
 func bindOptions(flagSet *pflag.FlagSet, options *options) {
 	flagSet.StringSliceVar(&options.GoModifiers, "go-modifier", []string{}, "Extra Mfile=package modifiers for --go_out, specify just as file=package to this flag.")
 	flagSet.StringVar(&options.GoProtocPlugin, "go-protoc-plugin", "go", fmt.Sprintf("The go protoc plugin to use, allowed values are %s, if not go, --go-no-default-modifiers is implied.", strings.Join(protoeasy.AllGoProtocPluginSimpleStrings(), ",")))
+	flagSet.BoolVar(&options.Grpc, "grpc", false, "Output grpc files.")
 	flagSet.StringVar(&options.OutDirPath, "out", "", "Customize out directory path.")
 }
 
@@ -121,3 +121,4 @@ func optionsToDirectives(options *options, directives *protoeasy.Directives) err
 	directives.GoModifier = modifiers
 	return nil
 }
+*/

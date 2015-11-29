@@ -1,7 +1,6 @@
 package protoeasy
 
 import (
-	"bytes"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -21,6 +20,15 @@ func newAPIServer(compiler Compiler) *apiServer {
 
 func (a *apiServer) Compile(ctx context.Context, request *CompileRequest) (response *CompileResponse, retErr error) {
 	defer func(start time.Time) { logCompile(request, response, retErr, time.Since(start)) }(time.Now())
+	if request == nil {
+		return nil, newErrNil("request")
+	}
+	if request.Archive == nil {
+		return nil, newErrNil("request.Archive")
+	}
+	if request.Directives == nil {
+		return nil, newErrNil("request.Directives")
+	}
 	dirPath, err := ioutil.TempDir("", "protoeasy-input")
 	if err != nil {
 		return nil, err
@@ -39,35 +47,20 @@ func (a *apiServer) Compile(ctx context.Context, request *CompileRequest) (respo
 			retErr = err
 		}
 	}()
-	if err := untar(bytes.NewReader(request.Tar), dirPath); err != nil {
+	if err := untar(request.Archive, dirPath); err != nil {
 		return nil, err
 	}
-	argsList, err := a.compiler.Compile(dirPath, outDirPath, request.Directives)
+	commands, err := a.compiler.Compile(dirPath, outDirPath, request.Directives)
 	if err != nil {
 		return nil, err
 	}
-	protoArgs := make([]*Args, len(argsList))
-	for i, args := range argsList {
-		protoArgs[i] = &Args{
-			Value: args,
-		}
-	}
-	readCloser, err := tar(outDirPath, []string{"."})
-	if err != nil {
-		return nil, err
-	}
-	defer func() {
-		if err := readCloser.Close(); err != nil && retErr == nil {
-			retErr = err
-		}
-	}()
-	data, err := ioutil.ReadAll(readCloser)
+	archive, err := tar(outDirPath, []string{"."})
 	if err != nil {
 		return nil, err
 	}
 	return &CompileResponse{
-		Args: protoArgs,
-		Tar:  data,
+		Command: commands,
+		Archive: archive,
 	}, nil
 }
 
@@ -80,11 +73,15 @@ func logCompile(request *CompileRequest, response *CompileResponse, err error, d
 	errString := ""
 	if request != nil {
 		got = fmt.Sprintf("%v", request.Directives)
+		if request.Archive != nil {
+			with = len(request.Archive.Value)
+		}
 	}
 	if response != nil {
-		with = len(response.Tar)
-		ran = len(response.Args)
-		returned = len(response.Tar)
+		ran = len(response.Command)
+		if response.Archive != nil {
+			returned = len(response.Archive.Value)
+		}
 	}
 	if err != nil {
 		errString = fmt.Sprintf(", had error %s", err.Error())
