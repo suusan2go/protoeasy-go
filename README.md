@@ -28,7 +28,13 @@ be an easier way to do it but haven't found it yet.
 
 Then protoeasy is for you!
 
-### Structure
+### Tutorial
+
+#### Installation
+
+Install `protoeasy` using `make install`. Assuming `${GOPATH}/bin` is on your `${PATH}`.
+
+#### Basics
 
 Protoeasy compiles entire directories of protocol buffer files, as opposed to individual files. To use protoeasy:
 
@@ -40,7 +46,9 @@ and the rest is done for you. All `-I` directives are automatically figured out,
 in the same sub-directory are compiled together.
 
 Instead of specifying individual output directives, protoeasy breaks compilation into separate languages, optionally
-doing gRPC compilation for each language. Assume we have a single file in our current directory called `foo.proto`.
+doing gRPC compilation for each language.
+
+Assume we have a single file in our current directory called `foo.proto`.
 
 ```
 syntax = "proto3";
@@ -127,6 +135,8 @@ except for Go which has different logic.
 Supported languages are C++, C#, Objective-C, Python, Ruby, and Go. Protoeasy was primarily developed for Go
 (which is what I use it for), so if there are idioms for other languages, let me know.
 
+#### Go
+
 Go has special handling. Let's assume we have our original `foo.proto`, and another file `bar/bar.proto` in the
 sub-directory `bar`, and let's assume these are in the Go package `github.com/alice/helloworld`.
 
@@ -178,3 +188,89 @@ protoeasy --go --go_import_path=github.com/alice/helloworld .
 #  --grpc-gateway_out=Mbar/bar.proto=github.com/alice/helloworld/bar,Mfoo.proto=github.com/alice/helloworld,Mgoogle/api/annotations.proto=github.com/gengo/grpc-gateway/third_party/googleapis/google/api,Mgoogle/api/http.proto=github.com/gengo/grpc-gateway/third_party/googleapis/google/api,Mgoogle/datastore/v1beta3/datastore.proto=go.pedge.io/googleapis/google/datastore/v1beta3,Mgoogle/datastore/v1beta3/entity.proto=go.pedge.io/googleapis/google/datastore/v1beta3,Mgoogle/datastore/v1beta3/query.proto=go.pedge.io/googleapis/google/datastore/v1beta3,Mgoogle/devtools/cloudtrace/v1/trace.proto=go.pedge.io/googleapis/google/devtools/cloudtrace/v1,Mgoogle/example/library/v1/library.proto=go.pedge.io/googleapis/google/example/library/v1,Mgoogle/iam/v1/iam_policy.proto=go.pedge.io/googleapis/google/iam/v1,Mgoogle/iam/v1/policy.proto=go.pedge.io/googleapis/google/iam/v1,Mgoogle/longrunning/operations.proto=go.pedge.io/googleapis/google/longrunning,Mgoogle/protobuf/any.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/api.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/descriptor.proto=github.com/golang/protobuf/protoc-gen-go/descriptor,Mgoogle/protobuf/duration.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/empty.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/field_mask.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/source_context.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/struct.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/timestamp.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/type.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/wrappers.proto=go.pedge.io/google-protobuf,Mgoogle/pubsub/v1/pubsub.proto=go.pedge.io/googleapis/google/pubsub/v1,Mgoogle/pubsub/v1beta2/pubsub.proto=go.pedge.io/googleapis/google/pubsub/v1beta2,Mgoogle/rpc/code.proto=go.pedge.io/googleapis/google/rpc,Mgoogle/rpc/error_details.proto=go.pedge.io/googleapis/google/rpc,Mgoogle/rpc/status.proto=go.pedge.io/googleapis/google/rpc,Mgoogle/type/color.proto=go.pedge.io/googleapis/google/type,Mgoogle/type/date.proto=go.pedge.io/googleapis/google/type,Mgoogle/type/dayofweek.proto=go.pedge.io/googleapis/google/type,Mgoogle/type/latlng.proto=go.pedge.io/googleapis/google/type,Mgoogle/type/money.proto=go.pedge.io/googleapis/google/type,Mgoogle/type/timeofday.proto=go.pedge.io/googleapis/google/type:/tmp/protoeasy-output215726383 \
 #  /tmp/protoeasy-input035188496/foo.proto
 ```
+
+Whoa! There's a lot going on there, let's walk through it:
+
+* The `-I` directives are the same as other languages.
+* For gRPC, instead of having `--grpc_out` and `--plugin`, Go does `--go_out=plugins=grpc`
+* We specified that we are in the `github.com/alice/helloworld` package using `--go_import_path` and the modifiers
+`Mbar/bar.proto=github.com/alice/helloworld/bar,Mfoo.proto=github.com/alice/helloworld` were generated for us. Therefore `bar.pb.go` 
+has the import statement `import foo "github.com/alice/helloworld"`. If, instead, all protocol buffers files were
+in a sub-directory `proto` in `github.com/alice/helloworld`, we would have done `protoeasy --go --grpc --grpc_gateway --go_import_path github.com/alice/helloworld/proto proto` 
+* We have the modifiers for a bunch of other files, but specifically `Mgoogle/api/annotations.proto=github.com/gengo/grpc-gateway/third_party/googleapis/google/api,Mgoogle/protobuf/empty.proto=go.pedge.io/google-protobuf`. More on this later.
+* The directive `--grpc-gateway_out` created a `bar/bar.pb.gw.go` file for us, for grpc-gateway. You should really check grpc-gateway out :)
+
+#### More Examples
+
+See `make proto` and `make example` for two more example usages.
+
+#### Client/Server Setup
+
+Protoeasy works on your local machine by default, however this is not how it is intended to be used. Protoeasy provides
+a Docker image `quay.io/pedge/protoeasy`, created from the [Dockerfile](Dockerfile) in this repository, that has everything
+necessary for compilation already installed, and which runs the [protoeasyd](cmd/protoeasyd) daemon. The `protoeasy` binary
+will automatically connect to this daemon and delegate compilation if the environment variable `PROTOEASY_ADDRESS` is set.
+
+First, get the Docker image:
+
+```
+docker pull quay.io/pedge/protoeasy
+```
+
+Or, build it from this repository:
+
+```
+make docker-build
+```
+
+Then launch the daemon:
+
+```
+docker run -d -p 6789:6789 quay.io/pedge/protoeasy # or do make docker-launch
+```
+
+My local setup is a Macbook Pro with Docker running in a VirtualBox VM with a private network at 192.168.10.10.
+
+```ruby
+# a simple version from my Vagrantfile at https://github.com/peter-edge/dotfiles/blob/master/vagrant/common/base_provision.rb
+Vagrant.configure(2) do |config|
+  ...
+  config.vm.network "private_network", ip: "192.168.10.10"
+end
+```
+
+```
+# on my vagrant host, this was setup using https://github.com/peter-edge/dotfiles/blob/master/bin/setup_docker_http_upstart.sh
+ps -ef | grep docker
+#root     16450     1  0 Nov28 ?        00:06:01 /usr/bin/docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock
+```
+
+Many Docker VirtualBox setups are similar to this, including I belive the one created from Docker Machine.
+
+In my `~/.bash_aliases`, I have:
+
+```
+export PROTOEASY_ADDRESS=192.168.10.10:6789
+
+launch-protoeasy() {
+  docker rm -f protoeasy || true
+  docker run -d -p 6789:6789 --name=protoeasy quay.io/pedge/protoeasy
+}
+```
+
+Whenever protoeasy is stopped, or when I want to restart it, I just run `launch-protoeasy`. Since I have `PROTOEASY_ADDRESS` exported, the `protoeasy` binary always connects to the running Docker container.
+
+In this manner, I never actually compile protocol buffers files on my Macbook directly.
+
+Q: Why not just do your builds directly in a Docker container, i.e. `docker run --volume $(pwd):/compile --workdir /compile pedge/proto3grpc protoc --go_out=. foo.proto` https://hub.docker.com/r/pedge/proto3grpc/
+A: This is what I used to do, but if your Docker host is NOT local (i.e. you are not using Docker locally in Linux, or in a local VM), this means that you cannot have a host volume linking. Protoeasy should soon have a deployment option once I get TLS added. Also, protoeasy is a little faster, but it's not really important.
+
+### Future
+
+Protoeasy is brand new, and has a long way to go. Main areas:
+
+* Make sure compilation for non-Go languages is correct.
+* Get security added for public deployment.
+* Get an easy deployment option (probably Kubernetes) added.
+
+If you want to help, let me know!
