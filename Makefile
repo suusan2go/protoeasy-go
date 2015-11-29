@@ -35,8 +35,10 @@ build:
 	go build $(PKGS)
 
 install:
+	go install $(PKGS)
+
+installplugins:
 	go install \
-		$(PKGS) \
 		go.pedge.io/protoeasy/vendor/github.com/gengo/grpc-gateway/protoc-gen-grpc-gateway \
 		go.pedge.io/protoeasy/vendor/github.com/golang/protobuf/protoc-gen-go
 
@@ -110,6 +112,7 @@ docker-test: docker-build
 	vendor \
 	build \
 	install \
+	installplugins \
 	proto \
 	example \
 	lint \
