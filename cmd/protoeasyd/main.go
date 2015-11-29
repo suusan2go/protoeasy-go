@@ -1,10 +1,13 @@
 package main
 
 import (
+	"fmt"
+	"math"
+	"net"
+
 	"google.golang.org/grpc"
 
 	"go.pedge.io/env"
-	"go.pedge.io/proto/server"
 	"go.pedge.io/protoeasy"
 )
 
@@ -18,16 +21,18 @@ func main() {
 
 func do(appEnvObj interface{}) error {
 	appEnv := appEnvObj.(*appEnv)
-	return protoserver.Serve(
-		appEnv.Port,
-		func(s *grpc.Server) {
-			protoeasy.RegisterAPIServer(
-				s,
-				protoeasy.NewAPIServer(
-					protoeasy.DefaultServerCompiler,
-				),
-			)
-		},
-		protoserver.ServeOptions{},
+	server := grpc.NewServer(
+		grpc.MaxConcurrentStreams(math.MaxUint32),
 	)
+	protoeasy.RegisterAPIServer(
+		server,
+		protoeasy.NewAPIServer(
+			protoeasy.DefaultServerCompiler,
+		),
+	)
+	listener, err := net.Listen("tcp", fmt.Sprintf(":%d", appEnv.Port))
+	if err != nil {
+		return err
+	}
+	return server.Serve(listener)
 }
