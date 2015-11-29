@@ -41,11 +41,22 @@ in the same sub-directory are compiled together.
 
 Instead of specifying individual output directives, protoeasy breaks compilation into separate languages, optionally
 doing gRPC compilation for each language. Assume we have a single file in our current directory called `foo.proto`.
+
+```
+syntax = "proto3";
+
+package foo;
+
+message One {
+  int64 i = 1;
+}
+```
+
 To compile for ruby, we would do:
 
 ```
 protoeasy --ruby .
-# protoc \
+#protoc \
 #  -I/tmp/protoeasy-input353662656 \
 #  -I/go/src/go.pedge.io/protoeasy/vendor/go.pedge.io/google-protobuf \
 #  -I/go/src/go.pedge.io/protoeasy/vendor/github.com/golang/protobuf/protoc-gen-go/descriptor \
@@ -101,4 +112,69 @@ protoeasy --ruby --cpp --grpc .
 #  --grpc_out=/tmp/protoeasy-output335846083 \
 #  --plugin=protoc-gen-grpc=/usr/local/bin/grpc_ruby_plugin \
 #  /tmp/protoeasy-input924418036/foo.proto
+```
+
+What is going on here:
+
+* For each language, a protoc command is generated. Each language is run separately because
+some protoc flags overlap (`--plugin` specifically).
+* The `/tmp/protoeasy-input...` directories are the directory where `foo.proto` is located. These
+compilations were done on a remote server, explained later.
+* If `--grpc` is specified, `--grpc_out` and `--plugin` flags are specified for each associated language,
+except for Go which has different logic.
+* Other typical imports are added automatically, explained later.
+
+Supported languages are C++, C#, Objective-C, Python, Ruby, and Go. Protoeasy was primarily developed for Go
+(which is what I use it for), so if there are idioms for other languages, let me know.
+
+Go has special handling. Let's assume we have our original `foo.proto`, and another file `bar/bar.proto` in the
+sub-directory `bar`, and let's assume these are in the Go package `github.com/alice/helloworld`.
+
+```
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+import "foo.proto";
+
+package bar;
+
+message Two {
+  foo.One one = 1;
+  int64 j = 2;
+}
+
+service API {
+  rpc Do(Two) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      post: "/do"
+      body: "*"
+    };
+  }
+}
+```
+
+Let's compile these with go, grpc, and [grpc-gateway](https://github.com/gengo/grpc-gateway), and do them all now
+without building up the example so that this README does not get too long.
+
+```
+protoeasy --go --go_import_path=github.com/alice/helloworld .
+#protoc \
+#  -I/tmp/protoeasy-input035188496 \
+#  -I/go/src/go.pedge.io/protoeasy/vendor/go.pedge.io/google-protobuf \
+#  -I/go/src/go.pedge.io/protoeasy/vendor/github.com/golang/protobuf/protoc-gen-go/descriptor \
+#  -I/go/src/go.pedge.io/protoeasy/vendor/github.com/gengo/grpc-gateway/third_party/googleapis \
+#  -I/go/src/go.pedge.io/protoeasy/vendor/go.pedge.io/googleapis \
+#  --go_out=Mbar/bar.proto=github.com/alice/helloworld/bar,Mfoo.proto=github.com/alice/helloworld,Mgoogle/api/annotations.proto=github.com/gengo/grpc-gateway/third_party/googleapis/google/api,Mgoogle/api/http.proto=github.com/gengo/grpc-gateway/third_party/googleapis/google/api,Mgoogle/datastore/v1beta3/datastore.proto=go.pedge.io/googleapis/google/datastore/v1beta3,Mgoogle/datastore/v1beta3/entity.proto=go.pedge.io/googleapis/google/datastore/v1beta3,Mgoogle/datastore/v1beta3/query.proto=go.pedge.io/googleapis/google/datastore/v1beta3,Mgoogle/devtools/cloudtrace/v1/trace.proto=go.pedge.io/googleapis/google/devtools/cloudtrace/v1,Mgoogle/example/library/v1/library.proto=go.pedge.io/googleapis/google/example/library/v1,Mgoogle/iam/v1/iam_policy.proto=go.pedge.io/googleapis/google/iam/v1,Mgoogle/iam/v1/policy.proto=go.pedge.io/googleapis/google/iam/v1,Mgoogle/longrunning/operations.proto=go.pedge.io/googleapis/google/longrunning,Mgoogle/protobuf/any.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/api.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/descriptor.proto=github.com/golang/protobuf/protoc-gen-go/descriptor,Mgoogle/protobuf/duration.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/empty.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/field_mask.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/source_context.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/struct.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/timestamp.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/type.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/wrappers.proto=go.pedge.io/google-protobuf,Mgoogle/pubsub/v1/pubsub.proto=go.pedge.io/googleapis/google/pubsub/v1,Mgoogle/pubsub/v1beta2/pubsub.proto=go.pedge.io/googleapis/google/pubsub/v1beta2,Mgoogle/rpc/code.proto=go.pedge.io/googleapis/google/rpc,Mgoogle/rpc/error_details.proto=go.pedge.io/googleapis/google/rpc,Mgoogle/rpc/status.proto=go.pedge.io/googleapis/google/rpc,Mgoogle/type/color.proto=go.pedge.io/googleapis/google/type,Mgoogle/type/date.proto=go.pedge.io/googleapis/google/type,Mgoogle/type/dayofweek.proto=go.pedge.io/googleapis/google/type,Mgoogle/type/latlng.proto=go.pedge.io/googleapis/google/type,Mgoogle/type/money.proto=go.pedge.io/googleapis/google/type,Mgoogle/type/timeofday.proto=go.pedge.io/googleapis/google/type,plugins=grpc:/tmp/protoeasy-output215726383 \
+#  --grpc-gateway_out=Mbar/bar.proto=github.com/alice/helloworld/bar,Mfoo.proto=github.com/alice/helloworld,Mgoogle/api/annotations.proto=github.com/gengo/grpc-gateway/third_party/googleapis/google/api,Mgoogle/api/http.proto=github.com/gengo/grpc-gateway/third_party/googleapis/google/api,Mgoogle/datastore/v1beta3/datastore.proto=go.pedge.io/googleapis/google/datastore/v1beta3,Mgoogle/datastore/v1beta3/entity.proto=go.pedge.io/googleapis/google/datastore/v1beta3,Mgoogle/datastore/v1beta3/query.proto=go.pedge.io/googleapis/google/datastore/v1beta3,Mgoogle/devtools/cloudtrace/v1/trace.proto=go.pedge.io/googleapis/google/devtools/cloudtrace/v1,Mgoogle/example/library/v1/library.proto=go.pedge.io/googleapis/google/example/library/v1,Mgoogle/iam/v1/iam_policy.proto=go.pedge.io/googleapis/google/iam/v1,Mgoogle/iam/v1/policy.proto=go.pedge.io/googleapis/google/iam/v1,Mgoogle/longrunning/operations.proto=go.pedge.io/googleapis/google/longrunning,Mgoogle/protobuf/any.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/api.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/descriptor.proto=github.com/golang/protobuf/protoc-gen-go/descriptor,Mgoogle/protobuf/duration.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/empty.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/field_mask.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/source_context.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/struct.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/timestamp.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/type.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/wrappers.proto=go.pedge.io/google-protobuf,Mgoogle/pubsub/v1/pubsub.proto=go.pedge.io/googleapis/google/pubsub/v1,Mgoogle/pubsub/v1beta2/pubsub.proto=go.pedge.io/googleapis/google/pubsub/v1beta2,Mgoogle/rpc/code.proto=go.pedge.io/googleapis/google/rpc,Mgoogle/rpc/error_details.proto=go.pedge.io/googleapis/google/rpc,Mgoogle/rpc/status.proto=go.pedge.io/googleapis/google/rpc,Mgoogle/type/color.proto=go.pedge.io/googleapis/google/type,Mgoogle/type/date.proto=go.pedge.io/googleapis/google/type,Mgoogle/type/dayofweek.proto=go.pedge.io/googleapis/google/type,Mgoogle/type/latlng.proto=go.pedge.io/googleapis/google/type,Mgoogle/type/money.proto=go.pedge.io/googleapis/google/type,Mgoogle/type/timeofday.proto=go.pedge.io/googleapis/google/type:/tmp/protoeasy-output215726383 \
+#  /tmp/protoeasy-input035188496/bar/bar.proto
+#protoc \
+#  -I/tmp/protoeasy-input035188496 \
+#  -I/go/src/go.pedge.io/protoeasy/vendor/go.pedge.io/google-protobuf \
+#  -I/go/src/go.pedge.io/protoeasy/vendor/github.com/golang/protobuf/protoc-gen-go/descriptor \
+#  -I/go/src/go.pedge.io/protoeasy/vendor/github.com/gengo/grpc-gateway/third_party/googleapis \
+#  -I/go/src/go.pedge.io/protoeasy/vendor/go.pedge.io/googleapis \
+#  --go_out=Mbar/bar.proto=github.com/alice/helloworld/bar,Mfoo.proto=github.com/alice/helloworld,Mgoogle/api/annotations.proto=github.com/gengo/grpc-gateway/third_party/googleapis/google/api,Mgoogle/api/http.proto=github.com/gengo/grpc-gateway/third_party/googleapis/google/api,Mgoogle/datastore/v1beta3/datastore.proto=go.pedge.io/googleapis/google/datastore/v1beta3,Mgoogle/datastore/v1beta3/entity.proto=go.pedge.io/googleapis/google/datastore/v1beta3,Mgoogle/datastore/v1beta3/query.proto=go.pedge.io/googleapis/google/datastore/v1beta3,Mgoogle/devtools/cloudtrace/v1/trace.proto=go.pedge.io/googleapis/google/devtools/cloudtrace/v1,Mgoogle/example/library/v1/library.proto=go.pedge.io/googleapis/google/example/library/v1,Mgoogle/iam/v1/iam_policy.proto=go.pedge.io/googleapis/google/iam/v1,Mgoogle/iam/v1/policy.proto=go.pedge.io/googleapis/google/iam/v1,Mgoogle/longrunning/operations.proto=go.pedge.io/googleapis/google/longrunning,Mgoogle/protobuf/any.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/api.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/descriptor.proto=github.com/golang/protobuf/protoc-gen-go/descriptor,Mgoogle/protobuf/duration.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/empty.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/field_mask.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/source_context.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/struct.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/timestamp.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/type.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/wrappers.proto=go.pedge.io/google-protobuf,Mgoogle/pubsub/v1/pubsub.proto=go.pedge.io/googleapis/google/pubsub/v1,Mgoogle/pubsub/v1beta2/pubsub.proto=go.pedge.io/googleapis/google/pubsub/v1beta2,Mgoogle/rpc/code.proto=go.pedge.io/googleapis/google/rpc,Mgoogle/rpc/error_details.proto=go.pedge.io/googleapis/google/rpc,Mgoogle/rpc/status.proto=go.pedge.io/googleapis/google/rpc,Mgoogle/type/color.proto=go.pedge.io/googleapis/google/type,Mgoogle/type/date.proto=go.pedge.io/googleapis/google/type,Mgoogle/type/dayofweek.proto=go.pedge.io/googleapis/google/type,Mgoogle/type/latlng.proto=go.pedge.io/googleapis/google/type,Mgoogle/type/money.proto=go.pedge.io/googleapis/google/type,Mgoogle/type/timeofday.proto=go.pedge.io/googleapis/google/type,plugins=grpc:/tmp/protoeasy-output215726383 \
+#  --grpc-gateway_out=Mbar/bar.proto=github.com/alice/helloworld/bar,Mfoo.proto=github.com/alice/helloworld,Mgoogle/api/annotations.proto=github.com/gengo/grpc-gateway/third_party/googleapis/google/api,Mgoogle/api/http.proto=github.com/gengo/grpc-gateway/third_party/googleapis/google/api,Mgoogle/datastore/v1beta3/datastore.proto=go.pedge.io/googleapis/google/datastore/v1beta3,Mgoogle/datastore/v1beta3/entity.proto=go.pedge.io/googleapis/google/datastore/v1beta3,Mgoogle/datastore/v1beta3/query.proto=go.pedge.io/googleapis/google/datastore/v1beta3,Mgoogle/devtools/cloudtrace/v1/trace.proto=go.pedge.io/googleapis/google/devtools/cloudtrace/v1,Mgoogle/example/library/v1/library.proto=go.pedge.io/googleapis/google/example/library/v1,Mgoogle/iam/v1/iam_policy.proto=go.pedge.io/googleapis/google/iam/v1,Mgoogle/iam/v1/policy.proto=go.pedge.io/googleapis/google/iam/v1,Mgoogle/longrunning/operations.proto=go.pedge.io/googleapis/google/longrunning,Mgoogle/protobuf/any.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/api.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/descriptor.proto=github.com/golang/protobuf/protoc-gen-go/descriptor,Mgoogle/protobuf/duration.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/empty.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/field_mask.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/source_context.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/struct.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/timestamp.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/type.proto=go.pedge.io/google-protobuf,Mgoogle/protobuf/wrappers.proto=go.pedge.io/google-protobuf,Mgoogle/pubsub/v1/pubsub.proto=go.pedge.io/googleapis/google/pubsub/v1,Mgoogle/pubsub/v1beta2/pubsub.proto=go.pedge.io/googleapis/google/pubsub/v1beta2,Mgoogle/rpc/code.proto=go.pedge.io/googleapis/google/rpc,Mgoogle/rpc/error_details.proto=go.pedge.io/googleapis/google/rpc,Mgoogle/rpc/status.proto=go.pedge.io/googleapis/google/rpc,Mgoogle/type/color.proto=go.pedge.io/googleapis/google/type,Mgoogle/type/date.proto=go.pedge.io/googleapis/google/type,Mgoogle/type/dayofweek.proto=go.pedge.io/googleapis/google/type,Mgoogle/type/latlng.proto=go.pedge.io/googleapis/google/type,Mgoogle/type/money.proto=go.pedge.io/googleapis/google/type,Mgoogle/type/timeofday.proto=go.pedge.io/googleapis/google/type:/tmp/protoeasy-output215726383 \
+#  /tmp/protoeasy-input035188496/foo.proto
 ```
