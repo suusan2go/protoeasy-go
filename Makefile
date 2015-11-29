@@ -51,12 +51,12 @@ example: install
 	rm -rf _example-out
 	protoeasy \
 		--out=_example-out \
-		--cpp --cpp_rel_out=cpp \
-		--csharp --csharp_rel_out=csharp \
-		--objectivec --objectivec_rel_out=objectivec \
-		--python --python_rel_out=python \
-		--ruby --ruby_rel_out=ruby \
-		--go --go_rel_out=go --go-import-path=go.pedge.io/protoeasy/_example-out/go \
+		--cpp --cpp-rel-out=cpp \
+		--csharp --csharp-rel-out=csharp \
+		--objectivec --objectivec-rel-out=objectivec \
+		--python --python-rel-out=python \
+		--ruby --ruby-rel-out=ruby \
+		--go --go-rel-out=go --go-import-path=go.pedge.io/protoeasy/_example-out/go \
 		--grpc \
 		--grpc-gateway \
 		example
