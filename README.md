@@ -13,7 +13,7 @@ to a server for consistency and so that protoc and any associated plugins do not
   * [Go](#go)
   * [Automatically Imported Packages](#automatically-imported-packages)
   * [More Examples](#more-examples)
-  * [Client/Server Setup](#client-server-setup)
+  * [Client/Server Setup](#clientserver-setup)
 * [Future Work](#future-work)
 
 ### Motivation
