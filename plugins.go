@@ -123,7 +123,7 @@ func newGoPlugin(options GoPluginOptions) *goPlugin {
 	return &goPlugin{options}
 }
 
-func (p *goPlugin) Args(protoSpec *ProtoSpec, relDirPath string, outDirPath string) ([]string, error) {
+func (p *goPlugin) Flags(protoSpec *ProtoSpec, relDirPath string, outDirPath string) ([]string, error) {
 	if p.options.RelOutDirPath != "" {
 		outDirPath = filepath.Join(outDirPath, p.options.RelOutDirPath)
 	}
@@ -181,7 +181,7 @@ func newPlugin(name string, options PluginOptions) *plugin {
 	return &plugin{name, options}
 }
 
-func (p *plugin) Args(protoSpec *ProtoSpec, relDirPath string, outDirPath string) ([]string, error) {
+func (p *plugin) Flags(protoSpec *ProtoSpec, relDirPath string, outDirPath string) ([]string, error) {
 	if p.options.RelOutDirPath != "" {
 		outDirPath = filepath.Join(outDirPath, p.options.RelOutDirPath)
 	}
@@ -198,8 +198,8 @@ func newGrpcPlugin(name string, grpcName string, options GrpcPluginOptions) *grp
 	return &grpcPlugin{newPlugin(name, options.PluginOptions), grpcName, options}
 }
 
-func (p *grpcPlugin) Args(protoSpec *ProtoSpec, relDirPath string, outDirPath string) ([]string, error) {
-	args, err := p.plugin.Args(protoSpec, relDirPath, outDirPath)
+func (p *grpcPlugin) Flags(protoSpec *ProtoSpec, relDirPath string, outDirPath string) ([]string, error) {
+	args, err := p.plugin.Flags(protoSpec, relDirPath, outDirPath)
 	if err != nil {
 		return nil, err
 	}

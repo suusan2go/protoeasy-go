@@ -13,7 +13,7 @@ type ProtoSpec struct {
 }
 
 type Plugin interface {
-	Args(protoSpec *ProtoSpec, relDirPath string, outDirPath string) ([]string, error)
+	Flags(protoSpec *ProtoSpec, relDirPath string, outDirPath string) ([]string, error)
 }
 
 type PluginOptions struct {
