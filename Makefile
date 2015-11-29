@@ -165,4 +165,4 @@ docker-launch-proto2:
 	docker-build-proto2 \
 	docker-push-proto2 \
 	docker-pull-proto2 \
-	docker-launch-proto2 \
+	docker-launch-proto2
