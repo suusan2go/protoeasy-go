@@ -170,6 +170,10 @@ func getPlugins(directives *Directives) ([]Plugin, error) {
 		)
 	}
 	if directives.Go {
+		protocPlugin := directives.GoProtocPlugin
+		if protocPlugin == GoProtocPlugin_GO_PROTOC_PLUGIN_NONE {
+			protocPlugin = GoProtocPlugin_GO_PROTOC_PLUGIN_GO
+		}
 		plugins = append(
 			plugins,
 			NewGoPlugin(
@@ -183,7 +187,7 @@ func getPlugins(directives *Directives) ([]Plugin, error) {
 					ImportPath:         directives.GoImportPath,
 					GrpcGateway:        directives.GrpcGateway,
 					NoDefaultModifiers: directives.GoNoDefaultModifiers,
-					ProtocPlugin:       directives.GoProtocPlugin,
+					ProtocPlugin:       protocPlugin,
 				},
 			),
 		)
