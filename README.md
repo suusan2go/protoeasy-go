@@ -42,7 +42,7 @@ Then protoeasy is for you!
 
 #### Installation
 
-Install `protoeasy` using `make install`, Assuming `${GOPATH}/bin` is on your `${PATH}`. This also
+Install `protoeasy` using `make install`, assuming `${GOPATH}/bin` is on your `${PATH}`. This also
 will install `protoc-gen-go` and protoc-gen-grpc-gateway`.
 
 #### Basics
