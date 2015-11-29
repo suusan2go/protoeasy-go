@@ -244,7 +244,7 @@ Track https://github.com/golang/protobuf/issues/50 for more details.
 
 #### More Examples
 
-See `make proto` and `make example` for two more example usages. I also use protoeasy for all my public Go projects on GitHub that use protocol buffers (the command using protoeasy is in the Makefile in each project):
+See `make proto` and `make example-complete` for two more example usages. I also use protoeasy for all my public Go projects on GitHub that use protocol buffers (the command using protoeasy is in the Makefile in each project):
 
 * https://go.pedge.io/dockerplugin
 * https://go.pedge.io/dockervolume

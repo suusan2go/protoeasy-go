@@ -57,22 +57,22 @@ proto: install
 	protoeasy --go --grpc --go-import-path go.pedge.io/protoeasy --exclude vendor --exclude example .
 	find . -name *\.pb\*\.go | grep -v vendor | xargs strip-package-comments
 
-example: install
-	rm -rf _example-out
+example-complete: install
+	rm -rf _example-out/complete
 	protoeasy \
-		--out=_example-out \
+		--out=_example-out/complete \
 		--cpp --cpp-rel-out=cpp \
 		--csharp --csharp-rel-out=csharp \
 		--objc --objc-rel-out=objc \
 		--python --python-rel-out=python \
 		--ruby --ruby-rel-out=ruby \
-		--go --go-rel-out=go --go-import-path=go.pedge.io/protoeasy/_example-out/go \
+		--go --go-rel-out=go --go-import-path=go.pedge.io/protoeasy/_example-out/complete/go \
 		--grpc \
 		--grpc-gateway \
 		--go-modifier a.proto=a/b/c \
 		--go-modifier b.proto=d/e \
 		example
-	cd _example-out/go && go build ./...
+	cd _example-out/complete/go && go build ./...
 
 lint:
 	go get -v github.com/golang/lint/golint
@@ -115,6 +115,19 @@ docker-launch:
 docker-test: docker-build
 	docker run quay.io/pedge/protoeasy make test
 
+docker-build-proto2:
+	docker build -t quay.io/pedge/protoeasy-proto2 -f Dockerfile.proto2 .
+
+docker-push-proto2: docker-build-proto2
+	docker push quay.io/pedge/protoeasy-proto2
+
+docker-pull-proto2:
+	docker pull quay.io/pedge/protoeasy
+
+docker-launch-proto2:
+	docker rm -f protoeasy-proto2 || true
+	docker run -d -p 6789:6789 --name=protoeasy-proto2 quay.io/pedge/protoeasy-proto2
+
 .PHONY: \
 	all \
 	deps \
@@ -126,7 +139,7 @@ docker-test: docker-build
 	install \
 	installplugins \
 	proto \
-	example \
+	example-complete \
 	lint \
 	vet \
 	errcheck \
@@ -137,4 +150,8 @@ docker-test: docker-build
 	docker-push \
 	docker-pull \
 	docker-launch \
-	docker-test
+	docker-test \
+	docker-build-proto2 \
+	docker-push-proto2 \
+	docker-pull-proto2 \
+	docker-launch-proto2 \
