@@ -22,7 +22,7 @@ func (a *apiServer) Compile(ctx context.Context, request *CompileRequest) (respo
 	defer func(start time.Time) {
 		protolog.Infof("compile: took %v, got %v with %d bytes, ran %d commands, returned %d bytes\n", time.Since(start), request.Directives, len(request.Tar), len(response.Args), len(response.Tar))
 	}(time.Now())
-	dirPath, err := ioutil.TempDir("", "")
+	dirPath, err := ioutil.TempDir("", "protoeasy-input")
 	if err != nil {
 		return nil, err
 	}
@@ -31,7 +31,7 @@ func (a *apiServer) Compile(ctx context.Context, request *CompileRequest) (respo
 			retErr = err
 		}
 	}()
-	outDirPath, err := ioutil.TempDir("", "")
+	outDirPath, err := ioutil.TempDir("", "protoeasy-output")
 	if err != nil {
 		return nil, err
 	}

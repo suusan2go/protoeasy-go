@@ -144,5 +144,5 @@ func copyStringStringMap(m map[string]string) map[string]string {
 }
 
 func logArgs(args []string) {
-	protolog.Infoln(strings.Join(args, " \\\n\t"))
+	protolog.Infof("\n%s\n", strings.Join(args, " \\\n\t"))
 }
