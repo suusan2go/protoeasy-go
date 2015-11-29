@@ -18,6 +18,7 @@ message Directives {
   string go_import_path = 14;
   bool grpc = 15;
   bool grpc_gateway = 16;
+  bool no_default_modifiers = 17;
   repeated string exclude_pattern = 18;
 }
 
