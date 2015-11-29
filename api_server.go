@@ -2,6 +2,7 @@ package protoeasy
 
 import (
 	"bytes"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"time"
@@ -19,9 +20,7 @@ func newAPIServer(compiler Compiler) *apiServer {
 }
 
 func (a *apiServer) Compile(ctx context.Context, request *CompileRequest) (response *CompileResponse, retErr error) {
-	defer func(start time.Time) {
-		protolog.Infof("compile: took %v, got %v with %d bytes, ran %d commands, returned %d bytes\n", time.Since(start), request.Directives, len(request.Tar), len(response.Args), len(response.Tar))
-	}(time.Now())
+	defer func(start time.Time) { logCompile(request, response, retErr, time.Since(start)) }(time.Now())
 	dirPath, err := ioutil.TempDir("", "protoeasy-input")
 	if err != nil {
 		return nil, err
@@ -70,4 +69,25 @@ func (a *apiServer) Compile(ctx context.Context, request *CompileRequest) (respo
 		Args: protoArgs,
 		Tar:  data,
 	}, nil
+}
+
+func logCompile(request *CompileRequest, response *CompileResponse, err error, duration time.Duration) {
+	// TODO(pedge): this whole thing needs work, this is just to get it logging as of now
+	got := "<nil>"
+	with := 0
+	ran := 0
+	returned := 0
+	errString := ""
+	if request != nil {
+		got = fmt.Sprintf("%v", request.Directives)
+	}
+	if response != nil {
+		with = len(response.Tar)
+		ran = len(response.Args)
+		returned = len(response.Tar)
+	}
+	if err != nil {
+		errString = fmt.Sprintf(", had error %s", err.Error())
+	}
+	protolog.Infof("protoeasy.API#Compile: took %v, got %v with %d bytes, ran %d commands, returned %d bytes%s\n", duration, got, with, ran, returned, errString)
 }
