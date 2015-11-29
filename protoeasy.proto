@@ -2,6 +2,16 @@ syntax = "proto3";
 
 package protoeasy;
 
+enum GoProtocPlugin {
+  GO_PROTOC_PLUGIN_NONE = 0;
+  GO_PROTOC_PLUGIN_GO = 1;
+  GO_PROTOC_PLUGIN_GOFAST = 2;
+  GO_PROTOC_PLUGIN_GOGO = 3;
+  GO_PROTOC_PLUGIN_GOGOFAST = 4;
+  GO_PROTOC_PLUGIN_GOGOFASTER = 5;
+  GO_PROTOC_PLUGIN_GOGOSLICK = 6;
+}
+
 message Directives {
   bool cpp = 1;
   string cpp_rel_out_dir_path = 2;
@@ -17,9 +27,10 @@ message Directives {
   string go_rel_out_dir_path = 12;
   string go_import_path = 14;
   bool go_no_default_modifiers = 15;
-  bool grpc = 16;
-  bool grpc_gateway = 17;
-  repeated string exclude_pattern = 18;
+  GoProtocPlugin go_protoc_plugin = 16;
+  bool grpc = 17;
+  bool grpc_gateway = 18;
+  repeated string exclude_pattern = 19;
 }
 
 message Args {

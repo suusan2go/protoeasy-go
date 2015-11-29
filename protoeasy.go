@@ -13,6 +13,11 @@ local development machine.
 See the README.md file for more details.
 */
 package protoeasy // import "go.pedge.io/protoeasy"
+import (
+	"fmt"
+	"strconv"
+	"strings"
+)
 
 var (
 	//DefaultServerCompiler is the default Compiler for a server.
@@ -75,6 +80,7 @@ type GoPluginOptions struct {
 	ImportPath         string
 	GrpcGateway        bool
 	NoDefaultModifiers bool
+	ProtocPlugin       GoProtocPlugin
 }
 
 // NewCppPlugin creates a new C++ Plugin.
@@ -139,4 +145,31 @@ func NewClientCompiler(
 		apiClient,
 		options,
 	)
+}
+
+// GoProtocPluginSimpleValueOf returns the GoProtocPlugin for the simple value.
+func GoProtocPluginSimpleValueOf(s string) (GoProtocPlugin, error) {
+	goProtocPluginObj, ok := GoProtocPlugin_value[fmt.Sprintf("GO_PROTOC_PLUGIN_%s", strings.ToUpper(s))]
+	if !ok {
+		return GoProtocPlugin_GO_PROTOC_PLUGIN_NONE, fmt.Errorf("no protoeasy.GoProtocPlugin for %s", s)
+	}
+	return GoProtocPlugin(goProtocPluginObj), nil
+}
+
+// SimpleString returns the simple value for the GoProtocPlugin.
+func (x GoProtocPlugin) SimpleString() string {
+	s, ok := GoProtocPlugin_name[int32(x)]
+	if !ok {
+		return strconv.Itoa(int(x))
+	}
+	return strings.TrimPrefix(strings.ToLower(s), "go_protoc_plugin_")
+}
+
+// AllGoProtocPluginSimpleStrings returns the simple values for all GoProtocPlugins.
+func AllGoProtocPluginSimpleStrings() []string {
+	simpleStrings := make([]string, len(GoProtocPlugin_name))
+	for i := range GoProtocPlugin_name {
+		simpleStrings[i] = i.(GoProtocPlugin).SimpleString()
+	}
+	return simpleStrings
 }

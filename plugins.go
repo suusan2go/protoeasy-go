@@ -134,10 +134,14 @@ func (p *goPlugin) Flags(protoSpec *ProtoSpec, relDirPath string, outDirPath str
 	if p.options.Grpc {
 		goOutOpts = fmt.Sprintf("%s,plugins=grpc", goOutOpts)
 	}
+	protocPlugin := p.options.ProtocPlugin
+	if protocPlugin == GoProtocPlugin_GO_PROTOC_PLUGIN_NONE {
+		protocPlugin = GoProtocPlugin_GO_PROTOC_PLUGIN_GO
+	}
 	if len(goOutOpts) > 0 {
-		args = append(args, fmt.Sprintf("--go_out=%s:%s", goOutOpts, outDirPath))
+		args = append(args, fmt.Sprintf("--%s_out=%s:%s", protocPlugin.SimpleString(), goOutOpts, outDirPath))
 	} else {
-		args = append(args, fmt.Sprintf("--go_out=%s", outDirPath))
+		args = append(args, fmt.Sprintf("--%s_out=%s", protocPlugin.SimpleString(), outDirPath))
 	}
 	if p.options.GrpcGateway {
 		if len(modifiers) > 0 {
