@@ -53,7 +53,7 @@ example: install
 		--out=_example-out \
 		--cpp --cpp-rel-out=cpp \
 		--csharp --csharp-rel-out=csharp \
-		--objectivec --objectivec-rel-out=objectivec \
+		--objc --objc-rel-out=objc \
 		--python --python-rel-out=python \
 		--ruby --ruby-rel-out=ruby \
 		--go --go-rel-out=go --go-import-path=go.pedge.io/protoeasy/_example-out/go \

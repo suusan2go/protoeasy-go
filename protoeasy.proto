@@ -7,8 +7,8 @@ message Directives {
   string cpp_rel_out_dir_path = 2;
   bool csharp = 3;
   string csharp_rel_out_dir_path = 4;
-  bool objectivec = 5;
-  string objectivec_rel_out_dir_path = 6;
+  bool objc = 5;
+  string objc_rel_out_dir_path = 6;
   bool python = 7;
   string python_rel_out_dir_path = 8;
   bool ruby = 9;

@@ -124,14 +124,14 @@ func getPlugins(directives *Directives) ([]Plugin, error) {
 			),
 		)
 	}
-	if directives.Objectivec {
+	if directives.Objc {
 		plugins = append(
 			plugins,
-			NewObjectiveCPlugin(
-				ObjectiveCPluginOptions{
+			NewObjcPlugin(
+				ObjcPluginOptions{
 					GrpcPluginOptions: GrpcPluginOptions{
 						PluginOptions: PluginOptions{
-							RelOutDirPath: directives.ObjectivecRelOutDirPath,
+							RelOutDirPath: directives.ObjcRelOutDirPath,
 						},
 						Grpc: directives.Grpc,
 					},
@@ -197,7 +197,7 @@ func makeOutDirs(outDirPath string, directives *Directives) error {
 	for _, relDirPath := range []string{
 		directives.CppRelOutDirPath,
 		directives.CsharpRelOutDirPath,
-		directives.ObjectivecRelOutDirPath,
+		directives.ObjcRelOutDirPath,
 		directives.PythonRelOutDirPath,
 		directives.RubyRelOutDirPath,
 		directives.GoRelOutDirPath,

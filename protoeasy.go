@@ -54,8 +54,8 @@ type CsharpPluginOptions struct {
 	GrpcPluginOptions
 }
 
-// ObjectiveCPluginOptions are options for the Objective-C Plugin.
-type ObjectiveCPluginOptions struct {
+// ObjcPluginOptions are options for the Objective-C Plugin.
+type ObjcPluginOptions struct {
 	GrpcPluginOptions
 }
 
@@ -87,8 +87,8 @@ func NewCsharpPlugin(options CsharpPluginOptions) Plugin {
 	return newGrpcPlugin("csharp", "csharp", options.GrpcPluginOptions)
 }
 
-// NewObjectiveCPlugin creates a new Objective-C Plugin.
-func NewObjectiveCPlugin(options ObjectiveCPluginOptions) Plugin {
+// NewObjcPlugin creates a new Objective-C Plugin.
+func NewObjcPlugin(options ObjcPluginOptions) Plugin {
 	return newGrpcPlugin("objc", "objective_c", options.GrpcPluginOptions)
 }
 
