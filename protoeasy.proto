@@ -2,21 +2,6 @@ syntax = "proto3";
 
 package protoeasy;
 
-enum ArchiveType {
-  ARCHIVE_TYPE_NONE = 0;
-  ARCHIVE_TYPE_TAR = 1;
-}
-
-enum PluginType {
-  PLUGIN_TYPE_NONE = 0;
-  PLUGIN_TYPE_CPP = 1;
-  PLUGIN_TYPE_CSHARP = 2;
-  PLUGIN_TYPE_GO = 3;
-  PLUGIN_TYPE_OBJC = 4;
-  PLUGIN_TYPE_PYTHON = 5;
-  PLUGIN_TYPE_RUBY = 6;
-}
-
 enum GoPluginType {
   GO_PLUGIN_TYPE_NONE = 0;
   GO_PLUGIN_TYPE_GO = 1;
@@ -27,77 +12,53 @@ enum GoPluginType {
   GO_PLUGIN_TYPE_GOGOSLICK = 6;
 }
 
-// moving the options to protos made options a pain
-// because now everything is pointers instead of structs
-// so there is a ton of code to handle this
-// rethink this
-
-message PluginOptions {
-  string rel_out_dir_path = 1;
-}
-
-message GrpcPluginOptions {
-  PluginOptions plugin_options = 1;
-  bool grpc = 2;
-}
-
-message CppPluginOptions {
-  GrpcPluginOptions grpc_plugin_options = 1;
-}
-
-message CsharpPluginOptions {
-  GrpcPluginOptions grpc_plugin_options = 1;
-}
-
-message GoPluginOptions {
-  GrpcPluginOptions grpc_plugin_options = 1;
+message CompileOptions {
+  bool grpc = 1;
   bool grpc_gateway = 2;
-  string import_path = 3;
-  bool no_default_modifiers = 4;
-  map<string, string> modifiers = 5;
-  GoPluginType plugin_type = 6;
-}
+  repeated string exclude_pattern = 3;
 
-message ObjcPluginOptions {
-  GrpcPluginOptions grpc_plugin_options = 1;
-}
+  bool cpp = 20;
+  string cpp_rel_out = 21;
 
-message PythonPluginOptions {
-  GrpcPluginOptions grpc_plugin_options = 1;
-}
+  bool csharp = 30;
+  string csharp_rel_out = 31;
 
-message RubyPluginOptions {
-  GrpcPluginOptions grpc_plugin_options = 1;
-}
+  bool go = 40;
+  string go_rel_out = 41;
+  string go_import_path = 42;
+  bool go_no_default_modifiers = 43;
+  map<string, string> go_modifiers = 44;
+  GoPluginType go_plugin_type = 45;
 
-message Directives {
-  repeated PluginType plugin_type = 1;
-  repeated string exclude_pattern = 2;
-  CppPluginOptions cpp_plugin_options = 3;
-  CsharpPluginOptions csharp_plugin_options = 4;
-  GoPluginOptions go_plugin_options = 5;
-  ObjcPluginOptions objc_plugin_options = 6;
-  PythonPluginOptions python_plugin_options = 7;
-  RubyPluginOptions ruby_plugin_options = 8;
+  bool objc = 50;
+  string objc_rel_out = 51;
+
+  bool python = 60;
+  string python_rel_out = 61;
+
+  bool ruby = 70;
+  string ruby_rel_out = 71;
 }
 
 message Command {
   repeated string arg = 1;
 }
 
-message Archive {
-  ArchiveType type = 1;
-  bytes value = 2;
+message CompileInfo {
+  repeated Command command = 1;
+  uint64 input_size_bytes = 2;
+  uint64 output_size_bytes = 3;
+  google.protobuf.Duration duration = 4;
 }
 
 message CompileRequest {
-  Archive archive = 1;
-  Directives directives = 2;
+  bytes tar = 1;
+  CompileOptions compile_options = 2;
 }
 
 message CompileResponse {
-  Archive archive = 1;
-  repeated Command command = 2;
+  bytes tar = 1;
+  CompileInfo compile_info = 2;
 }
 
 service API {
