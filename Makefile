@@ -69,6 +69,8 @@ example: install
 		--go --go-rel-out=go --go-import-path=go.pedge.io/protoeasy/_example-out/go \
 		--grpc \
 		--grpc-gateway \
+		--go-modifier a.proto=a/b/c \
+		--go-modifier b.proto=d/e \
 		example
 	cd _example-out/go && go build ./...
 

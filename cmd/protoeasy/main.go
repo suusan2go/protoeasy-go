@@ -93,7 +93,7 @@ func bindDirectives(flagSet *pflag.FlagSet, directives *protoeasy.Directives) {
 }
 
 func bindOptions(flagSet *pflag.FlagSet, options *options) {
-	flagSet.StringSliceVar(&options.GoModifiers, "--go-modifier", []string{}, "Extra Mfile=package modifiers for --go_out, specify just as file=package to this flag.")
+	flagSet.StringSliceVar(&options.GoModifiers, "go-modifier", []string{}, "Extra Mfile=package modifiers for --go_out, specify just as file=package to this flag.")
 	flagSet.StringVar(&options.GoProtocPlugin, "go-protoc-plugin", "go", fmt.Sprintf("The go protoc plugin to use, allowed values are %s, if not go, --go-no-default-modifiers is implied.", strings.Join(protoeasy.AllGoProtocPluginSimpleStrings(), ",")))
 	flagSet.StringVar(&options.OutDirPath, "out", "", "Customize out directory path.")
 }
