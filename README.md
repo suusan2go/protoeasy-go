@@ -262,8 +262,8 @@ Whenever protoeasy is stopped, or when I want to restart it, I just run `launch-
 
 In this manner, I never actually compile protocol buffers files on my Macbook directly.
 
-Q: Why not just do your builds directly in a Docker container, i.e. `docker run --volume $(pwd):/compile --workdir /compile pedge/proto3grpc protoc --go_out=. foo.proto` https://hub.docker.com/r/pedge/proto3grpc/
-A: This is what I used to do, but if your Docker host is NOT local (i.e. you are not using Docker locally in Linux, or in a local VM), this means that you cannot have a host volume linking. Protoeasy should soon have a deployment option once I get TLS added. Also, protoeasy is a little faster, but it's not really important.
+*Q*: Why not just do your builds directly in a Docker container, i.e. `docker run --volume $(pwd):/compile --workdir /compile pedge/proto3grpc protoc --go_out=. foo.proto` https://hub.docker.com/r/pedge/proto3grpc/  
+*A*: This is what I used to do, but if your Docker host is NOT local (i.e. you are not using Docker locally in Linux, or in a local VM), this means that you cannot have a host volume linking. Protoeasy should soon have a deployment option once I get TLS added. Also, protoeasy is a little faster, but it's not really important.
 
 ### Future
 
