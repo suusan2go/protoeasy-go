@@ -9,6 +9,7 @@ import (
 	"go.pedge.io/env"
 	"go.pedge.io/protoeasy"
 
+	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 )
 
@@ -29,36 +30,40 @@ func do(appEnvObj interface{}) error {
 	directives := &protoeasy.Directives{}
 	options := &options{}
 
-	bindDirectives(pflag.CommandLine, directives)
-	bindOptions(pflag.CommandLine, options)
-	pflag.Parse()
+	rootCmd := &cobra.Command{
+		Use: fmt.Sprintf("%s directory", os.Args[0]),
+		RunE: func(_ *cobra.Command, args []string) error {
+			if len(args) != 1 {
+				return fmt.Errorf("must pass one argument, the directory, but passed %d arguments", len(args))
+			}
+			dirPath := args[0]
+			outDirPath := args[0]
+			if options.OutDirPath != "" {
+				outDirPath = options.OutDirPath
+			}
 
-	args := pflag.CommandLine.Args()
-	if len(args) != 1 {
-		return fmt.Errorf("%s: must pass one argument, the directory, but passed %v", os.Args[0], args)
-	}
-	dirPath := args[0]
-	outDirPath := args[0]
-	if options.OutDirPath != "" {
-		outDirPath = options.OutDirPath
-	}
+			compiler := protoeasy.DefaultServerCompiler
+			if appEnv.Address != "" {
+				clientConn, err := grpc.Dial(appEnv.Address, grpc.WithInsecure())
+				if err != nil {
+					return err
+				}
+				compiler = protoeasy.NewClientCompiler(
+					protoeasy.NewAPIClient(
+						clientConn,
+					),
+					protoeasy.ClientCompilerOptions{},
+				)
+			}
 
-	compiler := protoeasy.DefaultServerCompiler
-	if appEnv.Address != "" {
-		clientConn, err := grpc.Dial(appEnv.Address, grpc.WithInsecure())
-		if err != nil {
+			_, err := compiler.Compile(dirPath, outDirPath, directives)
 			return err
-		}
-		compiler = protoeasy.NewClientCompiler(
-			protoeasy.NewAPIClient(
-				clientConn,
-			),
-			protoeasy.ClientCompilerOptions{},
-		)
+		},
 	}
+	bindDirectives(rootCmd.Flags(), directives)
+	bindOptions(rootCmd.Flags(), options)
 
-	_, err := compiler.Compile(dirPath, outDirPath, directives)
-	return err
+	return rootCmd.Execute()
 }
 
 func bindDirectives(flagSet *pflag.FlagSet, directives *protoeasy.Directives) {
