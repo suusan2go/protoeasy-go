@@ -200,6 +200,15 @@ in a sub-directory `proto` in `github.com/alice/helloworld`, we would have done 
 * We have the modifiers for a bunch of other files, but specifically `Mgoogle/api/annotations.proto=github.com/gengo/grpc-gateway/third_party/googleapis/google/api,Mgoogle/protobuf/empty.proto=go.pedge.io/google-protobuf`. More on this later.
 * The directive `--grpc-gateway_out` created a `bar/bar.pb.gw.go` file for us, for grpc-gateway. You should really check grpc-gateway out :)
 
+#### Automatically Imported Packages
+
+Protoeasy automatically imports the protocol buffers files in:
+
+* https://github.com/google/protobuf/tree/master/src/google/protobuf, done using https://go.pedge.io/google-protobuf. These are the well-known types, and you should really check them out! google/protobuf/descriptor.proto is done from https://github.com/golang/protobuf/tree/master/protoc-gen-go/descriptor to be compatible with Go imports, but is the same file.
+* https://github.com/google/googleapis, done using https://go.pedge.io/googleapis. google/api/annotations.proto and google/api/http.proto are done using https://github.com/gengo/grpc-gateway/tree/master/third_party/googleapis/google/api, see the note at https://github.com/peter-edge/go-googleapis/blob/master/README.md.
+
+Track https://github.com/golang/protobuf/issues/50 for more details.
+
 #### More Examples
 
 See `make proto` and `make example` for two more example usages.
