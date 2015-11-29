@@ -182,7 +182,7 @@ func getPlugins(directives *Directives) ([]Plugin, error) {
 					},
 					ImportPath:         directives.GoImportPath,
 					GrpcGateway:        directives.GrpcGateway,
-					NoDefaultModifiers: directives.NoDefaultModifiers,
+					NoDefaultModifiers: directives.GoNoDefaultModifiers,
 				},
 			),
 		)
