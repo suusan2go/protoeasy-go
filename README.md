@@ -56,7 +56,7 @@ Assuming:
 
 ```
 cd "${GOPATH}/src/github.com/alice/helloworld"
-protoeasy --go --grpc --go_import_path github.com/alice/helloworld .
+protoeasy --go --grpc --go-import-path github.com/alice/helloworld .
 ```
 
 If your protocol buffers are also in a sub-directory ext/proto within github.com/alice/helloworld, and
@@ -64,7 +64,7 @@ all your protocol buffers paths are relative to ext/proto:
 
 ```
 cd "${GOPATH}/src/github.com/alice/helloworld"
-protoeasy --go --grpc --go_import_path github.com/alice/helloworld/ext/proto ext/proto
+protoeasy --go --grpc --go-import-path github.com/alice/helloworld/ext/proto ext/proto
 ```
 
 #### Basics
@@ -201,7 +201,7 @@ Let's compile these with go, grpc, and [grpc-gateway](https://github.com/gengo/g
 without building up the example so that this README does not get too long.
 
 ```
-protoeasy --go --go_import_path=github.com/alice/helloworld .
+protoeasy --go --go-import-path=github.com/alice/helloworld .
 #protoc \
 #  -I/tmp/protoeasy-input035188496 \
 #  -I/go/src/go.pedge.io/protoeasy/vendor/go.pedge.io/google-protobuf \
@@ -226,10 +226,10 @@ Whoa! There's a lot going on there, let's walk through it:
 
 * The `-I` directives are the same as other languages.
 * For gRPC, instead of having `--grpc_out` and `--plugin`, Go does `--go_out=plugins=grpc`
-* We specified that we are in the `github.com/alice/helloworld` package using `--go_import_path` and the modifiers
+* We specified that we are in the `github.com/alice/helloworld` package using `--go-import-path` and the modifiers
 `Mbar/bar.proto=github.com/alice/helloworld/bar,Mfoo.proto=github.com/alice/helloworld` were generated for us. Therefore `bar.pb.go` 
 has the import statement `import foo "github.com/alice/helloworld"`. If, instead, all protocol buffers files were
-in a sub-directory `proto` in `github.com/alice/helloworld`, we would have done `protoeasy --go --grpc --grpc_gateway --go_import_path github.com/alice/helloworld/proto proto` 
+in a sub-directory `proto` in `github.com/alice/helloworld`, we would have done `protoeasy --go --grpc --grpc_gateway --go-import-path github.com/alice/helloworld/proto proto` 
 * We have the modifiers for a bunch of other files, but specifically `Mgoogle/api/annotations.proto=github.com/gengo/grpc-gateway/third_party/googleapis/google/api,Mgoogle/protobuf/empty.proto=go.pedge.io/google-protobuf`. More on this later.
 * The directive `--grpc-gateway_out` created a `bar/bar.pb.gw.go` file for us, for grpc-gateway. You should really check grpc-gateway out :)
 

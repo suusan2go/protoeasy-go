@@ -42,7 +42,7 @@ install:
 
 proto: install
 	go get -v go.pedge.io/pkg/cmd/strip-package-comments
-	protoeasy --go --grpc --go_import_path go.pedge.io/protoeasy --exclude vendor --exclude example .
+	protoeasy --go --grpc --go-import-path go.pedge.io/protoeasy --exclude vendor --exclude example .
 	find . -name *\.pb\*\.go | grep -v vendor | xargs strip-package-comments
 
 example: install
@@ -54,7 +54,7 @@ example: install
 		--objectivec --objectivec_rel_out=objectivec \
 		--python --python_rel_out=python \
 		--ruby --ruby_rel_out=ruby \
-		--go --go_rel_out=go --go_import_path=go.pedge.io/protoeasy/_example-out/go \
+		--go --go_rel_out=go --go-import-path=go.pedge.io/protoeasy/_example-out/go \
 		--grpc \
 		--grpc-gateway \
 		example

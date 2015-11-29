@@ -75,7 +75,7 @@ func bindDirectives(flagSet *pflag.FlagSet, directives *protoeasy.Directives) {
 	flagSet.StringVar(&directives.RubyRelOutDirPath, "ruby_rel_out", "", "Output ruby files.")
 	flagSet.BoolVar(&directives.Go, "go", false, "Output go files.")
 	flagSet.StringVar(&directives.GoRelOutDirPath, "go_rel_out", "", "Output go files.")
-	flagSet.StringVar(&directives.GoImportPath, "go_import_path", "", "Go package.")
+	flagSet.StringVar(&directives.GoImportPath, "go-import-path", "", "Go package.")
 	flagSet.BoolVar(&directives.Grpc, "grpc", false, "Output grpc files.")
 	flagSet.BoolVar(&directives.GrpcGateway, "grpc-gateway", false, "Output grpc-gateway .gw.go files.")
 	flagSet.BoolVar(&directives.NoDefaultModifiers, "no-default-modifiers", false, "Do not set the default Mfile=package modifiers for --go_out.")
