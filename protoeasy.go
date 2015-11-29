@@ -81,6 +81,7 @@ type GoPluginOptions struct {
 	GrpcGateway        bool
 	NoDefaultModifiers bool
 	ProtocPlugin       GoProtocPlugin
+	Modifiers          map[string]string
 }
 
 // NewCppPlugin creates a new C++ Plugin.

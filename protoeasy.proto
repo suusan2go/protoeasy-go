@@ -28,9 +28,10 @@ message Directives {
   string go_import_path = 14;
   bool go_no_default_modifiers = 15;
   GoProtocPlugin go_protoc_plugin = 16;
-  bool grpc = 17;
-  bool grpc_gateway = 18;
-  repeated string exclude_pattern = 19;
+  map<string, string> go_modifier = 17;
+  bool grpc = 18;
+  bool grpc_gateway = 19;
+  repeated string exclude_pattern = 20;
 }
 
 message Args {

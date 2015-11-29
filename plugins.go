@@ -156,6 +156,9 @@ func (p *goPlugin) getModifiers(protoSpec *ProtoSpec) string {
 	} else {
 		modifiers = copyStringStringMap(defaultGoModifierOptions)
 	}
+	for key, value := range p.options.Modifiers {
+		modifiers[key] = value
+	}
 	for relDirPath, files := range protoSpec.RelDirPathToFiles {
 		importPath := relDirPath
 		if p.options.ImportPath != "" {
