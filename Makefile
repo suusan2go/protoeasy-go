@@ -1,5 +1,28 @@
 PKGS := $(shell go list ./... | grep -v 'go.pedge.io/protoeasy/vendor')
 
+EXTRA_PKGS := \
+	github.com/gengo/grpc-gateway/protoc-gen-grpc-gateway/... \
+	github.com/gengo/grpc-gateway/third_party/googleapis/... \
+	github.com/golang/protobuf/proto/... \
+	github.com/golang/protobuf/protoc-gen-go/... \
+	github.com/gogo/protobuf/protoc-gen-gofast/... \
+	github.com/gogo/protobuf/protoc-gen-gogo/... \
+	github.com/gogo/protobuf/protoc-gen-gogofast/... \
+	github.com/gogo/protobuf/protoc-gen-gogofaster/... \
+	github.com/gogo/protobuf/protoc-gen-gogoslick/... \
+	go.pedge.io/google-protobuf/... \
+	go.pedge.io/googleapis/... \
+	google.golang.org/grpc
+
+PLUGINS := \
+	go.pedge.io/protoeasy/vendor/github.com/gengo/grpc-gateway/protoc-gen-grpc-gateway \
+	go.pedge.io/protoeasy/vendor/github.com/golang/protobuf/protoc-gen-go \
+	go.pedge.io/protoeasy/vendor/github.com/gogo/protobuf/protoc-gen-gofast \
+	go.pedge.io/protoeasy/vendor/github.com/gogo/protobuf/protoc-gen-gogo \
+	go.pedge.io/protoeasy/vendor/github.com/gogo/protobuf/protoc-gen-gogofast \
+	go.pedge.io/protoeasy/vendor/github.com/gogo/protobuf/protoc-gen-gogofaster \
+	go.pedge.io/protoeasy/vendor/github.com/gogo/protobuf/protoc-gen-gogoslick
+
 export GO15VENDOREXPERIMENT=1
 
 all: build docker-build docker-launch install installplugins proto example-complete
@@ -16,24 +39,14 @@ testdeps:
 updatetestdeps:
 	GO15VENDOREXPERIMENT=0 go get -d -v -t -u -f $(PKGS)
 
-vendor:
+updateextrapkgs:
+	GO15VENDOREXPERIMENT=0 go get -d -v -t -u -f $(EXTRA_PKGS)
+
+vendor: updatetestdeps updateextrapkgs
 	go get -v github.com/tools/godep
 	rm -rf Godeps
 	rm -rf vendor
-	GOOS=linux GOARCH=AMD64 godep save \
-			 $(PKGS) \
-			 github.com/gengo/grpc-gateway/protoc-gen-grpc-gateway/... \
-			 github.com/gengo/grpc-gateway/third_party/googleapis/... \
-			 github.com/golang/protobuf/proto/... \
-			 github.com/golang/protobuf/protoc-gen-go/... \
-			 github.com/gogo/protobuf/protoc-gen-gofast/... \
-			 github.com/gogo/protobuf/protoc-gen-gogo/... \
-			 github.com/gogo/protobuf/protoc-gen-gogofast/... \
-			 github.com/gogo/protobuf/protoc-gen-gogofaster/... \
-			 github.com/gogo/protobuf/protoc-gen-gogoslick/... \
-			 go.pedge.io/google-protobuf/... \
-			 go.pedge.io/googleapis/... \
-			 google.golang.org/grpc
+	GOOS=linux GOARCH=AMD64 godep save $(PKGS) $(EXTRA_PKGS)
 	rm -rf Godeps
 
 build:
@@ -43,14 +56,7 @@ install:
 	go install $(PKGS)
 
 installplugins:
-	go install \
-		go.pedge.io/protoeasy/vendor/github.com/gengo/grpc-gateway/protoc-gen-grpc-gateway \
-		go.pedge.io/protoeasy/vendor/github.com/golang/protobuf/protoc-gen-go \
-		go.pedge.io/protoeasy/vendor/github.com/gogo/protobuf/protoc-gen-gofast \
-		go.pedge.io/protoeasy/vendor/github.com/gogo/protobuf/protoc-gen-gogo \
-		go.pedge.io/protoeasy/vendor/github.com/gogo/protobuf/protoc-gen-gogofast \
-		go.pedge.io/protoeasy/vendor/github.com/gogo/protobuf/protoc-gen-gogofaster \
-		go.pedge.io/protoeasy/vendor/github.com/gogo/protobuf/protoc-gen-gogoslick
+	go install $(PLUGINS)
 
 proto:
 	go get -v go.pedge.io/pkg/cmd/strip-package-comments
@@ -144,6 +150,7 @@ docker-launch-proto2:
 	updatedeps \
 	testdeps \
 	updatetestdeps \
+	updateextrapkgs \
 	vendor \
 	build \
 	install \
