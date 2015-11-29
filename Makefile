@@ -89,7 +89,7 @@ example-proto2: install
 		--go-protoc-plugin=gogo \
 		--grpc \
 		example/proto2
-	cd _example-out/proto2/go && go build ./...
+	go build ./_example-out/proto2/go/...
 
 lint:
 	go get -v github.com/golang/lint/golint

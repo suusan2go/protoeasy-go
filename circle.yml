@@ -1,7 +1,11 @@
+machine:
+  services:
+    - docker
 dependencies:
   override:
-    - mkdir -p "${GOPATH}/src/go.pedge.io/protoeasy"
-    - rsync -azC --delete ./ "${GOPATH}/src/go.pedge.io/protoeasy/"
+    - docker build -t quay.io/pedge/protoeasy .
+    - docker build -t quay.io/pedge/protoeasy-proto2 -f Dockerfile.proto2 .
 test:
   override:
-    - make -C "${GOPATH}/src/go.pedge.io/protoeasy" test
+    - docker run quay.io/pedge/protoeasy example-complete
+    - docker run quay.io/pedge/protoeasy-proto2 example-proto2
