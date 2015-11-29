@@ -62,7 +62,7 @@ example: install
 
 lint:
 	go get -v github.com/golang/lint/golint
-	for file in $$(find . -name '*.go' | grep -v '\.pb\.go' | grep -v '\.pb\.gw\.go' | grep -v '\.pb\.log\.go'); do \
+	for file in $$(find . -name '*.go' | grep -v '^\./_example-out' | grep -v '^\./vendor' | grep -v '\.pb\.go'); do \
 		golint $$file; \
 		if [ -n "$$(golint $$file)" ]; then \
 			exit 1; \
@@ -76,8 +76,7 @@ errcheck:
 	go get -v github.com/kisielk/errcheck
 	errcheck $(PKGS)
 
-#pretest: lint vet errcheck
-pretest: vet errcheck
+pretest: lint vet errcheck
 
 test: pretest
 	go test $(PKGS)
