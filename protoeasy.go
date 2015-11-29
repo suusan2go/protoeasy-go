@@ -167,9 +167,11 @@ func (x GoProtocPlugin) SimpleString() string {
 
 // AllGoProtocPluginSimpleStrings returns the simple values for all GoProtocPlugins.
 func AllGoProtocPluginSimpleStrings() []string {
-	simpleStrings := make([]string, len(GoProtocPlugin_name))
+	simpleStrings := make([]string, len(GoProtocPlugin_name)-1)
 	for i := range GoProtocPlugin_name {
-		simpleStrings[i] = i.(GoProtocPlugin).SimpleString()
+		if i != 0 {
+			simpleStrings[i-1] = ((GoProtocPlugin)(i)).SimpleString()
+		}
 	}
 	return simpleStrings
 }

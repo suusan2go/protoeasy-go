@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"strings"
 
 	"google.golang.org/grpc"
 
@@ -18,7 +19,8 @@ type appEnv struct {
 }
 
 type options struct {
-	OutDirPath string
+	GoProtocPlugin string
+	OutDirPath     string
 }
 
 func main() {
@@ -35,6 +37,9 @@ func do(appEnvObj interface{}) error {
 		RunE: func(_ *cobra.Command, args []string) error {
 			if len(args) != 1 {
 				return fmt.Errorf("must pass one argument, the directory, but passed %d arguments", len(args))
+			}
+			if err := optionsToDirectives(options, directives); err != nil {
+				return err
 			}
 			dirPath := args[0]
 			outDirPath := args[0]
@@ -87,5 +92,18 @@ func bindDirectives(flagSet *pflag.FlagSet, directives *protoeasy.Directives) {
 }
 
 func bindOptions(flagSet *pflag.FlagSet, options *options) {
+	flagSet.StringVar(&options.GoProtocPlugin, "go-protoc-plugin", "go", fmt.Sprintf("The go protoc plugin to use, allowed values are %s", strings.Join(protoeasy.AllGoProtocPluginSimpleStrings(), ",")))
 	flagSet.StringVar(&options.OutDirPath, "out", "", "Customize out directory path.")
+}
+
+func optionsToDirectives(options *options, directives *protoeasy.Directives) error {
+	if strings.ToLower(options.GoProtocPlugin) == "none" {
+		return fmt.Errorf("invalid value for --go-protoc-plugin: %s", options.GoProtocPlugin)
+	}
+	goProtocPlugin, err := protoeasy.GoProtocPluginSimpleValueOf(options.GoProtocPlugin)
+	if err != nil {
+		return err
+	}
+	directives.GoProtocPlugin = goProtocPlugin
+	return nil
 }
