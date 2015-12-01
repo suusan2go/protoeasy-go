@@ -29,7 +29,7 @@ Eventually, it would be nice to turn this into a full hosted service. If you wou
 
 ### Quick Start
 
-This assumes you are familiar with Go. I would recommend having `GO15VENDOREXPERIMENT` set with `export GO15VENDOREXPERIMENT=1`.
+This assumes you are familiar with Go. I would recommend using Go 1.5.1 and having `GO15VENDOREXPERIMENT` set with `export GO15VENDOREXPERIMENT=1`.
 
 ```
 # install binary
