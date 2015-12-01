@@ -7,6 +7,15 @@
 Protoeasy is intended to make compiling protocol buffers files easier, and to offload the compilation
 to a server for consistency and so that protoc and any associated plugins do not have to be installed locally.
 
+Instead of having to specify individual plugins and files, protoeasy operates on the concept of languages
+and directories. Compilation is recommended to happen in a provided docker container. The primary language
+developed for protoeasy was Go, and all gogo plugins are supported as well, but support also exists for C++,
+C#, Objective-C, Python, and Ruby. gRPC support is built in for all supported languages. Proto3 is used as the
+default compiler, however a proto2 docker container is also available, but support is limited.
+
+Eventually, it would be nice to turn this into a full hosted service. If you would like to help, let me know :)
+
+* [Quick Start](#quick-start)
 * [Motivation](#motivation)
 * [Tutorial](#tutorial)
   * [Installation](#installation)
@@ -17,6 +26,32 @@ to a server for consistency and so that protoc and any associated plugins do not
   * [More Examples](#more-examples)
   * [Client/Server Setup](#clientserver-setup)
 * [Future Work](#future-work)
+
+### Quick Start
+
+This assumes you are familiar with Go. I would recommend having `GO15VENDOREXPERIMENT` set with `export GO15VENDOREXPERIMENT=1`.
+
+```
+# install binary
+go get -v go.pedge.io/protoeasy/cmd/protoeasy
+docker pull quay.io/pedge/protoeasy
+docker run -d -p 6789:6789 quay.io.pedge/protoeasy
+# Assuming you are running the docker daemon locally, DOCKER_ADDRESS is 0.0.0.0.
+# Assuming you are running the docker daemon in a VM, DOCKER_ADDRESS is DOCKER_HOST without the port.
+# Note that if you are running the docker daemon in a VM or remotely, port 6789 needs to be open for you to connect to
+export PROTOEASY_ADDRESS="${DOCKER_ADDRESS}:6789"
+# doing go as an example
+# you do not need to cd in, but this is as an example
+cd github.com/user/your-go-project
+# this assumes your protocol buffers import paths are relative to the root of your go project
+protoeasy --go --grpc --go-import-path github.com/user/your-go-project .
+# compile for c++ and ruby too
+protoeasy --go --grpc --go-import-path github.com/user/your-go-project --cpp --ruby .
+# exclude protocol buffers files in foo/*
+protoeasy --go --grpc --go-import-path github.com/user/your-go-project --exclude foo .
+# this assumes your protocol buffers files are in ext/proto, and import paths are relative to ext/proto
+protoeasy --go --grpc --go-import-path github.com/user/your-go-project/ext/proto ext/proto
+```
 
 ### Motivation
 
@@ -33,6 +68,7 @@ of some package and is updated, and suddenly new, incompatible `.pb.go` files ar
 * You have gRPC working on your mac, but linux is a mess.
 * You use [Mosh](https://mosh.mit.edu/) and proto3, but since Mosh is still on proto2, you're in trouble.
 * You're sick of resolving all relative paths to absolute paths or vice versa for `-I`.
+* You really don't like having to edit a Makefile or script every time you add a protocol buffer file or package.
 * You never can figure out a good scheme for a large amount of protocol buffers files and how to do imports properly.
 * You think this protobuf thing is really cool, but are sick of maintaining large bash scripts or Makefile directives
 to use protoc, and are sick of having to get everything installed on your development machine, and you know there must
@@ -44,29 +80,8 @@ Then protoeasy is for you!
 
 #### Installation
 
-Install `protoeasy` using `make install`, assuming `${GOPATH}/bin` is on your `${PATH}`. This also
-will install `protoc-gen-go` and `protoc-gen-grpc-gateway`.
-
-#### Short Introduction
-
-Assuming:
-
-* You want to compile for Go and gRPC
-* Your Go project is github.com/alice/helloworld
-* Your protocol buffers import paths are relative to the root directory github.com/alice/helloworld
-
-```
-cd "${GOPATH}/src/github.com/alice/helloworld"
-protoeasy --go --grpc --go-import-path github.com/alice/helloworld .
-```
-
-If your protocol buffers are also in a sub-directory ext/proto within github.com/alice/helloworld, and
-all your protocol buffers paths are relative to ext/proto:
-
-```
-cd "${GOPATH}/src/github.com/alice/helloworld"
-protoeasy --go --grpc --go-import-path github.com/alice/helloworld/ext/proto ext/proto
-```
+Install `protoeasy` using `make install`, assuming `${GOPATH}/bin` is on your `${PATH}`. You can also
+do `go get -v go.pedge.io/protoeasy/cmd/protoeasy`.
 
 #### Basics
 
@@ -233,6 +248,12 @@ has the import statement `import foo "github.com/alice/helloworld"`. If, instead
 in a sub-directory `proto` in `github.com/alice/helloworld`, we would have done `protoeasy --go --grpc --grpc_gateway --go-import-path github.com/alice/helloworld/proto proto` 
 * We have the modifiers for a bunch of other files, but specifically `Mgoogle/api/annotations.proto=github.com/gengo/grpc-gateway/third_party/googleapis/google/api,Mgoogle/protobuf/empty.proto=go.pedge.io/google-protobuf`. More on this later.
 * The directive `--grpc-gateway_out` created a `bar/bar.pb.gw.go` file for us, for grpc-gateway. You should really check grpc-gateway out :)
+
+Other Go flags:
+
+* `--go-protoc-plugin=`: specifiy a plugin other than `protoc-gen-go`. This is useful for gogo.
+* `--go-modifier`: specify an additional modifier of the form `Mfile=package`.
+* `--go-no-default-modifiers`: do not use the default modifiers for google/protobuf and googleapis.
 
 #### Automatically Imported Packages
 
