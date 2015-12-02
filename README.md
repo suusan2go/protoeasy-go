@@ -35,7 +35,7 @@ This assumes you are familiar with Go. I would recommend using Go 1.5.1 and havi
 # install binary
 go get -v go.pedge.io/protoeasy/cmd/protoeasy
 docker pull quay.io/pedge/protoeasy
-docker run -d -p 6789:6789 quay.io.pedge/protoeasy
+docker run -d -p 6789:6789 quay.io/pedge/protoeasy
 # Assuming you are running the docker daemon locally, DOCKER_ADDRESS is 0.0.0.0.
 # Assuming you are running the docker daemon in a VM, DOCKER_ADDRESS is DOCKER_HOST without the port.
 # Note that if you are running the docker daemon in a VM or remotely, port 6789 needs to be open for you to connect to
