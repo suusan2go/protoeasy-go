@@ -80,6 +80,7 @@ func do(appEnvObj interface{}) error {
 func bindCompileOptions(flagSet *pflag.FlagSet, compileOptions *protoeasy.CompileOptions) {
 	flagSet.BoolVar(&compileOptions.Grpc, "grpc", false, "Output grpc files.")
 	flagSet.BoolVar(&compileOptions.GrpcGateway, "grpc-gateway", false, "Output grpc-gateway .gw.go files.")
+	flagSet.BoolVar(&compileOptions.NoDefaultIncludes, "no-default-includes", false, "Do not import the default include directories, implies --go-no-default-modifiers.")
 	flagSet.StringSliceVar(&compileOptions.ExcludePattern, "exclude", []string{}, "Exclude file patterns.")
 
 	flagSet.BoolVar(&compileOptions.Cpp, "cpp", false, "Output cpp files.")
@@ -118,6 +119,7 @@ func optionsToCompileOptions(options *options, compileOptions *protoeasy.Compile
 		return err
 	}
 	compileOptions.GoPluginType = goPluginType
+	// TODO(pedge): duplicated logic in goPlugin struct
 	if goPluginType != protoeasy.GoPluginType_GO_PLUGIN_TYPE_GO {
 		compileOptions.GoNoDefaultModifiers = true
 	}
@@ -130,6 +132,11 @@ func optionsToCompileOptions(options *options, compileOptions *protoeasy.Compile
 		modifiers[split[0]] = split[1]
 	}
 	compileOptions.GoModifiers = modifiers
+	// TODO(pedge): this should not be in this function
+	// TODO(pedge): duplicated logic in goPlugin struct
+	if compileOptions.NoDefaultIncludes {
+		compileOptions.GoNoDefaultModifiers = true
+	}
 	return nil
 }
 

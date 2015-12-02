@@ -55,8 +55,10 @@ func (c *serverCompiler) commands(dirPath string, outDirPath string, compileOpti
 	for relDirPath, files := range protoSpec.RelDirPathToFiles {
 		for _, plugin := range plugins {
 			args := []string{"protoc", fmt.Sprintf("-I%s", dirPath)}
-			for _, goPathRelInclude := range defaultGoPathRelIncludes {
-				args = append(args, fmt.Sprintf("-I%s", filepath.Join(goPath, goPathRelInclude)))
+			if !compileOptions.NoDefaultIncludes {
+				for _, goPathRelInclude := range defaultGoPathRelIncludes {
+					args = append(args, fmt.Sprintf("-I%s", filepath.Join(goPath, goPathRelInclude)))
+				}
 			}
 			flags, err := plugin.Flags(protoSpec, relDirPath, outDirPath)
 			if err != nil {

@@ -56,6 +56,9 @@ func (p *goPlugin) Flags(protoSpec *protoSpec, relDirPath string, outDirPath str
 	if goPluginType != GoPluginType_GO_PLUGIN_TYPE_GO {
 		noDefaultModifiers = true
 	}
+	if p.options.NoDefaultIncludes {
+		noDefaultModifiers = true
+	}
 	modifiers := p.getModifiers(protoSpec, noDefaultModifiers)
 	goOutOpts := modifiers
 	if p.options.Grpc {

@@ -17,7 +17,8 @@ enum GoPluginType {
 message CompileOptions {
   bool grpc = 1;
   bool grpc_gateway = 2;
-  repeated string exclude_pattern = 3;
+  bool no_default_includes = 3;
+  repeated string exclude_pattern = 4;
 
   bool cpp = 20;
   string cpp_rel_out = 21;
