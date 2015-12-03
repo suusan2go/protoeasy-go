@@ -121,6 +121,16 @@ var (
 			},
 			"go.pedge.io/googleapis/google/type",
 		),
+	)
+
+	defaultGogoModifierOptions = mergeStringStringMaps(
+		newGoModifierOptions(
+			"google/protobuf",
+			[]string{
+				"descriptor.proto",
+			},
+			"github.com/gogo/protobuf/protoc-gen-gogo/descriptor",
+		),
 		newGoModifierOptions(
 			"gogoproto",
 			[]string{

@@ -102,3 +102,32 @@ func AllGoPluginTypeSimpleStrings() []string {
 	}
 	return simpleStrings
 }
+
+// GogoPluginTypeSimpleValueOf returns the GogoPluginType for the simple value.
+func GogoPluginTypeSimpleValueOf(s string) (GogoPluginType, error) {
+	gogoPluginTypeObj, ok := GogoPluginType_value[fmt.Sprintf("GOGO_PLUGIN_TYPE_%s", strings.ToUpper(s))]
+	if !ok {
+		return GogoPluginType_GOGO_PLUGIN_TYPE_NONE, fmt.Errorf("no protoeasy.GogoPluginType for %s", s)
+	}
+	return GogoPluginType(gogoPluginTypeObj), nil
+}
+
+// SimpleString returns the simple value for the GogoPluginType.
+func (x GogoPluginType) SimpleString() string {
+	s, ok := GogoPluginType_name[int32(x)]
+	if !ok {
+		return strconv.Itoa(int(x))
+	}
+	return strings.TrimPrefix(strings.ToLower(s), "gogo_plugin_type_")
+}
+
+// AllGogoPluginTypeSimpleStrings returns the simple values for all GogoPluginTypes.
+func AllGogoPluginTypeSimpleStrings() []string {
+	simpleStrings := make([]string, len(GogoPluginType_name)-1)
+	for i := range GogoPluginType_name {
+		if i != 0 {
+			simpleStrings[i-1] = ((GogoPluginType)(i)).SimpleString()
+		}
+	}
+	return simpleStrings
+}

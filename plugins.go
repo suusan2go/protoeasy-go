@@ -21,6 +21,40 @@ func newCsharpPlugin(options *CompileOptions) plugin {
 	return newGrpcPlugin("csharp", "csharp", options, options.CsharpRelOut)
 }
 
+func newGoPlugin(options *CompileOptions) plugin {
+	if options == nil {
+		options = &CompileOptions{}
+	}
+	return newBaseGoPlugin(
+		options,
+		options.GoRelOut,
+		options.GoPluginType.SimpleString(),
+		GoPluginType_GO_PLUGIN_TYPE_GO.SimpleString(),
+		defaultGoModifierOptions,
+		options.GoNoDefaultModifiers,
+		options.GoModifiers,
+		options.GoImportPath,
+		true,
+	)
+}
+
+func newGogoPlugin(options *CompileOptions) plugin {
+	if options == nil {
+		options = &CompileOptions{}
+	}
+	return newBaseGoPlugin(
+		options,
+		options.GogoRelOut,
+		options.GogoPluginType.SimpleString(),
+		GogoPluginType_GOGO_PLUGIN_TYPE_GOGOFAST.SimpleString(),
+		defaultGogoModifierOptions,
+		options.GogoNoDefaultModifiers,
+		options.GogoModifiers,
+		options.GogoImportPath,
+		false,
+	)
+}
+
 func newObjcPlugin(options *CompileOptions) plugin {
 	return newGrpcPlugin("objc", "objective_c", options, options.ObjcRelOut)
 }
@@ -33,44 +67,65 @@ func newRubyPlugin(options *CompileOptions) plugin {
 	return newGrpcPlugin("ruby", "ruby", options, options.RubyRelOut)
 }
 
-type goPlugin struct {
-	options *CompileOptions
+type baseGoPlugin struct {
+	options            *CompileOptions
+	relOut             string
+	pluginType         string
+	defaultModifiers   map[string]string
+	noDefaultModifiers bool
+	modifiers          map[string]string
+	importPath         string
+	canDoGrpcGateway   bool
 }
 
-func newGoPlugin(options *CompileOptions) *goPlugin {
+func newBaseGoPlugin(
+	options *CompileOptions,
+	relOut string,
+	pluginType string,
+	defaultPluginType string,
+	defaultModifiers map[string]string,
+	noDefaultModifiers bool,
+	modifiers map[string]string,
+	importPath string,
+	canDoGrpcGateway bool,
+) *baseGoPlugin {
 	if options == nil {
 		options = &CompileOptions{}
 	}
-	return &goPlugin{options}
+	if pluginType == "none" {
+		pluginType = defaultPluginType
+	}
+	if options.NoDefaultIncludes {
+		noDefaultModifiers = true
+	}
+	return &baseGoPlugin{
+		options,
+		relOut,
+		pluginType,
+		defaultModifiers,
+		noDefaultModifiers,
+		modifiers,
+		importPath,
+		canDoGrpcGateway,
+	}
 }
 
-func (p *goPlugin) Flags(protoSpec *protoSpec, relDirPath string, outDirPath string) ([]string, error) {
-	if p.options.GoRelOut != "" {
-		outDirPath = filepath.Join(outDirPath, p.options.GoRelOut)
+func (p *baseGoPlugin) Flags(protoSpec *protoSpec, relDirPath string, outDirPath string) ([]string, error) {
+	if p.relOut != "" {
+		outDirPath = filepath.Join(outDirPath, p.relOut)
 	}
-	goPluginType := p.options.GoPluginType
-	if goPluginType == GoPluginType_GO_PLUGIN_TYPE_NONE {
-		goPluginType = GoPluginType_GO_PLUGIN_TYPE_GO
-	}
-	noDefaultModifiers := p.options.GoNoDefaultModifiers
-	if goPluginType != GoPluginType_GO_PLUGIN_TYPE_GO {
-		noDefaultModifiers = true
-	}
-	if p.options.NoDefaultIncludes {
-		noDefaultModifiers = true
-	}
-	modifiers := p.getModifiers(protoSpec, relDirPath, noDefaultModifiers)
+	modifiers := p.getModifiers(protoSpec, relDirPath)
 	goOutOpts := modifiers
 	if p.options.Grpc {
 		goOutOpts = fmt.Sprintf("%s,plugins=grpc", goOutOpts)
 	}
 	var flags []string
 	if len(goOutOpts) > 0 {
-		flags = append(flags, fmt.Sprintf("--%s_out=%s:%s", goPluginType.SimpleString(), goOutOpts, outDirPath))
+		flags = append(flags, fmt.Sprintf("--%s_out=%s:%s", p.pluginType, goOutOpts, outDirPath))
 	} else {
-		flags = append(flags, fmt.Sprintf("--%s_out=%s", goPluginType.SimpleString(), outDirPath))
+		flags = append(flags, fmt.Sprintf("--%s_out=%s", p.pluginType, outDirPath))
 	}
-	if p.options.GrpcGateway {
+	if p.canDoGrpcGateway && p.options.GrpcGateway {
 		if len(modifiers) > 0 {
 			flags = append(flags, fmt.Sprintf("--grpc-gateway_out=%s:%s", modifiers, outDirPath))
 		} else {
@@ -80,21 +135,21 @@ func (p *goPlugin) Flags(protoSpec *protoSpec, relDirPath string, outDirPath str
 	return flags, nil
 }
 
-func (p *goPlugin) getModifiers(protoSpec *protoSpec, curRelDirPath string, noDefaultModifiers bool) string {
+func (p *baseGoPlugin) getModifiers(protoSpec *protoSpec, curRelDirPath string) string {
 	var modifiers map[string]string
-	if noDefaultModifiers {
+	if p.noDefaultModifiers {
 		modifiers = make(map[string]string)
 	} else {
-		modifiers = copyStringStringMap(defaultGoModifierOptions)
+		modifiers = copyStringStringMap(p.defaultModifiers)
 	}
-	for key, value := range p.options.GoModifiers {
+	for key, value := range p.modifiers {
 		modifiers[key] = value
 	}
 	for relDirPath, files := range protoSpec.RelDirPathToFiles {
 		if relDirPath != curRelDirPath {
 			importPath := relDirPath
-			if p.options.GoImportPath != "" {
-				importPath = filepath.Join(p.options.GoImportPath, relDirPath)
+			if p.importPath != "" {
+				importPath = filepath.Join(p.importPath, relDirPath)
 			}
 			// TODO(pedge)
 			if importPath != "" && importPath != "." {

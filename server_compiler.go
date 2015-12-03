@@ -100,6 +100,9 @@ func getPlugins(compileOptions *CompileOptions) []plugin {
 	if compileOptions.Go {
 		plugins = append(plugins, newGoPlugin(compileOptions))
 	}
+	if compileOptions.Gogo {
+		plugins = append(plugins, newGogoPlugin(compileOptions))
+	}
 	if compileOptions.Objc {
 		plugins = append(plugins, newObjcPlugin(compileOptions))
 	}

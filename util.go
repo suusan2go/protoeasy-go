@@ -39,6 +39,7 @@ func getRelOutDirPaths(compileOptions *CompileOptions) []string {
 		compileOptions.CppRelOut,
 		compileOptions.CsharpRelOut,
 		compileOptions.GoRelOut,
+		compileOptions.GogoRelOut,
 		compileOptions.ObjcRelOut,
 		compileOptions.PythonRelOut,
 		compileOptions.RubyRelOut,

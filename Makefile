@@ -28,7 +28,7 @@ PLUGINS := \
 
 export GO15VENDOREXPERIMENT=1
 
-all: build docker-build docker-launch install installplugins proto example-complete
+all: integration docker-integration
 
 deps:
 	GO15VENDOREXPERIMENT=0 go get -d -v $(PKGS)
@@ -68,7 +68,7 @@ proto:
 	protoeasy --go --grpc --go-import-path go.pedge.io/protoeasy --exclude vendor --exclude example .
 	find . -name *\.pb\*\.go | grep -v vendor | xargs strip-package-comments
 
-example-complete: install
+example-complete:
 	rm -rf _example-out/complete
 	protoeasy \
 		--out=_example-out/complete \
@@ -82,18 +82,22 @@ example-complete: install
 		--grpc-gateway \
 		example/complete
 	go build ./_example-out/complete/go/...
+	go build ./_example-out/complete/gogo/...
 
-example-proto2: install
+example-proto2:
 	rm -rf _example-out/proto2
 	protoeasy \
 		--out=_example-out/proto2 \
 		--cpp --cpp-rel-out=cpp \
 		--python --python-rel-out=python \
 		--go --go-rel-out=go --go-import-path=go.pedge.io/protoeasy/_example-out/proto2/go \
-		--go-protoc-plugin=gogo \
+		--gogo --gogo-rel-out=gogo --gogo-import-path=go.pedge.io/protoeasy/_example-out/proto2/gogo \
 		--grpc \
 		example/proto2
 	go build ./_example-out/proto2/go/...
+	go build ./_example-out/proto2/gogo/...
+
+examples: install installplugins example-complete example-proto2
 
 lint:
 	go get -v github.com/golang/lint/golint
@@ -149,6 +153,11 @@ docker-launch-proto2:
 	docker rm -f protoeasy-proto2 || true
 	docker run -d -p 6789:6789 --name=protoeasy-proto2 quay.io/pedge/protoeasy-proto2
 
+integration: build docker-build docker-launch proto examples
+
+docker-integration: build docker-build
+	docker run quay.io/pedge/protoeasy make proto examples
+
 .PHONY: \
 	all \
 	deps \
@@ -164,6 +173,7 @@ docker-launch-proto2:
 	proto \
 	example-complete \
 	example-proto2 \
+	examples \
 	lint \
 	vet \
 	errcheck \
@@ -178,4 +188,6 @@ docker-launch-proto2:
 	docker-build-proto2 \
 	docker-push-proto2 \
 	docker-pull-proto2 \
-	docker-launch-proto2
+	docker-launch-proto2 \
+	integration \
+	docker-integration

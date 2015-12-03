@@ -6,7 +6,7 @@ dependencies:
     - docker build -t quay.io/pedge/protoeasy .
 test:
   override:
-    - docker run quay.io/pedge/protoeasy make example-complete example-proto2
+    - docker run quay.io/pedge/protoeasy make proto examples
 deployment:
   hub:
     branch: master
