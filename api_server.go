@@ -34,6 +34,11 @@ func (a *apiServer) Compile(ctx context.Context, request *CompileRequest) (respo
 		if filepath.IsAbs(relContext) {
 			return nil, fmt.Errorf("protoeasy: expected relative path, got %s", relContext)
 		}
+		// TODO(pedge)
+		relOutDirPaths := getRelOutDirPaths(request.CompileOptions)
+		if len(relOutDirPaths) != 0 {
+			return nil, fmt.Errorf("protoeasy, context not supported with rel_out options, %v", relOutDirPaths)
+		}
 	}
 	dirPath, err := ioutil.TempDir("", "protoeasy-input")
 	if err != nil {
@@ -54,9 +59,14 @@ func (a *apiServer) Compile(ctx context.Context, request *CompileRequest) (respo
 		}
 	}()
 	fullDirPath := dirPath
+	fullOutDirPath := outDirPath
 	if relContext != "" {
 		fullDirPath = filepath.Join(dirPath, relContext)
 		if err := os.MkdirAll(fullDirPath, 0755); err != nil {
+			return nil, err
+		}
+		fullOutDirPath = filepath.Join(outDirPath, relContext)
+		if err := os.MkdirAll(fullOutDirPath, 0755); err != nil {
 			return nil, err
 		}
 	}
@@ -67,7 +77,9 @@ func (a *apiServer) Compile(ctx context.Context, request *CompileRequest) (respo
 	if err != nil {
 		return nil, err
 	}
-	tar, err := tar(outDirPath, []string{"."})
+	// TODO(pedge): this is what preventing rel_out options with context
+	// we would need to move the output from each rel out outside of context
+	tar, err := tar(fullOutDirPath, []string{"."})
 	if err != nil {
 		return nil, err
 	}

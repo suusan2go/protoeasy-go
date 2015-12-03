@@ -2,7 +2,6 @@ package protoeasy
 
 import (
 	"fmt"
-	"os"
 	"path/filepath"
 
 	"go.pedge.io/pkg/exec"
@@ -30,7 +29,8 @@ func (c *serverCompiler) Compile(dirPath string, outDirPath string, compileOptio
 	if err != nil {
 		return nil, err
 	}
-	if err := makeOutDirs(outDirPath, compileOptions); err != nil {
+	relOutDirPaths := getRelOutDirPaths(compileOptions)
+	if err := mkdir(outDirPath, relOutDirPaths...); err != nil {
 		return nil, err
 	}
 	for _, command := range commands {
@@ -110,25 +110,4 @@ func getPlugins(compileOptions *CompileOptions) []plugin {
 		plugins = append(plugins, newRubyPlugin(compileOptions))
 	}
 	return plugins
-}
-
-func makeOutDirs(outDirPath string, compileOptions *CompileOptions) error {
-	if err := os.MkdirAll(outDirPath, 0755); err != nil {
-		return err
-	}
-	for _, relDirPath := range []string{
-		compileOptions.CppRelOut,
-		compileOptions.CsharpRelOut,
-		compileOptions.GoRelOut,
-		compileOptions.ObjcRelOut,
-		compileOptions.PythonRelOut,
-		compileOptions.RubyRelOut,
-	} {
-		if relDirPath != "" {
-			if err := os.MkdirAll(filepath.Join(outDirPath, relDirPath), 0755); err != nil {
-				return err
-			}
-		}
-	}
-	return nil
 }

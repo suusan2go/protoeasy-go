@@ -21,6 +21,35 @@ type protoSpec struct {
 	RelDirPathToFiles map[string][]string
 }
 
+func mkdir(dirPath string, subDirPaths ...string) error {
+	if err := os.MkdirAll(dirPath, 0755); err != nil {
+		return err
+	}
+	for _, subDirPath := range subDirPaths {
+		if err := os.MkdirAll(filepath.Join(dirPath, subDirPath), 0755); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func getRelOutDirPaths(compileOptions *CompileOptions) []string {
+	var relOutDirPaths []string
+	for _, relOutDirPath := range []string{
+		compileOptions.CppRelOut,
+		compileOptions.CsharpRelOut,
+		compileOptions.GoRelOut,
+		compileOptions.ObjcRelOut,
+		compileOptions.PythonRelOut,
+		compileOptions.RubyRelOut,
+	} {
+		if relOutDirPath != "" {
+			relOutDirPaths = append(relOutDirPaths, relOutDirPath)
+		}
+	}
+	return relOutDirPaths
+}
+
 func getAllRelProtoFilePaths(dirPath string) ([]string, error) {
 	var relProtoFilePaths []string
 	if err := filepath.Walk(
