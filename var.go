@@ -13,6 +13,7 @@ var (
 		"src/go.pedge.io/protoeasy/vendor/github.com/golang/protobuf/protoc-gen-go/descriptor",
 		"src/go.pedge.io/protoeasy/vendor/github.com/gengo/grpc-gateway/third_party/googleapis",
 		"src/go.pedge.io/protoeasy/vendor/go.pedge.io/googleapis",
+		"src/go.pedge.io/protoeasy/vendor/github.com/gogo/protobuf",
 	}
 
 	defaultGoModifierOptions = mergeStringStringMaps(
@@ -119,6 +120,13 @@ var (
 				"timeofday.proto",
 			},
 			"go.pedge.io/googleapis/google/type",
+		),
+		newGoModifierOptions(
+			"gogoproto",
+			[]string{
+				"gogo.proto",
+			},
+			"github.com/gogo/protobuf/gogoproto",
 		),
 	)
 )
