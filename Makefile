@@ -6,6 +6,8 @@ EXTRA_PKGS := \
 	github.com/gengo/grpc-gateway/runtime/... \
 	github.com/golang/protobuf/proto/... \
 	github.com/golang/protobuf/protoc-gen-go/... \
+	github.com/gogo/protobuf/gogoproto/... \
+	github.com/gogo/protobuf/proto/... \
 	github.com/gogo/protobuf/protoc-gen-gofast/... \
 	github.com/gogo/protobuf/protoc-gen-gogo/... \
 	github.com/gogo/protobuf/protoc-gen-gogofast/... \
@@ -43,12 +45,14 @@ updatetestdeps:
 updateextrapkgs:
 	GO15VENDOREXPERIMENT=0 go get -d -v -t -u -f $(EXTRA_PKGS)
 
-vendor: updatetestdeps updateextrapkgs
+vendornoupdate:
 	go get -v github.com/tools/godep
 	rm -rf Godeps
 	rm -rf vendor
 	GOOS=linux GOARCH=AMD64 godep save $(PKGS) $(EXTRA_PKGS)
 	rm -rf Godeps
+
+vendor: updatetestdeps updateextrapkgs vendornoupdate
 
 build:
 	go build $(PKGS)
@@ -152,6 +156,7 @@ docker-launch-proto2:
 	testdeps \
 	updatetestdeps \
 	updateextrapkgs \
+	vendornoupdate \
 	vendor \
 	build \
 	install \
