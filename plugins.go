@@ -59,7 +59,7 @@ func (p *goPlugin) Flags(protoSpec *protoSpec, relDirPath string, outDirPath str
 	if p.options.NoDefaultIncludes {
 		noDefaultModifiers = true
 	}
-	modifiers := p.getModifiers(protoSpec, noDefaultModifiers)
+	modifiers := p.getModifiers(protoSpec, relDirPath, noDefaultModifiers)
 	goOutOpts := modifiers
 	if p.options.Grpc {
 		goOutOpts = fmt.Sprintf("%s,plugins=grpc", goOutOpts)
@@ -80,7 +80,7 @@ func (p *goPlugin) Flags(protoSpec *protoSpec, relDirPath string, outDirPath str
 	return flags, nil
 }
 
-func (p *goPlugin) getModifiers(protoSpec *protoSpec, noDefaultModifiers bool) string {
+func (p *goPlugin) getModifiers(protoSpec *protoSpec, curRelDirPath string, noDefaultModifiers bool) string {
 	var modifiers map[string]string
 	if noDefaultModifiers {
 		modifiers = make(map[string]string)
@@ -91,14 +91,16 @@ func (p *goPlugin) getModifiers(protoSpec *protoSpec, noDefaultModifiers bool) s
 		modifiers[key] = value
 	}
 	for relDirPath, files := range protoSpec.RelDirPathToFiles {
-		importPath := relDirPath
-		if p.options.GoImportPath != "" {
-			importPath = filepath.Join(p.options.GoImportPath, relDirPath)
-		}
-		// TODO(pedge)
-		if importPath != "" && importPath != "." {
-			for _, file := range files {
-				modifiers[filepath.Join(relDirPath, file)] = importPath
+		if relDirPath != curRelDirPath {
+			importPath := relDirPath
+			if p.options.GoImportPath != "" {
+				importPath = filepath.Join(p.options.GoImportPath, relDirPath)
+			}
+			// TODO(pedge)
+			if importPath != "" && importPath != "." {
+				for _, file := range files {
+					modifiers[filepath.Join(relDirPath, file)] = importPath
+				}
 			}
 		}
 	}
