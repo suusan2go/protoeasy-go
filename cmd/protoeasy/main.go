@@ -124,7 +124,7 @@ func run(appEnv *appEnv, options *options, compileOptions *protoeasy.CompileOpti
 		outDirPath = options.OutDirPath
 	}
 
-	compiler := protoeasy.DefaultServerCompiler
+	compiler := protoeasy.DefaultClientCompiler
 	if appEnv.Address != "" {
 		clientConn, err := grpc.Dial(appEnv.Address, grpc.WithInsecure())
 		if err != nil {

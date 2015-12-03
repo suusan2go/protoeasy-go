@@ -1,8 +1,10 @@
 package protoeasy
 
 import (
+	"fmt"
 	"io/ioutil"
 	"os"
+	"path/filepath"
 	"time"
 
 	"go.pedge.io/proto/rpclog"
@@ -26,6 +28,13 @@ func (a *apiServer) Compile(ctx context.Context, request *CompileRequest) (respo
 	if !a.options.NoLogging {
 		defer func() { a.logCompile(request, response, retErr, start) }()
 	}
+	relContext := ""
+	if request.CompileOptions != nil && request.CompileOptions.RelContext != "" {
+		relContext = request.CompileOptions.RelContext
+		if filepath.IsAbs(relContext) {
+			return nil, fmt.Errorf("protoeasy: expected relative path, got %s", relContext)
+		}
+	}
 	dirPath, err := ioutil.TempDir("", "protoeasy-input")
 	if err != nil {
 		return nil, err
@@ -44,7 +53,14 @@ func (a *apiServer) Compile(ctx context.Context, request *CompileRequest) (respo
 			retErr = err
 		}
 	}()
-	if err := untar(request.Tar, dirPath); err != nil {
+	fullDirPath := dirPath
+	if relContext != "" {
+		fullDirPath = filepath.Join(dirPath, relContext)
+		if err := os.MkdirAll(fullDirPath, 0755); err != nil {
+			return nil, err
+		}
+	}
+	if err := untar(request.Tar, fullDirPath); err != nil {
 		return nil, err
 	}
 	commands, err := a.compiler.Compile(dirPath, outDirPath, request.CompileOptions)
