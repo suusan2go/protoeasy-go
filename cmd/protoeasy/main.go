@@ -82,6 +82,7 @@ func bindCompileOptions(flagSet *pflag.FlagSet, compileOptions *protoeasy.Compil
 	flagSet.BoolVar(&compileOptions.GrpcGateway, "grpc-gateway", false, "Output grpc-gateway .gw.go files.")
 	flagSet.BoolVar(&compileOptions.NoDefaultIncludes, "no-default-includes", false, "Do not import the default include directories, implies --go-no-default-modifiers.")
 	flagSet.StringSliceVar(&compileOptions.ExcludePattern, "exclude", []string{}, "Exclude file patterns.")
+	flagSet.StringVar(&compileOptions.RelParent, "parent", "", "The directory we are within, must be relative. This directory will also be on the include path.")
 
 	flagSet.BoolVar(&compileOptions.Cpp, "cpp", false, "Output cpp files.")
 	flagSet.StringVar(&compileOptions.CppRelOut, "cpp-rel-out", "", "The directory, relative to the output directory, to output cpp files.")

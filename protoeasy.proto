@@ -19,6 +19,7 @@ message CompileOptions {
   bool grpc_gateway = 2;
   bool no_default_includes = 3;
   repeated string exclude_pattern = 4;
+  string rel_parent = 5;
 
   bool cpp = 20;
   string cpp_rel_out = 21;
