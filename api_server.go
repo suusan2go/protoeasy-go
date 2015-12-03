@@ -14,25 +14,18 @@ import (
 type apiServer struct {
 	protorpclog.Logger
 	compiler Compiler
+	options  APIServerOptions
 }
 
-func newAPIServer(compiler Compiler) *apiServer {
-	return &apiServer{protorpclog.NewLogger("protoeasy.API"), compiler}
+func newAPIServer(compiler Compiler, options APIServerOptions) *apiServer {
+	return &apiServer{protorpclog.NewLogger("protoeasy.API"), compiler, options}
 }
 
 func (a *apiServer) Compile(ctx context.Context, request *CompileRequest) (response *CompileResponse, retErr error) {
 	start := time.Now()
-	defer func() {
-		var compileOptions *CompileOptions
-		if request != nil {
-			compileOptions = request.CompileOptions
-		}
-		var compileInfo *CompileInfo
-		if response != nil {
-			compileInfo = response.CompileInfo
-		}
-		a.Log(compileOptions, compileInfo, retErr, time.Since(start))
-	}()
+	if !a.options.NoLogging {
+		defer func() { a.logCompile(request, response, retErr, start) }()
+	}
 	dirPath, err := ioutil.TempDir("", "protoeasy-input")
 	if err != nil {
 		return nil, err
@@ -71,4 +64,16 @@ func (a *apiServer) Compile(ctx context.Context, request *CompileRequest) (respo
 			Duration:        prototime.DurationToProto(time.Since(start)),
 		},
 	}, nil
+}
+
+func (a *apiServer) logCompile(request *CompileRequest, response *CompileResponse, err error, start time.Time) {
+	var compileOptions *CompileOptions
+	if request != nil {
+		compileOptions = request.CompileOptions
+	}
+	var compileInfo *CompileInfo
+	if response != nil {
+		compileInfo = response.CompileInfo
+	}
+	a.Log(compileOptions, compileInfo, err, time.Since(start))
 }

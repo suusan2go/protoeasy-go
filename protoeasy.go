@@ -24,7 +24,19 @@ var (
 	//DefaultServerCompiler is the default Compiler for a server.
 	DefaultServerCompiler = NewServerCompiler(CompilerOptions{})
 	// DefaultAPIServer is the default API Server.
-	DefaultAPIServer = NewAPIServer(DefaultServerCompiler)
+	DefaultAPIServer = NewAPIServer(DefaultServerCompiler, APIServerOptions{})
+	// DefaultClientCompiler is the default Compiler for a client.
+	DefaultClientCompiler = NewClientCompiler(
+		NewLocalAPIClient(
+			NewAPIServer(
+				DefaultServerCompiler,
+				APIServerOptions{
+					NoLogging: true,
+				},
+			),
+		),
+		CompilerOptions{},
+	)
 )
 
 // Compiler compiles protocol buffer files.
@@ -42,9 +54,19 @@ func NewServerCompiler(options CompilerOptions) Compiler {
 	return newServerCompiler(options)
 }
 
+// APIServerOptions are options for an APIServer.
+type APIServerOptions struct {
+	NoLogging bool
+}
+
 // NewAPIServer returns a new APIServer for the given Compiler.
-func NewAPIServer(compiler Compiler) APIServer {
-	return newAPIServer(compiler)
+func NewAPIServer(compiler Compiler, options APIServerOptions) APIServer {
+	return newAPIServer(compiler, options)
+}
+
+// NewLocalAPIClient returns a new APIClient that calls the APIServer directly.
+func NewLocalAPIClient(apiServer APIServer) APIClient {
+	return newLocalAPIClient(apiServer)
 }
 
 // NewClientCompiler returns a new client Compiler for the given APIClient.

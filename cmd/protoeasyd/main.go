@@ -23,7 +23,9 @@ func main() {
 
 func do(appEnvObj interface{}) error {
 	appEnv := appEnvObj.(*appEnv)
-	pkglog.SetupLogging("protoeasyd", appEnv.LogEnv)
+	if err := pkglog.SetupLogging("protoeasyd", appEnv.LogEnv); err != nil {
+		return err
+	}
 
 	server := grpc.NewServer(grpc.MaxConcurrentStreams(math.MaxUint32))
 	protoeasy.RegisterAPIServer(server, protoeasy.DefaultAPIServer)

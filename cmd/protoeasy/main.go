@@ -8,6 +8,7 @@ import (
 	"google.golang.org/grpc"
 
 	"go.pedge.io/env"
+	"go.pedge.io/pkg/cobra"
 	"go.pedge.io/protoeasy"
 	"go.pedge.io/protolog"
 
@@ -37,37 +38,13 @@ func do(appEnvObj interface{}) error {
 	rootCmd := &cobra.Command{
 		Use: fmt.Sprintf("%s directory", os.Args[0]),
 		RunE: func(_ *cobra.Command, args []string) error {
-			if len(args) != 1 {
-				return fmt.Errorf("must pass one argument, the directory, but passed %d arguments", len(args))
+			if err := pkgcobra.CheckFixedArgs(1, args); err != nil {
+				return err
 			}
 			if err := optionsToCompileOptions(options, compileOptions); err != nil {
 				return err
 			}
-			dirPath := args[0]
-			outDirPath := args[0]
-			if options.OutDirPath != "" {
-				outDirPath = options.OutDirPath
-			}
-
-			compiler := protoeasy.DefaultServerCompiler
-			if appEnv.Address != "" {
-				clientConn, err := grpc.Dial(appEnv.Address, grpc.WithInsecure())
-				if err != nil {
-					return err
-				}
-				compiler = protoeasy.NewClientCompiler(
-					protoeasy.NewAPIClient(
-						clientConn,
-					),
-					protoeasy.CompilerOptions{},
-				)
-			}
-
-			commands, err := compiler.Compile(dirPath, outDirPath, compileOptions)
-			if err != nil {
-				return err
-			}
-			logCommands(commands)
+			pkgcobra.Check(run(appEnv, options, compileOptions, args[0]))
 			return nil
 		},
 	}
@@ -82,7 +59,7 @@ func bindCompileOptions(flagSet *pflag.FlagSet, compileOptions *protoeasy.Compil
 	flagSet.BoolVar(&compileOptions.GrpcGateway, "grpc-gateway", false, "Output grpc-gateway .gw.go files.")
 	flagSet.BoolVar(&compileOptions.NoDefaultIncludes, "no-default-includes", false, "Do not import the default include directories, implies --go-no-default-modifiers.")
 	flagSet.StringSliceVar(&compileOptions.ExcludePattern, "exclude", []string{}, "Exclude file patterns.")
-	flagSet.StringVar(&compileOptions.RelParent, "parent", "", "The directory we are within, must be relative. This directory will also be on the include path.")
+	flagSet.StringVar(&compileOptions.RelContext, "context", "", "The directory we are within, must be relative. This directory will be the base of the include path.")
 
 	flagSet.BoolVar(&compileOptions.Cpp, "cpp", false, "Output cpp files.")
 	flagSet.StringVar(&compileOptions.CppRelOut, "cpp-rel-out", "", "The directory, relative to the output directory, to output cpp files.")
@@ -141,10 +118,34 @@ func optionsToCompileOptions(options *options, compileOptions *protoeasy.Compile
 	return nil
 }
 
-func logCommands(commands []*protoeasy.Command) {
+func run(appEnv *appEnv, options *options, compileOptions *protoeasy.CompileOptions, dirPath string) error {
+	outDirPath := dirPath
+	if options.OutDirPath != "" {
+		outDirPath = options.OutDirPath
+	}
+
+	compiler := protoeasy.DefaultServerCompiler
+	if appEnv.Address != "" {
+		clientConn, err := grpc.Dial(appEnv.Address, grpc.WithInsecure())
+		if err != nil {
+			return err
+		}
+		compiler = protoeasy.NewClientCompiler(
+			protoeasy.NewAPIClient(
+				clientConn,
+			),
+			protoeasy.CompilerOptions{},
+		)
+	}
+
+	commands, err := compiler.Compile(dirPath, outDirPath, compileOptions)
+	if err != nil {
+		return err
+	}
 	for _, command := range commands {
 		if len(command.Arg) > 0 {
 			protolog.Infof("\n%s\n", strings.Join(command.Arg, " \\\n\t"))
 		}
 	}
+	return nil
 }
