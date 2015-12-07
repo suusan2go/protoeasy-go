@@ -51,6 +51,7 @@ vendornoupdate:
 	rm -rf vendor
 	GOOS=linux GOARCH=AMD64 godep save $(PKGS) $(EXTRA_PKGS)
 	rm -rf Godeps
+	cd vendor/github.com/gengo/grpc-gateway/third_party/googleapis && protoeasy --go .
 
 vendor: updatetestdeps updateextrapkgs vendornoupdate
 
