@@ -116,7 +116,8 @@ errcheck:
 	go get -v github.com/kisielk/errcheck
 	errcheck $(PKGS)
 
-pretest: lint vet errcheck
+#pretest: lint vet errcheck
+pretest: lint vet
 
 test: pretest
 	go test $(PKGS)
