@@ -2,22 +2,22 @@ PKGS := $(shell go list ./... | grep -v 'go.pedge.io/protoeasy/vendor')
 
 EXTRA_PKGS := \
 	github.com/gengo/grpc-gateway/protoc-gen-grpc-gateway/... \
-	github.com/gengo/grpc-gateway/third_party/googleapis/... \
-	github.com/gengo/grpc-gateway/runtime/... \
-	github.com/golang/protobuf/proto/... \
 	github.com/golang/protobuf/protoc-gen-go/... \
-	github.com/gogo/protobuf/gogoproto/... \
-	github.com/gogo/protobuf/proto/... \
 	github.com/gogo/protobuf/protoc-gen-gofast/... \
 	github.com/gogo/protobuf/protoc-gen-gogo/... \
 	github.com/gogo/protobuf/protoc-gen-gogofast/... \
 	github.com/gogo/protobuf/protoc-gen-gogofaster/... \
 	github.com/gogo/protobuf/protoc-gen-gogoslick/... \
+	github.com/gengo/grpc-gateway/third_party/googleapis/... \
+	github.com/gengo/grpc-gateway/runtime/... \
+	github.com/golang/protobuf/proto/... \
+	github.com/gogo/protobuf/gogoproto/... \
+	github.com/gogo/protobuf/proto/... \
 	go.pedge.io/google-protobuf/... \
 	go.pedge.io/googleapis/... \
 	google.golang.org/grpc
 
-PLUGINS := \
+EXTRA_CMDS := \
 	go.pedge.io/protoeasy/vendor/github.com/gengo/grpc-gateway/protoc-gen-grpc-gateway \
 	go.pedge.io/protoeasy/vendor/github.com/golang/protobuf/protoc-gen-go \
 	go.pedge.io/protoeasy/vendor/github.com/gogo/protobuf/protoc-gen-gofast \
@@ -31,19 +31,16 @@ export GO15VENDOREXPERIMENT=1
 all: integration docker-integration
 
 deps:
-	GO15VENDOREXPERIMENT=0 go get -d -v $(PKGS)
+	GO15VENDOREXPERIMENT=0 go get -d -v $(PKGS) $(EXTRA_PKGS)
 
 updatedeps:
-	GO15VENDOREXPERIMENT=0 go get -d -v -u -f $(PKGS)
+	GO15VENDOREXPERIMENT=0 go get -d -v -u -f $(PKGS) $(EXTRA_PKGS)
 
 testdeps:
-	GO15VENDOREXPERIMENT=0 go get -d -v -t $(PKGS)
+	GO15VENDOREXPERIMENT=0 go get -d -v -t $(PKGS) $(EXTRA_PKGS)
 
 updatetestdeps:
-	GO15VENDOREXPERIMENT=0 go get -d -v -t -u -f $(PKGS)
-
-updateextrapkgs:
-	GO15VENDOREXPERIMENT=0 go get -d -v -t -u -f $(EXTRA_PKGS)
+	GO15VENDOREXPERIMENT=0 go get -d -v -t -u -f $(PKGS) $(EXTRA_PKGS)
 
 vendornoupdate:
 	go get -v github.com/tools/godep
@@ -53,16 +50,13 @@ vendornoupdate:
 	rm -rf Godeps
 	cd vendor/github.com/gengo/grpc-gateway/third_party/googleapis && protoeasy --go .
 
-vendor: updatetestdeps updateextrapkgs vendornoupdate
+vendor: updatetestdeps vendornoupdate
 
 build:
 	go build $(PKGS)
 
 install:
-	go install $(PKGS)
-
-installplugins:
-	go install $(PLUGINS)
+	go install $(PKGS) $(EXTRA_CMDS)
 
 proto:
 	go get -v go.pedge.io/pkg/cmd/strip-package-comments
@@ -98,7 +92,7 @@ example-proto2:
 	go build ./_example-out/proto2/go/...
 	go build ./_example-out/proto2/gogo/...
 
-examples: install installplugins example-complete example-proto2
+examples: install example-complete example-proto2
 
 lint:
 	go get -v github.com/golang/lint/golint
@@ -123,7 +117,7 @@ test: pretest
 	go test $(PKGS)
 
 clean:
-	go clean $(PKGS)
+	go clean -i $(PKGS)
 	rm -rf _example-out
 
 docker-build:
@@ -166,12 +160,10 @@ docker-integration: build docker-build
 	updatedeps \
 	testdeps \
 	updatetestdeps \
-	updateextrapkgs \
 	vendornoupdate \
 	vendor \
 	build \
 	install \
-	installplugins \
 	proto \
 	example-complete \
 	example-proto2 \

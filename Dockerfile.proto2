@@ -38,5 +38,5 @@ ENV PROTOEASY_PORT 6789
 RUN mkdir -p /go/src/go.pedge.io/protoeasy
 ADD . /go/src/go.pedge.io/protoeasy/
 WORKDIR /go/src/go.pedge.io/protoeasy
-RUN make install installplugins
+RUN make install
 CMD ["protoeasyd"]
