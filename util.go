@@ -13,6 +13,10 @@ import (
 	"github.com/docker/docker/pkg/archive"
 )
 
+const (
+	tarCompression = archive.Gzip
+)
+
 // protoSpec specifies the absolute directory path being used as a base
 // for the current compilation, as well as the relative (to DirPath)
 // directory path to all protocol buffer files in each directory within DirPath.
@@ -126,7 +130,7 @@ func tar(dirPath string, includeFiles []string) (retVal []byte, retErr error) {
 		dirPath,
 		&archive.TarOptions{
 			IncludeFiles: includeFiles,
-			Compression:  archive.Uncompressed,
+			Compression:  tarCompression,
 			NoLchown:     true,
 		},
 	)
@@ -146,7 +150,8 @@ func untar(value []byte, dirPath string) error {
 		bytes.NewReader(value),
 		dirPath,
 		&archive.TarOptions{
-			NoLchown: true,
+			Compression: tarCompression,
+			NoLchown:    true,
 		},
 	)
 }
