@@ -4,7 +4,7 @@
 [![GoDoc](http://img.shields.io/badge/GoDoc-Reference-blue.svg)](https://godoc.org/go.pedge.io/protoeasy)
 [![MIT License](http://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/peter-edge/go-protoeasy/blob/master/LICENSE)
 
-Protoeasy is intended to make compiling protocol buffers files easier, and to offload the compilation
+Protoeasy is intended to make compiling protocol buffers files easier, and to optionally offload the compilation
 to a server for consistency and so that protoc and any associated plugins do not have to be installed locally.
 
 Instead of having to specify individual plugins and files, protoeasy operates on the concept of languages
@@ -30,6 +30,8 @@ Eventually, it would be nice to turn this into a full hosted service. If you wou
 ### Quick Start
 
 This assumes you are familiar with Go. I would recommend using Go 1.5.1 and having `GO15VENDOREXPERIMENT` set with `export GO15VENDOREXPERIMENT=1`.
+
+Note that client/server mode is optional - you can use protoeasy locally if you have protoc and all relevant plugins installed.
 
 ```
 # install binary
