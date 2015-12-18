@@ -53,6 +53,11 @@ message CompileOptions {
 
   bool ruby = 80;
   string ruby_rel_out = 81;
+
+  bool descriptor_set = 90;
+  string descriptor_set_rel_out = 91;
+  string descriptor_set_file_name = 92;
+  bool descriptor_set_include_imports = 93;
 }
 
 message Command {

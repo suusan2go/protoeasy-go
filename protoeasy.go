@@ -37,6 +37,8 @@ var (
 		),
 		CompilerOptions{},
 	)
+	// DefaultDescriptorSetFileName is the default descriptor set file name.
+	DefaultDescriptorSetFileName = "descriptor-set.pb"
 )
 
 // Compiler compiles protocol buffer files.

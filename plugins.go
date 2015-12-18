@@ -174,6 +174,32 @@ func (p *baseGoPlugin) getModifiers(protoSpec *protoSpec, curRelDirPath string) 
 	return strings.Join(modifierStrings, ",")
 }
 
+type descriptorSetPlugin struct {
+	options *CompileOptions
+}
+
+func newDescriptorSetPlugin(options *CompileOptions) *descriptorSetPlugin {
+	if options == nil {
+		options = &CompileOptions{}
+	}
+	return &descriptorSetPlugin{options}
+}
+
+func (p *descriptorSetPlugin) Flags(protoSpec *protoSpec, relDirPath string, outDirPath string) ([]string, error) {
+	if p.options.DescriptorSetRelOut != "" {
+		outDirPath = filepath.Join(outDirPath, p.options.DescriptorSetRelOut)
+	}
+	fileName := p.options.DescriptorSetFileName
+	if fileName == "" {
+		fileName = DefaultDescriptorSetFileName
+	}
+	args := []string{fmt.Sprintf("--descriptor_set_out=%s", filepath.Join(outDirPath, fileName))}
+	if p.options.DescriptorSetIncludeImports {
+		args = append(args, "--include_imports")
+	}
+	return args, nil
+}
+
 type basePlugin struct {
 	name          string
 	options       *CompileOptions

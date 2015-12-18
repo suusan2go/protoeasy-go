@@ -112,5 +112,8 @@ func getPlugins(compileOptions *CompileOptions) []plugin {
 	if compileOptions.Ruby {
 		plugins = append(plugins, newRubyPlugin(compileOptions))
 	}
+	if compileOptions.DescriptorSet {
+		plugins = append(plugins, newDescriptorSetPlugin(compileOptions))
+	}
 	return plugins
 }

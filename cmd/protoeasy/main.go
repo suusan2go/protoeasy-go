@@ -202,6 +202,31 @@ func bindCompileOptions(flagSet *pflag.FlagSet, compileOptions *protoeasy.Compil
 		"",
 		"The directory, relative to the output directory, to output ruby files.",
 	)
+
+	flagSet.BoolVar(
+		&compileOptions.DescriptorSet,
+		"descriptor-set",
+		false,
+		"Output descriptor set files.",
+	)
+	flagSet.StringVar(
+		&compileOptions.DescriptorSetRelOut,
+		"descriptor-set-rel-out",
+		"",
+		"The directory, relative to the output directory, to output descriptor set files.",
+	)
+	flagSet.StringVar(
+		&compileOptions.DescriptorSetFileName,
+		"descriptor-set-file-name",
+		protoeasy.DefaultDescriptorSetFileName,
+		"The file name of the outputted descriptor set.",
+	)
+	flagSet.BoolVar(
+		&compileOptions.DescriptorSetIncludeImports,
+		"descriptor-set-include-imports",
+		false,
+		"Pass --include_imports to protoc.",
+	)
 }
 
 func bindOptions(flagSet *pflag.FlagSet, options *options) {
