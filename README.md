@@ -291,7 +291,7 @@ How this works:
 * The client (`protoeasy`) tarballs all `.proto` files in the specified directory and uploads this tarball to the server,
 along with the directives given from the flags.
 * The server creates two temporary directories, one for the uploaded tarball, and one to output generated files.
-* The server ntars the uploaded tarball, runs the `protoeasy` logic, and outputs the generated files.
+* The server untars the uploaded tarball, runs the `protoeasy` logic, and outputs the generated files.
 * The server tarballs the generated files, and sends them back to the client.
 * The client untars the generated files in the specified directory.
 
