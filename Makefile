@@ -43,7 +43,9 @@ updatetestdeps:
 	GO15VENDOREXPERIMENT=0 go get -d -v -t -u -f $(PKGS) $(EXTRA_PKGS)
 
 vendornoupdate:
-	go get -v github.com/tools/godep
+	rm -f /tmp/godep
+	curl -sS -L https://github.com/tools/godep/releases/download/v32/godep_$(shell uname -s)_amd64 > /tmp/godep
+	chmod +x /tmp/godep
 	rm -rf Godeps
 	rm -rf vendor
 	GOOS=linux GOARCH=AMD64 godep save $(PKGS) $(EXTRA_PKGS)
