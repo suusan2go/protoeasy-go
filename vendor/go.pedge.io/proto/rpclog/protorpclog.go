@@ -1,4 +1,4 @@
-package protorpclog
+package protorpclog //import "go.pedge.io/proto/rpclog"
 import (
 	"runtime"
 	"strings"

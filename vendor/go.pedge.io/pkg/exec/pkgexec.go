@@ -1,4 +1,4 @@
-package pkgexec
+package pkgexec //import "go.pedge.io/pkg/exec"
 
 import (
 	"bytes"

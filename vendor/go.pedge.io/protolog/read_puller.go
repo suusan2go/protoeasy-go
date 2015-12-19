@@ -13,15 +13,15 @@ func newReadPuller(reader io.Reader, options ReadPullerOptions) *readPuller {
 		options.Unmarshaller,
 	}
 	if readPuller.unmarshaller == nil {
-		readPuller.unmarshaller = defaultUnmarshaller
+		readPuller.unmarshaller = DefaultUnmarshaller
 	}
 	return readPuller
 }
 
-func (r *readPuller) Pull() (*Entry, error) {
-	entry := &Entry{}
-	if err := r.unmarshaller.Unmarshal(r.reader, entry); err != nil {
+func (r *readPuller) Pull() (*GoEntry, error) {
+	goEntry := &GoEntry{}
+	if err := r.unmarshaller.Unmarshal(r.reader, goEntry); err != nil {
 		return nil, err
 	}
-	return entry, nil
+	return goEntry, nil
 }

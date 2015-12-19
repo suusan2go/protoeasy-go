@@ -8,14 +8,16 @@ EXTRA_PKGS := \
 	github.com/gogo/protobuf/protoc-gen-gogofast/... \
 	github.com/gogo/protobuf/protoc-gen-gogofaster/... \
 	github.com/gogo/protobuf/protoc-gen-gogoslick/... \
-	github.com/gengo/grpc-gateway/third_party/googleapis/... \
 	github.com/gengo/grpc-gateway/runtime/... \
-	github.com/golang/protobuf/proto/... \
-	github.com/gogo/protobuf/gogoproto/... \
-	github.com/gogo/protobuf/proto/... \
-	go.pedge.io/google-protobuf/... \
-	go.pedge.io/googleapis/... \
-	google.golang.org/grpc
+	go.pedge.io/googleapis/google/datastore/v1beta3/... \
+	go.pedge.io/googleapis/google/devtools/cloudtrace/v1/... \
+	go.pedge.io/googleapis/google/example/library/v1/... \
+	go.pedge.io/googleapis/google/iam/v1/... \
+	go.pedge.io/googleapis/google/longrunning/... \
+	go.pedge.io/googleapis/google/pubsub/v1/... \
+	go.pedge.io/googleapis/google/pubsub/v1beta2/... \
+	go.pedge.io/googleapis/google/rpc/... \
+	go.pedge.io/googleapis/google/type/...
 
 EXTRA_CMDS := \
 	go.pedge.io/protoeasy/vendor/github.com/gengo/grpc-gateway/protoc-gen-grpc-gateway \
@@ -42,17 +44,19 @@ testdeps:
 updatetestdeps:
 	GO15VENDOREXPERIMENT=0 go get -d -v -t -u -f $(PKGS) $(EXTRA_PKGS)
 
+vendorupdate:
+	GO15VENDOREXPERIMENT=0 GOOS=linux GOARCH=amd64 go get -d -v -t -u -f $(PKGS) $(EXTRA_PKGS)
+
 vendornoupdate:
-	rm -f /tmp/godep
-	curl -sS -L https://github.com/tools/godep/releases/download/v32/godep_$(shell uname -s)_amd64 > /tmp/godep
-	chmod +x /tmp/godep
-	rm -rf Godeps
+	go get -v github.com/kardianos/govendor
 	rm -rf vendor
-	GOOS=linux GOARCH=AMD64 godep save $(PKGS) $(EXTRA_PKGS)
-	rm -rf Godeps
+	govendor init
+	GOOS=linux GOARCH=amd64 govendor add $(EXTRA_PKGS)
+	GOOS=linux GOARCH=amd64 govendor add +external
+	GOOS=linux GOARCH=amd64 govendor update +vendor
 	cd vendor/github.com/gengo/grpc-gateway/third_party/googleapis && protoeasy --go .
 
-vendor: updatetestdeps vendornoupdate
+vendor: vendorupdate vendornoupdate
 
 build:
 	go build $(PKGS)
@@ -162,6 +166,7 @@ docker-integration: build docker-build
 	updatedeps \
 	testdeps \
 	updatetestdeps \
+	vendorupdate \
 	vendornoupdate \
 	vendor \
 	build \

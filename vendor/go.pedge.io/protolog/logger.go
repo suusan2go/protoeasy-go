@@ -3,44 +3,46 @@ package protolog
 import (
 	"fmt"
 	"io"
-	"io/ioutil"
 	"os"
 
 	"github.com/golang/protobuf/proto"
-
-	"go.pedge.io/proto/time"
 )
 
 type logger struct {
 	pusher        Pusher
+	enableID      bool
 	idAllocator   IDAllocator
 	timer         Timer
 	errorHandler  ErrorHandler
 	level         Level
-	contexts      []*Entry_Message
+	contexts      []proto.Message
 	genericFields *Fields
 }
 
 func newLogger(pusher Pusher, options LoggerOptions) *logger {
 	logger := &logger{
 		pusher,
+		options.EnableID,
 		options.IDAllocator,
 		options.Timer,
 		options.ErrorHandler,
-		Level_LEVEL_NONE,
-		make([]*Entry_Message, 0),
+		options.Level,
+		make([]proto.Message, 0),
 		&Fields{
 			Value: make(map[string]string, 0),
 		},
 	}
 	if logger.idAllocator == nil {
-		logger.idAllocator = defaultIDAllocator
+		logger.idAllocator = DefaultIDAllocator
 	}
 	if logger.timer == nil {
-		logger.timer = defaultTimer
+		logger.timer = DefaultTimer
 	}
 	if logger.errorHandler == nil {
-		logger.errorHandler = defaultErrorHandler
+		logger.errorHandler = DefaultErrorHandler
+	}
+	if logger.level == Level_LEVEL_NONE {
+		logger.level = DefaultLevel
 	}
 	return logger
 }
@@ -52,6 +54,7 @@ func (l *logger) Flush() error {
 func (l *logger) AtLevel(level Level) Logger {
 	return &logger{
 		l.pusher,
+		l.enableID,
 		l.idAllocator,
 		l.timer,
 		l.errorHandler,
@@ -62,18 +65,14 @@ func (l *logger) AtLevel(level Level) Logger {
 }
 
 func (l *logger) WithContext(context proto.Message) Logger {
-	entryContext, err := messageToEntryMessage(context)
-	if err != nil {
-		l.errorHandler.Handle(err)
-		return l
-	}
 	return &logger{
 		l.pusher,
+		l.enableID,
 		l.idAllocator,
 		l.timer,
 		l.errorHandler,
 		l.level,
-		append(l.contexts, entryContext),
+		append(l.contexts, context),
 		l.genericFields,
 	}
 }
@@ -105,7 +104,7 @@ func (l *logger) Panic(event proto.Message) {
 }
 
 func (l *logger) Print(event proto.Message) {
-	l.print(Level_LEVEL_INFO, event)
+	l.print(Level_LEVEL_NONE, event)
 }
 
 func (l *logger) DebugWriter() io.Writer {
@@ -125,7 +124,7 @@ func (l *logger) ErrorWriter() io.Writer {
 }
 
 func (l *logger) Writer() io.Writer {
-	return l.printWriter(Level_LEVEL_INFO)
+	return l.printWriter(Level_LEVEL_NONE)
 }
 
 func (l *logger) WithField(key string, value interface{}) Logger {
@@ -142,6 +141,7 @@ func (l *logger) WithFields(fields map[string]interface{}) Logger {
 	}
 	return &logger{
 		l.pusher,
+		l.enableID,
 		l.idAllocator,
 		l.timer,
 		l.errorHandler,
@@ -216,9 +216,10 @@ func (l *logger) print(level Level, event proto.Message) {
 }
 
 func (l *logger) printWriter(level Level) io.Writer {
-	if !l.isLoggedLevel(level) {
-		return ioutil.Discard
-	}
+	// TODO(pedge): think more about this
+	//if !l.isLoggedLevel(level) {
+	//return ioutil.Discard
+	//}
 	return newLogWriter(l, level)
 }
 
@@ -226,31 +227,25 @@ func (l *logger) printWithError(level Level, event proto.Message) error {
 	if !l.isLoggedLevel(level) {
 		return nil
 	}
-	entryEvent, err := messageToEntryMessage(event)
-	if err != nil {
-		return err
-	}
-	entryContexts := l.contexts
+	// TODO(pedge): should copy this but has performance hit
+	contexts := l.contexts
 	if len(l.genericFields.Value) > 0 {
-		entryGenericContext, err := messageToEntryMessage(l.genericFields)
-		if err != nil {
-			return err
-		}
-		entryContexts = append(entryContexts, entryGenericContext)
+		contexts = append(contexts, l.genericFields)
 	}
-	return l.pusher.Push(
-		&Entry{
-			Id:        l.idAllocator.Allocate(),
-			Level:     level,
-			Timestamp: prototime.TimeToTimestamp(l.timer.Now()),
-			Context:   entryContexts,
-			Event:     entryEvent,
-		},
-	)
+	goEntry := &GoEntry{
+		Level:    level,
+		Time:     l.timer.Now(),
+		Contexts: contexts,
+		Event:    event,
+	}
+	if l.enableID {
+		goEntry.ID = l.idAllocator.Allocate()
+	}
+	return l.pusher.Push(goEntry)
 }
 
 func (l *logger) isLoggedLevel(level Level) bool {
-	return level >= l.level
+	return level >= l.level || level == Level_LEVEL_NONE
 }
 
 type logWriter struct {

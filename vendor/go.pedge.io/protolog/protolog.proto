@@ -24,6 +24,7 @@ message WriterOutput {
 
 // Level is a logging level.
 enum Level {
+  // is valid
   LEVEL_NONE = 0;
   LEVEL_DEBUG = 1;
   LEVEL_INFO = 2;
@@ -41,6 +42,8 @@ message Entry {
     string name = 1;
     bytes value = 2;
   }
+  // id may not be set depending on logger options
+  // it is up to the user to determine if id is required
   string id = 1;  
   Level level = 2;
   google.protobuf.Timestamp timestamp = 3;

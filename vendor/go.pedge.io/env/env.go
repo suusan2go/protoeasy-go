@@ -3,7 +3,7 @@ Package env handles environment variables in a structured manner.
 
 See the README at https://github.com/peter-edge/go-env/blob/master/README.md for more details.
 */
-package env
+package env // import "go.pedge.io/env"
 
 import (
 	"fmt"

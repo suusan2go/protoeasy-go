@@ -1,7 +1,7 @@
 /*
 Package protolog defines the main protolog functionality.
 */
-package protolog
+package protolog // import "go.pedge.io/protolog"
 
 import (
 	"io"
@@ -11,17 +11,50 @@ import (
 	"sync"
 	"time"
 
+	"go.pedge.io/proto/time"
+
 	"github.com/golang/protobuf/proto"
 )
 
 var (
-	// DiscardLogger is a Logger that discards all logs.
-	DiscardLogger = NewStandardLogger(NewStandardWritePusher(NewWriterFlusher(ioutil.Discard)))
+	// DefaultLevel is the default Level.
+	DefaultLevel = Level_LEVEL_INFO
+	// DefaultIDAllocator is the default IDAllocator.
+	DefaultIDAllocator = &idAllocator{instanceID, 0}
+	// DefaultTimer is the default Timer.
+	DefaultTimer = &timer{}
+	// DefaultErrorHandler is the default ErrorHandler.
+	DefaultErrorHandler = &errorHandler{}
+	// DefaultMarshaller is the default Marshaller.
+	DefaultMarshaller = &marshaller{}
+	// DefaultUnmarshaller is the default Unmarshaller.
+	DefaultUnmarshaller = &unmarshaller{}
+	// DefaultTextMarshaller is the default text Marshaller.
+	DefaultTextMarshaller = NewTextMarshaller(MarshallerOptions{})
 
-	globalLogger            = NewStandardLogger(NewStandardWritePusher(NewFileFlusher(os.Stderr)))
+	// NOTE: the jsoonpb.Marshaler was EPICALLY SLOW in benchmarks
+	// When using the stdlib json.Marshal function instead for the text Marshaller,
+	// a speedup of 6X was observed!
+	//DefaultJSONMarshaller = &jsonpb.Marshaler{}
+
+	// DefaultJSONMarshaller is the default JSONMarshaller.
+	DefaultJSONMarshaller = &stdlibJSONMarshaller{}
+
+	// DiscardLogger is a Logger that discards all logs.
+	DiscardLogger = NewLogger(NewDefaultTextWritePusher(NewWriterFlusher(ioutil.Discard)), LoggerOptions{})
+	// StdlibJSONMarshaller is a JSONMarshaller that uses the stdlib's json.Marshal function.
+	StdlibJSONMarshaller = &stdlibJSONMarshaller{}
+
+	defaultMarshallerOptions = MarshallerOptions{}
+
+	globalLogger            = NewLogger(NewDefaultTextWritePusher(NewFileFlusher(os.Stderr)), LoggerOptions{})
+	globalHooks             = make([]GlobalHook, 0)
 	globalRedirectStdLogger = false
 	globalLock              = &sync.Mutex{}
 )
+
+// GlobalHook is a function that handles a change in the global Logger instance.
+type GlobalHook func(Logger)
 
 // GlobalLogger returns the global Logger instance.
 func GlobalLogger() Logger {
@@ -33,7 +66,9 @@ func SetLogger(logger Logger) {
 	globalLock.Lock()
 	defer globalLock.Unlock()
 	globalLogger = logger
-	redirectStdLogger()
+	for _, globalHook := range globalHooks {
+		globalHook(globalLogger)
+	}
 }
 
 // SetLevel sets the global Logger to to be at the given Level.
@@ -41,23 +76,29 @@ func SetLevel(level Level) {
 	globalLock.Lock()
 	defer globalLock.Unlock()
 	globalLogger = globalLogger.AtLevel(level)
-	redirectStdLogger()
+	for _, globalHook := range globalHooks {
+		globalHook(globalLogger)
+	}
+}
+
+// AddGlobalHook adds a GlobalHook that will be called any time SetLogger or SetLevel is called.
+// It will also be called when added.
+func AddGlobalHook(globalHook GlobalHook) {
+	globalLock.Lock()
+	defer globalLock.Unlock()
+	globalHooks = append(globalHooks, globalHook)
+	globalHook(globalLogger)
 }
 
 // RedirectStdLogger will redirect logs to golang's standard logger to the global Logger instance.
 func RedirectStdLogger() {
-	globalLock.Lock()
-	defer globalLock.Unlock()
-	globalRedirectStdLogger = true
-	redirectStdLogger()
-}
-
-func redirectStdLogger() {
-	if globalRedirectStdLogger {
-		log.SetFlags(0)
-		log.SetOutput(globalLogger.Writer())
-		log.SetPrefix("")
-	}
+	AddGlobalHook(
+		func(logger Logger) {
+			log.SetFlags(0)
+			log.SetOutput(logger.Writer())
+			log.SetPrefix("")
+		},
+	)
 }
 
 // Flusher is an object that can be flushed to a persistent store.
@@ -111,10 +152,57 @@ type Logger interface {
 	Println(args ...interface{})
 }
 
+// GoEntry is the go equivalent of an Entry.
+type GoEntry struct {
+	// ID may not be set depending on LoggerOptions.
+	// it is up to the user to determine if ID is required.
+	ID       string          `json:"id,omitempty"`
+	Level    Level           `json:"level,omitempty"`
+	Time     time.Time       `json:"time,omitempty"`
+	Contexts []proto.Message `json:"contexts,omitempty"`
+	Event    proto.Message   `json:"event,omitempty"`
+}
+
+// ToEntry converts the GoEntry to an Entry.
+func (g *GoEntry) ToEntry() (*Entry, error) {
+	contexts, err := messagesToEntryMessages(g.Contexts)
+	if err != nil {
+		return nil, err
+	}
+	event, err := messageToEntryMessage(g.Event)
+	if err != nil {
+		return nil, err
+	}
+	return &Entry{
+		Id:        g.ID,
+		Level:     g.Level,
+		Timestamp: prototime.TimeToTimestamp(g.Time),
+		Context:   contexts,
+		Event:     event,
+	}, nil
+}
+
+// String defaults a string representation of the GoEntry.
+func (g *GoEntry) String() string {
+	return g.FullString(defaultMarshallerOptions)
+}
+
+// FullString returns a string representation of the GoEntry using the given MarshallerOptions.
+func (g *GoEntry) FullString(options MarshallerOptions) string {
+	if g == nil {
+		return ""
+	}
+	data, err := textMarshalGoEntry(g, options)
+	if err != nil {
+		return ""
+	}
+	return string(data)
+}
+
 // Pusher is the interface used to push Entry objects to a persistent store.
 type Pusher interface {
 	Flusher
-	Push(entry *Entry) error
+	Push(goEntry *GoEntry) error
 }
 
 // IDAllocator allocates unique IDs for Entry objects. The default
@@ -138,9 +226,11 @@ type ErrorHandler interface {
 
 // LoggerOptions defines options for the Logger constructor.
 type LoggerOptions struct {
+	EnableID     bool
 	IDAllocator  IDAllocator
 	Timer        Timer
 	ErrorHandler ErrorHandler
+	Level        Level
 }
 
 // NewLogger constructs a new Logger using the given Pusher.
@@ -148,19 +238,9 @@ func NewLogger(pusher Pusher, options LoggerOptions) Logger {
 	return newLogger(pusher, options)
 }
 
-// NewStandardLogger constructs a new Logger that logs using a text Marshaller.
-func NewStandardLogger(pusher Pusher) Logger {
-	return NewLogger(
-		pusher,
-		LoggerOptions{},
-	).AtLevel(
-		Level_LEVEL_INFO,
-	)
-}
-
 // Marshaller marshals Entry objects to be written.
 type Marshaller interface {
-	Marshal(entry *Entry) ([]byte, error)
+	Marshal(goEntry *GoEntry) ([]byte, error)
 }
 
 // WritePusherOptions defines options for constructing a new write Pusher.
@@ -174,12 +254,12 @@ func NewWritePusher(writeFlusher WriteFlusher, options WritePusherOptions) Pushe
 	return newWritePusher(writeFlusher, options)
 }
 
-// NewStandardWritePusher constructs a new Pusher using the default options.
-func NewStandardWritePusher(writeFlusher WriteFlusher) Pusher {
+// NewDefaultTextWritePusher constructs a new Pusher using the DefaultTextMarshaller and newlines.
+func NewDefaultTextWritePusher(writeFlusher WriteFlusher) Pusher {
 	return NewWritePusher(
 		writeFlusher,
 		WritePusherOptions{
-			Marshaller: NewTextMarshaller(MarshallerOptions{}),
+			Marshaller: DefaultTextMarshaller,
 			Newline:    true,
 		},
 	)
@@ -187,13 +267,13 @@ func NewStandardWritePusher(writeFlusher WriteFlusher) Pusher {
 
 // Puller pulls Entry objects from a persistent store.
 type Puller interface {
-	Pull() (*Entry, error)
+	Pull() (*GoEntry, error)
 }
 
 // Unmarshaller unmarshalls a marshalled Entry object. At the end
 // of a stream, Unmarshaller will return io.EOF.
 type Unmarshaller interface {
-	Unmarshal(reader io.Reader, entry *Entry) error
+	Unmarshal(reader io.Reader, goEntry *GoEntry) error
 }
 
 // ReadPullerOptions defines options for a read Puller.
@@ -207,16 +287,21 @@ func NewReadPuller(reader io.Reader, options ReadPullerOptions) Puller {
 	return newReadPuller(reader, options)
 }
 
+// JSONMarshaller marshals a proto.Message into JSON.
+type JSONMarshaller interface {
+	Marshal(io.Writer, proto.Message) error
+}
+
 // MarshallerOptions provides options for creating Marshallers.
 type MarshallerOptions struct {
-	// EnableID will add the printing of Entry IDs.
-	EnableID bool
-	// DisableTimestamp will suppress the printing of Entry Timestamps.
-	DisableTimestamp bool
+	// DisableTime will suppress the printing of Entry Timestamps.
+	DisableTime bool
 	// DisableLevel will suppress the printing of Entry Levels.
 	DisableLevel bool
 	// DisableContexts will suppress the printing of Entry contexts.
 	DisableContexts bool
+	// If JSON marshalling is done within the Marshaller, use this JSONMarshaller instead
+	JSONMarshaller JSONMarshaller
 }
 
 // NewTextMarshaller constructs a new Marshaller that produces human-readable
@@ -265,6 +350,25 @@ func (m *Entry) UnmarshalledContexts() ([]proto.Message, error) {
 // UnmarshalledEvent returns the event Message marshalled on an Entry object.
 func (m *Entry) UnmarshalledEvent() (proto.Message, error) {
 	return entryMessageToMessage(m.Event)
+}
+
+// ToGoEntry converts to Entry to a GoEntry.
+func (m *Entry) ToGoEntry() (*GoEntry, error) {
+	contexts, err := m.UnmarshalledContexts()
+	if err != nil {
+		return nil, err
+	}
+	event, err := m.UnmarshalledEvent()
+	if err != nil {
+		return nil, err
+	}
+	return &GoEntry{
+		ID:       m.Id,
+		Level:    m.Level,
+		Time:     prototime.TimestampToTime(m.Timestamp),
+		Contexts: contexts,
+		Event:    event,
+	}, nil
 }
 
 // Flush calls Flush on the global Logger.

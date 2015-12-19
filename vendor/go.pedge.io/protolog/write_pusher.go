@@ -24,7 +24,7 @@ func newWritePusher(writeFlusher WriteFlusher, options WritePusherOptions) *writ
 		&sync.Mutex{},
 	}
 	if writePusher.marshaller == nil {
-		writePusher.marshaller = defaultMarshaller
+		writePusher.marshaller = DefaultMarshaller
 	}
 	return writePusher
 }
@@ -33,8 +33,8 @@ func (w *writePusher) Flush() error {
 	return w.writeFlusher.Flush()
 }
 
-func (w *writePusher) Push(entry *Entry) error {
-	data, err := w.marshaller.Marshal(entry)
+func (w *writePusher) Push(goEntry *GoEntry) error {
+	data, err := w.marshaller.Marshal(goEntry)
 	if err != nil {
 		return err
 	}

@@ -1,7 +1,7 @@
 /*
 Package syslog defines functionality for integration with syslog.
 */
-package syslog
+package syslog // import "go.pedge.io/protolog/syslog"
 import (
 	"log/syslog"
 
@@ -9,10 +9,11 @@ import (
 )
 
 var (
-	globalMarshaller = protolog.NewTextMarshaller(
+	// DefaultTextMarshaller is the default text Marshaller for syslog.
+	DefaultTextMarshaller = protolog.NewTextMarshaller(
 		protolog.MarshallerOptions{
-			DisableTimestamp: true,
-			DisableLevel:     true,
+			DisableTime:  true,
+			DisableLevel: true,
 		},
 	)
 )
@@ -25,4 +26,14 @@ type PusherOptions struct {
 // NewPusher creates a new protolog.Pusher that logs using syslog.
 func NewPusher(writer *syslog.Writer, options PusherOptions) protolog.Pusher {
 	return newPusher(writer, options)
+}
+
+// NewDefaultTextPusher creates a new protolog.Pusher that logs using syslog and the default text Marshaller.
+func NewDefaultTextPusher(writer *syslog.Writer) protolog.Pusher {
+	return newPusher(
+		writer,
+		PusherOptions{
+			Marshaller: DefaultTextMarshaller,
+		},
+	)
 }
