@@ -221,7 +221,7 @@ Let's compile these with go, grpc, and [grpc-gateway](https://github.com/gengo/g
 without building up the example so that this README does not get too long.
 
 ```
-protoeasy --go --go-import-path=github.com/alice/helloworld .
+protoeasy --go --go-import-path=github.com/alice/helloworld --grpc --grpc-gateway .
 #protoc \
 #  -I/tmp/protoeasy-input035188496 \
 #  -I/go/src/go.pedge.io/protoeasy/vendor/go.pedge.io/google-protobuf \
@@ -274,6 +274,7 @@ See `make proto` and `make example-complete` for two more example usages. I also
 
 * https://go.pedge.io/dockerplugin
 * https://go.pedge.io/dockervolume
+* https://go.pedge.io/flightaware
 * https://go.pedge.io/openflights
 * https://go.pedge.io/pkg
 * https://go.pedge.io/proto
