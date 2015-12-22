@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -42,7 +43,7 @@ func do(appEnvObj interface{}) error {
 
 	rootCmd := &cobra.Command{
 		Use: fmt.Sprintf("%s directory", os.Args[0]),
-		RunE: func(_ *cobra.Command, args []string) error {
+		Run: pkgcobra.RunFixedArgs(1, func(args []string) error {
 			if err := pkgcobra.CheckFixedArgs(1, args); err != nil {
 				return err
 			}
@@ -62,6 +63,7 @@ func do(appEnvObj interface{}) error {
 						return err
 					}
 				} else {
+					protolog.Infof("Using protoeasy options file at %s", fileCompileOptionsPath)
 					fileCompileOptions, err := protoeasy.ParseFileCompileOptions(fileCompileOptionsPath)
 					if err != nil {
 						return err
@@ -72,9 +74,14 @@ func do(appEnvObj interface{}) error {
 					}
 				}
 			}
+			data, err := json.Marshal(compileOptions)
+			if err != nil {
+				return err
+			}
+			protolog.Infof("Using compile options %s", string(data))
 			pkgcobra.Check(run(appEnv, dirPath, outDirPath, compileOptions))
 			return nil
-		},
+		}),
 	}
 	bindCompileOptions(rootCmd.Flags(), compileOptions)
 	bindOptions(rootCmd.Flags(), options)

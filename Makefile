@@ -72,6 +72,7 @@ proto:
 example-complete:
 	rm -rf _example-out/complete
 	protoeasy \
+		--no-file \
 		--out=_example-out/complete \
 		--cpp --cpp-rel-out=cpp \
 		--csharp --csharp-rel-out=csharp \
@@ -83,7 +84,11 @@ example-complete:
 		--grpc-gateway \
 		example/complete
 	go build ./_example-out/complete/go/...
-	go build ./_example-out/complete/gogo/...
+
+example-complete-file:
+	rm -rf _example-out/complete
+	protoeasy --out=_example-out/complete example/complete
+	go build ./_example-out/complete/go/...
 
 example-proto2:
 	rm -rf _example-out/proto2
@@ -98,7 +103,7 @@ example-proto2:
 	go build ./_example-out/proto2/go/...
 	go build ./_example-out/proto2/gogo/...
 
-examples: install example-complete example-proto2
+examples: install example-complete example-complete-file example-proto2
 
 lint:
 	go get -v github.com/golang/lint/golint
@@ -173,6 +178,7 @@ docker-integration: build docker-build
 	install \
 	proto \
 	example-complete \
+	example-complete-file \
 	example-proto2 \
 	examples \
 	lint \
