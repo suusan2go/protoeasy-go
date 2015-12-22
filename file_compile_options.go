@@ -146,6 +146,12 @@ func toCompileOptionsV1(from *FileCompileOptions) (*CompileOptions, error) {
 	to.DescriptorSetRelOut = from.Options.DescriptorSet.RelOut
 	to.DescriptorSetFileName = from.Options.DescriptorSet.FileName
 	to.DescriptorSetIncludeImports = from.Options.DescriptorSet.IncludeImports
+	// TODO(pedge): this should not be in this function
+	// TODO(pedge): duplicated logic in goPlugin struct
+	if to.NoDefaultIncludes {
+		to.GoNoDefaultModifiers = true
+		to.GogoNoDefaultModifiers = true
+	}
 	return to, nil
 }
 

@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"path/filepath"
 	"strings"
 
 	"google.golang.org/grpc"
@@ -21,11 +22,13 @@ type appEnv struct {
 }
 
 type options struct {
-	GoModifiers    []string
-	GoPluginType   string
-	GogoModifiers  []string
-	GogoPluginType string
-	OutDirPath     string
+	GoModifiers            []string
+	GoPluginType           string
+	GogoModifiers          []string
+	GogoPluginType         string
+	OutDirPath             string
+	NoFileCompileOptions   bool
+	FileCompileOptionsPath string
 }
 
 func main() {
@@ -46,7 +49,30 @@ func do(appEnvObj interface{}) error {
 			if err := optionsToCompileOptions(options, compileOptions); err != nil {
 				return err
 			}
-			pkgcobra.Check(run(appEnv, options, compileOptions, args[0]))
+			dirPath := args[0]
+			outDirPath := dirPath
+			if options.OutDirPath != "" {
+				outDirPath = options.OutDirPath
+			}
+			if !options.NoFileCompileOptions {
+				fileCompileOptionsPath := filepath.Join(dirPath, options.FileCompileOptionsPath)
+				_, err := os.Stat(fileCompileOptionsPath)
+				if err != nil {
+					if !os.IsNotExist(err) {
+						return err
+					}
+				} else {
+					fileCompileOptions, err := protoeasy.ParseFileCompileOptions(fileCompileOptionsPath)
+					if err != nil {
+						return err
+					}
+					compileOptions, err = fileCompileOptions.ToCompileOptions()
+					if err != nil {
+						return err
+					}
+				}
+			}
+			pkgcobra.Check(run(appEnv, dirPath, outDirPath, compileOptions))
 			return nil
 		},
 	}
@@ -260,6 +286,22 @@ func bindOptions(flagSet *pflag.FlagSet, options *options) {
 		"",
 		"Customize out directory path.",
 	)
+	flagSet.BoolVar(
+		&options.NoFileCompileOptions,
+		"no-file",
+		false,
+		fmt.Sprintf("Ignore any protoeasy options file (usually %s) and just use the flags for options", protoeasy.DefaultFileCompileOptionsFile),
+	)
+	flagSet.StringVarP(
+		&options.FileCompileOptionsPath,
+		"file",
+		"f",
+		protoeasy.DefaultFileCompileOptionsFile,
+		`The file to check for to read protoeasy options from.
+The path is relative to the input directory given as the first argument.
+If file does not exist, just the flags will be used.
+If the file exists, the file options will overwrite any passed flags unless --no-file is specified`,
+	)
 }
 
 func optionsToCompileOptions(options *options, compileOptions *protoeasy.CompileOptions) error {
@@ -310,12 +352,7 @@ func getModifiers(modifierStrings []string) (map[string]string, error) {
 	return modifiers, nil
 }
 
-func run(appEnv *appEnv, options *options, compileOptions *protoeasy.CompileOptions, dirPath string) error {
-	outDirPath := dirPath
-	if options.OutDirPath != "" {
-		outDirPath = options.OutDirPath
-	}
-
+func run(appEnv *appEnv, dirPath string, outDirPath string, compileOptions *protoeasy.CompileOptions) error {
 	compiler := protoeasy.DefaultClientCompiler
 	if appEnv.Address != "" {
 		clientConn, err := grpc.Dial(appEnv.Address, grpc.WithInsecure())
