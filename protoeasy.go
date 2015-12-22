@@ -40,7 +40,7 @@ var (
 	// DefaultDescriptorSetFileName is the default descriptor set file name.
 	DefaultDescriptorSetFileName = "descriptor-set.pb"
 	// DefaultFileCompileOptionsFile is the default file to get FileCompileOptions from.
-	DefaultFileCompileOptionsFile = "protoeasy.yml"
+	DefaultFileCompileOptionsFile = "protoeasy.yaml"
 	// FileCompileOptionsVersionToCompileOptionsFunc is a map from FileCompileOptions version to CompileOptions converter function.
 	FileCompileOptionsVersionToCompileOptionsFunc = map[string]func(*FileCompileOptions) (*CompileOptions, error){
 		"v1": toCompileOptionsV1,
