@@ -87,7 +87,7 @@ example-complete:
 
 example-complete-file:
 	rm -rf _example-out/complete
-	protoeasy --out=_example-out/complete example/complete
+	protoeasy --out=_example-out/complete -f protoeasy-example-complete.yaml
 	go build ./_example-out/complete/go/...
 
 example-proto2:

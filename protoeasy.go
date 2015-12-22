@@ -50,6 +50,7 @@ var (
 // FileCompileOptions are CompileOptions with JSON and YAML tags ready to be read from a file.
 type FileCompileOptions struct {
 	Version string   `json:"version,omitempty" yaml:"version,omitempty"`
+	Dir     string   `json:"dir,omitempty" yaml:"dir,omitempty"`
 	Plugins []string `json:"plugins,omitempty" yaml:"plugins,omitempty"`
 	Options struct {
 		NoDefaultIncludes bool     `json:"no_default_includes,omitempty" yaml:"no_default_includes,omitempty"`

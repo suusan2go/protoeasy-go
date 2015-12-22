@@ -43,17 +43,13 @@ func do(appEnvObj interface{}) error {
 
 	rootCmd := &cobra.Command{
 		Use: fmt.Sprintf("%s directory", os.Args[0]),
-		Run: pkgcobra.RunFixedArgs(1, func(args []string) error {
-			if err := pkgcobra.CheckFixedArgs(1, args); err != nil {
-				return err
-			}
+		Run: pkgcobra.RunBoundedArgs(pkgcobra.Bounds{Max: 1}, func(args []string) error {
 			if err := optionsToCompileOptions(options, compileOptions); err != nil {
 				return err
 			}
-			dirPath := args[0]
-			outDirPath := dirPath
-			if options.OutDirPath != "" {
-				outDirPath = options.OutDirPath
+			dirPath := ""
+			if len(args) > 0 {
+				dirPath = args[0]
 			}
 			if !options.NoFileCompileOptions {
 				fileCompileOptionsPath := filepath.Join(dirPath, options.FileCompileOptionsPath)
@@ -68,12 +64,28 @@ func do(appEnvObj interface{}) error {
 					if err != nil {
 						return err
 					}
+					// instead of doing a foundFileCompileOptionsFile bool
+					if dirPath == "" {
+						dirPath = "."
+					}
+					if fileCompileOptions.Dir != "" {
+						dirPath = filepath.Join(dirPath, fileCompileOptions.Dir)
+					}
 					compileOptions, err = fileCompileOptions.ToCompileOptions()
 					if err != nil {
 						return err
 					}
 				}
 			}
+			if dirPath == "" {
+				return fmt.Errorf("Directory path to base protoeasy compile must either be the first argument if no protoeasy options file found (usually %s)", protoeasy.DefaultFileCompileOptionsFile)
+			}
+			protolog.Infof("Using input directory %s", dirPath)
+			outDirPath := dirPath
+			if options.OutDirPath != "" {
+				outDirPath = options.OutDirPath
+			}
+			protolog.Infof("Using output directory %s", outDirPath)
 			data, err := json.Marshal(compileOptions)
 			if err != nil {
 				return err
