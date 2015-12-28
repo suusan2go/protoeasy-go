@@ -104,8 +104,8 @@ func (m *Operation) GetResponse() *google_protobuf1.Any {
 }
 
 // XXX_OneofFuncs is for the internal use of the proto package.
-func (*Operation) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), []interface{}) {
-	return _Operation_OneofMarshaler, _Operation_OneofUnmarshaler, []interface{}{
+func (*Operation) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
+	return _Operation_OneofMarshaler, _Operation_OneofUnmarshaler, _Operation_OneofSizer, []interface{}{
 		(*Operation_Error)(nil),
 		(*Operation_Response)(nil),
 	}
@@ -154,6 +154,27 @@ func _Operation_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buff
 	default:
 		return false, nil
 	}
+}
+
+func _Operation_OneofSizer(msg proto.Message) (n int) {
+	m := msg.(*Operation)
+	// result
+	switch x := m.Result.(type) {
+	case *Operation_Error:
+		s := proto.Size(x.Error)
+		n += proto.SizeVarint(4<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *Operation_Response:
+		s := proto.Size(x.Response)
+		n += proto.SizeVarint(5<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case nil:
+	default:
+		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
+	}
+	return n
 }
 
 // The request message for [Operations.GetOperation][google.longrunning.Operations.GetOperation].

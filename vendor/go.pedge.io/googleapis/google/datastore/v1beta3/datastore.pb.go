@@ -264,8 +264,8 @@ func (m *RunQueryRequest) GetGqlQuery() *GqlQuery {
 }
 
 // XXX_OneofFuncs is for the internal use of the proto package.
-func (*RunQueryRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), []interface{}) {
-	return _RunQueryRequest_OneofMarshaler, _RunQueryRequest_OneofUnmarshaler, []interface{}{
+func (*RunQueryRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
+	return _RunQueryRequest_OneofMarshaler, _RunQueryRequest_OneofUnmarshaler, _RunQueryRequest_OneofSizer, []interface{}{
 		(*RunQueryRequest_Query)(nil),
 		(*RunQueryRequest_GqlQuery)(nil),
 	}
@@ -314,6 +314,27 @@ func _RunQueryRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *prot
 	default:
 		return false, nil
 	}
+}
+
+func _RunQueryRequest_OneofSizer(msg proto.Message) (n int) {
+	m := msg.(*RunQueryRequest)
+	// query_type
+	switch x := m.QueryType.(type) {
+	case *RunQueryRequest_Query:
+		s := proto.Size(x.Query)
+		n += proto.SizeVarint(3<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *RunQueryRequest_GqlQuery:
+		s := proto.Size(x.GqlQuery)
+		n += proto.SizeVarint(7<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case nil:
+	default:
+		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
+	}
+	return n
 }
 
 // The response for [google.datastore.v1beta3.Datastore.RunQuery][google.datastore.v1beta3.Datastore.RunQuery].
@@ -452,8 +473,8 @@ func (m *CommitRequest) GetMutations() []*Mutation {
 }
 
 // XXX_OneofFuncs is for the internal use of the proto package.
-func (*CommitRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), []interface{}) {
-	return _CommitRequest_OneofMarshaler, _CommitRequest_OneofUnmarshaler, []interface{}{
+func (*CommitRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
+	return _CommitRequest_OneofMarshaler, _CommitRequest_OneofUnmarshaler, _CommitRequest_OneofSizer, []interface{}{
 		(*CommitRequest_Transaction)(nil),
 	}
 }
@@ -485,6 +506,21 @@ func _CommitRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.
 	default:
 		return false, nil
 	}
+}
+
+func _CommitRequest_OneofSizer(msg proto.Message) (n int) {
+	m := msg.(*CommitRequest)
+	// transaction_selector
+	switch x := m.TransactionSelector.(type) {
+	case *CommitRequest_Transaction:
+		n += proto.SizeVarint(1<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(len(x.Transaction)))
+		n += len(x.Transaction)
+	case nil:
+	default:
+		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
+	}
+	return n
 }
 
 // The response for [google.datastore.v1beta3.Datastore.Commit][google.datastore.v1beta3.Datastore.Commit].
@@ -630,8 +666,8 @@ func (m *Mutation) GetDelete() *Key {
 }
 
 // XXX_OneofFuncs is for the internal use of the proto package.
-func (*Mutation) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), []interface{}) {
-	return _Mutation_OneofMarshaler, _Mutation_OneofUnmarshaler, []interface{}{
+func (*Mutation) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
+	return _Mutation_OneofMarshaler, _Mutation_OneofUnmarshaler, _Mutation_OneofSizer, []interface{}{
 		(*Mutation_Insert)(nil),
 		(*Mutation_Update)(nil),
 		(*Mutation_Upsert)(nil),
@@ -710,6 +746,37 @@ func _Mutation_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffe
 	}
 }
 
+func _Mutation_OneofSizer(msg proto.Message) (n int) {
+	m := msg.(*Mutation)
+	// operation
+	switch x := m.Operation.(type) {
+	case *Mutation_Insert:
+		s := proto.Size(x.Insert)
+		n += proto.SizeVarint(4<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *Mutation_Update:
+		s := proto.Size(x.Update)
+		n += proto.SizeVarint(5<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *Mutation_Upsert:
+		s := proto.Size(x.Upsert)
+		n += proto.SizeVarint(6<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *Mutation_Delete:
+		s := proto.Size(x.Delete)
+		n += proto.SizeVarint(7<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case nil:
+	default:
+		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
+	}
+	return n
+}
+
 // The result of applying a mutation.
 type MutationResult struct {
 	// The automatically allocated key.
@@ -782,8 +849,8 @@ func (m *ReadOptions) GetTransaction() []byte {
 }
 
 // XXX_OneofFuncs is for the internal use of the proto package.
-func (*ReadOptions) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), []interface{}) {
-	return _ReadOptions_OneofMarshaler, _ReadOptions_OneofUnmarshaler, []interface{}{
+func (*ReadOptions) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
+	return _ReadOptions_OneofMarshaler, _ReadOptions_OneofUnmarshaler, _ReadOptions_OneofSizer, []interface{}{
 		(*ReadOptions_ReadConsistency_)(nil),
 		(*ReadOptions_Transaction)(nil),
 	}
@@ -826,6 +893,24 @@ func _ReadOptions_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Bu
 	default:
 		return false, nil
 	}
+}
+
+func _ReadOptions_OneofSizer(msg proto.Message) (n int) {
+	m := msg.(*ReadOptions)
+	// consistency_type
+	switch x := m.ConsistencyType.(type) {
+	case *ReadOptions_ReadConsistency_:
+		n += proto.SizeVarint(1<<3 | proto.WireVarint)
+		n += proto.SizeVarint(uint64(x.ReadConsistency))
+	case *ReadOptions_Transaction:
+		n += proto.SizeVarint(2<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(len(x.Transaction)))
+		n += len(x.Transaction)
+	case nil:
+	default:
+		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
+	}
+	return n
 }
 
 func init() {

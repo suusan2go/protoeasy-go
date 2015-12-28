@@ -165,8 +165,8 @@ func (m *Value) GetListValue() *ListValue {
 }
 
 // XXX_OneofFuncs is for the internal use of the proto package.
-func (*Value) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), []interface{}) {
-	return _Value_OneofMarshaler, _Value_OneofUnmarshaler, []interface{}{
+func (*Value) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
+	return _Value_OneofMarshaler, _Value_OneofUnmarshaler, _Value_OneofSizer, []interface{}{
 		(*Value_NullValue)(nil),
 		(*Value_NumberValue)(nil),
 		(*Value_StringValue)(nil),
@@ -263,6 +263,40 @@ func _Value_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) 
 	default:
 		return false, nil
 	}
+}
+
+func _Value_OneofSizer(msg proto.Message) (n int) {
+	m := msg.(*Value)
+	// kind
+	switch x := m.Kind.(type) {
+	case *Value_NullValue:
+		n += proto.SizeVarint(1<<3 | proto.WireVarint)
+		n += proto.SizeVarint(uint64(x.NullValue))
+	case *Value_NumberValue:
+		n += proto.SizeVarint(2<<3 | proto.WireFixed64)
+		n += 8
+	case *Value_StringValue:
+		n += proto.SizeVarint(3<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(len(x.StringValue)))
+		n += len(x.StringValue)
+	case *Value_BoolValue:
+		n += proto.SizeVarint(4<<3 | proto.WireVarint)
+		n += 1
+	case *Value_StructValue:
+		s := proto.Size(x.StructValue)
+		n += proto.SizeVarint(5<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *Value_ListValue:
+		s := proto.Size(x.ListValue)
+		n += proto.SizeVarint(6<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case nil:
+	default:
+		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
+	}
+	return n
 }
 
 // `ListValue` is a wrapper around a repeated field of values.

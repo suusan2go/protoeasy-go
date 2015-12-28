@@ -148,8 +148,8 @@ func (m *Key_PathElement) GetName() string {
 }
 
 // XXX_OneofFuncs is for the internal use of the proto package.
-func (*Key_PathElement) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), []interface{}) {
-	return _Key_PathElement_OneofMarshaler, _Key_PathElement_OneofUnmarshaler, []interface{}{
+func (*Key_PathElement) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
+	return _Key_PathElement_OneofMarshaler, _Key_PathElement_OneofUnmarshaler, _Key_PathElement_OneofSizer, []interface{}{
 		(*Key_PathElement_Id)(nil),
 		(*Key_PathElement_Name)(nil),
 	}
@@ -192,6 +192,24 @@ func _Key_PathElement_OneofUnmarshaler(msg proto.Message, tag, wire int, b *prot
 	default:
 		return false, nil
 	}
+}
+
+func _Key_PathElement_OneofSizer(msg proto.Message) (n int) {
+	m := msg.(*Key_PathElement)
+	// id_type
+	switch x := m.IdType.(type) {
+	case *Key_PathElement_Id:
+		n += proto.SizeVarint(2<<3 | proto.WireVarint)
+		n += proto.SizeVarint(uint64(x.Id))
+	case *Key_PathElement_Name:
+		n += proto.SizeVarint(3<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(len(x.Name)))
+		n += len(x.Name)
+	case nil:
+	default:
+		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
+	}
+	return n
 }
 
 // An array value.
@@ -379,8 +397,8 @@ func (m *Value) GetArrayValue() *ArrayValue {
 }
 
 // XXX_OneofFuncs is for the internal use of the proto package.
-func (*Value) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), []interface{}) {
-	return _Value_OneofMarshaler, _Value_OneofUnmarshaler, []interface{}{
+func (*Value) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
+	return _Value_OneofMarshaler, _Value_OneofUnmarshaler, _Value_OneofSizer, []interface{}{
 		(*Value_NullValue)(nil),
 		(*Value_BooleanValue)(nil),
 		(*Value_IntegerValue)(nil),
@@ -541,6 +559,62 @@ func _Value_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) 
 	default:
 		return false, nil
 	}
+}
+
+func _Value_OneofSizer(msg proto.Message) (n int) {
+	m := msg.(*Value)
+	// value_type
+	switch x := m.ValueType.(type) {
+	case *Value_NullValue:
+		n += proto.SizeVarint(11<<3 | proto.WireVarint)
+		n += proto.SizeVarint(uint64(x.NullValue))
+	case *Value_BooleanValue:
+		n += proto.SizeVarint(1<<3 | proto.WireVarint)
+		n += 1
+	case *Value_IntegerValue:
+		n += proto.SizeVarint(2<<3 | proto.WireVarint)
+		n += proto.SizeVarint(uint64(x.IntegerValue))
+	case *Value_DoubleValue:
+		n += proto.SizeVarint(3<<3 | proto.WireFixed64)
+		n += 8
+	case *Value_TimestampValue:
+		s := proto.Size(x.TimestampValue)
+		n += proto.SizeVarint(10<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *Value_KeyValue:
+		s := proto.Size(x.KeyValue)
+		n += proto.SizeVarint(5<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *Value_StringValue:
+		n += proto.SizeVarint(17<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(len(x.StringValue)))
+		n += len(x.StringValue)
+	case *Value_BlobValue:
+		n += proto.SizeVarint(18<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(len(x.BlobValue)))
+		n += len(x.BlobValue)
+	case *Value_GeoPointValue:
+		s := proto.Size(x.GeoPointValue)
+		n += proto.SizeVarint(8<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *Value_EntityValue:
+		s := proto.Size(x.EntityValue)
+		n += proto.SizeVarint(6<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *Value_ArrayValue:
+		s := proto.Size(x.ArrayValue)
+		n += proto.SizeVarint(9<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case nil:
+	default:
+		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
+	}
+	return n
 }
 
 // An entity.

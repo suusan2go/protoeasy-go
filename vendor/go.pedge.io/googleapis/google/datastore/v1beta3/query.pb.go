@@ -397,8 +397,8 @@ func (m *Filter) GetPropertyFilter() *PropertyFilter {
 }
 
 // XXX_OneofFuncs is for the internal use of the proto package.
-func (*Filter) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), []interface{}) {
-	return _Filter_OneofMarshaler, _Filter_OneofUnmarshaler, []interface{}{
+func (*Filter) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
+	return _Filter_OneofMarshaler, _Filter_OneofUnmarshaler, _Filter_OneofSizer, []interface{}{
 		(*Filter_CompositeFilter)(nil),
 		(*Filter_PropertyFilter)(nil),
 	}
@@ -447,6 +447,27 @@ func _Filter_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer)
 	default:
 		return false, nil
 	}
+}
+
+func _Filter_OneofSizer(msg proto.Message) (n int) {
+	m := msg.(*Filter)
+	// filter_type
+	switch x := m.FilterType.(type) {
+	case *Filter_CompositeFilter:
+		s := proto.Size(x.CompositeFilter)
+		n += proto.SizeVarint(1<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *Filter_PropertyFilter:
+		s := proto.Size(x.PropertyFilter)
+		n += proto.SizeVarint(2<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case nil:
+	default:
+		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
+	}
+	return n
 }
 
 // A filter that merges the multiple other filters using the given operator.
@@ -593,8 +614,8 @@ func (m *GqlQueryParameter) GetCursor() []byte {
 }
 
 // XXX_OneofFuncs is for the internal use of the proto package.
-func (*GqlQueryParameter) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), []interface{}) {
-	return _GqlQueryParameter_OneofMarshaler, _GqlQueryParameter_OneofUnmarshaler, []interface{}{
+func (*GqlQueryParameter) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
+	return _GqlQueryParameter_OneofMarshaler, _GqlQueryParameter_OneofUnmarshaler, _GqlQueryParameter_OneofSizer, []interface{}{
 		(*GqlQueryParameter_Value)(nil),
 		(*GqlQueryParameter_Cursor)(nil),
 	}
@@ -640,6 +661,26 @@ func _GqlQueryParameter_OneofUnmarshaler(msg proto.Message, tag, wire int, b *pr
 	default:
 		return false, nil
 	}
+}
+
+func _GqlQueryParameter_OneofSizer(msg proto.Message) (n int) {
+	m := msg.(*GqlQueryParameter)
+	// parameter_type
+	switch x := m.ParameterType.(type) {
+	case *GqlQueryParameter_Value:
+		s := proto.Size(x.Value)
+		n += proto.SizeVarint(2<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *GqlQueryParameter_Cursor:
+		n += proto.SizeVarint(3<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(len(x.Cursor)))
+		n += len(x.Cursor)
+	case nil:
+	default:
+		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
+	}
+	return n
 }
 
 // A batch of results produced by a query.
