@@ -31,15 +31,15 @@ func parseFileCompileOptions(filePath string) (_ *FileCompileOptions, retErr err
 	case "yml", "yaml":
 		return parseFileCompileOptionsYAML(data)
 	default:
-		fileCompileOptions, yamlErr := parseFileCompileOptionsYAML(data)
+		fileCompileOptionsYAML, yamlErr := parseFileCompileOptionsYAML(data)
 		if yamlErr != nil {
-			fileCompileOptions, jsonErr := parseFileCompileOptionsJSON(data)
+			fileCompileOptionsJSON, jsonErr := parseFileCompileOptionsJSON(data)
 			if jsonErr != nil {
 				return nil, fmt.Errorf("protoeasy: could not parse protoeasy options file in either YAML or JSON: %v %v", yamlErr, jsonErr)
 			}
-			return fileCompileOptions, nil
+			return fileCompileOptionsJSON, nil
 		}
-		return fileCompileOptions, nil
+		return fileCompileOptionsYAML, nil
 	}
 }
 
