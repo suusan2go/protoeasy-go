@@ -1,4 +1,5 @@
 [![CircleCI](https://circleci.com/gh/peter-edge/go-protoeasy/tree/master.png)](https://circleci.com/gh/peter-edge/go-protoeasy/tree/master)
+[![Go Report Card](http://goreportcard.com/badge/peter-edge/go-protoeasy)](http://goreportcard.com/report/peter-edge/go-protoeasy)
 [![Docker Repository on Quay](https://quay.io/repository/pedge/protoeasy/status)](https://quay.io/repository/pedge/protoeasy)
 [![Docker Repository on Quay](https://quay.io/repository/pedge/protoeasy-proto2/status)](https://quay.io/repository/pedge/protoeasy-proto2)
 [![GoDoc](http://img.shields.io/badge/GoDoc-Reference-blue.svg)](https://godoc.org/go.pedge.io/protoeasy)
