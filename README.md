@@ -1,9 +1,9 @@
-[![CircleCI](https://circleci.com/gh/peter-edge/go-protoeasy/tree/master.png)](https://circleci.com/gh/peter-edge/go-protoeasy/tree/master)
-[![Go Report Card](http://goreportcard.com/badge/peter-edge/go-protoeasy)](http://goreportcard.com/report/peter-edge/go-protoeasy)
+[![CircleCI](https://circleci.com/gh/peter-edge/protoeasy-go/tree/master.png)](https://circleci.com/gh/peter-edge/protoeasy-go/tree/master)
+[![Go Report Card](http://goreportcard.com/badge/peter-edge/protoeasy-go)](http://goreportcard.com/report/peter-edge/protoeasy-go)
 [![Docker Repository on Quay](https://quay.io/repository/pedge/protoeasy/status)](https://quay.io/repository/pedge/protoeasy)
 [![Docker Repository on Quay](https://quay.io/repository/pedge/protoeasy-proto2/status)](https://quay.io/repository/pedge/protoeasy-proto2)
 [![GoDoc](http://img.shields.io/badge/GoDoc-Reference-blue.svg)](https://godoc.org/go.pedge.io/protoeasy)
-[![MIT License](http://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/peter-edge/go-protoeasy/blob/master/LICENSE)
+[![MIT License](http://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/peter-edge/protoeasy-go/blob/master/LICENSE)
 
 Protoeasy is intended to make compiling protocol buffers files easier, and to optionally offload the compilation
 to a server for consistency and so that protoc and any associated plugins do not have to be installed locally.
@@ -265,7 +265,7 @@ Other Go flags:
 Protoeasy automatically imports the protocol buffers files in:
 
 * https://github.com/google/protobuf/tree/master/src/google/protobuf, done using https://go.pedge.io/google-protobuf. These are the well-known types, and you should really check them out! google/protobuf/descriptor.proto is done from https://github.com/golang/protobuf/tree/master/protoc-gen-go/descriptor to be compatible with Go imports, but is the same file.
-* https://github.com/google/googleapis, done using https://go.pedge.io/googleapis. google/api/annotations.proto and google/api/http.proto are done using https://github.com/gengo/grpc-gateway/tree/master/third_party/googleapis/google/api, see the note at https://github.com/peter-edge/go-googleapis/blob/master/README.md.
+* https://github.com/google/googleapis, done using https://go.pedge.io/googleapis. google/api/annotations.proto and google/api/http.proto are done using https://github.com/gengo/grpc-gateway/tree/master/third_party/googleapis/google/api, see the note at https://github.com/peter-edge/googleapis-go/blob/master/README.md.
 
 Track https://github.com/golang/protobuf/issues/50 for more details.
 
