@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-import "country.gen.proto";
+import "pb/type/country.gen.proto";
 
 package pb.type;
 

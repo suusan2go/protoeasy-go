@@ -17,13 +17,21 @@ type MoneyMather interface {
 
 	noCurrencyCode() bool
 	currencyCode() CurrencyCode
-	// TODO(pedge): precise and imprecise modes
-	valueMicros() float64
+	usesFloats() bool
+	floatValueMicros() float64
+	valueMicros() int64
 	errors() []error
 }
 
+// NewFloatMoneyMather returns a new MoneyMather that will directly use the valueMicros and not check CurrencyCodes.
+//
+// This will do float math instead of int math.
+func NewFloatMoneyMather(valueMicros float64) MoneyMather {
+	return newFloatMoneyMather(valueMicros)
+}
+
 // NewMoneyMather returns a new MoneyMather that will directly use the valueMicros and not check CurrencyCodes.
-func NewMoneyMather(valueMicros float64) MoneyMather {
+func NewMoneyMather(valueMicros int64) MoneyMather {
 	return newMoneyMather(valueMicros)
 }
 
@@ -97,7 +105,14 @@ func (m *Money) ToGoogleMoney() *google_type.Money {
 
 // Math returns a new MoneyMather for the Money.
 func (m *Money) Math() MoneyMather {
-	return newMoneyMatherForMoney(m)
+	return newMoneyMatherForMoney(m, false)
+}
+
+// FloatMath returns a new MoneyMather for the Money.
+//
+// This will do float math instead of int math.
+func (m *Money) FloatMath() MoneyMather {
+	return newMoneyMatherForMoney(m, true)
 }
 
 // SimpleString returns the simple string for the Money.
@@ -108,18 +123,34 @@ func (m *Money) SimpleString() string {
 type moneyMather struct {
 	nocc bool
 	cc   CurrencyCode
-	vm   float64
+	uf   bool
+	fvm  float64
+	vm   int64
 	errs []error
 }
 
-func newMoneyMatherForMoney(money *Money) *moneyMather {
-	return &moneyMather{
+func newMoneyMatherForMoney(money *Money, usesFloats bool) *moneyMather {
+	moneyMather := &moneyMather{
 		cc: money.CurrencyCode,
-		vm: float64(money.ValueMicros),
+		uf: usesFloats,
+	}
+	if usesFloats {
+		moneyMather.fvm = float64(money.ValueMicros)
+	} else {
+		moneyMather.vm = money.ValueMicros
+	}
+	return moneyMather
+}
+
+func newFloatMoneyMather(valueMicros float64) *moneyMather {
+	return &moneyMather{
+		nocc: true,
+		uf:   true,
+		fvm:  valueMicros,
 	}
 }
 
-func newMoneyMather(valueMicros float64) *moneyMather {
+func newMoneyMather(valueMicros int64) *moneyMather {
 	return &moneyMather{
 		nocc: true,
 		vm:   valueMicros,
@@ -130,7 +161,18 @@ func (m *moneyMather) Plus(moneyMather MoneyMather) MoneyMather {
 	if !m.ok(moneyMather) {
 		return m
 	}
-	m.vm += moneyMather.valueMicros()
+	switch {
+	case m.uf && moneyMather.usesFloats():
+		m.fvm += moneyMather.floatValueMicros()
+	case m.uf && !moneyMather.usesFloats():
+		m.fvm += float64(moneyMather.valueMicros())
+	case !m.uf && moneyMather.usesFloats():
+		m.uf = true
+		m.fvm = float64(m.vm)
+		m.fvm += moneyMather.floatValueMicros()
+	case !m.uf && !moneyMather.usesFloats():
+		m.vm += moneyMather.valueMicros()
+	}
 	return m
 }
 
@@ -138,7 +180,18 @@ func (m *moneyMather) Minus(moneyMather MoneyMather) MoneyMather {
 	if !m.ok(moneyMather) {
 		return m
 	}
-	m.vm -= moneyMather.valueMicros()
+	switch {
+	case m.uf && moneyMather.usesFloats():
+		m.fvm -= moneyMather.floatValueMicros()
+	case m.uf && !moneyMather.usesFloats():
+		m.fvm -= float64(moneyMather.valueMicros())
+	case !m.uf && moneyMather.usesFloats():
+		m.uf = true
+		m.fvm = float64(m.vm)
+		m.fvm -= moneyMather.floatValueMicros()
+	case !m.uf && !moneyMather.usesFloats():
+		m.vm -= moneyMather.valueMicros()
+	}
 	return m
 }
 
@@ -146,7 +199,18 @@ func (m *moneyMather) Times(moneyMather MoneyMather) MoneyMather {
 	if !m.ok(moneyMather) {
 		return m
 	}
-	m.vm *= moneyMather.valueMicros()
+	switch {
+	case m.uf && moneyMather.usesFloats():
+		m.fvm *= moneyMather.floatValueMicros()
+	case m.uf && !moneyMather.usesFloats():
+		m.fvm *= float64(moneyMather.valueMicros())
+	case !m.uf && moneyMather.usesFloats():
+		m.uf = true
+		m.fvm = float64(m.vm)
+		m.fvm *= moneyMather.floatValueMicros()
+	case !m.uf && !moneyMather.usesFloats():
+		m.vm *= moneyMather.valueMicros()
+	}
 	return m
 }
 
@@ -154,11 +218,26 @@ func (m *moneyMather) Div(moneyMather MoneyMather) MoneyMather {
 	if !m.ok(moneyMather) {
 		return m
 	}
-	if moneyMather.valueMicros() == 0 {
+	if moneyMather.usesFloats() && moneyMather.floatValueMicros() == 0.0 {
 		m.addErrors(fmt.Errorf("pbtype: cannot divide by 0"))
 		return m
 	}
-	m.vm /= moneyMather.valueMicros()
+	if !moneyMather.usesFloats() && moneyMather.valueMicros() == 0 {
+		m.addErrors(fmt.Errorf("pbtype: cannot divide by 0"))
+		return m
+	}
+	switch {
+	case m.uf && moneyMather.usesFloats():
+		m.fvm /= moneyMather.floatValueMicros()
+	case m.uf && !moneyMather.usesFloats():
+		m.fvm /= float64(moneyMather.valueMicros())
+	case !m.uf && moneyMather.usesFloats():
+		m.uf = true
+		m.fvm = float64(m.vm)
+		m.fvm /= moneyMather.floatValueMicros()
+	case !m.uf && !moneyMather.usesFloats():
+		m.vm /= moneyMather.valueMicros()
+	}
 	return m
 }
 
@@ -166,7 +245,10 @@ func (m *moneyMather) Abs() MoneyMather {
 	if !m.ok(nil) {
 		return m
 	}
-	if m.vm < 0 {
+	if m.uf && m.fvm < 0.0 {
+		m.fvm = -m.fvm
+	}
+	if !m.uf && m.vm < 0 {
 		m.vm = -m.vm
 	}
 	return m
@@ -176,9 +258,13 @@ func (m *moneyMather) Result() (*Money, error) {
 	if len(m.errs) > 0 {
 		return nil, fmt.Errorf("%v", m.errs)
 	}
+	valueMicros := int64(m.vm)
+	if m.uf {
+		valueMicros = int64(m.fvm)
+	}
 	return &Money{
 		CurrencyCode: m.cc,
-		ValueMicros:  int64(m.vm),
+		ValueMicros:  valueMicros,
 	}, nil
 }
 
@@ -190,7 +276,15 @@ func (m *moneyMather) currencyCode() CurrencyCode {
 	return m.cc
 }
 
-func (m *moneyMather) valueMicros() float64 {
+func (m *moneyMather) usesFloats() bool {
+	return m.uf
+}
+
+func (m *moneyMather) floatValueMicros() float64 {
+	return m.fvm
+}
+
+func (m *moneyMather) valueMicros() int64 {
 	return m.vm
 }
 
