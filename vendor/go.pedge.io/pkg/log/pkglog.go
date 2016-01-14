@@ -37,23 +37,19 @@ func SetupLogging(appName string, env Env) error {
 	if !env.DisableStderrLog {
 		pushers = append(
 			pushers,
-			protolog.NewDefaultTextWritePusher(
-				protolog.NewFileFlusher(
-					os.Stderr,
-				),
+			protolog.NewTextWritePusher(
+				os.Stderr,
 			),
 		)
 	}
 	if env.LogDir != "" {
 		pushers = append(
 			pushers,
-			protolog.NewDefaultTextWritePusher(
-				protolog.NewWriterFlusher(
-					&lumberjack.Logger{
-						Filename:   filepath.Join(env.LogDir, fmt.Sprintf("%s.log", appName)),
-						MaxBackups: 3,
-					},
-				),
+			protolog.NewTextWritePusher(
+				&lumberjack.Logger{
+					Filename:   filepath.Join(env.LogDir, fmt.Sprintf("%s.log", appName)),
+					MaxBackups: 3,
+				},
 			),
 		)
 	}
@@ -69,7 +65,7 @@ func SetupLogging(appName string, env Env) error {
 		}
 		pushers = append(
 			pushers,
-			protolog_syslog.NewDefaultTextPusher(
+			protolog_syslog.NewPusher(
 				writer,
 			),
 		)
@@ -80,7 +76,6 @@ func SetupLogging(appName string, env Env) error {
 				protolog.NewMultiPusher(
 					pushers...,
 				),
-				protolog.LoggerOptions{},
 			),
 		)
 	} else {
@@ -90,11 +85,11 @@ func SetupLogging(appName string, env Env) error {
 	}
 	protolog.RedirectStdLogger()
 	if env.LogLevel != "" {
-		levelValue, ok := protolog.Level_value[fmt.Sprintf("LEVEL_%s", strings.ToUpper(env.LogLevel))]
-		if !ok {
-			return fmt.Errorf("pkglog: unknown log level: %s", env.LogLevel)
+		level, err := protolog.NameToLevel(strings.ToUpper(env.LogLevel))
+		if err != nil {
+			return err
 		}
-		protolog.SetLevel(protolog.Level(levelValue))
+		protolog.SetLevel(level)
 	}
 	return nil
 }

@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package pb.type;
+
+option go_package = "pbtype";
+
+message EmailAddress {
+  string local_part = 1;
+  string domain_part = 2;
+}

@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+import "country.gen.proto";
+
+package pb.type;
+
+option go_package = "pbtype";
+
+message Country {
+  string name = 1;
+  CountryAlpha2Code alpha_2_code = 2;
+  CountryAlpha3Code alpha_3_code = 3;
+  uint32 numeric_code = 4;
+  CurrencyCode currency_code = 5;
+}
+
+message Currency {
+  string name = 1;
+  CurrencyCode code = 2;
+  uint32 numeric_code = 3;
+  uint32 minor_unit = 4;
+}

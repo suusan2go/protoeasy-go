@@ -17,7 +17,8 @@ EXTRA_PKGS := \
 	go.pedge.io/googleapis/google/pubsub/v1/... \
 	go.pedge.io/googleapis/google/pubsub/v1beta2/... \
 	go.pedge.io/googleapis/google/rpc/... \
-	go.pedge.io/googleapis/google/type/...
+	go.pedge.io/googleapis/google/type/... \
+	go.pedge.io/pbtype/go/...
 
 EXTRA_CMDS := \
 	go.pedge.io/protoeasy/vendor/github.com/gengo/grpc-gateway/protoc-gen-grpc-gateway \
@@ -49,12 +50,15 @@ vendorupdate:
 
 vendornoupdate:
 	go get -v github.com/kardianos/govendor
+	go get -v go.pedge.io/pbtype/go
 	rm -rf vendor
 	govendor init
 	GOOS=linux GOARCH=amd64 govendor add $(EXTRA_PKGS)
 	GOOS=linux GOARCH=amd64 govendor add +external
 	GOOS=linux GOARCH=amd64 govendor update +vendor
 	cd vendor/github.com/gengo/grpc-gateway/third_party/googleapis && protoeasy --go .
+	mkdir -p vendor/go.pedge.io/pbtype/pb/type
+	cp ../pbtype/pb/type/* vendor/go.pedge.io/pbtype/pb/type
 
 vendor: vendorupdate vendornoupdate
 

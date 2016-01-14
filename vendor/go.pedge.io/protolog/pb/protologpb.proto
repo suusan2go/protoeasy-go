@@ -4,23 +4,7 @@ import "google/protobuf/timestamp.proto";
 
 package protolog;
 
-// Fields is a generic context Message used for
-// the Logger functions WithField and WithFields.
-message Fields {
-  map<string, string> value = 1;
-}
-
-// Event is a generic event Message used for
-// the non-protobuf-specific Logger functions.
-message Event {
-  string message = 1;
-}
-
-// WriterOutput is an event Message used for
-// the writer Logger functions.
-message WriterOutput {
-  bytes value = 1;
-}
+option go_package = "protologpb";
 
 // Level is a logging level.
 enum Level {
@@ -36,7 +20,7 @@ enum Level {
 
 // Entry is the object serialized for logging.
 message Entry {
-  // Message represents a serialized protobuf Message.
+  // Message represents a serialized protobuf message.
   // The name is the name registered with protolog.
   message Message {
     string name = 1;
@@ -47,6 +31,11 @@ message Entry {
   string id = 1;  
   Level level = 2;
   google.protobuf.Timestamp timestamp = 3;
+  // both context and fields may be set
   repeated Message context = 4;
-  Message event = 5;
+  map<string, string> fields = 5;
+  // one of event, message, writer_output will be set
+  Message event = 6;
+  string message = 7;
+  bytes writer_output = 8;
 }

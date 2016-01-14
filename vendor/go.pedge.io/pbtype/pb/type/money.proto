@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+import "country.gen.proto";
+
+package pb.type;
+
+option go_package = "pbtype";
+
+message Money {
+  CurrencyCode currency_code = 1;
+  int64 value_micros = 2;
+}
