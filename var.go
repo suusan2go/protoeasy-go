@@ -135,7 +135,7 @@ var (
 				"usstate.gen.proto",
 				"wrappers.proto",
 			},
-			"go.pedge.io/pbtype/pb/type",
+			"go.pedge.io/pbtype/go",
 		),
 	)
 
