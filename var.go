@@ -177,7 +177,7 @@ var (
 		newGoModifierOptions(
 			"pb/phone",
 			[]string{
-				"telephone.proto",
+				"phone.proto",
 			},
 			"go.pedge.io/pb/go/pb/phone",
 		),
@@ -347,7 +347,7 @@ var (
 		newGoModifierOptions(
 			"pb/phone",
 			[]string{
-				"telephone.proto",
+				"phone.proto",
 			},
 			"go.pedge.io/pb/gogo/pb/phone",
 		),
