@@ -85,6 +85,24 @@ var (
 			"go.pedge.io/pb/go/google/iam/v1",
 		),
 		newGoModifierOptions(
+			"google/logging/type",
+			[]string{
+				"http_request.proto",
+				"log_severity.proto",
+			},
+			"go.pedge.io/pb/go/google/logging/type",
+		),
+		newGoModifierOptions(
+			"google/logging/v2",
+			[]string{
+				"log_entry.proto",
+				"logging.proto",
+				"logging_config.proto",
+				"logging_metrics.proto",
+			},
+			"go.pedge.io/pb/go/google/logging/v2",
+		),
+		newGoModifierOptions(
 			"google/longrunning",
 			[]string{
 				"operations.proto",
@@ -235,6 +253,24 @@ var (
 				"policy.proto",
 			},
 			"go.pedge.io/pb/gogo/google/iam/v1",
+		),
+		newGoModifierOptions(
+			"google/logging/type",
+			[]string{
+				"http_request.proto",
+				"log_severity.proto",
+			},
+			"go.pedge.io/pb/gogo/google/logging/type",
+		),
+		newGoModifierOptions(
+			"google/logging/v2",
+			[]string{
+				"log_entry.proto",
+				"logging.proto",
+				"logging_config.proto",
+				"logging_metrics.proto",
+			},
+			"go.pedge.io/pb/gogo/google/logging/v2",
 		),
 		newGoModifierOptions(
 			"google/longrunning",
