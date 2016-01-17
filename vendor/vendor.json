@@ -293,6 +293,46 @@
 			"revisionTime": "2015-10-11T12:25:29+02:00"
 		},
 		{
+			"path": "github.com/peter-edge/grpc-gateway-gogo/protoc-gen-grpc-gateway-gogo",
+			"revision": "aeded3a0041196f5460db8cd881a75ac3fa10595",
+			"revisionTime": "2016-01-17T18:11:07+01:00"
+		},
+		{
+			"path": "github.com/peter-edge/grpc-gateway-gogo/protoc-gen-grpc-gateway-gogo/descriptor",
+			"revision": "aeded3a0041196f5460db8cd881a75ac3fa10595",
+			"revisionTime": "2016-01-17T18:11:07+01:00"
+		},
+		{
+			"path": "github.com/peter-edge/grpc-gateway-gogo/protoc-gen-grpc-gateway-gogo/generator",
+			"revision": "aeded3a0041196f5460db8cd881a75ac3fa10595",
+			"revisionTime": "2016-01-17T18:11:07+01:00"
+		},
+		{
+			"path": "github.com/peter-edge/grpc-gateway-gogo/protoc-gen-grpc-gateway-gogo/gengateway",
+			"revision": "aeded3a0041196f5460db8cd881a75ac3fa10595",
+			"revisionTime": "2016-01-17T18:11:07+01:00"
+		},
+		{
+			"path": "github.com/peter-edge/grpc-gateway-gogo/protoc-gen-grpc-gateway-gogo/httprule",
+			"revision": "aeded3a0041196f5460db8cd881a75ac3fa10595",
+			"revisionTime": "2016-01-17T18:11:07+01:00"
+		},
+		{
+			"path": "github.com/peter-edge/grpc-gateway-gogo/runtime",
+			"revision": "aeded3a0041196f5460db8cd881a75ac3fa10595",
+			"revisionTime": "2016-01-17T18:11:07+01:00"
+		},
+		{
+			"path": "github.com/peter-edge/grpc-gateway-gogo/third_party/googleapis/google/api",
+			"revision": "aeded3a0041196f5460db8cd881a75ac3fa10595",
+			"revisionTime": "2016-01-17T18:11:07+01:00"
+		},
+		{
+			"path": "github.com/peter-edge/grpc-gateway-gogo/utilities",
+			"revision": "aeded3a0041196f5460db8cd881a75ac3fa10595",
+			"revisionTime": "2016-01-17T18:11:07+01:00"
+		},
+		{
 			"path": "github.com/satori/go.uuid",
 			"revision": "d41af8bb6a7704f00bc3b7cba9355ae6a5a80048",
 			"revisionTime": "2015-10-29T02:17:19+03:00"
@@ -318,54 +358,184 @@
 			"revisionTime": "2015-12-29T15:47:30+01:00"
 		},
 		{
-			"path": "go.pedge.io/googleapis/google/datastore/v1beta3",
-			"revision": "bc89a34636e90d6d0a387c0c1e4e92aeb4e53747",
-			"revisionTime": "2015-12-29T15:47:34+01:00"
+			"path": "go.pedge.io/pb/go/google/api",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
 		},
 		{
-			"path": "go.pedge.io/googleapis/google/devtools/cloudtrace/v1",
-			"revision": "bc89a34636e90d6d0a387c0c1e4e92aeb4e53747",
-			"revisionTime": "2015-12-29T15:47:34+01:00"
+			"path": "go.pedge.io/pb/go/google/datastore/v1beta3",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
 		},
 		{
-			"path": "go.pedge.io/googleapis/google/example/library/v1",
-			"revision": "bc89a34636e90d6d0a387c0c1e4e92aeb4e53747",
-			"revisionTime": "2015-12-29T15:47:34+01:00"
+			"path": "go.pedge.io/pb/go/google/devtools/cloudtrace/v1",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
 		},
 		{
-			"path": "go.pedge.io/googleapis/google/iam/v1",
-			"revision": "bc89a34636e90d6d0a387c0c1e4e92aeb4e53747",
-			"revisionTime": "2015-12-29T15:47:34+01:00"
+			"path": "go.pedge.io/pb/go/google/example/library/v1",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
 		},
 		{
-			"path": "go.pedge.io/googleapis/google/longrunning",
-			"revision": "bc89a34636e90d6d0a387c0c1e4e92aeb4e53747",
-			"revisionTime": "2015-12-29T15:47:34+01:00"
+			"path": "go.pedge.io/pb/go/google/iam/v1",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
 		},
 		{
-			"path": "go.pedge.io/googleapis/google/pubsub/v1",
-			"revision": "bc89a34636e90d6d0a387c0c1e4e92aeb4e53747",
-			"revisionTime": "2015-12-29T15:47:34+01:00"
+			"path": "go.pedge.io/pb/go/google/logging/type",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
 		},
 		{
-			"path": "go.pedge.io/googleapis/google/pubsub/v1beta2",
-			"revision": "bc89a34636e90d6d0a387c0c1e4e92aeb4e53747",
-			"revisionTime": "2015-12-29T15:47:34+01:00"
+			"path": "go.pedge.io/pb/go/google/logging/v2",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
 		},
 		{
-			"path": "go.pedge.io/googleapis/google/rpc",
-			"revision": "bc89a34636e90d6d0a387c0c1e4e92aeb4e53747",
-			"revisionTime": "2015-12-29T15:47:34+01:00"
+			"path": "go.pedge.io/pb/go/google/longrunning",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
 		},
 		{
-			"path": "go.pedge.io/googleapis/google/type",
-			"revision": "bc89a34636e90d6d0a387c0c1e4e92aeb4e53747",
-			"revisionTime": "2015-12-29T15:47:34+01:00"
+			"path": "go.pedge.io/pb/go/google/protobuf",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
 		},
 		{
-			"path": "go.pedge.io/pbtype/go",
-			"revision": "88841ba295061a165e9825fc140b9747dcf8b734",
-			"revisionTime": "2016-01-15T16:17:47+01:00"
+			"path": "go.pedge.io/pb/go/google/pubsub/v1",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
+		},
+		{
+			"path": "go.pedge.io/pb/go/google/pubsub/v1beta2",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
+		},
+		{
+			"path": "go.pedge.io/pb/go/google/rpc",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
+		},
+		{
+			"path": "go.pedge.io/pb/go/google/type",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
+		},
+		{
+			"path": "go.pedge.io/pb/go/pb/common",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
+		},
+		{
+			"path": "go.pedge.io/pb/go/pb/geo",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
+		},
+		{
+			"path": "go.pedge.io/pb/go/pb/money",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
+		},
+		{
+			"path": "go.pedge.io/pb/go/pb/net",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
+		},
+		{
+			"path": "go.pedge.io/pb/go/pb/phone",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
+		},
+		{
+			"path": "go.pedge.io/pb/gogo/google/api",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
+		},
+		{
+			"path": "go.pedge.io/pb/gogo/google/datastore/v1beta3",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
+		},
+		{
+			"path": "go.pedge.io/pb/gogo/google/devtools/cloudtrace/v1",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
+		},
+		{
+			"path": "go.pedge.io/pb/gogo/google/example/library/v1",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
+		},
+		{
+			"path": "go.pedge.io/pb/gogo/google/iam/v1",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
+		},
+		{
+			"path": "go.pedge.io/pb/gogo/google/logging/type",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
+		},
+		{
+			"path": "go.pedge.io/pb/gogo/google/logging/v2",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
+		},
+		{
+			"path": "go.pedge.io/pb/gogo/google/longrunning",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
+		},
+		{
+			"path": "go.pedge.io/pb/gogo/google/protobuf",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
+		},
+		{
+			"path": "go.pedge.io/pb/gogo/google/pubsub/v1",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
+		},
+		{
+			"path": "go.pedge.io/pb/gogo/google/pubsub/v1beta2",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
+		},
+		{
+			"path": "go.pedge.io/pb/gogo/google/rpc",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
+		},
+		{
+			"path": "go.pedge.io/pb/gogo/google/type",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
+		},
+		{
+			"path": "go.pedge.io/pb/gogo/pb/common",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
+		},
+		{
+			"path": "go.pedge.io/pb/gogo/pb/geo",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
+		},
+		{
+			"path": "go.pedge.io/pb/gogo/pb/money",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
+		},
+		{
+			"path": "go.pedge.io/pb/gogo/pb/net",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
+		},
+		{
+			"path": "go.pedge.io/pb/gogo/pb/phone",
+			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
+			"revisionTime": "2016-01-17T16:53:06+01:00"
 		},
 		{
 			"path": "go.pedge.io/pkg/cobra",

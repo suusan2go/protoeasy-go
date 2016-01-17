@@ -3,7 +3,7 @@ PKGS := $(shell go list ./... | grep -v 'go.pedge.io/protoeasy/vendor')
 EXTRA_PKGS := \
 	github.com/gengo/grpc-gateway/protoc-gen-grpc-gateway/... \
 	github.com/gengo/grpc-gateway/runtime/... \
-	github.com/peter-edge/grpc-gateway-gogo/protoc-gen-grpc-gateway/... \
+	github.com/peter-edge/grpc-gateway-gogo/protoc-gen-grpc-gateway-gogo/... \
 	github.com/peter-edge/grpc-gateway-gogo/runtime/... \
 	github.com/golang/protobuf/protoc-gen-go/... \
 	github.com/gogo/protobuf/protoc-gen-gofast/... \
@@ -11,7 +11,6 @@ EXTRA_PKGS := \
 	github.com/gogo/protobuf/protoc-gen-gogofast/... \
 	github.com/gogo/protobuf/protoc-gen-gogofaster/... \
 	github.com/gogo/protobuf/protoc-gen-gogoslick/... \
-	github.com/gogo/protobuf/gogoproto/... \
 	go.pedge.io/pb/go/google/api/... \
 	go.pedge.io/pb/go/google/datastore/v1beta3/... \
 	go.pedge.io/pb/go/google/devtools/cloudtrace/v1/... \
@@ -51,7 +50,7 @@ EXTRA_PKGS := \
 
 EXTRA_CMDS := \
 	go.pedge.io/protoeasy/vendor/github.com/gengo/grpc-gateway/protoc-gen-grpc-gateway \
-	go.pedge.io/protoeasy/vendor/github.com/peter-edge/grpc-gateway-gogo/protoc-gen-grpc-gateway \
+	go.pedge.io/protoeasy/vendor/github.com/peter-edge/grpc-gateway-gogo/protoc-gen-grpc-gateway-gogo \
 	go.pedge.io/protoeasy/vendor/github.com/golang/protobuf/protoc-gen-go \
 	go.pedge.io/protoeasy/vendor/github.com/gogo/protobuf/protoc-gen-gofast \
 	go.pedge.io/protoeasy/vendor/github.com/gogo/protobuf/protoc-gen-gogo \
