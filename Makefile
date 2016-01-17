@@ -56,7 +56,6 @@ vendornoupdate:
 	GOOS=linux GOARCH=amd64 govendor add $(EXTRA_PKGS)
 	GOOS=linux GOARCH=amd64 govendor add +external
 	GOOS=linux GOARCH=amd64 govendor update +vendor
-	cd vendor/github.com/gengo/grpc-gateway/third_party/googleapis && protoeasy --go .
 	mkdir -p vendor/go.pedge.io/pbtype/pb/type
 	cp ../pbtype/pb/type/* vendor/go.pedge.io/pbtype/pb/type
 
