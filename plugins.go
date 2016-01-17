@@ -51,7 +51,7 @@ func newGogoPlugin(options *CompileOptions) plugin {
 		options.GogoNoDefaultModifiers,
 		options.GogoModifiers,
 		options.GogoImportPath,
-		false,
+		true,
 	)
 }
 
