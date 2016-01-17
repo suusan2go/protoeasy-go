@@ -2,26 +2,56 @@ PKGS := $(shell go list ./... | grep -v 'go.pedge.io/protoeasy/vendor')
 
 EXTRA_PKGS := \
 	github.com/gengo/grpc-gateway/protoc-gen-grpc-gateway/... \
+	github.com/gengo/grpc-gateway/runtime/... \
+	github.com/peter-edge/grpc-gateway-gogo/protoc-gen-grpc-gateway/... \
+	github.com/peter-edge/grpc-gateway-gogo/runtime/... \
 	github.com/golang/protobuf/protoc-gen-go/... \
 	github.com/gogo/protobuf/protoc-gen-gofast/... \
 	github.com/gogo/protobuf/protoc-gen-gogo/... \
 	github.com/gogo/protobuf/protoc-gen-gogofast/... \
 	github.com/gogo/protobuf/protoc-gen-gogofaster/... \
 	github.com/gogo/protobuf/protoc-gen-gogoslick/... \
-	github.com/gengo/grpc-gateway/runtime/... \
-	go.pedge.io/googleapis/google/datastore/v1beta3/... \
-	go.pedge.io/googleapis/google/devtools/cloudtrace/v1/... \
-	go.pedge.io/googleapis/google/example/library/v1/... \
-	go.pedge.io/googleapis/google/iam/v1/... \
-	go.pedge.io/googleapis/google/longrunning/... \
-	go.pedge.io/googleapis/google/pubsub/v1/... \
-	go.pedge.io/googleapis/google/pubsub/v1beta2/... \
-	go.pedge.io/googleapis/google/rpc/... \
-	go.pedge.io/googleapis/google/type/... \
-	go.pedge.io/pbtype/go/...
+	github.com/gogo/protobuf/gogoproto/... \
+	go.pedge.io/pb/go/google/api/... \
+	go.pedge.io/pb/go/google/datastore/v1beta3/... \
+	go.pedge.io/pb/go/google/devtools/cloudtrace/v1/... \
+	go.pedge.io/pb/go/google/example/library/v1/... \
+	go.pedge.io/pb/go/google/iam/v1/... \
+	go.pedge.io/pb/go/google/logging/type/... \
+	go.pedge.io/pb/go/google/logging/v2/... \
+	go.pedge.io/pb/go/google/longrunning/... \
+	go.pedge.io/pb/go/google/protobuf/... \
+	go.pedge.io/pb/go/google/pubsub/v1/... \
+	go.pedge.io/pb/go/google/pubsub/v1beta2/... \
+	go.pedge.io/pb/go/google/rpc/... \
+	go.pedge.io/pb/go/google/type/... \
+	go.pedge.io/pb/go/pb/common/... \
+	go.pedge.io/pb/go/pb/geo/... \
+	go.pedge.io/pb/go/pb/money/... \
+	go.pedge.io/pb/go/pb/net/... \
+	go.pedge.io/pb/go/pb/phone/... \
+	go.pedge.io/pb/gogo/google/api/... \
+	go.pedge.io/pb/gogo/google/datastore/v1beta3/... \
+	go.pedge.io/pb/gogo/google/devtools/cloudtrace/v1/... \
+	go.pedge.io/pb/gogo/google/example/library/v1/... \
+	go.pedge.io/pb/gogo/google/iam/v1/... \
+	go.pedge.io/pb/gogo/google/logging/type/... \
+	go.pedge.io/pb/gogo/google/logging/v2/... \
+	go.pedge.io/pb/gogo/google/longrunning/... \
+	go.pedge.io/pb/gogo/google/protobuf/... \
+	go.pedge.io/pb/gogo/google/pubsub/v1/... \
+	go.pedge.io/pb/gogo/google/pubsub/v1beta2/... \
+	go.pedge.io/pb/gogo/google/rpc/... \
+	go.pedge.io/pb/gogo/google/type/... \
+	go.pedge.io/pb/gogo/pb/common/... \
+	go.pedge.io/pb/gogo/pb/geo/... \
+	go.pedge.io/pb/gogo/pb/money/... \
+	go.pedge.io/pb/gogo/pb/net/... \
+	go.pedge.io/pb/gogo/pb/phone/...
 
 EXTRA_CMDS := \
 	go.pedge.io/protoeasy/vendor/github.com/gengo/grpc-gateway/protoc-gen-grpc-gateway \
+	go.pedge.io/protoeasy/vendor/github.com/peter-edge/grpc-gateway-gogo/protoc-gen-grpc-gateway \
 	go.pedge.io/protoeasy/vendor/github.com/golang/protobuf/protoc-gen-go \
 	go.pedge.io/protoeasy/vendor/github.com/gogo/protobuf/protoc-gen-gofast \
 	go.pedge.io/protoeasy/vendor/github.com/gogo/protobuf/protoc-gen-gogo \
@@ -50,14 +80,13 @@ vendorupdate:
 
 vendornoupdate:
 	go get -v github.com/kardianos/govendor
-	go get -v go.pedge.io/pbtype/go
 	rm -rf vendor
 	govendor init
 	GOOS=linux GOARCH=amd64 govendor add $(EXTRA_PKGS)
 	GOOS=linux GOARCH=amd64 govendor add +external
 	GOOS=linux GOARCH=amd64 govendor update +vendor
-	mkdir -p vendor/go.pedge.io/pbtype/pb/type
-	cp ../pbtype/pb/type/* vendor/go.pedge.io/pbtype/pb/type
+	mkdir -p vendor/go.pedge.io/pb
+	cp -R ../pb/proto vendor/go.pedge.io/pb/proto
 
 vendor: vendorupdate vendornoupdate
 
