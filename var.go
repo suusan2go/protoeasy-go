@@ -10,7 +10,6 @@ var (
 
 	defaultGoPathRelIncludes = []string{
 		"src/go.pedge.io/protoeasy/vendor/go.pedge.io/pb/proto",
-		"src/go.pedge.io/protoeasy/vendor/github.com/gogo/protobuf",
 	}
 
 	defaultGoModifierOptions = mergeStringStringMaps(
