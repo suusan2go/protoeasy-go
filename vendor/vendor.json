@@ -353,11 +353,6 @@
 			"revisionTime": "2015-12-29T15:47:23+01:00"
 		},
 		{
-			"path": "go.pedge.io/google-protobuf",
-			"revision": "45ec8c9930215bdff741a69012ddb4fb08d36b10",
-			"revisionTime": "2015-12-29T15:47:30+01:00"
-		},
-		{
 			"path": "go.pedge.io/pb/go/google/api",
 			"revision": "d22f4c65bdeb794b311f4be67d525050e5661376",
 			"revisionTime": "2016-01-17T16:53:06+01:00"
@@ -539,43 +534,43 @@
 		},
 		{
 			"path": "go.pedge.io/pkg/cobra",
-			"revision": "c4dee7ffefe181dc2012ece65b9bbcd3523f6f8b",
-			"revisionTime": "2016-01-05T17:53:51+01:00"
+			"revision": "6f8750761acd5666fe7b8b11aa11ef333cc5d3ad",
+			"revisionTime": "2016-01-17T18:31:53+01:00"
 		},
 		{
 			"path": "go.pedge.io/pkg/exec",
-			"revision": "c4dee7ffefe181dc2012ece65b9bbcd3523f6f8b",
-			"revisionTime": "2016-01-05T17:53:51+01:00"
+			"revision": "6f8750761acd5666fe7b8b11aa11ef333cc5d3ad",
+			"revisionTime": "2016-01-17T18:31:53+01:00"
 		},
 		{
 			"path": "go.pedge.io/pkg/log",
-			"revision": "c4dee7ffefe181dc2012ece65b9bbcd3523f6f8b",
-			"revisionTime": "2016-01-05T17:53:51+01:00"
+			"revision": "6f8750761acd5666fe7b8b11aa11ef333cc5d3ad",
+			"revisionTime": "2016-01-17T18:31:53+01:00"
 		},
 		{
 			"path": "go.pedge.io/proto/rpclog",
-			"revision": "05a37f9287bd9be19b6add68918b4209f8648c93",
-			"revisionTime": "2016-01-09T14:48:33-05:00"
+			"revision": "8f9c3e1587a85478c8a4e5f27f98b7297c1c73c2",
+			"revisionTime": "2016-01-17T18:29:51+01:00"
 		},
 		{
 			"path": "go.pedge.io/proto/time",
-			"revision": "05a37f9287bd9be19b6add68918b4209f8648c93",
-			"revisionTime": "2016-01-09T14:48:33-05:00"
+			"revision": "8f9c3e1587a85478c8a4e5f27f98b7297c1c73c2",
+			"revisionTime": "2016-01-17T18:29:51+01:00"
 		},
 		{
 			"path": "go.pedge.io/protolog",
-			"revision": "feebd59ed6f2b9d0c2e412c3badbaf6584b9c92c",
-			"revisionTime": "2015-12-29T15:47:55+01:00"
+			"revision": "fdc01b10e216c08457ee4f949bf216d552c504c4",
+			"revisionTime": "2016-01-17T18:29:40+01:00"
 		},
 		{
 			"path": "go.pedge.io/protolog/pb",
-			"revision": "feebd59ed6f2b9d0c2e412c3badbaf6584b9c92c",
-			"revisionTime": "2015-12-29T15:47:55+01:00"
+			"revision": "fdc01b10e216c08457ee4f949bf216d552c504c4",
+			"revisionTime": "2016-01-17T18:29:40+01:00"
 		},
 		{
 			"path": "go.pedge.io/protolog/syslog",
-			"revision": "feebd59ed6f2b9d0c2e412c3badbaf6584b9c92c",
-			"revisionTime": "2015-12-29T15:47:55+01:00"
+			"revision": "fdc01b10e216c08457ee4f949bf216d552c504c4",
+			"revisionTime": "2016-01-17T18:29:40+01:00"
 		},
 		{
 			"path": "golang.org/x/net/context",

@@ -19,7 +19,6 @@ EXTRA_PKGS := \
 	go.pedge.io/pb/go/google/logging/type/... \
 	go.pedge.io/pb/go/google/logging/v2/... \
 	go.pedge.io/pb/go/google/longrunning/... \
-	go.pedge.io/pb/go/google/protobuf/... \
 	go.pedge.io/pb/go/google/pubsub/v1/... \
 	go.pedge.io/pb/go/google/pubsub/v1beta2/... \
 	go.pedge.io/pb/go/google/rpc/... \
