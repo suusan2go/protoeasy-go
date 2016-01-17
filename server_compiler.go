@@ -115,5 +115,8 @@ func getPlugins(compileOptions *CompileOptions) []plugin {
 	if compileOptions.DescriptorSet {
 		plugins = append(plugins, newDescriptorSetPlugin(compileOptions))
 	}
+	if compileOptions.Letmegrpc {
+		plugins = append(plugins, newLetmegrpcPlugin(compileOptions))
+	}
 	return plugins
 }

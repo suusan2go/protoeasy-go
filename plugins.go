@@ -55,6 +55,23 @@ func newGogoPlugin(options *CompileOptions) plugin {
 	)
 }
 
+func newLetmegrpcPlugin(options *CompileOptions) plugin {
+	if options == nil {
+		options = &CompileOptions{}
+	}
+	return newBaseGoPlugin(
+		options,
+		options.LetmegrpcRelOut,
+		"letmegrpc",
+		"letmegrpc",
+		defaultGogoModifierOptions,
+		options.LetmegrpcNoDefaultModifiers,
+		options.LetmegrpcModifiers,
+		options.LetmegrpcImportPath,
+		"",
+	)
+}
+
 func newObjcPlugin(options *CompileOptions) plugin {
 	return newGrpcPlugin("objc", "objective_c", options, options.ObjcRelOut)
 }
@@ -125,7 +142,7 @@ func (p *baseGoPlugin) Flags(protoSpec *protoSpec, relDirPath string, outDirPath
 	} else {
 		flags = append(flags, fmt.Sprintf("--%s_out=%s", p.pluginType, outDirPath))
 	}
-	if p.options.GrpcGateway {
+	if p.grpcGatewayPlugin != "" && p.options.GrpcGateway {
 		if len(modifiers) > 0 {
 			flags = append(flags, fmt.Sprintf("--%s_out=%s:%s", p.grpcGatewayPlugin, modifiers, outDirPath))
 		} else {

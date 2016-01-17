@@ -27,6 +27,7 @@ type options struct {
 	GoPluginType           string
 	GogoModifiers          []string
 	GogoPluginType         string
+	LetmegrpcModifiers     []string
 	OutDirPath             string
 	NoFileCompileOptions   bool
 	FileCompileOptionsPath string
@@ -272,6 +273,31 @@ func bindCompileOptions(flagSet *pflag.FlagSet, compileOptions *protoeasy.Compil
 		false,
 		"Pass --include_imports to protoc.",
 	)
+
+	flagSet.BoolVar(
+		&compileOptions.Letmegrpc,
+		"letmegrpc",
+		false,
+		"Output letmegrpc files.",
+	)
+	flagSet.StringVar(
+		&compileOptions.LetmegrpcRelOut,
+		"letmegrpc-rel-out",
+		"",
+		"The directory, relative to the output directory, to output letmegrpc files.",
+	)
+	flagSet.StringVar(
+		&compileOptions.LetmegrpcImportPath,
+		"letmegrpc-import-path",
+		"",
+		"Letmegrpc package.",
+	)
+	flagSet.BoolVar(
+		&compileOptions.LetmegrpcNoDefaultModifiers,
+		"letmegrpc-no-default-modifiers",
+		false,
+		"Do not set the default Mfile=package modifiers for --letmegrpc_out.",
+	)
 }
 
 func bindOptions(flagSet *pflag.FlagSet, options *options) {
@@ -298,6 +324,12 @@ func bindOptions(flagSet *pflag.FlagSet, options *options) {
 		"gogo-plugin",
 		"gogofast",
 		fmt.Sprintf("The gogo protoc plugin to use, allowed values are %s.", strings.Join(protoeasy.AllGogoPluginTypeSimpleStrings(), ",")),
+	)
+	flagSet.StringSliceVar(
+		&options.LetmegrpcModifiers,
+		"letmegrpc-modifier",
+		[]string{},
+		"Extra Mfile=package modifiers for --letmegrpc_out, specify just as file=package to this flag.",
 	)
 	flagSet.StringVar(
 		&options.OutDirPath,
@@ -350,6 +382,11 @@ func optionsToCompileOptions(options *options, compileOptions *protoeasy.Compile
 		return err
 	}
 	compileOptions.GogoModifiers = gogoModifiers
+	letmegrpcModifiers, err := getModifiers(options.LetmegrpcModifiers)
+	if err != nil {
+		return err
+	}
+	compileOptions.LetmegrpcModifiers = letmegrpcModifiers
 	// TODO(pedge): this should not be in this function
 	// TODO(pedge): duplicated logic in goPlugin struct
 	if compileOptions.NoDefaultIncludes {
