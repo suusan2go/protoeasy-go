@@ -1,4 +1,4 @@
-FROM golang:1.5.2
+FROM golang:1.5.3
 MAINTAINER peter.edge@gmail.com
 
 RUN \
@@ -14,17 +14,17 @@ RUN \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN \
-  wget https://codeload.github.com/google/protobuf/tar.gz/v3.0.0-beta-1 && \
-  tar xvzf v3.0.0-beta-1 && \
-  rm v3.0.0-beta-1 && \
-  cd protobuf-3.0.0-beta-1 && \
+  wget https://codeload.github.com/google/protobuf/tar.gz/v3.0.0-beta-2 && \
+  tar xvzf v3.0.0-beta-2 && \
+  rm v3.0.0-beta-2 && \
+  cd protobuf-3.0.0-beta-2 && \
   ./autogen.sh && \
   ./configure --prefix=/usr && \
   make && \
   make check && \
   make install && \
   cd - && \
-  rm -rf protobuf-3.0.0-beta-1
+  rm -rf protobuf-3.0.0-beta-2
 
 RUN \
   git clone https://github.com/grpc/grpc.git && \

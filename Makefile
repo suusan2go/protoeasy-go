@@ -151,19 +151,6 @@ docker-launch:
 docker-test: docker-build
 	docker run quay.io/pedge/protoeasy make test
 
-docker-build-proto2:
-	docker build -t quay.io/pedge/protoeasy-proto2 -f Dockerfile.proto2 .
-
-docker-push-proto2: docker-build-proto2
-	docker push quay.io/pedge/protoeasy-proto2
-
-docker-pull-proto2:
-	docker pull quay.io/pedge/protoeasy
-
-docker-launch-proto2:
-	docker rm -f protoeasy-proto2 || true
-	docker run -d -p 6789:6789 --name=protoeasy-proto2 quay.io/pedge/protoeasy-proto2
-
 integration: build docker-build docker-launch proto examples
 
 docker-integration: build docker-build
@@ -196,9 +183,5 @@ docker-integration: build docker-build
 	docker-pull \
 	docker-launch \
 	docker-test \
-	docker-build-proto2 \
-	docker-push-proto2 \
-	docker-pull-proto2 \
-	docker-launch-proto2 \
 	integration \
 	docker-integration

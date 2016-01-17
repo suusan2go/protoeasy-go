@@ -6,35 +6,6 @@ import (
 	"go.pedge.io/googleapis/google/type"
 )
 
-// MoneyMather performs math operations on Money.
-type MoneyMather interface {
-	Plus(MoneyMather) MoneyMather
-	Minus(MoneyMather) MoneyMather
-	Times(MoneyMather) MoneyMather
-	Div(MoneyMather) MoneyMather
-	Abs() MoneyMather
-	Result() (*Money, error)
-
-	noCurrencyCode() bool
-	currencyCode() CurrencyCode
-	usesFloats() bool
-	floatValueMicros() float64
-	valueMicros() int64
-	errors() []error
-}
-
-// NewFloatMoneyMather returns a new MoneyMather that will directly use the valueMicros and not check CurrencyCodes.
-//
-// This will do float math instead of int math.
-func NewFloatMoneyMather(valueMicros float64) MoneyMather {
-	return newFloatMoneyMather(valueMicros)
-}
-
-// NewMoneyMather returns a new MoneyMather that will directly use the valueMicros and not check CurrencyCodes.
-func NewMoneyMather(valueMicros int64) MoneyMather {
-	return newMoneyMather(valueMicros)
-}
-
 // NewMoney returns a new Money for the given CurrencyCode and valueMicros.
 func NewMoney(currencyCode CurrencyCode, valueMicros int64) *Money {
 	return &Money{
@@ -81,6 +52,24 @@ func NewMoneySimpleEUR(valueEuros int64, valueCents int64) *Money {
 	return NewMoneySimple(CurrencyCodeEUR, valueEuros, valueCents)
 }
 
+// NewMoneyFloat returns a new Money for the given CurrencyCode and float value.
+func NewMoneyFloat(currencyCode CurrencyCode, value float64) *Money {
+	return &Money{
+		CurrencyCode: currencyCode,
+		ValueMicros:  floatUnitsToMicros(value),
+	}
+}
+
+// NewMoneyFloatUSD returns a new Money for USD for the given and value.
+func NewMoneyFloatUSD(valueDollars float64) *Money {
+	return NewMoneyFloat(CurrencyCodeUSD, valueDollars)
+}
+
+// NewMoneyFloatEUR returns a new Money for EUR for the given and value.
+func NewMoneyFloatEUR(valueEuros float64) *Money {
+	return NewMoneyFloat(CurrencyCodeEUR, valueEuros)
+}
+
 // GoogleMoneyToMoney converts a google.type.Money to Money.
 func GoogleMoneyToMoney(googleMoney *google_type.Money) (*Money, error) {
 	currencyCode, err := CurrencyCodeSimpleValueOf(googleMoney.CurrencyCode)
@@ -103,154 +92,254 @@ func (m *Money) ToGoogleMoney() *google_type.Money {
 	}
 }
 
-// Math returns a new MoneyMather for the Money.
-func (m *Money) Math() MoneyMather {
-	return newMoneyMatherForMoney(m, false)
+// IsZero returns true if ValueMicros == 0.
+func (m *Money) IsZero() bool {
+	return m.ValueMicros == 0
 }
 
-// FloatMath returns a new MoneyMather for the Money.
-//
-// This will do float math instead of int math.
-func (m *Money) FloatMath() MoneyMather {
-	return newMoneyMatherForMoney(m, true)
+// Units returns the units-only part of the value.
+func (m *Money) Units() int64 {
+	units, _ := microsToUnitsAndMicroPart(m.ValueMicros)
+	return units
 }
 
 // SimpleString returns the simple string for the Money.
 func (m *Money) SimpleString() string {
-	return fmt.Sprintf("%d.%06d", m.ValueMicros/1000000, m.ValueMicros%1000000)
+	units, microPart := microsToUnitsAndMicroPart(m.ValueMicros)
+	if microPart < 0 {
+		microPart = -microPart
+	}
+	return fmt.Sprintf("%d.%06d", units, microPart)
+}
+
+// MoneyMathable is the interface needed to perform money math operations.
+type MoneyMathable interface {
+	GetCurrencyCode() CurrencyCode
+	GetValueMicros() int64
+	Errors() []error
+}
+
+// MoneyMather performs math operations on Money.
+type MoneyMather interface {
+	MoneyMathable
+	Plus(MoneyMathable) MoneyMather
+	Minus(MoneyMathable) MoneyMather
+	Times(MoneyMathable) MoneyMather
+	Div(MoneyMathable) MoneyMather
+	Min(MoneyMathable) MoneyMather
+	Abs() MoneyMather
+	PlusInt(int64) MoneyMather
+	MinusInt(int64) MoneyMather
+	TimesInt(int64) MoneyMather
+	DivInt(int64) MoneyMather
+	PlusFloat(float64) MoneyMather
+	MinusFloat(float64) MoneyMather
+	TimesFloat(float64) MoneyMather
+	DivFloat(float64) MoneyMather
+	Result() (*Money, error)
+}
+
+// Plus does the MoneyMather Plus operation.
+func (m *Money) Plus(moneyMathable MoneyMathable) MoneyMather {
+	return newMoneyMather(m).Plus(moneyMathable)
+}
+
+// Minus does the MoneyMather Minus operation.
+func (m *Money) Minus(moneyMathable MoneyMathable) MoneyMather {
+	return newMoneyMather(m).Minus(moneyMathable)
+}
+
+// Times does the MoneyMather Times operation.
+func (m *Money) Times(moneyMathable MoneyMathable) MoneyMather {
+	return newMoneyMather(m).Times(moneyMathable)
+}
+
+// Div does the MoneyMather Div operation.
+func (m *Money) Div(moneyMathable MoneyMathable) MoneyMather {
+	return newMoneyMather(m).Div(moneyMathable)
+}
+
+// Min does the MoneyMather Min operation.
+func (m *Money) Min(moneyMathable MoneyMathable) MoneyMather {
+	return newMoneyMather(m).Min(moneyMathable)
+}
+
+// Abs does the MoneyMather Abs operation.
+func (m *Money) Abs() MoneyMather {
+	return newMoneyMather(m).Abs()
+}
+
+// PlusInt does the MoneyMather Plus operation.
+func (m *Money) PlusInt(value int64) MoneyMather {
+	return newMoneyMather(m).PlusInt(value)
+}
+
+// MinusInt does the MoneyMather Minus operation.
+func (m *Money) MinusInt(value int64) MoneyMather {
+	return newMoneyMather(m).MinusInt(value)
+}
+
+// TimesInt does the MoneyMather Times operation.
+func (m *Money) TimesInt(value int64) MoneyMather {
+	return newMoneyMather(m).TimesInt(value)
+}
+
+// DivInt does the MoneyMather Div operation.
+func (m *Money) DivInt(value int64) MoneyMather {
+	return newMoneyMather(m).DivInt(value)
+}
+
+// PlusFloat does the MoneyMather Plus operation.
+func (m *Money) PlusFloat(value float64) MoneyMather {
+	return newMoneyMather(m).PlusFloat(value)
+}
+
+// MinusFloat does the MoneyMather Minus operation.
+func (m *Money) MinusFloat(value float64) MoneyMather {
+	return newMoneyMather(m).MinusFloat(value)
+}
+
+// TimesFloat does the MoneyMather Times operation.
+func (m *Money) TimesFloat(value float64) MoneyMather {
+	return newMoneyMather(m).TimesFloat(value)
+}
+
+// DivFloat does the MoneyMather Div operation.
+func (m *Money) DivFloat(value float64) MoneyMather {
+	return newMoneyMather(m).DivFloat(value)
+}
+
+// GetCurrencyCode returns the CurrencyCode.
+func (m *Money) GetCurrencyCode() CurrencyCode {
+	return m.CurrencyCode
+}
+
+// GetValueMicros returns the ValueMicros.
+func (m *Money) GetValueMicros() int64 {
+	return m.ValueMicros
+}
+
+// Errors returns nil.
+func (m *Money) Errors() []error {
+	return nil
 }
 
 type moneyMather struct {
-	nocc bool
 	cc   CurrencyCode
-	uf   bool
-	fvm  float64
 	vm   int64
 	errs []error
 }
 
-func newMoneyMatherForMoney(money *Money, usesFloats bool) *moneyMather {
-	moneyMather := &moneyMather{
-		cc: money.CurrencyCode,
-		uf: usesFloats,
+func newMoneyMather(money *Money) *moneyMather {
+	var errs []error
+	if money.CurrencyCode == CurrencyCode_CURRENCY_CODE_NONE {
+		errs = append(errs, fmt.Errorf("pbtype: cannot use Money with CurrencyCode_CURRENCY_CODE_NONE"))
 	}
-	if usesFloats {
-		moneyMather.fvm = float64(money.ValueMicros)
-	} else {
-		moneyMather.vm = money.ValueMicros
-	}
-	return moneyMather
-}
-
-func newFloatMoneyMather(valueMicros float64) *moneyMather {
 	return &moneyMather{
-		nocc: true,
-		uf:   true,
-		fvm:  valueMicros,
+		cc:   money.CurrencyCode,
+		vm:   money.ValueMicros,
+		errs: errs,
 	}
 }
 
-func newMoneyMather(valueMicros int64) *moneyMather {
-	return &moneyMather{
-		nocc: true,
-		vm:   valueMicros,
-	}
-}
-
-func (m *moneyMather) Plus(moneyMather MoneyMather) MoneyMather {
-	if !m.ok(moneyMather) {
+func (m *moneyMather) Plus(moneyMathable MoneyMathable) MoneyMather {
+	if !m.ok(moneyMathable) {
 		return m
 	}
-	switch {
-	case m.uf && moneyMather.usesFloats():
-		m.fvm += moneyMather.floatValueMicros()
-	case m.uf && !moneyMather.usesFloats():
-		m.fvm += float64(moneyMather.valueMicros())
-	case !m.uf && moneyMather.usesFloats():
-		m.uf = true
-		m.fvm = float64(m.vm)
-		m.fvm += moneyMather.floatValueMicros()
-	case !m.uf && !moneyMather.usesFloats():
-		m.vm += moneyMather.valueMicros()
-	}
+	m.vm += moneyMathable.GetValueMicros()
 	return m
 }
 
-func (m *moneyMather) Minus(moneyMather MoneyMather) MoneyMather {
-	if !m.ok(moneyMather) {
+func (m *moneyMather) Minus(moneyMathable MoneyMathable) MoneyMather {
+	if !m.ok(moneyMathable) {
 		return m
 	}
-	switch {
-	case m.uf && moneyMather.usesFloats():
-		m.fvm -= moneyMather.floatValueMicros()
-	case m.uf && !moneyMather.usesFloats():
-		m.fvm -= float64(moneyMather.valueMicros())
-	case !m.uf && moneyMather.usesFloats():
-		m.uf = true
-		m.fvm = float64(m.vm)
-		m.fvm -= moneyMather.floatValueMicros()
-	case !m.uf && !moneyMather.usesFloats():
-		m.vm -= moneyMather.valueMicros()
-	}
+	m.vm -= moneyMathable.GetValueMicros()
 	return m
 }
 
-func (m *moneyMather) Times(moneyMather MoneyMather) MoneyMather {
-	if !m.ok(moneyMather) {
+func (m *moneyMather) Times(moneyMathable MoneyMathable) MoneyMather {
+	if !m.ok(moneyMathable) {
 		return m
 	}
-	switch {
-	case m.uf && moneyMather.usesFloats():
-		m.fvm *= moneyMather.floatValueMicros()
-	case m.uf && !moneyMather.usesFloats():
-		m.fvm *= float64(moneyMather.valueMicros())
-	case !m.uf && moneyMather.usesFloats():
-		m.uf = true
-		m.fvm = float64(m.vm)
-		m.fvm *= moneyMather.floatValueMicros()
-	case !m.uf && !moneyMather.usesFloats():
-		m.vm *= moneyMather.valueMicros()
-	}
+	m.vm *= moneyMathable.GetValueMicros()
 	return m
 }
 
-func (m *moneyMather) Div(moneyMather MoneyMather) MoneyMather {
-	if !m.ok(moneyMather) {
+func (m *moneyMather) Div(moneyMathable MoneyMathable) MoneyMather {
+	if !m.ok(moneyMathable) {
 		return m
 	}
-	if moneyMather.usesFloats() && moneyMather.floatValueMicros() == 0.0 {
-		m.addErrors(fmt.Errorf("pbtype: cannot divide by 0"))
+	if moneyMathable.GetValueMicros() == 0 {
+		m.errs = append(m.errs, fmt.Errorf("pbtype: cannot divide by 0"))
 		return m
 	}
-	if !moneyMather.usesFloats() && moneyMather.valueMicros() == 0 {
-		m.addErrors(fmt.Errorf("pbtype: cannot divide by 0"))
+	m.vm /= moneyMathable.GetValueMicros()
+	return m
+}
+
+func (m *moneyMather) Min(moneyMathable MoneyMathable) MoneyMather {
+	if !m.ok(moneyMathable) {
 		return m
 	}
-	switch {
-	case m.uf && moneyMather.usesFloats():
-		m.fvm /= moneyMather.floatValueMicros()
-	case m.uf && !moneyMather.usesFloats():
-		m.fvm /= float64(moneyMather.valueMicros())
-	case !m.uf && moneyMather.usesFloats():
-		m.uf = true
-		m.fvm = float64(m.vm)
-		m.fvm /= moneyMather.floatValueMicros()
-	case !m.uf && !moneyMather.usesFloats():
-		m.vm /= moneyMather.valueMicros()
+	if m.vm > moneyMathable.GetValueMicros() {
+		m.vm = moneyMathable.GetValueMicros()
 	}
 	return m
 }
 
 func (m *moneyMather) Abs() MoneyMather {
-	if !m.ok(nil) {
-		return m
-	}
-	if m.uf && m.fvm < 0.0 {
-		m.fvm = -m.fvm
-	}
-	if !m.uf && m.vm < 0 {
+	if m.vm < 0 {
 		m.vm = -m.vm
 	}
+	return m
+}
+
+func (m *moneyMather) PlusInt(value int64) MoneyMather {
+	m.vm += value
+	return m
+}
+
+func (m *moneyMather) MinusInt(value int64) MoneyMather {
+	m.vm -= value
+	return m
+}
+
+func (m *moneyMather) TimesInt(value int64) MoneyMather {
+	m.vm *= value
+	return m
+}
+
+func (m *moneyMather) DivInt(value int64) MoneyMather {
+	if value == 0 {
+		m.errs = append(m.errs, fmt.Errorf("pbtype: cannot divide by 0"))
+		return m
+	}
+	m.vm /= value
+	return m
+}
+
+func (m *moneyMather) PlusFloat(value float64) MoneyMather {
+	m.vm += int64(value)
+	return m
+}
+
+func (m *moneyMather) MinusFloat(value float64) MoneyMather {
+	m.vm -= int64(value)
+	return m
+}
+
+func (m *moneyMather) TimesFloat(value float64) MoneyMather {
+	m.vm = int64(float64(m.vm) * value)
+	return m
+}
+
+func (m *moneyMather) DivFloat(value float64) MoneyMather {
+	if value == 0.0 {
+		m.errs = append(m.errs, fmt.Errorf("pbtype: cannot divide by 0"))
+		return m
+	}
+	m.vm = int64(float64(m.vm) / value)
 	return m
 }
 
@@ -258,61 +347,35 @@ func (m *moneyMather) Result() (*Money, error) {
 	if len(m.errs) > 0 {
 		return nil, fmt.Errorf("%v", m.errs)
 	}
-	valueMicros := int64(m.vm)
-	if m.uf {
-		valueMicros = int64(m.fvm)
-	}
 	return &Money{
 		CurrencyCode: m.cc,
-		ValueMicros:  valueMicros,
+		ValueMicros:  m.vm,
 	}, nil
 }
 
-func (m *moneyMather) noCurrencyCode() bool {
-	return m.nocc
-}
-
-func (m *moneyMather) currencyCode() CurrencyCode {
+func (m *moneyMather) GetCurrencyCode() CurrencyCode {
 	return m.cc
 }
 
-func (m *moneyMather) usesFloats() bool {
-	return m.uf
-}
-
-func (m *moneyMather) floatValueMicros() float64 {
-	return m.fvm
-}
-
-func (m *moneyMather) valueMicros() int64 {
+func (m *moneyMather) GetValueMicros() int64 {
 	return m.vm
 }
 
-func (m *moneyMather) errors() []error {
+func (m *moneyMather) Errors() []error {
 	return m.errs
 }
 
-func (m *moneyMather) ok(moneyMather MoneyMather) bool {
-	errs := moneyMather.errors()
+func (m *moneyMather) ok(moneyMathable MoneyMathable) bool {
+	errs := moneyMathable.Errors()
 	if len(errs) > 0 {
-		m.addErrors(errs...)
+		m.errs = append(m.errs, errs...)
 		return false
 	}
-	if moneyMather != nil {
-		if !m.nocc && !moneyMather.noCurrencyCode() && m.cc != moneyMather.currencyCode() {
-			m.addErrors(fmt.Errorf("pbtype: mismatched CurrencyCodes: %s %s", m.cc, moneyMather.currencyCode()))
-			return false
-		}
-		if m.nocc && !moneyMather.noCurrencyCode() {
-			m.nocc = false
-			m.cc = moneyMather.currencyCode()
-		}
+	if m.cc != moneyMathable.GetCurrencyCode() {
+		m.errs = append(m.errs, fmt.Errorf("pbtype: mismatched CurrencyCodes: %s %s", m.cc, moneyMathable.GetCurrencyCode()))
+		return false
 	}
 	return true
-}
-
-func (m *moneyMather) addErrors(errs ...error) {
-	m.errs = append(m.errs, errs...)
 }
 
 func unitsAndMicroPartToMicros(units int64, micros int64) int64 {
@@ -333,4 +396,8 @@ func microsToUnitsAndNanoPart(micros int64) (int64, int32) {
 
 func unitsToMicros(units int64) int64 {
 	return units * 1000000
+}
+
+func floatUnitsToMicros(floatUnits float64) int64 {
+	return int64(floatUnits * 1000000.0)
 }

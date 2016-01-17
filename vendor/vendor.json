@@ -9,43 +9,43 @@
 		},
 		{
 			"path": "github.com/docker/docker/pkg/archive",
-			"revision": "9365b301a821a95e36589c990a36ea4c619b9ba1",
-			"revisionTime": "2016-01-14T16:53:39-05:00"
+			"revision": "82401a4b13c0581908d46dbc3e7b475c7de48334",
+			"revisionTime": "2016-01-16T08:04:05-05:00"
 		},
 		{
 			"path": "github.com/docker/docker/pkg/fileutils",
-			"revision": "9365b301a821a95e36589c990a36ea4c619b9ba1",
-			"revisionTime": "2016-01-14T16:53:39-05:00"
+			"revision": "82401a4b13c0581908d46dbc3e7b475c7de48334",
+			"revisionTime": "2016-01-16T08:04:05-05:00"
 		},
 		{
 			"path": "github.com/docker/docker/pkg/idtools",
-			"revision": "9365b301a821a95e36589c990a36ea4c619b9ba1",
-			"revisionTime": "2016-01-14T16:53:39-05:00"
+			"revision": "82401a4b13c0581908d46dbc3e7b475c7de48334",
+			"revisionTime": "2016-01-16T08:04:05-05:00"
 		},
 		{
 			"path": "github.com/docker/docker/pkg/ioutils",
-			"revision": "9365b301a821a95e36589c990a36ea4c619b9ba1",
-			"revisionTime": "2016-01-14T16:53:39-05:00"
+			"revision": "82401a4b13c0581908d46dbc3e7b475c7de48334",
+			"revisionTime": "2016-01-16T08:04:05-05:00"
 		},
 		{
 			"path": "github.com/docker/docker/pkg/longpath",
-			"revision": "9365b301a821a95e36589c990a36ea4c619b9ba1",
-			"revisionTime": "2016-01-14T16:53:39-05:00"
+			"revision": "82401a4b13c0581908d46dbc3e7b475c7de48334",
+			"revisionTime": "2016-01-16T08:04:05-05:00"
 		},
 		{
 			"path": "github.com/docker/docker/pkg/pools",
-			"revision": "9365b301a821a95e36589c990a36ea4c619b9ba1",
-			"revisionTime": "2016-01-14T16:53:39-05:00"
+			"revision": "82401a4b13c0581908d46dbc3e7b475c7de48334",
+			"revisionTime": "2016-01-16T08:04:05-05:00"
 		},
 		{
 			"path": "github.com/docker/docker/pkg/promise",
-			"revision": "9365b301a821a95e36589c990a36ea4c619b9ba1",
-			"revisionTime": "2016-01-14T16:53:39-05:00"
+			"revision": "82401a4b13c0581908d46dbc3e7b475c7de48334",
+			"revisionTime": "2016-01-16T08:04:05-05:00"
 		},
 		{
 			"path": "github.com/docker/docker/pkg/system",
-			"revision": "9365b301a821a95e36589c990a36ea4c619b9ba1",
-			"revisionTime": "2016-01-14T16:53:39-05:00"
+			"revision": "82401a4b13c0581908d46dbc3e7b475c7de48334",
+			"revisionTime": "2016-01-16T08:04:05-05:00"
 		},
 		{
 			"path": "github.com/docker/go-units",
@@ -299,8 +299,8 @@
 		},
 		{
 			"path": "github.com/spf13/cobra",
-			"revision": "9c9300901990faada0c5fb3b5730f452585c7c2b",
-			"revisionTime": "2016-01-13T22:06:19-05:00"
+			"revision": "8e91712f174ced10270cf66615e0a9127e7c4de5",
+			"revisionTime": "2016-01-16T22:09:38-05:00"
 		},
 		{
 			"path": "github.com/spf13/pflag",
@@ -364,8 +364,8 @@
 		},
 		{
 			"path": "go.pedge.io/pbtype/go",
-			"revision": "612c532cb44c5603debc5000f035861d4da129ed",
-			"revisionTime": "2016-01-14T23:33:01+01:00"
+			"revision": "88841ba295061a165e9825fc140b9747dcf8b734",
+			"revisionTime": "2016-01-15T16:17:47+01:00"
 		},
 		{
 			"path": "go.pedge.io/pkg/cobra",
@@ -409,68 +409,68 @@
 		},
 		{
 			"path": "golang.org/x/net/context",
-			"revision": "341cd0845b5a19165f12976d7915847a71037135",
-			"revisionTime": "2016-01-13T21:09:49Z"
+			"revision": "c92cdcb05f66ce5b61460e23498d2dc5fcf69aaf",
+			"revisionTime": "2016-01-15T10:46:00-08:00"
 		},
 		{
 			"path": "golang.org/x/net/http2",
-			"revision": "341cd0845b5a19165f12976d7915847a71037135",
-			"revisionTime": "2016-01-13T21:09:49Z"
+			"revision": "c92cdcb05f66ce5b61460e23498d2dc5fcf69aaf",
+			"revisionTime": "2016-01-15T10:46:00-08:00"
 		},
 		{
 			"path": "golang.org/x/net/http2/hpack",
-			"revision": "341cd0845b5a19165f12976d7915847a71037135",
-			"revisionTime": "2016-01-13T21:09:49Z"
+			"revision": "c92cdcb05f66ce5b61460e23498d2dc5fcf69aaf",
+			"revisionTime": "2016-01-15T10:46:00-08:00"
 		},
 		{
 			"path": "golang.org/x/net/internal/timeseries",
-			"revision": "341cd0845b5a19165f12976d7915847a71037135",
-			"revisionTime": "2016-01-13T21:09:49Z"
+			"revision": "c92cdcb05f66ce5b61460e23498d2dc5fcf69aaf",
+			"revisionTime": "2016-01-15T10:46:00-08:00"
 		},
 		{
 			"path": "golang.org/x/net/trace",
-			"revision": "341cd0845b5a19165f12976d7915847a71037135",
-			"revisionTime": "2016-01-13T21:09:49Z"
+			"revision": "c92cdcb05f66ce5b61460e23498d2dc5fcf69aaf",
+			"revisionTime": "2016-01-15T10:46:00-08:00"
 		},
 		{
 			"path": "google.golang.org/grpc",
-			"revision": "9fafaa3e4fbc47d6e18f72a6d4f99ba1b0179d0c",
-			"revisionTime": "2016-01-14T12:27:47-08:00"
+			"revision": "5da22b92e9485c15a6b284d52cc54d6580864c99",
+			"revisionTime": "2016-01-14T17:41:25-08:00"
 		},
 		{
 			"path": "google.golang.org/grpc/codes",
-			"revision": "9fafaa3e4fbc47d6e18f72a6d4f99ba1b0179d0c",
-			"revisionTime": "2016-01-14T12:27:47-08:00"
+			"revision": "5da22b92e9485c15a6b284d52cc54d6580864c99",
+			"revisionTime": "2016-01-14T17:41:25-08:00"
 		},
 		{
 			"path": "google.golang.org/grpc/credentials",
-			"revision": "9fafaa3e4fbc47d6e18f72a6d4f99ba1b0179d0c",
-			"revisionTime": "2016-01-14T12:27:47-08:00"
+			"revision": "5da22b92e9485c15a6b284d52cc54d6580864c99",
+			"revisionTime": "2016-01-14T17:41:25-08:00"
 		},
 		{
 			"path": "google.golang.org/grpc/grpclog",
-			"revision": "9fafaa3e4fbc47d6e18f72a6d4f99ba1b0179d0c",
-			"revisionTime": "2016-01-14T12:27:47-08:00"
+			"revision": "5da22b92e9485c15a6b284d52cc54d6580864c99",
+			"revisionTime": "2016-01-14T17:41:25-08:00"
 		},
 		{
 			"path": "google.golang.org/grpc/metadata",
-			"revision": "9fafaa3e4fbc47d6e18f72a6d4f99ba1b0179d0c",
-			"revisionTime": "2016-01-14T12:27:47-08:00"
+			"revision": "5da22b92e9485c15a6b284d52cc54d6580864c99",
+			"revisionTime": "2016-01-14T17:41:25-08:00"
 		},
 		{
 			"path": "google.golang.org/grpc/naming",
-			"revision": "9fafaa3e4fbc47d6e18f72a6d4f99ba1b0179d0c",
-			"revisionTime": "2016-01-14T12:27:47-08:00"
+			"revision": "5da22b92e9485c15a6b284d52cc54d6580864c99",
+			"revisionTime": "2016-01-14T17:41:25-08:00"
 		},
 		{
 			"path": "google.golang.org/grpc/peer",
-			"revision": "9fafaa3e4fbc47d6e18f72a6d4f99ba1b0179d0c",
-			"revisionTime": "2016-01-14T12:27:47-08:00"
+			"revision": "5da22b92e9485c15a6b284d52cc54d6580864c99",
+			"revisionTime": "2016-01-14T17:41:25-08:00"
 		},
 		{
 			"path": "google.golang.org/grpc/transport",
-			"revision": "9fafaa3e4fbc47d6e18f72a6d4f99ba1b0179d0c",
-			"revisionTime": "2016-01-14T12:27:47-08:00"
+			"revision": "5da22b92e9485c15a6b284d52cc54d6580864c99",
+			"revisionTime": "2016-01-14T17:41:25-08:00"
 		},
 		{
 			"path": "gopkg.in/natefinch/lumberjack.v2",

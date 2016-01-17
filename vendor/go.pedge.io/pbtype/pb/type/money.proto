@@ -10,3 +10,9 @@ message Money {
   CurrencyCode currency_code = 1;
   int64 value_micros = 2;
 }
+
+message ExchangeRate {
+  CurrencyCode from = 1;
+  CurrencyCode to = 2;
+  int64 value_micros = 3;
+}
