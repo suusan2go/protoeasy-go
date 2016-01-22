@@ -10,9 +10,9 @@ import (
 	"google.golang.org/grpc"
 
 	"go.pedge.io/env"
+	"go.pedge.io/lion/proto"
 	"go.pedge.io/pkg/cobra"
 	"go.pedge.io/protoeasy"
-	"go.pedge.io/protolog"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
@@ -60,7 +60,7 @@ func do(appEnvObj interface{}) error {
 						return err
 					}
 				} else {
-					protolog.Infof("Using protoeasy options file at %s", fileCompileOptionsPath)
+					protolion.Infof("Using protoeasy options file at %s", fileCompileOptionsPath)
 					fileCompileOptions, err := protoeasy.ParseFileCompileOptions(fileCompileOptionsPath)
 					if err != nil {
 						return err
@@ -81,17 +81,17 @@ func do(appEnvObj interface{}) error {
 			if dirPath == "" {
 				return fmt.Errorf("Directory path to base protoeasy compile must either be the first argument if no protoeasy options file found (usually %s)", protoeasy.DefaultFileCompileOptionsFile)
 			}
-			protolog.Infof("Using input directory %s", dirPath)
+			protolion.Infof("Using input directory %s", dirPath)
 			outDirPath := dirPath
 			if options.OutDirPath != "" {
 				outDirPath = options.OutDirPath
 			}
-			protolog.Infof("Using output directory %s", outDirPath)
+			protolion.Infof("Using output directory %s", outDirPath)
 			data, err := json.Marshal(compileOptions)
 			if err != nil {
 				return err
 			}
-			protolog.Infof("Using compile options %s", string(data))
+			protolion.Infof("Using compile options %s", string(data))
 			pkgcobra.Check(run(appEnv, dirPath, outDirPath, compileOptions))
 			return nil
 		}),
@@ -429,7 +429,7 @@ func run(appEnv *appEnv, dirPath string, outDirPath string, compileOptions *prot
 	}
 	for _, command := range commands {
 		if len(command.Arg) > 0 {
-			protolog.Infof("\n%s\n", strings.Join(command.Arg, " \\\n\t"))
+			protolion.Infof("\n%s\n", strings.Join(command.Arg, " \\\n\t"))
 		}
 	}
 	return nil

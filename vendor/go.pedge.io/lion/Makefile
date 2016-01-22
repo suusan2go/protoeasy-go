@@ -17,7 +17,7 @@ build: deps
 
 lint: testdeps
 	go get -v github.com/golang/lint/golint
-	for file in $$(find . -name '*.go' | grep -v '\.pb.go$$' | grep -v 'testing/' | grep -v 'benchmark/'); do \
+	for file in $$(find . -name '*.go' | grep -v '\.pb\.go' | grep -v 'testing/'); do \
 		golint $$file | grep -v underscore; \
 		if [ -n "$$(golint $$file | grep -v underscore)" ]; then \
 			exit 1; \
@@ -34,15 +34,7 @@ errcheck: testdeps
 pretest: lint vet errcheck
 
 test: testdeps pretest
-	go test -test.v ./testing
-
-bench-marshal: testdeps
-	go get -v go.pedge.io/tools/go-benchmark-columns
-	go test -test.v -bench . ./benchmark/marshal | go-benchmark-columns
-
-bench-long: testdeps
-	go get -v go.pedge.io/tools/go-benchmark-columns
-	go test -test.v -bench . ./benchmark/long | go-benchmark-columns
+	go test -v ./testing
 
 clean:
 	go clean -i ./...
@@ -50,14 +42,8 @@ clean:
 proto:
 	go get -v go.pedge.io/protoeasy/cmd/protoeasy
 	go get -v go.pedge.io/pkg/cmd/strip-package-comments
-	protoeasy
-	strip-package-comments testing/testing.pb.go
-
-docker-build:
-	docker build -t quay.io/pedge/protolog .
-
-docker-test: docker-build
-	docker run quay.io/pedge/protolog make test
+	protoeasy --go --go-import-path go.pedge.io/lion .
+	find . -name *\.pb\*\.go | xargs strip-package-comments
 
 .PHONY: \
 	all \
@@ -71,9 +57,5 @@ docker-test: docker-build
 	errcheck \
 	pretest \
 	test \
-	bench-marshal \
-	bench-long \
 	clean \
-	proto \
-	docker-build \
-	docker-test
+	proto

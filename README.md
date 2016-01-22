@@ -257,7 +257,6 @@ See `make proto` and `make example-complete` for two more example usages. I also
 * https://go.pedge.io/openflights
 * https://go.pedge.io/pkg
 * https://go.pedge.io/proto
-* https://go.pedge.io/protolog
 
 #### Client/Server Setup
 

@@ -1,4 +1,4 @@
-package protolog
+package lion
 
 import (
 	"bytes"
@@ -7,7 +7,6 @@ import (
 	"unicode"
 
 	"github.com/fatih/color"
-	"github.com/golang/protobuf/proto"
 )
 
 var (
@@ -105,20 +104,27 @@ func textMarshalEntry(
 			_ = buffer.WriteByte(' ')
 		}
 	}
+	eventSeen := false
 	// TODO(pedge): verify only one of Event, Message, WriterOutput?
 	if entry.Event != nil {
+		eventSeen = true
 		if err := textMarshalMessage(buffer, entry.Event); err != nil {
 			return nil, err
 		}
 	}
 	if entry.Message != "" {
+		eventSeen = true
 		_, _ = buffer.WriteString(entry.Message)
 	}
 	if entry.WriterOutput != nil {
+		eventSeen = true
 		_, _ = buffer.Write(trimRightSpaceBytes(entry.WriterOutput))
 	}
 	if len(entry.Contexts) > 0 && !disableContexts {
-		_ = buffer.WriteByte(' ')
+		if eventSeen {
+			_ = buffer.WriteByte(' ')
+		}
+		eventSeen = true
 		lenContexts := len(entry.Contexts)
 		for i, context := range entry.Contexts {
 			if err := textMarshalMessage(buffer, context); err != nil {
@@ -130,7 +136,9 @@ func textMarshalEntry(
 		}
 	}
 	if len(entry.Fields) > 0 && !disableContexts {
-		_ = buffer.WriteByte(' ')
+		if eventSeen {
+			_ = buffer.WriteByte(' ')
+		}
 		data, err := json.Marshal(entry.Fields)
 		if err != nil {
 			return nil, err
@@ -146,13 +154,17 @@ func textMarshalEntry(
 	return data, nil
 }
 
-func textMarshalMessage(buffer *bytes.Buffer, message proto.Message) error {
+func textMarshalMessage(buffer *bytes.Buffer, message *EntryMessage) error {
 	if message == nil {
 		return nil
 	}
-	_, _ = buffer.WriteString(messageName(message))
+	name, err := message.Name()
+	if err != nil {
+		return err
+	}
+	_, _ = buffer.WriteString(name)
 	_ = buffer.WriteByte(' ')
-	data, err := json.Marshal(message)
+	data, err := json.Marshal(message.Value)
 	if err != nil {
 		return err
 	}

@@ -1,4 +1,4 @@
-package protolog
+package lion
 
 import (
 	"io"
@@ -12,22 +12,21 @@ var (
 	newlineBytes = []byte{'\n'}
 )
 
+type syncer interface {
+	Sync() error
+}
+
 type writePusher struct {
 	writer     io.Writer
 	marshaller Marshaller
-	newline    bool
 	lock       *sync.Mutex
 }
 
-func newWritePusher(writer io.Writer, options ...WritePusherOption) *writePusher {
+func newWritePusher(writer io.Writer, marshaller Marshaller) *writePusher {
 	writePusher := &writePusher{
 		writer,
-		DelimitedMarshaller,
-		false,
+		marshaller,
 		&sync.Mutex{},
-	}
-	for _, option := range options {
-		option(writePusher)
 	}
 	if file, ok := writer.(*os.File); ok {
 		if textMarshaller, ok := writePusher.marshaller.(TextMarshaller); ok {
@@ -39,18 +38,10 @@ func newWritePusher(writer io.Writer, options ...WritePusherOption) *writePusher
 	return writePusher
 }
 
-type flusher interface {
-	Flush() error
-}
-
-type syncer interface {
-	Sync() error
-}
-
 func (w *writePusher) Flush() error {
 	if syncer, ok := w.writer.(syncer); ok {
 		return syncer.Sync()
-	} else if flusher, ok := w.writer.(flusher); ok {
+	} else if flusher, ok := w.writer.(Flusher); ok {
 		return flusher.Flush()
 	}
 	return nil
