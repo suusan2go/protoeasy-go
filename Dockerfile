@@ -29,6 +29,7 @@ RUN \
 RUN \
   git clone https://github.com/grpc/grpc.git && \
   cd grpc && \
+  git checkout release-0_12_0 && \
   git submodule update --init && \
   make && \
   make install
