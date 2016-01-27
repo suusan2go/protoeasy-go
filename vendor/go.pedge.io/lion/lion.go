@@ -123,6 +123,7 @@ type Logger interface {
 	AtLevel(level Level) Logger
 	WithField(key string, value interface{}) Logger
 	WithFields(fields map[string]interface{}) Logger
+	WithKeyValues(keyvalues ...interface{}) Logger
 
 	// This generally should only be used internally or by sub-loggers such as the protobuf Logger.
 	WithEntryMessageContext(context *EntryMessage) Logger
@@ -497,4 +498,9 @@ func WithField(key string, value interface{}) Logger {
 // WithFields calls WithFields on the global Logger.
 func WithFields(fields map[string]interface{}) Logger {
 	return globalLogger.WithFields(fields)
+}
+
+// WithKeyValues calls WithKeyValues on the global Logger.
+func WithKeyValues(keyValues ...interface{}) Logger {
+	return globalLogger.WithKeyValues(keyValues...)
 }
