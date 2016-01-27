@@ -84,7 +84,8 @@ func newGogoPlugin(options *CompileOptions) plugin {
 		options.GogoNoDefaultModifiers,
 		options.GogoModifiers,
 		options.GogoImportPath,
-		"grpc-gateway-gogo",
+		//"grpc-gateway-gogo",
+		"grpc-gateway",
 		true,
 	)
 }

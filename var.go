@@ -212,7 +212,8 @@ var (
 				"annotations.proto",
 				"http.proto",
 			},
-			"github.com/peter-edge/grpc-gateway-gogo/third_party/googleapis/google/api",
+			//"github.com/peter-edge/grpc-gateway-gogo/third_party/googleapis/google/api",
+			"github.com/gengo/grpc-gateway/third_party/googleapis/google/api",
 		),
 		newGoModifierOptions(
 			"google/api",
