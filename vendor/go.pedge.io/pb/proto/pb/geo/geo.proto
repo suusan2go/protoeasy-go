@@ -7,6 +7,18 @@ package pb.geo;
 
 option go_package = "pbgeo";
 
+enum StreetDirection {
+  STREET_DIRECTION_NONE = 0;
+  STREET_DIRECTION_N = 1;
+  STREET_DIRECTION_S = 2;
+  STREET_DIRECTION_E = 3;
+  STREET_DIRECTION_W = 4;
+  STREET_DIRECTION_NE = 5;
+  STREET_DIRECTION_SE = 6;
+  STREET_DIRECTION_NW = 7;
+  STREET_DIRECTION_SW = 8;
+}
+
 message Country {
   string name = 1;
   CountryAlpha2Code alpha_2_code = 2;
@@ -21,22 +33,11 @@ message LatLng {
 }
 
 message PostalAddress {
-  enum Direction {
-    NONE = 0;
-    N = 1;
-    S = 2;
-    E = 3;
-    W = 4;
-    NE = 5;
-    SE = 6;
-    NW = 7;
-    SW = 8;
-  }
   uint64 street_number = 1;
   string street_number_postfix = 2;
   string street_name = 3;
-  Direction street_pre_direction = 4;
-  Direction street_post_direction = 5;
+  StreetDirection pre_street_direction = 4;
+  StreetDirection post_street_direction = 5;
   string street_type_abbreviation = 6;
   string secondary_address_type_abbreviation = 7;
   string secondary_address_value = 8;
@@ -44,4 +45,13 @@ message PostalAddress {
   string region_code = 10;
   string postal_code = 11;
   CountryAlpha2Code country_alpha_2_code = 12;
+}
+
+message SimplePostalAddress {
+  string street_address = 1;
+  string street_address_2 = 2;
+  string locality_name = 3;
+  string region_code = 4;
+  string postal_code = 5;
+  CountryAlpha2Code country_alpha_2_code = 6;
 }

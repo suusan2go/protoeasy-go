@@ -135,12 +135,6 @@ func (d *gzipDecompressor) Type() string {
 	return "gzip"
 }
 
-// CompressorGenerator defines the function generating a Compressor.
-type CompressorGenerator func() Compressor
-
-// DecompressorGenerator defines the function generating a Decompressor.
-type DecompressorGenerator func() Decompressor
-
 // callInfo contains all related configuration and information about an RPC.
 type callInfo struct {
 	failFast  bool
@@ -279,7 +273,7 @@ func checkRecvPayload(pf payloadFormat, recvCompress string, dc Decompressor) er
 	case compressionNone:
 	case compressionMade:
 		if recvCompress == "" {
-			return transport.StreamErrorf(codes.InvalidArgument, "grpc: received unexpected payload format %d", pf)
+			return transport.StreamErrorf(codes.InvalidArgument, "grpc: invalid grpc-encoding %q with compression enabled", recvCompress)
 		}
 		if dc == nil || recvCompress != dc.Type() {
 			return transport.StreamErrorf(codes.InvalidArgument, "grpc: Decompressor is not installed for grpc-encoding %q", recvCompress)
@@ -290,14 +284,10 @@ func checkRecvPayload(pf payloadFormat, recvCompress string, dc Decompressor) er
 	return nil
 }
 
-func recv(p *parser, c Codec, s *transport.Stream, dg DecompressorGenerator, m interface{}) error {
+func recv(p *parser, c Codec, s *transport.Stream, dc Decompressor, m interface{}) error {
 	pf, d, err := p.recvMsg()
 	if err != nil {
 		return err
-	}
-	var dc Decompressor
-	if pf == compressionMade && dg != nil {
-		dc = dg()
 	}
 	if err := checkRecvPayload(pf, s.RecvCompress(), dc); err != nil {
 		return err

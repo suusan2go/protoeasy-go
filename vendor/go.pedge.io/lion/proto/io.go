@@ -1,20 +1,13 @@
-// Copyright 2013 Matt T. Proud
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+/*
+Some of the code here is copied from https://github.com/matttproud/golang_protobuf_extensions/tree/master/pbutil.
 
-package pbutil
+This code is under the Apache 2.0 License that can be found at https://github.com/matttproud/golang_protobuf_extensions/blob/master/LICENSE.
+*/
+
+package protolion
 
 import (
+	"encoding/base64"
 	"encoding/binary"
 	"errors"
 	"io"
@@ -24,7 +17,42 @@ import (
 
 var errInvalidVarint = errors.New("invalid varint32 encountered")
 
-// ReadDelimited decodes a message from the provided length-delimited stream,
+// writeDelimited encodes and dumps a message to the provided writer prefixed
+// with a 32-bit varint indicating the length of the encoded message, producing
+// a length-delimited record stream, which can be used to chain together
+// encoded messages of the same type together in a file.  It returns the total
+// number of bytes written and any applicable error.  This is roughly
+// equivalent to the companion Java API's MessageLite#writeDelimitedTo.
+func writeDelimited(w io.Writer, m proto.Message, base64Encode bool, newline bool) (int, error) {
+	buffer, err := proto.Marshal(m)
+	if err != nil {
+		return 0, err
+	}
+	if base64Encode {
+		buffer = []byte(base64.StdEncoding.EncodeToString(buffer))
+	}
+
+	buf := make([]byte, binary.MaxVarintLen32)
+	encodedLength := binary.PutUvarint(buf, uint64(len(buffer)))
+
+	sync, err := w.Write(buf[:encodedLength])
+	if err != nil {
+		return sync, err
+	}
+
+	n, err := w.Write(buffer)
+	sync += n
+	if err != nil {
+		return sync, err
+	}
+	if newline {
+		n, err = w.Write([]byte{'\n'})
+		sync += n
+	}
+	return sync, err
+}
+
+// readDelimited decodes a message from the provided length-delimited stream,
 // where the length is encoded as 32-bit varint prefix to the message body.
 // It returns the total number of bytes read and any applicable error.  This is
 // roughly equivalent to the companion Java API's
@@ -35,7 +63,7 @@ var errInvalidVarint = errors.New("invalid varint32 encountered")
 // an error if a message has been read and decoded correctly, even if the end
 // of the stream has been reached in doing so.  In that case, any subsequent
 // calls return (0, io.EOF).
-func ReadDelimited(r io.Reader, m proto.Message) (n int, err error) {
+func readDelimited(r io.Reader, m proto.Message, base64Decode bool, newline bool) (int, error) {
 	// Per AbstractParser#parsePartialDelimitedFrom with
 	// CodedInputStream#readRawVarint32.
 	headerBuf := make([]byte, binary.MaxVarintLen32)
@@ -70,6 +98,19 @@ func ReadDelimited(r io.Reader, m proto.Message) (n int, err error) {
 	if err != nil {
 		return bytesRead, err
 	}
-
+	if base64Decode {
+		messageBuf, err = base64.StdEncoding.DecodeString(string(messageBuf))
+		if err != nil {
+			return bytesRead, err
+		}
+	}
+	if newline {
+		newlineBuf := make([]byte, 1)
+		n, err := io.ReadFull(r, newlineBuf)
+		bytesRead += n
+		if err != nil {
+			return bytesRead, err
+		}
+	}
 	return bytesRead, proto.Unmarshal(messageBuf, m)
 }

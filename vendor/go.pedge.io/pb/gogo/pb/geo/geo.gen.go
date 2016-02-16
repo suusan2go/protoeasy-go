@@ -1,6 +1,7 @@
 package pbgeo
 
 import (
+	"bytes"
 	"fmt"
 	"strings"
 
@@ -4321,4 +4322,69 @@ func (c CountryAlpha3Code) Country() *Country {
 		return nil
 	}
 	return country
+}
+
+// StreetDirectionSimpleValueOf returns the StreetDirection for the given simple string.
+func StreetDirectionSimpleValueOf(s string) (StreetDirection, error) {
+	value, ok := StreetDirection_value[fmt.Sprintf("STREET_DIRECTION_%s", strings.ToUpper(s))]
+	if !ok {
+		return StreetDirection_STREET_DIRECTION_NONE, fmt.Errorf("pb: no StreetDirection for %s", s)
+	}
+	return StreetDirection(value), nil
+}
+
+// SimpleString returns a simple string for the given StreetDirection.
+func (s StreetDirection) SimpleString() string {
+	value, ok := StreetDirection_name[int32(s)]
+	if !ok {
+		return ""
+	}
+	return strings.ToLower(strings.TrimPrefix("STREET_DIRECTION_", value))
+}
+
+// SimplePostalAddress returns a SimplePostalAddress for the given PostalAddress.
+func (p *PostalAddress) SimplePostalAddress() *SimplePostalAddress {
+	buffer := bytes.NewBuffer(nil)
+	if p.StreetNumber != 0 {
+		_, _ = buffer.WriteString(fmt.Sprintf("%d", p.StreetNumber))
+		if p.StreetNumberPostfix != "" {
+			_, _ = buffer.WriteString(p.StreetNumberPostfix)
+		}
+		_ = buffer.WriteByte(' ')
+	}
+	if p.PreStreetDirection != StreetDirection_STREET_DIRECTION_NONE {
+		_, _ = buffer.WriteString(p.PreStreetDirection.SimpleString())
+		_ = buffer.WriteByte(' ')
+	}
+	if p.StreetName != "" {
+		_, _ = buffer.WriteString(p.StreetName)
+		_ = buffer.WriteByte(' ')
+	}
+	if p.PostStreetDirection != StreetDirection_STREET_DIRECTION_NONE {
+		_, _ = buffer.WriteString(p.PostStreetDirection.SimpleString())
+		_ = buffer.WriteByte(' ')
+	}
+	if p.StreetTypeAbbreviation != "" {
+		_, _ = buffer.WriteString(p.StreetTypeAbbreviation)
+	}
+	streetAddress := buffer.String()
+
+	buffer = bytes.NewBuffer(nil)
+	if p.SecondaryAddressTypeAbbreviation != "" {
+		_, _ = buffer.WriteString(p.SecondaryAddressTypeAbbreviation)
+		_ = buffer.WriteByte(' ')
+	}
+	if p.SecondaryAddressValue != "" {
+		_, _ = buffer.WriteString(p.SecondaryAddressValue)
+	}
+	streetAddress2 := buffer.String()
+
+	return &SimplePostalAddress{
+		StreetAddress:      streetAddress,
+		StreetAddress_2:    streetAddress2,
+		LocalityName:       p.LocalityName,
+		RegionCode:         p.RegionCode,
+		PostalCode:         p.PostalCode,
+		CountryAlpha_2Code: p.CountryAlpha_2Code,
+	}
 }
