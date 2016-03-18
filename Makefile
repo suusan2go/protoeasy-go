@@ -78,7 +78,7 @@ vendorupdate:
 	GO15VENDOREXPERIMENT=0 GOOS=linux GOARCH=amd64 go get -d -v -t -u -f $(PKGS) $(EXTRA_PKGS)
 
 vendornoupdate:
-	go get -v github.com/kardianos/govendor
+	go get -u -v github.com/kardianos/govendor
 	rm -rf vendor
 	govendor init
 	GOOS=linux GOARCH=amd64 govendor add $(EXTRA_PKGS)
