@@ -29,6 +29,7 @@ EXTRA_PKGS := \
 	go.pedge.io/pb/go/pb/money/... \
 	go.pedge.io/pb/go/pb/net/... \
 	go.pedge.io/pb/go/pb/phone/... \
+	go.pedge.io/pb/go/pb/time/... \
 	go.pedge.io/pb/gogo/google/api/... \
 	go.pedge.io/pb/gogo/google/datastore/v1beta3/... \
 	go.pedge.io/pb/gogo/google/devtools/cloudtrace/v1/... \

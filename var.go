@@ -180,6 +180,13 @@ var (
 			},
 			"go.pedge.io/pb/go/pb/phone",
 		),
+		newGoModifierOptions(
+			"pb/time",
+			[]string{
+				"time.proto",
+			},
+			"go.pedge.io/pb/go/pb/time",
+		),
 	)
 
 	defaultGogoModifierOptions = mergeStringStringMaps(
@@ -349,6 +356,13 @@ var (
 				"phone.proto",
 			},
 			"go.pedge.io/pb/gogo/pb/phone",
+		),
+		newGoModifierOptions(
+			"pb/time",
+			[]string{
+				"time.proto",
+			},
+			"go.pedge.io/pb/gogo/pb/time",
 		),
 		newGoModifierOptions(
 			"gogoproto",
