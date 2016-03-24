@@ -14,7 +14,7 @@ func (t *TimestampRange) Duration() (*google_protobuf.Duration, error) {
 	if t.End == nil {
 		return nil, fmt.Errorf("pbtime: %v has no end timestamp", t)
 	}
-	if t.Start.Before(t.End) {
+	if !t.Start.Before(t.End) {
 		return nil, fmt.Errorf("pbtime: %v has a start before end", t)
 	}
 	return google_protobuf.DurationToProto(t.End.GoTime().Sub(t.Start.GoTime())), nil

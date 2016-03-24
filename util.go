@@ -10,7 +10,7 @@ import (
 	"go.pedge.io/lion/proto"
 	"go.pedge.io/pkg/exec"
 
-	"github.com/docker/docker/pkg/archive"
+	"go.pedge.io/protoeasy/pkg/archive"
 )
 
 const (
