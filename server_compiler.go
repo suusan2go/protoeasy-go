@@ -1,8 +1,10 @@
 package protoeasy
 
 import (
+	"errors"
 	"fmt"
 	"path/filepath"
+	"strings"
 
 	"go.pedge.io/pkg/exec"
 )
@@ -35,7 +37,8 @@ func (c *serverCompiler) Compile(dirPath string, outDirPath string, compileOptio
 	}
 	for _, command := range commands {
 		if err := pkgexec.Run(command.Arg...); err != nil {
-			return nil, err
+			// TODO(pedge): temporary until https://github.com/grpc/grpc-go/issues/606 is fixed
+			return nil, errors.New(strings.Replace(err.Error(), "\n", " ", -1))
 		}
 	}
 	return commands, nil
