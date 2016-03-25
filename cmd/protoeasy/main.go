@@ -9,7 +9,7 @@ import (
 
 	"google.golang.org/grpc"
 
-	"go.pedge.io/env"
+	"go.pedge.io/lion/env"
 	"go.pedge.io/lion/proto"
 	"go.pedge.io/pkg/cobra"
 	"go.pedge.io/protoeasy"
@@ -34,11 +34,10 @@ type options struct {
 }
 
 func main() {
-	env.Main(do, &appEnv{})
+	envlion.Main(func(appEnvObj interface{}) error { return do(appEnvObj.(*appEnv)) }, &appEnv{})
 }
 
-func do(appEnvObj interface{}) error {
-	appEnv := appEnvObj.(*appEnv)
+func do(appEnv *appEnv) error {
 	compileOptions := &protoeasy.CompileOptions{}
 	options := &options{}
 

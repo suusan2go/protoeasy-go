@@ -402,6 +402,20 @@
 			"revisionTime": "2016-03-08T21:06:23+01:00"
 		},
 		{
+			"checksumSHA1": "6QnBL7to5rYitCaEtSBONJMFdGQ=",
+			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/lion/current",
+			"path": "go.pedge.io/lion/current",
+			"revision": "5ce7fd45420954fb8a220b21c8df5cd5636dce9b",
+			"revisionTime": "2016-03-08T21:06:23+01:00"
+		},
+		{
+			"checksumSHA1": "EOlPmUKwRl+TBeb4RDf5MHM7pwE=",
+			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/lion/env",
+			"path": "go.pedge.io/lion/env",
+			"revision": "5ce7fd45420954fb8a220b21c8df5cd5636dce9b",
+			"revisionTime": "2016-03-08T21:06:23+01:00"
+		},
+		{
 			"checksumSHA1": "xZAWEzTF1URPAQiNw6Kp9pQCMOM=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/lion/proto",
 			"path": "go.pedge.io/lion/proto",
@@ -419,260 +433,260 @@
 			"checksumSHA1": "LCynpH8ifbnkA+mv7UVkNwALsPc=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/go/google/api",
 			"path": "go.pedge.io/pb/go/google/api",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
 			"checksumSHA1": "Qg/Kt4TQIh8IlMejPjP/lBF3MP0=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/go/google/datastore/v1beta3",
 			"path": "go.pedge.io/pb/go/google/datastore/v1beta3",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
 			"checksumSHA1": "IAL+jCAKQykI5VWnFfDfVFjlUdE=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/go/google/devtools/cloudtrace/v1",
 			"path": "go.pedge.io/pb/go/google/devtools/cloudtrace/v1",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
 			"checksumSHA1": "u8y7fMyhgjNZXlTMCdWL20Oamog=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/go/google/example/library/v1",
 			"path": "go.pedge.io/pb/go/google/example/library/v1",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
 			"checksumSHA1": "/KtSq1Gm1epB/Z7B/jmm/uJZDAo=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/go/google/iam/v1",
 			"path": "go.pedge.io/pb/go/google/iam/v1",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
 			"checksumSHA1": "8PVO5q9SMdT6ihYPNXR+dzDEd64=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/go/google/logging/type",
 			"path": "go.pedge.io/pb/go/google/logging/type",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
 			"checksumSHA1": "7duCuMOAvLl4R/wjKMothXGDU1k=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/go/google/logging/v2",
 			"path": "go.pedge.io/pb/go/google/logging/v2",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
 			"checksumSHA1": "uYhjQKQu+6N4/y8AKaSQhO79k0Q=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/go/google/longrunning",
 			"path": "go.pedge.io/pb/go/google/longrunning",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
 			"checksumSHA1": "qdPL8BmNSQyYFoahmPSuaLiLSbw=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/go/google/protobuf",
 			"path": "go.pedge.io/pb/go/google/protobuf",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
 			"checksumSHA1": "VTv3AI3Nr6aEF+TvNpfioWtkb4k=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/go/google/pubsub/v1",
 			"path": "go.pedge.io/pb/go/google/pubsub/v1",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
 			"checksumSHA1": "11Jxy1CXjKxZIDgjApyeMoXOFug=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/go/google/pubsub/v1beta2",
 			"path": "go.pedge.io/pb/go/google/pubsub/v1beta2",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
 			"checksumSHA1": "IwwXjSxlZeNLdCUjXIKE624l7g4=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/go/google/rpc",
 			"path": "go.pedge.io/pb/go/google/rpc",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
 			"checksumSHA1": "xFtgpOLAmKauW8tJjoM4kzwjSf8=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/go/google/type",
 			"path": "go.pedge.io/pb/go/google/type",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
 			"checksumSHA1": "PqLzIP1zCG6mqvZDWlxt+wA99gw=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/go/pb/common",
 			"path": "go.pedge.io/pb/go/pb/common",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
 			"checksumSHA1": "spbP91IqscOleadUZasVFC1FxF0=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/go/pb/geo",
 			"path": "go.pedge.io/pb/go/pb/geo",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
 			"checksumSHA1": "jLwZRfTxISoYnpiUfbs8GgxgrNU=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/go/pb/money",
 			"path": "go.pedge.io/pb/go/pb/money",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
 			"checksumSHA1": "AWhgfDe7Qqg2t1mPmc0MZAIUX6g=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/go/pb/net",
 			"path": "go.pedge.io/pb/go/pb/net",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
 			"checksumSHA1": "3gzfAv+7EHRszq/zqWJH76mVMSw=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/go/pb/phone",
 			"path": "go.pedge.io/pb/go/pb/phone",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
 			"checksumSHA1": "pZlzNQ1+qxJH5d/s1pWU5xKHvPA=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/go/pb/time",
 			"path": "go.pedge.io/pb/go/pb/time",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
-			"checksumSHA1": "6GyQCCJDkIWyHXT1mYmX1/hLepw=",
+			"checksumSHA1": "4iqGKDsagyYBTfm9cD2b7lZDmOk=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/gogo/google/api",
 			"path": "go.pedge.io/pb/gogo/google/api",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
-			"checksumSHA1": "PKlL7h1GY0lw2kW1YvshmddJwkA=",
+			"checksumSHA1": "Pwdtra4YfjV9+LPTRcn7xg3QTyw=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/gogo/google/datastore/v1beta3",
 			"path": "go.pedge.io/pb/gogo/google/datastore/v1beta3",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
-			"checksumSHA1": "92M1xhjnJuZv5hap+HBmZjW62KU=",
+			"checksumSHA1": "16NtMsAdJT7onI0/xlag9JG0HVc=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/gogo/google/devtools/cloudtrace/v1",
 			"path": "go.pedge.io/pb/gogo/google/devtools/cloudtrace/v1",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
-			"checksumSHA1": "AhyW5XgmRBK9hQEQuwnkN2ZD1Ok=",
+			"checksumSHA1": "zDpnLCiL8Xg+86+CjvHvA9l9ui8=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/gogo/google/example/library/v1",
 			"path": "go.pedge.io/pb/gogo/google/example/library/v1",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
-			"checksumSHA1": "Jlg39yTW29iaYAtrTuJHbx7QZH4=",
+			"checksumSHA1": "fiOQoRFhZOTZqjZRuj5zrE6u8jU=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/gogo/google/iam/v1",
 			"path": "go.pedge.io/pb/gogo/google/iam/v1",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
-			"checksumSHA1": "QggnzMjNYv3X7p1rSIfcX31eH7c=",
+			"checksumSHA1": "sVV4p7eMJQi4VE1EuTvuXIsNg+k=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/gogo/google/logging/type",
 			"path": "go.pedge.io/pb/gogo/google/logging/type",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
-			"checksumSHA1": "nFjRRgERhMDgOZS/l5qHAYYKBSM=",
+			"checksumSHA1": "1hRru6DmuQME/vszY49NI60IMLw=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/gogo/google/logging/v2",
 			"path": "go.pedge.io/pb/gogo/google/logging/v2",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
-			"checksumSHA1": "dEGQIq2nt7iJqqhnviV0sNYGcyQ=",
+			"checksumSHA1": "Yvh2bT1b/Kc2TI/NPD0nAT7Dt7A=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/gogo/google/longrunning",
 			"path": "go.pedge.io/pb/gogo/google/longrunning",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
-			"checksumSHA1": "GUdCMfHshAdXmDTJInLIw5KU8aY=",
+			"checksumSHA1": "P5OnAPHjn4rI1w/pIFJ8byk5Nhs=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/gogo/google/protobuf",
 			"path": "go.pedge.io/pb/gogo/google/protobuf",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
-			"checksumSHA1": "8WmfxAeW81X70Kgb/1Ofzag4Wfw=",
+			"checksumSHA1": "Heqls4i5abRxvY9Ja6NmXgdLAtg=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/gogo/google/pubsub/v1",
 			"path": "go.pedge.io/pb/gogo/google/pubsub/v1",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
-			"checksumSHA1": "Oy+7cX+/8m6t51BgfeoTkQIftso=",
+			"checksumSHA1": "d54m4H3zaQEZ/1iVcXljob1JPOs=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/gogo/google/pubsub/v1beta2",
 			"path": "go.pedge.io/pb/gogo/google/pubsub/v1beta2",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
-			"checksumSHA1": "27uWz4NsB7RLTcRO0LZo5Hg2gTE=",
+			"checksumSHA1": "tD/BvhJzId2YNxgGweHpNcPSxZA=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/gogo/google/rpc",
 			"path": "go.pedge.io/pb/gogo/google/rpc",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
-			"checksumSHA1": "bt8wCESNQK/0DNWYTcij7GC9uRo=",
+			"checksumSHA1": "zdsb6FKC8hqn82bapzWjAM+tD0Y=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/gogo/google/type",
 			"path": "go.pedge.io/pb/gogo/google/type",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
-			"checksumSHA1": "g+fOPDGgRpIbXSTC+9etD4OVUxc=",
+			"checksumSHA1": "fcsey+PuN+J4hLsIfkTA+aDvPnI=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/gogo/pb/common",
 			"path": "go.pedge.io/pb/gogo/pb/common",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
-			"checksumSHA1": "A/lCYH+Y9zN7X9RaKkh5npQZLJA=",
+			"checksumSHA1": "TIyLSu4AKKtpx07PIZiNGHvbcBA=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/gogo/pb/geo",
 			"path": "go.pedge.io/pb/gogo/pb/geo",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
-			"checksumSHA1": "qWrcdKpRlzHFNdH9LdUkxqwtMnY=",
+			"checksumSHA1": "zXsneKIJsv70h6S6IFz1dBhbd6k=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/gogo/pb/money",
 			"path": "go.pedge.io/pb/gogo/pb/money",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
-			"checksumSHA1": "KaP15+/0WvWDqy9YgLyNEQRL1E4=",
+			"checksumSHA1": "EVsDA9I91t4eV6SjSa+EV3GzBuk=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/gogo/pb/net",
 			"path": "go.pedge.io/pb/gogo/pb/net",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
-			"checksumSHA1": "LWM57e/NH8zbNycKUWE9urrRSF4=",
+			"checksumSHA1": "d0iQpQWtrDwyE5B6c8YpQujbWuU=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pb/gogo/pb/phone",
 			"path": "go.pedge.io/pb/gogo/pb/phone",
-			"revision": "a3c96ab315125b69b3b99437053733085dc05adb",
-			"revisionTime": "2016-03-21T18:15:49+01:00"
+			"revision": "22334fb7b4e8ded371ec14eec3eee79e436dc71d",
+			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
 			"checksumSHA1": "oTxn51wwuiLAV9HoDEqmQ60OGW4=",
@@ -685,13 +699,6 @@
 			"checksumSHA1": "5PUu0T8rcuJdeI0Hx+XDP7lG2F4=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pkg/exec",
 			"path": "go.pedge.io/pkg/exec",
-			"revision": "b9629392448bf13e7951adacf4028f700caf1330",
-			"revisionTime": "2016-02-16T23:39:42+01:00"
-		},
-		{
-			"checksumSHA1": "Ju+dfveMmFJ3qbecpgt4dp+2bmY=",
-			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pkg/log",
-			"path": "go.pedge.io/pkg/log",
 			"revision": "b9629392448bf13e7951adacf4028f700caf1330",
 			"revisionTime": "2016-02-16T23:39:42+01:00"
 		},
@@ -806,13 +813,6 @@
 			"path": "google.golang.org/grpc/transport",
 			"revision": "9e3a674ceba65708273cf1cd8e71a1bdce68107b",
 			"revisionTime": "2016-03-22T14:41:09-07:00"
-		},
-		{
-			"checksumSHA1": "dsQ5n+qfjPnd1P5wA0y9LSwbs4A=",
-			"origin": "go.pedge.io/protoeasy/vendor/gopkg.in/natefinch/lumberjack.v2",
-			"path": "gopkg.in/natefinch/lumberjack.v2",
-			"revision": "514cbda263a734ae8caac038dadf05f8f3f9f738",
-			"revisionTime": "2016-01-25T06:17:49-05:00"
 		},
 		{
 			"checksumSHA1": "+OgOXBoiQ+X+C2dsAeiOHwBIEH0=",

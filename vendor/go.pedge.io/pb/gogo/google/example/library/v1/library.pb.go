@@ -15,6 +15,10 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the proto package it is being compiled against.
+const _ = proto.GoGoProtoPackageIsVersion1
+
 // A single book in the library.
 type Book struct {
 	// The resource name of the book.
@@ -29,9 +33,10 @@ type Book struct {
 	Read bool `protobuf:"varint,4,opt,name=read,proto3" json:"read,omitempty"`
 }
 
-func (m *Book) Reset()         { *m = Book{} }
-func (m *Book) String() string { return proto.CompactTextString(m) }
-func (*Book) ProtoMessage()    {}
+func (m *Book) Reset()                    { *m = Book{} }
+func (m *Book) String() string            { return proto.CompactTextString(m) }
+func (*Book) ProtoMessage()               {}
+func (*Book) Descriptor() ([]byte, []int) { return fileDescriptorLibrary, []int{0} }
 
 // A Shelf contains a collection of books with a theme.
 type Shelf struct {
@@ -43,9 +48,10 @@ type Shelf struct {
 	Theme string `protobuf:"bytes,2,opt,name=theme,proto3" json:"theme,omitempty"`
 }
 
-func (m *Shelf) Reset()         { *m = Shelf{} }
-func (m *Shelf) String() string { return proto.CompactTextString(m) }
-func (*Shelf) ProtoMessage()    {}
+func (m *Shelf) Reset()                    { *m = Shelf{} }
+func (m *Shelf) String() string            { return proto.CompactTextString(m) }
+func (*Shelf) ProtoMessage()               {}
+func (*Shelf) Descriptor() ([]byte, []int) { return fileDescriptorLibrary, []int{1} }
 
 // Request message for LibraryService.CreateShelf.
 type CreateShelfRequest struct {
@@ -53,9 +59,10 @@ type CreateShelfRequest struct {
 	Shelf *Shelf `protobuf:"bytes,1,opt,name=shelf" json:"shelf,omitempty"`
 }
 
-func (m *CreateShelfRequest) Reset()         { *m = CreateShelfRequest{} }
-func (m *CreateShelfRequest) String() string { return proto.CompactTextString(m) }
-func (*CreateShelfRequest) ProtoMessage()    {}
+func (m *CreateShelfRequest) Reset()                    { *m = CreateShelfRequest{} }
+func (m *CreateShelfRequest) String() string            { return proto.CompactTextString(m) }
+func (*CreateShelfRequest) ProtoMessage()               {}
+func (*CreateShelfRequest) Descriptor() ([]byte, []int) { return fileDescriptorLibrary, []int{2} }
 
 func (m *CreateShelfRequest) GetShelf() *Shelf {
 	if m != nil {
@@ -70,9 +77,10 @@ type GetShelfRequest struct {
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
-func (m *GetShelfRequest) Reset()         { *m = GetShelfRequest{} }
-func (m *GetShelfRequest) String() string { return proto.CompactTextString(m) }
-func (*GetShelfRequest) ProtoMessage()    {}
+func (m *GetShelfRequest) Reset()                    { *m = GetShelfRequest{} }
+func (m *GetShelfRequest) String() string            { return proto.CompactTextString(m) }
+func (*GetShelfRequest) ProtoMessage()               {}
+func (*GetShelfRequest) Descriptor() ([]byte, []int) { return fileDescriptorLibrary, []int{3} }
 
 // Request message for LibraryService.ListShelves.
 type ListShelvesRequest struct {
@@ -86,9 +94,10 @@ type ListShelvesRequest struct {
 	PageToken string `protobuf:"bytes,2,opt,name=page_token,proto3" json:"page_token,omitempty"`
 }
 
-func (m *ListShelvesRequest) Reset()         { *m = ListShelvesRequest{} }
-func (m *ListShelvesRequest) String() string { return proto.CompactTextString(m) }
-func (*ListShelvesRequest) ProtoMessage()    {}
+func (m *ListShelvesRequest) Reset()                    { *m = ListShelvesRequest{} }
+func (m *ListShelvesRequest) String() string            { return proto.CompactTextString(m) }
+func (*ListShelvesRequest) ProtoMessage()               {}
+func (*ListShelvesRequest) Descriptor() ([]byte, []int) { return fileDescriptorLibrary, []int{4} }
 
 // Response message for LibraryService.ListShelves.
 type ListShelvesResponse struct {
@@ -102,9 +111,10 @@ type ListShelvesResponse struct {
 	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,proto3" json:"next_page_token,omitempty"`
 }
 
-func (m *ListShelvesResponse) Reset()         { *m = ListShelvesResponse{} }
-func (m *ListShelvesResponse) String() string { return proto.CompactTextString(m) }
-func (*ListShelvesResponse) ProtoMessage()    {}
+func (m *ListShelvesResponse) Reset()                    { *m = ListShelvesResponse{} }
+func (m *ListShelvesResponse) String() string            { return proto.CompactTextString(m) }
+func (*ListShelvesResponse) ProtoMessage()               {}
+func (*ListShelvesResponse) Descriptor() ([]byte, []int) { return fileDescriptorLibrary, []int{5} }
 
 func (m *ListShelvesResponse) GetShelves() []*Shelf {
 	if m != nil {
@@ -119,9 +129,10 @@ type DeleteShelfRequest struct {
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
-func (m *DeleteShelfRequest) Reset()         { *m = DeleteShelfRequest{} }
-func (m *DeleteShelfRequest) String() string { return proto.CompactTextString(m) }
-func (*DeleteShelfRequest) ProtoMessage()    {}
+func (m *DeleteShelfRequest) Reset()                    { *m = DeleteShelfRequest{} }
+func (m *DeleteShelfRequest) String() string            { return proto.CompactTextString(m) }
+func (*DeleteShelfRequest) ProtoMessage()               {}
+func (*DeleteShelfRequest) Descriptor() ([]byte, []int) { return fileDescriptorLibrary, []int{6} }
 
 // Describes the shelf being removed (other_shelf_name) and updated
 // (name) in this merge.
@@ -132,9 +143,10 @@ type MergeShelvesRequest struct {
 	OtherShelfName string `protobuf:"bytes,2,opt,name=other_shelf_name,proto3" json:"other_shelf_name,omitempty"`
 }
 
-func (m *MergeShelvesRequest) Reset()         { *m = MergeShelvesRequest{} }
-func (m *MergeShelvesRequest) String() string { return proto.CompactTextString(m) }
-func (*MergeShelvesRequest) ProtoMessage()    {}
+func (m *MergeShelvesRequest) Reset()                    { *m = MergeShelvesRequest{} }
+func (m *MergeShelvesRequest) String() string            { return proto.CompactTextString(m) }
+func (*MergeShelvesRequest) ProtoMessage()               {}
+func (*MergeShelvesRequest) Descriptor() ([]byte, []int) { return fileDescriptorLibrary, []int{7} }
 
 // Request message for LibraryService.CreateBook.
 type CreateBookRequest struct {
@@ -144,9 +156,10 @@ type CreateBookRequest struct {
 	Book *Book `protobuf:"bytes,2,opt,name=book" json:"book,omitempty"`
 }
 
-func (m *CreateBookRequest) Reset()         { *m = CreateBookRequest{} }
-func (m *CreateBookRequest) String() string { return proto.CompactTextString(m) }
-func (*CreateBookRequest) ProtoMessage()    {}
+func (m *CreateBookRequest) Reset()                    { *m = CreateBookRequest{} }
+func (m *CreateBookRequest) String() string            { return proto.CompactTextString(m) }
+func (*CreateBookRequest) ProtoMessage()               {}
+func (*CreateBookRequest) Descriptor() ([]byte, []int) { return fileDescriptorLibrary, []int{8} }
 
 func (m *CreateBookRequest) GetBook() *Book {
 	if m != nil {
@@ -161,9 +174,10 @@ type GetBookRequest struct {
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
-func (m *GetBookRequest) Reset()         { *m = GetBookRequest{} }
-func (m *GetBookRequest) String() string { return proto.CompactTextString(m) }
-func (*GetBookRequest) ProtoMessage()    {}
+func (m *GetBookRequest) Reset()                    { *m = GetBookRequest{} }
+func (m *GetBookRequest) String() string            { return proto.CompactTextString(m) }
+func (*GetBookRequest) ProtoMessage()               {}
+func (*GetBookRequest) Descriptor() ([]byte, []int) { return fileDescriptorLibrary, []int{9} }
 
 // Request message for LibraryService.ListBooks.
 type ListBooksRequest struct {
@@ -179,9 +193,10 @@ type ListBooksRequest struct {
 	PageToken string `protobuf:"bytes,3,opt,name=page_token,proto3" json:"page_token,omitempty"`
 }
 
-func (m *ListBooksRequest) Reset()         { *m = ListBooksRequest{} }
-func (m *ListBooksRequest) String() string { return proto.CompactTextString(m) }
-func (*ListBooksRequest) ProtoMessage()    {}
+func (m *ListBooksRequest) Reset()                    { *m = ListBooksRequest{} }
+func (m *ListBooksRequest) String() string            { return proto.CompactTextString(m) }
+func (*ListBooksRequest) ProtoMessage()               {}
+func (*ListBooksRequest) Descriptor() ([]byte, []int) { return fileDescriptorLibrary, []int{10} }
 
 // Response message for LibraryService.ListBooks.
 type ListBooksResponse struct {
@@ -195,9 +210,10 @@ type ListBooksResponse struct {
 	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,proto3" json:"next_page_token,omitempty"`
 }
 
-func (m *ListBooksResponse) Reset()         { *m = ListBooksResponse{} }
-func (m *ListBooksResponse) String() string { return proto.CompactTextString(m) }
-func (*ListBooksResponse) ProtoMessage()    {}
+func (m *ListBooksResponse) Reset()                    { *m = ListBooksResponse{} }
+func (m *ListBooksResponse) String() string            { return proto.CompactTextString(m) }
+func (*ListBooksResponse) ProtoMessage()               {}
+func (*ListBooksResponse) Descriptor() ([]byte, []int) { return fileDescriptorLibrary, []int{11} }
 
 func (m *ListBooksResponse) GetBooks() []*Book {
 	if m != nil {
@@ -214,9 +230,10 @@ type UpdateBookRequest struct {
 	Book *Book `protobuf:"bytes,2,opt,name=book" json:"book,omitempty"`
 }
 
-func (m *UpdateBookRequest) Reset()         { *m = UpdateBookRequest{} }
-func (m *UpdateBookRequest) String() string { return proto.CompactTextString(m) }
-func (*UpdateBookRequest) ProtoMessage()    {}
+func (m *UpdateBookRequest) Reset()                    { *m = UpdateBookRequest{} }
+func (m *UpdateBookRequest) String() string            { return proto.CompactTextString(m) }
+func (*UpdateBookRequest) ProtoMessage()               {}
+func (*UpdateBookRequest) Descriptor() ([]byte, []int) { return fileDescriptorLibrary, []int{12} }
 
 func (m *UpdateBookRequest) GetBook() *Book {
 	if m != nil {
@@ -231,9 +248,10 @@ type DeleteBookRequest struct {
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
-func (m *DeleteBookRequest) Reset()         { *m = DeleteBookRequest{} }
-func (m *DeleteBookRequest) String() string { return proto.CompactTextString(m) }
-func (*DeleteBookRequest) ProtoMessage()    {}
+func (m *DeleteBookRequest) Reset()                    { *m = DeleteBookRequest{} }
+func (m *DeleteBookRequest) String() string            { return proto.CompactTextString(m) }
+func (*DeleteBookRequest) ProtoMessage()               {}
+func (*DeleteBookRequest) Descriptor() ([]byte, []int) { return fileDescriptorLibrary, []int{13} }
 
 // Describes what book to move (name) and what shelf we're moving it
 // to (other_shelf_name).
@@ -244,9 +262,10 @@ type MoveBookRequest struct {
 	OtherShelfName string `protobuf:"bytes,2,opt,name=other_shelf_name,proto3" json:"other_shelf_name,omitempty"`
 }
 
-func (m *MoveBookRequest) Reset()         { *m = MoveBookRequest{} }
-func (m *MoveBookRequest) String() string { return proto.CompactTextString(m) }
-func (*MoveBookRequest) ProtoMessage()    {}
+func (m *MoveBookRequest) Reset()                    { *m = MoveBookRequest{} }
+func (m *MoveBookRequest) String() string            { return proto.CompactTextString(m) }
+func (*MoveBookRequest) ProtoMessage()               {}
+func (*MoveBookRequest) Descriptor() ([]byte, []int) { return fileDescriptorLibrary, []int{14} }
 
 func init() {
 	proto.RegisterType((*Book)(nil), "google.example.library.v1.Book")
@@ -264,4 +283,56 @@ func init() {
 	proto.RegisterType((*UpdateBookRequest)(nil), "google.example.library.v1.UpdateBookRequest")
 	proto.RegisterType((*DeleteBookRequest)(nil), "google.example.library.v1.DeleteBookRequest")
 	proto.RegisterType((*MoveBookRequest)(nil), "google.example.library.v1.MoveBookRequest")
+}
+
+var fileDescriptorLibrary = []byte{
+	// 755 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xac, 0x54, 0x5d, 0x4f, 0xd3, 0x50,
+	0x18, 0x4e, 0x61, 0xe3, 0xe3, 0x2d, 0x5f, 0x7b, 0x21, 0x38, 0xeb, 0xe4, 0xe3, 0x04, 0x15, 0x27,
+	0xb4, 0x01, 0xaf, 0x9c, 0xe1, 0x42, 0x94, 0x70, 0x03, 0x09, 0x91, 0x78, 0x67, 0xb2, 0x74, 0x70,
+	0x18, 0x0d, 0xdb, 0x5a, 0xdb, 0xb2, 0x20, 0xc4, 0x0b, 0x4d, 0x8c, 0x89, 0xb7, 0xfe, 0x05, 0xff,
+	0x91, 0x7f, 0xc1, 0x1f, 0xe2, 0x39, 0xa7, 0xa7, 0xae, 0xdb, 0xda, 0xd3, 0x99, 0x78, 0x05, 0x67,
+	0x7d, 0x3f, 0x9e, 0xf7, 0x79, 0xdf, 0xe7, 0x81, 0x27, 0x4d, 0xd7, 0x6d, 0xb6, 0xa8, 0x45, 0x6f,
+	0xec, 0xb6, 0xc7, 0xfe, 0xb6, 0x9c, 0x86, 0x6f, 0xfb, 0x1f, 0xad, 0xee, 0x4e, 0xfc, 0xaf, 0xe9,
+	0xf9, 0x6e, 0xe8, 0xe2, 0xfd, 0x28, 0xd0, 0x94, 0x81, 0x66, 0xfc, 0xb5, 0xbb, 0x63, 0x54, 0x64,
+	0x0d, 0xdb, 0x73, 0x2c, 0xbb, 0xd3, 0x71, 0x43, 0x3b, 0x74, 0xdc, 0x4e, 0x10, 0x25, 0x1a, 0x0f,
+	0xe4, 0x57, 0xf1, 0x6a, 0x5c, 0x5f, 0x58, 0xb4, 0xed, 0x85, 0xb2, 0x2a, 0x79, 0x05, 0x85, 0x7d,
+	0xd7, 0xbd, 0xc2, 0x19, 0x28, 0x74, 0xec, 0x36, 0x2d, 0x6b, 0x6b, 0xda, 0xe6, 0x34, 0xce, 0xc1,
+	0x84, 0x7d, 0x1d, 0x5e, 0xba, 0x7e, 0x79, 0x4c, 0xbc, 0x67, 0xa1, 0x18, 0x3a, 0x61, 0x8b, 0x96,
+	0xc7, 0xc5, 0x93, 0x05, 0xfb, 0xd4, 0x3e, 0x2f, 0x17, 0xd8, 0x6b, 0x8a, 0x6c, 0x40, 0xf1, 0xf4,
+	0x92, 0xb6, 0x2e, 0x06, 0x6a, 0xf0, 0x9c, 0x4b, 0xca, 0x9e, 0xa2, 0x04, 0x39, 0x00, 0x7c, 0xcd,
+	0x92, 0x42, 0x2a, 0x62, 0xdf, 0xd2, 0x0f, 0xd7, 0x34, 0x08, 0xd1, 0x82, 0x62, 0xc0, 0xdf, 0x22,
+	0x47, 0xdf, 0x5d, 0x33, 0x33, 0x87, 0x34, 0x45, 0x1e, 0x59, 0x85, 0xf9, 0x43, 0x1a, 0xf6, 0xd5,
+	0xe8, 0x6b, 0x4b, 0x5e, 0x02, 0x1e, 0x39, 0x81, 0x88, 0xe8, 0xd2, 0x20, 0x8e, 0x29, 0xc1, 0xb4,
+	0x67, 0x37, 0x69, 0x3d, 0x70, 0x6e, 0xa3, 0xc0, 0x22, 0x22, 0x80, 0xf8, 0x29, 0x74, 0xaf, 0x68,
+	0x47, 0x82, 0xb4, 0x61, 0xb1, 0x2f, 0x39, 0xf0, 0x18, 0x8d, 0x14, 0x77, 0x60, 0x32, 0x88, 0x7e,
+	0x62, 0xb9, 0xe3, 0xa3, 0xe0, 0xc4, 0x7b, 0x30, 0xdf, 0xa1, 0x37, 0x61, 0x7d, 0xa8, 0x05, 0x01,
+	0x7c, 0x43, 0x5b, 0x74, 0x80, 0x87, 0xfe, 0x19, 0xf6, 0x60, 0xf1, 0x98, 0xfa, 0x4d, 0x3a, 0x30,
+	0x44, 0x3f, 0xbf, 0x65, 0x58, 0x70, 0x19, 0xc1, 0x7e, 0x5d, 0x10, 0x58, 0x17, 0x5f, 0xa2, 0x16,
+	0x27, 0x50, 0x8a, 0xa8, 0xe6, 0x9b, 0x4d, 0x4f, 0xde, 0x86, 0x42, 0x83, 0x7d, 0x14, 0x09, 0xfa,
+	0xee, 0xaa, 0x62, 0x1c, 0x5e, 0x83, 0xac, 0xc0, 0x1c, 0x63, 0x3d, 0xb3, 0x1c, 0x39, 0x84, 0x05,
+	0xce, 0x1b, 0x0f, 0xc8, 0x40, 0xdb, 0xb7, 0x80, 0xb1, 0x94, 0x05, 0x88, 0xcb, 0x22, 0xef, 0xa1,
+	0x94, 0x28, 0x24, 0xe9, 0x37, 0xa1, 0xc8, 0xc1, 0xc6, 0xe4, 0xe7, 0xa1, 0xcd, 0xe6, 0x9e, 0x11,
+	0xf3, 0xce, 0x3b, 0xff, 0x9f, 0xc4, 0xac, 0x43, 0x29, 0xda, 0x66, 0x36, 0x37, 0x2f, 0x60, 0xfe,
+	0xd8, 0xed, 0x2a, 0x5a, 0x66, 0x2e, 0x72, 0xf7, 0xa7, 0x0e, 0x73, 0x47, 0x51, 0xc7, 0x53, 0xea,
+	0x77, 0x9d, 0x33, 0x8a, 0xb7, 0xa0, 0x27, 0x64, 0x84, 0xdb, 0x0a, 0x80, 0xc3, 0x72, 0x33, 0xf2,
+	0xf5, 0x65, 0x7c, 0xf9, 0xf5, 0xfb, 0xc7, 0xd8, 0x12, 0xd1, 0xb9, 0x01, 0xc9, 0xa3, 0xaf, 0x45,
+	0x1a, 0xc5, 0x2e, 0x4c, 0xc5, 0xda, 0xc3, 0xaa, 0xa2, 0xd2, 0x80, 0x40, 0x47, 0xe8, 0x5a, 0x11,
+	0x5d, 0x97, 0x71, 0x89, 0x77, 0xbd, 0xe3, 0x0c, 0xec, 0xc9, 0xde, 0x56, 0xf5, 0x13, 0x7e, 0xd6,
+	0x40, 0x4f, 0xc8, 0x52, 0x39, 0xf4, 0xb0, 0xf6, 0x0d, 0x73, 0xd4, 0xf0, 0xe8, 0xdc, 0xc8, 0xa2,
+	0x00, 0x33, 0x8b, 0x49, 0x0a, 0xd0, 0x07, 0x3d, 0x21, 0x5b, 0x25, 0x84, 0x61, 0x79, 0x1b, 0xcb,
+	0x71, 0x78, 0xec, 0xc1, 0xe6, 0x01, 0xf7, 0xe0, 0x78, 0xee, 0x6a, 0xfa, 0xdc, 0xdf, 0x34, 0x98,
+	0x49, 0xfa, 0x00, 0xaa, 0x26, 0x49, 0x31, 0x8c, 0x11, 0x88, 0x7f, 0x24, 0x00, 0xac, 0x12, 0x23,
+	0x0d, 0x40, 0xad, 0xcd, 0x6b, 0xd6, 0xb4, 0x2a, 0x7e, 0xd5, 0x00, 0x7a, 0x96, 0x82, 0x5b, 0xb9,
+	0x57, 0x97, 0xb8, 0x76, 0x23, 0x57, 0x44, 0x9b, 0x02, 0x04, 0x49, 0x07, 0x61, 0x09, 0xe9, 0xd7,
+	0x84, 0x2a, 0xf1, 0x0e, 0x26, 0xa5, 0x0f, 0xe1, 0x53, 0xf5, 0x01, 0xfe, 0x13, 0x80, 0x0d, 0x01,
+	0x60, 0x05, 0x2b, 0x29, 0x00, 0xa2, 0xfe, 0x7c, 0x1d, 0xdf, 0x35, 0x98, 0xfe, 0x6b, 0x4e, 0xf8,
+	0x2c, 0xe7, 0xaa, 0x92, 0x5e, 0x68, 0x6c, 0x8d, 0x16, 0x2c, 0x0f, 0x90, 0x08, 0x38, 0x15, 0x54,
+	0xf0, 0x81, 0x37, 0x00, 0x3d, 0xe3, 0x51, 0x2e, 0x64, 0xc8, 0x9f, 0x32, 0xaf, 0x51, 0xd2, 0x50,
+	0x55, 0xd3, 0xc0, 0xae, 0x12, 0x7a, 0x2e, 0xaa, 0x6c, 0x3d, 0x64, 0xb6, 0xf9, 0xab, 0xa8, 0x0a,
+	0x0c, 0x1b, 0x86, 0x12, 0x83, 0xbc, 0x06, 0x76, 0x95, 0x53, 0xb1, 0xb5, 0x2a, 0x0d, 0x69, 0xc0,
+	0x7f, 0xf3, 0x51, 0x6c, 0x09, 0x14, 0x8f, 0xc9, 0xba, 0x12, 0x45, 0x9b, 0x95, 0x65, 0xea, 0xd8,
+	0xb7, 0xe0, 0xe1, 0x99, 0xdb, 0xce, 0xae, 0xb9, 0x3f, 0x23, 0x4d, 0xfc, 0x84, 0xf3, 0x7d, 0xa2,
+	0x35, 0x26, 0x04, 0xf1, 0xcf, 0xff, 0x04, 0x00, 0x00, 0xff, 0xff, 0x7c, 0x79, 0xd0, 0xbe, 0xfc,
+	0x09, 0x00, 0x00,
 }

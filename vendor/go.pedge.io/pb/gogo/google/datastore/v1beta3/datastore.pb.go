@@ -14,6 +14,10 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the proto package it is being compiled against.
+const _ = proto.GoGoProtoPackageIsVersion1
+
 // Commit modes.
 type CommitRequest_Mode int32
 
@@ -39,6 +43,9 @@ var CommitRequest_Mode_value = map[string]int32{
 
 func (x CommitRequest_Mode) String() string {
 	return proto.EnumName(CommitRequest_Mode_name, int32(x))
+}
+func (CommitRequest_Mode) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptorDatastore, []int{8, 0}
 }
 
 // Read consistencies.
@@ -67,6 +74,9 @@ var ReadOptions_ReadConsistency_value = map[string]int32{
 func (x ReadOptions_ReadConsistency) String() string {
 	return proto.EnumName(ReadOptions_ReadConsistency_name, int32(x))
 }
+func (ReadOptions_ReadConsistency) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptorDatastore, []int{14, 0}
+}
 
 // The request for [google.datastore.v1beta3.Datastore.Lookup][google.datastore.v1beta3.Datastore.Lookup].
 type LookupRequest struct {
@@ -78,9 +88,10 @@ type LookupRequest struct {
 	Keys []*Key `protobuf:"bytes,3,rep,name=keys" json:"keys,omitempty"`
 }
 
-func (m *LookupRequest) Reset()         { *m = LookupRequest{} }
-func (m *LookupRequest) String() string { return proto.CompactTextString(m) }
-func (*LookupRequest) ProtoMessage()    {}
+func (m *LookupRequest) Reset()                    { *m = LookupRequest{} }
+func (m *LookupRequest) String() string            { return proto.CompactTextString(m) }
+func (*LookupRequest) ProtoMessage()               {}
+func (*LookupRequest) Descriptor() ([]byte, []int) { return fileDescriptorDatastore, []int{0} }
 
 func (m *LookupRequest) GetReadOptions() *ReadOptions {
 	if m != nil {
@@ -112,9 +123,10 @@ type LookupResponse struct {
 	Deferred []*Key `protobuf:"bytes,3,rep,name=deferred" json:"deferred,omitempty"`
 }
 
-func (m *LookupResponse) Reset()         { *m = LookupResponse{} }
-func (m *LookupResponse) String() string { return proto.CompactTextString(m) }
-func (*LookupResponse) ProtoMessage()    {}
+func (m *LookupResponse) Reset()                    { *m = LookupResponse{} }
+func (m *LookupResponse) String() string            { return proto.CompactTextString(m) }
+func (*LookupResponse) ProtoMessage()               {}
+func (*LookupResponse) Descriptor() ([]byte, []int) { return fileDescriptorDatastore, []int{1} }
 
 func (m *LookupResponse) GetFound() []*EntityResult {
 	if m != nil {
@@ -156,9 +168,10 @@ type RunQueryRequest struct {
 	QueryType isRunQueryRequest_QueryType `protobuf_oneof:"query_type"`
 }
 
-func (m *RunQueryRequest) Reset()         { *m = RunQueryRequest{} }
-func (m *RunQueryRequest) String() string { return proto.CompactTextString(m) }
-func (*RunQueryRequest) ProtoMessage()    {}
+func (m *RunQueryRequest) Reset()                    { *m = RunQueryRequest{} }
+func (m *RunQueryRequest) String() string            { return proto.CompactTextString(m) }
+func (*RunQueryRequest) ProtoMessage()               {}
+func (*RunQueryRequest) Descriptor() ([]byte, []int) { return fileDescriptorDatastore, []int{2} }
 
 type isRunQueryRequest_QueryType interface {
 	isRunQueryRequest_QueryType()
@@ -210,8 +223,8 @@ func (m *RunQueryRequest) GetGqlQuery() *GqlQuery {
 }
 
 // XXX_OneofFuncs is for the internal use of the proto package.
-func (*RunQueryRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), []interface{}) {
-	return _RunQueryRequest_OneofMarshaler, _RunQueryRequest_OneofUnmarshaler, []interface{}{
+func (*RunQueryRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
+	return _RunQueryRequest_OneofMarshaler, _RunQueryRequest_OneofUnmarshaler, _RunQueryRequest_OneofSizer, []interface{}{
 		(*RunQueryRequest_Query)(nil),
 		(*RunQueryRequest_GqlQuery)(nil),
 	}
@@ -262,6 +275,27 @@ func _RunQueryRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *prot
 	}
 }
 
+func _RunQueryRequest_OneofSizer(msg proto.Message) (n int) {
+	m := msg.(*RunQueryRequest)
+	// query_type
+	switch x := m.QueryType.(type) {
+	case *RunQueryRequest_Query:
+		s := proto.Size(x.Query)
+		n += proto.SizeVarint(3<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *RunQueryRequest_GqlQuery:
+		s := proto.Size(x.GqlQuery)
+		n += proto.SizeVarint(7<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case nil:
+	default:
+		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
+	}
+	return n
+}
+
 // The response for [google.datastore.v1beta3.Datastore.RunQuery][google.datastore.v1beta3.Datastore.RunQuery].
 type RunQueryResponse struct {
 	// A batch of query results (always present).
@@ -270,9 +304,10 @@ type RunQueryResponse struct {
 	Query *Query `protobuf:"bytes,2,opt,name=query" json:"query,omitempty"`
 }
 
-func (m *RunQueryResponse) Reset()         { *m = RunQueryResponse{} }
-func (m *RunQueryResponse) String() string { return proto.CompactTextString(m) }
-func (*RunQueryResponse) ProtoMessage()    {}
+func (m *RunQueryResponse) Reset()                    { *m = RunQueryResponse{} }
+func (m *RunQueryResponse) String() string            { return proto.CompactTextString(m) }
+func (*RunQueryResponse) ProtoMessage()               {}
+func (*RunQueryResponse) Descriptor() ([]byte, []int) { return fileDescriptorDatastore, []int{3} }
 
 func (m *RunQueryResponse) GetBatch() *QueryResultBatch {
 	if m != nil {
@@ -294,9 +329,10 @@ type BeginTransactionRequest struct {
 	ProjectId string `protobuf:"bytes,8,opt,name=project_id,proto3" json:"project_id,omitempty"`
 }
 
-func (m *BeginTransactionRequest) Reset()         { *m = BeginTransactionRequest{} }
-func (m *BeginTransactionRequest) String() string { return proto.CompactTextString(m) }
-func (*BeginTransactionRequest) ProtoMessage()    {}
+func (m *BeginTransactionRequest) Reset()                    { *m = BeginTransactionRequest{} }
+func (m *BeginTransactionRequest) String() string            { return proto.CompactTextString(m) }
+func (*BeginTransactionRequest) ProtoMessage()               {}
+func (*BeginTransactionRequest) Descriptor() ([]byte, []int) { return fileDescriptorDatastore, []int{4} }
 
 // The response for [google.datastore.v1beta3.Datastore.BeginTransaction][google.datastore.v1beta3.Datastore.BeginTransaction].
 type BeginTransactionResponse struct {
@@ -307,6 +343,9 @@ type BeginTransactionResponse struct {
 func (m *BeginTransactionResponse) Reset()         { *m = BeginTransactionResponse{} }
 func (m *BeginTransactionResponse) String() string { return proto.CompactTextString(m) }
 func (*BeginTransactionResponse) ProtoMessage()    {}
+func (*BeginTransactionResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptorDatastore, []int{5}
+}
 
 // The request for [google.datastore.v1beta3.Datastore.Rollback][google.datastore.v1beta3.Datastore.Rollback].
 type RollbackRequest struct {
@@ -317,18 +356,20 @@ type RollbackRequest struct {
 	Transaction []byte `protobuf:"bytes,1,opt,name=transaction,proto3" json:"transaction,omitempty"`
 }
 
-func (m *RollbackRequest) Reset()         { *m = RollbackRequest{} }
-func (m *RollbackRequest) String() string { return proto.CompactTextString(m) }
-func (*RollbackRequest) ProtoMessage()    {}
+func (m *RollbackRequest) Reset()                    { *m = RollbackRequest{} }
+func (m *RollbackRequest) String() string            { return proto.CompactTextString(m) }
+func (*RollbackRequest) ProtoMessage()               {}
+func (*RollbackRequest) Descriptor() ([]byte, []int) { return fileDescriptorDatastore, []int{6} }
 
 // The response for [google.datastore.v1beta3.Datastore.Rollback][google.datastore.v1beta3.Datastore.Rollback]
 // (an empty message).
 type RollbackResponse struct {
 }
 
-func (m *RollbackResponse) Reset()         { *m = RollbackResponse{} }
-func (m *RollbackResponse) String() string { return proto.CompactTextString(m) }
-func (*RollbackResponse) ProtoMessage()    {}
+func (m *RollbackResponse) Reset()                    { *m = RollbackResponse{} }
+func (m *RollbackResponse) String() string            { return proto.CompactTextString(m) }
+func (*RollbackResponse) ProtoMessage()               {}
+func (*RollbackResponse) Descriptor() ([]byte, []int) { return fileDescriptorDatastore, []int{7} }
 
 // The request for [google.datastore.v1beta3.Datastore.Commit][google.datastore.v1beta3.Datastore.Commit].
 type CommitRequest struct {
@@ -356,9 +397,10 @@ type CommitRequest struct {
 	Mutations []*Mutation `protobuf:"bytes,6,rep,name=mutations" json:"mutations,omitempty"`
 }
 
-func (m *CommitRequest) Reset()         { *m = CommitRequest{} }
-func (m *CommitRequest) String() string { return proto.CompactTextString(m) }
-func (*CommitRequest) ProtoMessage()    {}
+func (m *CommitRequest) Reset()                    { *m = CommitRequest{} }
+func (m *CommitRequest) String() string            { return proto.CompactTextString(m) }
+func (*CommitRequest) ProtoMessage()               {}
+func (*CommitRequest) Descriptor() ([]byte, []int) { return fileDescriptorDatastore, []int{8} }
 
 type isCommitRequest_TransactionSelector interface {
 	isCommitRequest_TransactionSelector()
@@ -392,8 +434,8 @@ func (m *CommitRequest) GetMutations() []*Mutation {
 }
 
 // XXX_OneofFuncs is for the internal use of the proto package.
-func (*CommitRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), []interface{}) {
-	return _CommitRequest_OneofMarshaler, _CommitRequest_OneofUnmarshaler, []interface{}{
+func (*CommitRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
+	return _CommitRequest_OneofMarshaler, _CommitRequest_OneofUnmarshaler, _CommitRequest_OneofSizer, []interface{}{
 		(*CommitRequest_Transaction)(nil),
 	}
 }
@@ -427,6 +469,21 @@ func _CommitRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.
 	}
 }
 
+func _CommitRequest_OneofSizer(msg proto.Message) (n int) {
+	m := msg.(*CommitRequest)
+	// transaction_selector
+	switch x := m.TransactionSelector.(type) {
+	case *CommitRequest_Transaction:
+		n += proto.SizeVarint(1<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(len(x.Transaction)))
+		n += len(x.Transaction)
+	case nil:
+	default:
+		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
+	}
+	return n
+}
+
 // The response for [google.datastore.v1beta3.Datastore.Commit][google.datastore.v1beta3.Datastore.Commit].
 type CommitResponse struct {
 	// The result of performing the mutations.
@@ -436,9 +493,10 @@ type CommitResponse struct {
 	IndexUpdates int32 `protobuf:"varint,4,opt,name=index_updates,proto3" json:"index_updates,omitempty"`
 }
 
-func (m *CommitResponse) Reset()         { *m = CommitResponse{} }
-func (m *CommitResponse) String() string { return proto.CompactTextString(m) }
-func (*CommitResponse) ProtoMessage()    {}
+func (m *CommitResponse) Reset()                    { *m = CommitResponse{} }
+func (m *CommitResponse) String() string            { return proto.CompactTextString(m) }
+func (*CommitResponse) ProtoMessage()               {}
+func (*CommitResponse) Descriptor() ([]byte, []int) { return fileDescriptorDatastore, []int{9} }
 
 func (m *CommitResponse) GetMutationResults() []*MutationResult {
 	if m != nil {
@@ -456,9 +514,10 @@ type AllocateIdsRequest struct {
 	Keys []*Key `protobuf:"bytes,1,rep,name=keys" json:"keys,omitempty"`
 }
 
-func (m *AllocateIdsRequest) Reset()         { *m = AllocateIdsRequest{} }
-func (m *AllocateIdsRequest) String() string { return proto.CompactTextString(m) }
-func (*AllocateIdsRequest) ProtoMessage()    {}
+func (m *AllocateIdsRequest) Reset()                    { *m = AllocateIdsRequest{} }
+func (m *AllocateIdsRequest) String() string            { return proto.CompactTextString(m) }
+func (*AllocateIdsRequest) ProtoMessage()               {}
+func (*AllocateIdsRequest) Descriptor() ([]byte, []int) { return fileDescriptorDatastore, []int{10} }
 
 func (m *AllocateIdsRequest) GetKeys() []*Key {
 	if m != nil {
@@ -474,9 +533,10 @@ type AllocateIdsResponse struct {
 	Keys []*Key `protobuf:"bytes,1,rep,name=keys" json:"keys,omitempty"`
 }
 
-func (m *AllocateIdsResponse) Reset()         { *m = AllocateIdsResponse{} }
-func (m *AllocateIdsResponse) String() string { return proto.CompactTextString(m) }
-func (*AllocateIdsResponse) ProtoMessage()    {}
+func (m *AllocateIdsResponse) Reset()                    { *m = AllocateIdsResponse{} }
+func (m *AllocateIdsResponse) String() string            { return proto.CompactTextString(m) }
+func (*AllocateIdsResponse) ProtoMessage()               {}
+func (*AllocateIdsResponse) Descriptor() ([]byte, []int) { return fileDescriptorDatastore, []int{11} }
 
 func (m *AllocateIdsResponse) GetKeys() []*Key {
 	if m != nil {
@@ -504,9 +564,10 @@ type Mutation struct {
 	Operation isMutation_Operation `protobuf_oneof:"operation"`
 }
 
-func (m *Mutation) Reset()         { *m = Mutation{} }
-func (m *Mutation) String() string { return proto.CompactTextString(m) }
-func (*Mutation) ProtoMessage()    {}
+func (m *Mutation) Reset()                    { *m = Mutation{} }
+func (m *Mutation) String() string            { return proto.CompactTextString(m) }
+func (*Mutation) ProtoMessage()               {}
+func (*Mutation) Descriptor() ([]byte, []int) { return fileDescriptorDatastore, []int{12} }
 
 type isMutation_Operation interface {
 	isMutation_Operation()
@@ -566,8 +627,8 @@ func (m *Mutation) GetDelete() *Key {
 }
 
 // XXX_OneofFuncs is for the internal use of the proto package.
-func (*Mutation) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), []interface{}) {
-	return _Mutation_OneofMarshaler, _Mutation_OneofUnmarshaler, []interface{}{
+func (*Mutation) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
+	return _Mutation_OneofMarshaler, _Mutation_OneofUnmarshaler, _Mutation_OneofSizer, []interface{}{
 		(*Mutation_Insert)(nil),
 		(*Mutation_Update)(nil),
 		(*Mutation_Upsert)(nil),
@@ -646,6 +707,37 @@ func _Mutation_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffe
 	}
 }
 
+func _Mutation_OneofSizer(msg proto.Message) (n int) {
+	m := msg.(*Mutation)
+	// operation
+	switch x := m.Operation.(type) {
+	case *Mutation_Insert:
+		s := proto.Size(x.Insert)
+		n += proto.SizeVarint(4<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *Mutation_Update:
+		s := proto.Size(x.Update)
+		n += proto.SizeVarint(5<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *Mutation_Upsert:
+		s := proto.Size(x.Upsert)
+		n += proto.SizeVarint(6<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *Mutation_Delete:
+		s := proto.Size(x.Delete)
+		n += proto.SizeVarint(7<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case nil:
+	default:
+		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
+	}
+	return n
+}
+
 // The result of applying a mutation.
 type MutationResult struct {
 	// The automatically allocated key.
@@ -653,9 +745,10 @@ type MutationResult struct {
 	Key *Key `protobuf:"bytes,3,opt,name=key" json:"key,omitempty"`
 }
 
-func (m *MutationResult) Reset()         { *m = MutationResult{} }
-func (m *MutationResult) String() string { return proto.CompactTextString(m) }
-func (*MutationResult) ProtoMessage()    {}
+func (m *MutationResult) Reset()                    { *m = MutationResult{} }
+func (m *MutationResult) String() string            { return proto.CompactTextString(m) }
+func (*MutationResult) ProtoMessage()               {}
+func (*MutationResult) Descriptor() ([]byte, []int) { return fileDescriptorDatastore, []int{13} }
 
 func (m *MutationResult) GetKey() *Key {
 	if m != nil {
@@ -676,9 +769,10 @@ type ReadOptions struct {
 	ConsistencyType isReadOptions_ConsistencyType `protobuf_oneof:"consistency_type"`
 }
 
-func (m *ReadOptions) Reset()         { *m = ReadOptions{} }
-func (m *ReadOptions) String() string { return proto.CompactTextString(m) }
-func (*ReadOptions) ProtoMessage()    {}
+func (m *ReadOptions) Reset()                    { *m = ReadOptions{} }
+func (m *ReadOptions) String() string            { return proto.CompactTextString(m) }
+func (*ReadOptions) ProtoMessage()               {}
+func (*ReadOptions) Descriptor() ([]byte, []int) { return fileDescriptorDatastore, []int{14} }
 
 type isReadOptions_ConsistencyType interface {
 	isReadOptions_ConsistencyType()
@@ -716,8 +810,8 @@ func (m *ReadOptions) GetTransaction() []byte {
 }
 
 // XXX_OneofFuncs is for the internal use of the proto package.
-func (*ReadOptions) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), []interface{}) {
-	return _ReadOptions_OneofMarshaler, _ReadOptions_OneofUnmarshaler, []interface{}{
+func (*ReadOptions) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
+	return _ReadOptions_OneofMarshaler, _ReadOptions_OneofUnmarshaler, _ReadOptions_OneofSizer, []interface{}{
 		(*ReadOptions_ReadConsistency_)(nil),
 		(*ReadOptions_Transaction)(nil),
 	}
@@ -762,6 +856,24 @@ func _ReadOptions_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Bu
 	}
 }
 
+func _ReadOptions_OneofSizer(msg proto.Message) (n int) {
+	m := msg.(*ReadOptions)
+	// consistency_type
+	switch x := m.ConsistencyType.(type) {
+	case *ReadOptions_ReadConsistency_:
+		n += proto.SizeVarint(1<<3 | proto.WireVarint)
+		n += proto.SizeVarint(uint64(x.ReadConsistency))
+	case *ReadOptions_Transaction:
+		n += proto.SizeVarint(2<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(len(x.Transaction)))
+		n += len(x.Transaction)
+	case nil:
+	default:
+		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
+	}
+	return n
+}
+
 func init() {
 	proto.RegisterType((*LookupRequest)(nil), "google.datastore.v1beta3.LookupRequest")
 	proto.RegisterType((*LookupResponse)(nil), "google.datastore.v1beta3.LookupResponse")
@@ -780,4 +892,71 @@ func init() {
 	proto.RegisterType((*ReadOptions)(nil), "google.datastore.v1beta3.ReadOptions")
 	proto.RegisterEnum("google.datastore.v1beta3.CommitRequest_Mode", CommitRequest_Mode_name, CommitRequest_Mode_value)
 	proto.RegisterEnum("google.datastore.v1beta3.ReadOptions_ReadConsistency", ReadOptions_ReadConsistency_name, ReadOptions_ReadConsistency_value)
+}
+
+var fileDescriptorDatastore = []byte{
+	// 1000 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xa4, 0x56, 0xdf, 0x6f, 0xdb, 0x54,
+	0x14, 0x9e, 0xd3, 0x26, 0x6d, 0x4e, 0xda, 0x90, 0xdd, 0x6d, 0x10, 0x45, 0x45, 0x54, 0x16, 0x65,
+	0x25, 0x6c, 0x71, 0x97, 0x51, 0x21, 0x02, 0x2f, 0x49, 0x9a, 0x8d, 0x88, 0xd5, 0xe9, 0x92, 0x14,
+	0x89, 0x27, 0xcb, 0x89, 0xef, 0x82, 0xa9, 0x63, 0xbb, 0xb6, 0x83, 0x88, 0xd0, 0x5e, 0x78, 0xdf,
+	0x13, 0x42, 0xe2, 0x95, 0x3f, 0x81, 0x07, 0xc4, 0x1f, 0xc2, 0x1b, 0xcf, 0xfb, 0x43, 0x38, 0xbe,
+	0xbe, 0x6e, 0xea, 0x6c, 0xfe, 0x51, 0xed, 0xad, 0xb9, 0x3d, 0xdf, 0xb9, 0xdf, 0x39, 0xdf, 0x3d,
+	0xdf, 0x31, 0x1c, 0xce, 0x2c, 0x6b, 0x66, 0x50, 0x49, 0x53, 0x3d, 0xd5, 0xf5, 0x2c, 0x87, 0x4a,
+	0x3f, 0x3d, 0x9a, 0x50, 0x4f, 0x7d, 0xbc, 0x3a, 0x69, 0xd8, 0x8e, 0xe5, 0x59, 0xa4, 0x1a, 0x44,
+	0x36, 0x56, 0xe7, 0x3c, 0xb2, 0xb6, 0xc7, 0x73, 0xa8, 0xb6, 0x2e, 0xa9, 0xa6, 0x69, 0x79, 0xaa,
+	0xa7, 0x5b, 0xa6, 0x1b, 0xe0, 0x6a, 0x07, 0xb1, 0x37, 0x50, 0xd3, 0xd3, 0xbd, 0x25, 0x0f, 0xfb,
+	0x38, 0x36, 0xec, 0x72, 0x41, 0x1d, 0x1e, 0x25, 0xbe, 0x12, 0x60, 0xf7, 0x99, 0x65, 0x5d, 0x2c,
+	0xec, 0x21, 0xc5, 0x73, 0xd7, 0x23, 0x04, 0x00, 0xff, 0xf5, 0x23, 0x9d, 0x7a, 0x8a, 0xae, 0x55,
+	0xb7, 0xf7, 0x85, 0xc3, 0x22, 0xf9, 0x0a, 0x76, 0x1c, 0xaa, 0x6a, 0x8a, 0x65, 0x33, 0x22, 0x55,
+	0x01, 0x4f, 0x4b, 0xcd, 0x83, 0x46, 0x5c, 0x05, 0x8d, 0x21, 0x46, 0x0f, 0x82, 0x60, 0xf2, 0x19,
+	0x6c, 0x5e, 0xd0, 0xa5, 0x5b, 0xdd, 0xd8, 0xdf, 0x40, 0xd0, 0x87, 0xf1, 0xa0, 0x6f, 0xe9, 0x52,
+	0xfc, 0x4b, 0x80, 0x72, 0xc8, 0xc7, 0xb5, 0x11, 0x4e, 0xc9, 0x31, 0xe4, 0x5f, 0x58, 0x0b, 0x53,
+	0xc3, 0x5b, 0xfd, 0x04, 0x9f, 0xc4, 0x27, 0xe8, 0xb1, 0xfa, 0x11, 0xb8, 0x30, 0x3c, 0xf2, 0x05,
+	0x6c, 0xcd, 0x75, 0xd7, 0xd5, 0xcd, 0x59, 0x35, 0x77, 0x23, 0xa0, 0x04, 0xdb, 0x1a, 0x7d, 0x41,
+	0x1d, 0x87, 0x6a, 0xd9, 0x38, 0xff, 0x91, 0x83, 0xf7, 0x86, 0x0b, 0xf3, 0xb9, 0xdf, 0xd6, 0x94,
+	0x2e, 0xda, 0xaa, 0x83, 0x37, 0x61, 0x5b, 0xfc, 0xd3, 0x5c, 0x5a, 0x17, 0xcf, 0xc2, 0xe8, 0xbe,
+	0xf6, 0x6e, 0x12, 0x1c, 0x41, 0x9e, 0x89, 0x8e, 0xf5, 0xf8, 0xa8, 0x8f, 0xe2, 0x51, 0xac, 0x88,
+	0x6f, 0x6e, 0x61, 0xf7, 0x8a, 0xb3, 0x4b, 0x43, 0x09, 0x50, 0x5b, 0x0c, 0x25, 0xc6, 0xa3, 0x9e,
+	0x5e, 0x1a, 0x1c, 0xd8, 0xd9, 0x01, 0x60, 0x20, 0xc5, 0x5b, 0xda, 0x54, 0x7c, 0x09, 0x95, 0x55,
+	0x67, 0xb8, 0x9e, 0x5f, 0x42, 0x7e, 0xa2, 0x7a, 0xd3, 0x1f, 0x78, 0x09, 0xf5, 0x14, 0x32, 0x81,
+	0x2a, 0x1d, 0x1f, 0x41, 0x1a, 0x61, 0x1d, 0xb9, 0x4c, 0x75, 0x88, 0x0f, 0xe1, 0x83, 0x0e, 0x9d,
+	0xe9, 0xe6, 0xd8, 0x51, 0x4d, 0x57, 0x9d, 0xfa, 0xcd, 0x48, 0x10, 0x48, 0x94, 0xa0, 0xfa, 0x66,
+	0x38, 0x67, 0x7d, 0x07, 0x4a, 0xde, 0xea, 0x98, 0x71, 0xdf, 0x11, 0x5b, 0x28, 0xbc, 0x65, 0x18,
+	0x13, 0x75, 0x7a, 0x91, 0x24, 0xfc, 0x5b, 0xb1, 0x04, 0x5b, 0x73, 0x85, 0x0d, 0x2e, 0x11, 0x5f,
+	0xe5, 0x60, 0xb7, 0x6b, 0xcd, 0xe7, 0xba, 0x97, 0x94, 0xae, 0x05, 0x9b, 0x73, 0x4b, 0xa3, 0xd5,
+	0x3c, 0xfe, 0x2a, 0x37, 0x1f, 0xc4, 0x37, 0x21, 0x92, 0xaa, 0x71, 0x8a, 0x18, 0x72, 0xef, 0x2d,
+	0x54, 0x50, 0xee, 0x63, 0x28, 0xce, 0x17, 0xdc, 0x66, 0xaa, 0x05, 0xf6, 0xe8, 0x13, 0xe4, 0x3e,
+	0xe5, 0xa1, 0xe2, 0x13, 0xd8, 0x64, 0x59, 0xef, 0x42, 0xe5, 0x74, 0x70, 0xd2, 0x53, 0xce, 0xe5,
+	0xd1, 0x59, 0xaf, 0xdb, 0x7f, 0xd2, 0xef, 0x9d, 0x54, 0x6e, 0x91, 0xdb, 0xb0, 0x3b, 0x1e, 0xb6,
+	0xe5, 0x51, 0xbb, 0x3b, 0xee, 0x0f, 0xe4, 0xf6, 0xb3, 0x8a, 0x80, 0xd7, 0xdf, 0x96, 0x07, 0xb2,
+	0x12, 0x3d, 0xce, 0x75, 0xde, 0x87, 0xbb, 0xd7, 0x58, 0x29, 0x2e, 0x35, 0xb0, 0x60, 0xcb, 0x11,
+	0x2f, 0xa0, 0x1c, 0xd6, 0xc0, 0x65, 0xe8, 0x40, 0x25, 0x24, 0xaa, 0x38, 0xec, 0x65, 0x84, 0xc6,
+	0x72, 0x98, 0xce, 0x97, 0x0f, 0xf8, 0x3d, 0xd8, 0xd5, 0x4d, 0x8d, 0xfe, 0xac, 0x2c, 0x6c, 0x8c,
+	0xa5, 0x6e, 0x75, 0x13, 0xbb, 0x90, 0x17, 0xcf, 0x81, 0xb4, 0x0d, 0xc3, 0x9a, 0xe2, 0x51, 0x5f,
+	0x73, 0x93, 0x04, 0x08, 0x1d, 0x4d, 0xc8, 0xe2, 0x0e, 0x1d, 0xb8, 0x13, 0x49, 0xcb, 0x0b, 0xb9,
+	0x51, 0x8e, 0xd7, 0x02, 0x6c, 0x87, 0x45, 0x90, 0x26, 0x14, 0x74, 0xcc, 0xe0, 0x78, 0x8c, 0x77,
+	0xa9, 0xb9, 0x9f, 0xe6, 0x6b, 0xa8, 0x2f, 0x62, 0x82, 0x62, 0xd9, 0xa3, 0xb9, 0x01, 0x86, 0xdd,
+	0x53, 0xc8, 0x8c, 0x91, 0xa0, 0xa0, 0xa1, 0x78, 0x78, 0x4f, 0xe0, 0x19, 0xc9, 0x75, 0xa1, 0x5d,
+	0x94, 0xa0, 0x68, 0xd9, 0xd4, 0x09, 0x9e, 0xd3, 0xd7, 0x50, 0x5e, 0x93, 0xaa, 0x0e, 0x1b, 0xd8,
+	0x25, 0x6e, 0x5b, 0x29, 0x4d, 0xfa, 0x4f, 0x80, 0xd2, 0x75, 0xd3, 0x7b, 0x0e, 0x15, 0xe6, 0x98,
+	0x53, 0xfc, 0xa1, 0xbb, 0x1e, 0x35, 0xa7, 0x4b, 0xf6, 0xde, 0xcb, 0xcd, 0xe3, 0x4c, 0xae, 0xc9,
+	0xfe, 0xee, 0xae, 0xc0, 0x58, 0xde, 0xda, 0xf4, 0xe4, 0x82, 0xe9, 0x11, 0x4f, 0xd1, 0x06, 0xa2,
+	0xb1, 0x64, 0x1f, 0xf6, 0x86, 0xbd, 0xf6, 0x89, 0xd2, 0x1d, 0xc8, 0xa3, 0xfe, 0x68, 0xdc, 0x93,
+	0xbb, 0xdf, 0xaf, 0x4d, 0x07, 0x40, 0x61, 0x34, 0x1e, 0x0e, 0xe4, 0xa7, 0x38, 0x16, 0x3b, 0xb0,
+	0xdd, 0xfb, 0xae, 0x27, 0x8f, 0xcf, 0xd9, 0x34, 0xa0, 0x33, 0x5c, 0xe3, 0xcc, 0x8c, 0xb4, 0xf9,
+	0xcf, 0x16, 0x14, 0x4f, 0x42, 0xb6, 0x04, 0xb7, 0x76, 0x21, 0xd8, 0x92, 0xe4, 0x7e, 0x7c, 0x2d,
+	0x91, 0xbd, 0x5e, 0x3b, 0x4c, 0x0f, 0xe4, 0x2e, 0x74, 0xf4, 0xeb, 0xbf, 0xaf, 0x7f, 0xcb, 0xd5,
+	0xc5, 0x83, 0xab, 0x2f, 0x06, 0x3e, 0x01, 0xae, 0xf4, 0xcb, 0x6a, 0x16, 0x5e, 0xb6, 0x0c, 0x06,
+	0x6b, 0x09, 0x75, 0xf2, 0x3b, 0xbe, 0xcf, 0xd0, 0xe7, 0xc9, 0xa7, 0x09, 0xdd, 0x8d, 0x6e, 0xc9,
+	0x5a, 0x3d, 0x4b, 0x28, 0x67, 0xd5, 0x64, 0xac, 0x1e, 0x88, 0xf7, 0x53, 0x58, 0x39, 0x1c, 0xe8,
+	0xf3, 0xfa, 0x5b, 0x80, 0xca, 0xba, 0xa3, 0x93, 0x47, 0xf1, 0x97, 0xc6, 0x2c, 0x8b, 0x5a, 0xf3,
+	0x26, 0x10, 0xce, 0xb7, 0xc5, 0xf8, 0x7e, 0x2e, 0x4a, 0x29, 0x7c, 0x27, 0x6b, 0x09, 0x7c, 0xde,
+	0xbe, 0xbe, 0x81, 0xf1, 0x25, 0xe9, 0x1b, 0xb1, 0xf7, 0x24, 0x7d, 0xa3, 0x1e, 0x9a, 0x59, 0xdf,
+	0x29, 0x83, 0x5d, 0xe9, 0xcb, 0x97, 0x55, 0xa2, 0xbe, 0xd1, 0x65, 0x98, 0xa8, 0xef, 0xfa, 0xee,
+	0xcb, 0xac, 0x2f, 0x07, 0xfa, 0xbc, 0xfe, 0xc4, 0x91, 0xbf, 0x66, 0xae, 0x24, 0x61, 0x17, 0xbe,
+	0x69, 0xed, 0xb5, 0x87, 0x19, 0xa3, 0x39, 0xc1, 0x63, 0x46, 0x50, 0x12, 0xeb, 0x29, 0x04, 0xd5,
+	0x15, 0x16, 0x39, 0x76, 0x8e, 0x60, 0x0f, 0x1b, 0x19, 0x7b, 0x55, 0xa7, 0x7c, 0x35, 0xd6, 0x67,
+	0xfe, 0x17, 0xf9, 0x99, 0x30, 0x29, 0xb0, 0x4f, 0xf3, 0xc7, 0xff, 0x07, 0x00, 0x00, 0xff, 0xff,
+	0x04, 0x4a, 0xc0, 0x33, 0x4b, 0x0c, 0x00, 0x00,
 }
