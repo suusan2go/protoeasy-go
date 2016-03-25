@@ -61,7 +61,9 @@ EXTRA_CMDS := \
 
 export GO15VENDOREXPERIMENT=1
 
-all: integration docker-integration
+all: build
+
+testall: integration docker-integration
 
 deps:
 	GO15VENDOREXPERIMENT=0 go get -d -v $(PKGS) $(EXTRA_PKGS)
@@ -186,6 +188,7 @@ docker-integration: build docker-build
 
 .PHONY: \
 	all \
+	testall \
 	deps \
 	updatedeps \
 	testdeps \
