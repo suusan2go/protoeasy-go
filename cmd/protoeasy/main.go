@@ -1,7 +1,7 @@
 package main
 
 import (
-	"encoding/json"
+	"errors"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -86,11 +86,6 @@ func do(appEnv *appEnv) error {
 				outDirPath = options.OutDirPath
 			}
 			protolion.Infof("Using output directory %s", outDirPath)
-			data, err := json.Marshal(compileOptions)
-			if err != nil {
-				return err
-			}
-			protolion.Infof("Using compile options %s", string(data))
 			pkgcobra.Check(run(appEnv, dirPath, outDirPath, compileOptions))
 			return nil
 		}),
@@ -424,7 +419,13 @@ func run(appEnv *appEnv, dirPath string, outDirPath string, compileOptions *prot
 
 	commands, err := compiler.Compile(dirPath, outDirPath, compileOptions)
 	if err != nil {
-		return err
+		if desc := grpc.ErrorDesc(err); desc != "" {
+			err = errors.New(desc)
+		}
+		if errString := strings.TrimSpace(err.Error()); errString != "" {
+			protolion.Errorln(errString)
+		}
+		return errors.New("")
 	}
 	for _, command := range commands {
 		if len(command.Arg) > 0 {

@@ -388,11 +388,11 @@
 			"revisionTime": "2015-10-24T12:54:09+02:00"
 		},
 		{
-			"checksumSHA1": "d0jE01DkVJl2xVLrYB8W9XtEOp8=",
+			"checksumSHA1": "JM5JaFjNWdB5RW+XlaDxO8ueNF8=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/env",
 			"path": "go.pedge.io/env",
-			"revision": "422595ad100ba6ecdf26f7a7fba79a9693453943",
-			"revisionTime": "2016-02-02T17:47:42+01:00"
+			"revision": "7e2afbc4865e7895f8786bfb72eacc3629dfde7d",
+			"revisionTime": "2016-03-25T15:56:55+01:00"
 		},
 		{
 			"checksumSHA1": "Z4Y80rXf5Vt7CAalCExrvtIwvMA=",
@@ -696,18 +696,18 @@
 			"revisionTime": "2016-03-24T14:11:57+01:00"
 		},
 		{
-			"checksumSHA1": "oTxn51wwuiLAV9HoDEqmQ60OGW4=",
+			"checksumSHA1": "jENVbOfuDJ08NXhgqLaaGTGVV/Y=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pkg/cobra",
 			"path": "go.pedge.io/pkg/cobra",
-			"revision": "b9629392448bf13e7951adacf4028f700caf1330",
-			"revisionTime": "2016-02-16T23:39:42+01:00"
+			"revision": "f796aeb073559292f27a7229529419918742533b",
+			"revisionTime": "2016-03-25T16:03:37+01:00"
 		},
 		{
 			"checksumSHA1": "5PUu0T8rcuJdeI0Hx+XDP7lG2F4=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/pkg/exec",
 			"path": "go.pedge.io/pkg/exec",
-			"revision": "b9629392448bf13e7951adacf4028f700caf1330",
-			"revisionTime": "2016-02-16T23:39:42+01:00"
+			"revision": "f796aeb073559292f27a7229529419918742533b",
+			"revisionTime": "2016-03-25T16:03:37+01:00"
 		},
 		{
 			"checksumSHA1": "AIOvizI9ARrVSTXx8hfz+C2ZBfA=",
