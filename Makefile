@@ -104,38 +104,41 @@ proto:
 	find . -name *\.pb\*\.go | grep -v vendor | xargs strip-package-comments
 
 example-complete:
-	rm -rf _example-out/complete
+	rm -rf example/out
 	protoeasy \
 		--no-file \
-		--out=_example-out/complete \
+		--out=example/out/complete \
 		--cpp --cpp-rel-out=cpp \
 		--csharp --csharp-rel-out=csharp \
 		--objc --objc-rel-out=objc \
 		--python --python-rel-out=python \
 		--ruby --ruby-rel-out=ruby \
-		--go --go-rel-out=go --go-import-path=go.pedge.io/protoeasy/_example-out/complete/go \
+		--go --go-rel-out=go --go-import-path=go.pedge.io/protoeasy/example/out/complete/go \
 		--grpc \
 		--grpc-gateway \
 		example/complete
-	go build ./_example-out/complete/go/...
+	go build ./example/out/complete/go/...
+	rm -rf example/out
 
 example-complete-file:
-	rm -rf _example-out/complete
-	protoeasy --out=_example-out/complete -f protoeasy-example-complete.yaml
-	go build ./_example-out/complete/go/...
+	rm -rf example/out
+	cd example && protoeasy --out=out/complete && cd -
+	go build ./example/out/complete/go/...
+	rm -rf example/out
 
 example-proto2:
-	rm -rf _example-out/proto2
+	rm -rf example/out
 	protoeasy \
-		--out=_example-out/proto2 \
+		--out=example/out/proto2 \
 		--cpp --cpp-rel-out=cpp \
 		--python --python-rel-out=python \
-		--go --go-rel-out=go --go-import-path=go.pedge.io/protoeasy/_example-out/proto2/go \
-		--gogo --gogo-rel-out=gogo --gogo-import-path=go.pedge.io/protoeasy/_example-out/proto2/gogo \
+		--go --go-rel-out=go --go-import-path=go.pedge.io/protoeasy/example/out/proto2/go \
+		--gogo --gogo-rel-out=gogo --gogo-import-path=go.pedge.io/protoeasy/example/out/proto2/gogo \
 		--grpc \
 		example/proto2
-	go build ./_example-out/proto2/go/...
-	go build ./_example-out/proto2/gogo/...
+	go build ./example/out/proto2/go/...
+	go build ./example/out/proto2/gogo/...
+	rm -rf example/out
 
 examples: install example-complete example-complete-file example-proto2
 
@@ -163,7 +166,7 @@ test: pretest
 
 clean:
 	go clean -i $(PKGS)
-	rm -rf _example-out
+	rm -rf example/out
 
 docker-build:
 	docker build -t quay.io/pedge/protoeasy .

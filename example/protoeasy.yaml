@@ -1,5 +1,5 @@
 version: v1
-dir: example/complete
+dir: complete
 plugins:
   - grpc
   - grpc_gateway
@@ -17,7 +17,7 @@ options:
     rel_out: csharp
   go:
     rel_out: go
-    import_path: go.pedge.io/protoeasy/_example-out/complete/go
+    import_path: go.pedge.io/protoeasy/example/out/complete/go
   objc:
     rel_out: objc
   python:

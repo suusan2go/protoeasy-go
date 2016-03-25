@@ -55,6 +55,8 @@ protoeasy --go --grpc --go-import-path github.com/user/your-go-project --cpp --r
 protoeasy --go --grpc --go-import-path github.com/user/your-go-project --exclude foo .
 # this assumes your protocol buffers files are in ext/proto, and import paths are relative to ext/proto
 protoeasy --go --grpc --go-import-path github.com/user/your-go-project/ext/proto ext/proto
+# this assumes you have a protoeasy.yaml file in your current directory, see the file here as an example
+protoeasy
 ```
 
 ### Motivation
