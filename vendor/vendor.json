@@ -398,36 +398,43 @@
 			"checksumSHA1": "Z4Y80rXf5Vt7CAalCExrvtIwvMA=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/lion",
 			"path": "go.pedge.io/lion",
-			"revision": "5ce7fd45420954fb8a220b21c8df5cd5636dce9b",
-			"revisionTime": "2016-03-08T21:06:23+01:00"
+			"revision": "7db37edc2411c8ce17649c276621a9e0521867d5",
+			"revisionTime": "2016-03-25T13:30:53+01:00"
 		},
 		{
 			"checksumSHA1": "6QnBL7to5rYitCaEtSBONJMFdGQ=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/lion/current",
 			"path": "go.pedge.io/lion/current",
-			"revision": "5ce7fd45420954fb8a220b21c8df5cd5636dce9b",
-			"revisionTime": "2016-03-08T21:06:23+01:00"
+			"revision": "7db37edc2411c8ce17649c276621a9e0521867d5",
+			"revisionTime": "2016-03-25T13:30:53+01:00"
 		},
 		{
-			"checksumSHA1": "EOlPmUKwRl+TBeb4RDf5MHM7pwE=",
+			"checksumSHA1": "QFjRENsAgCJItCcP2jIKR/D16no=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/lion/env",
 			"path": "go.pedge.io/lion/env",
-			"revision": "5ce7fd45420954fb8a220b21c8df5cd5636dce9b",
-			"revisionTime": "2016-03-08T21:06:23+01:00"
+			"revision": "7db37edc2411c8ce17649c276621a9e0521867d5",
+			"revisionTime": "2016-03-25T13:30:53+01:00"
+		},
+		{
+			"checksumSHA1": "TPl0flgOZR5lDTk17wP97Fjcd4Y=",
+			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/lion/grpc",
+			"path": "go.pedge.io/lion/grpc",
+			"revision": "7db37edc2411c8ce17649c276621a9e0521867d5",
+			"revisionTime": "2016-03-25T13:30:53+01:00"
 		},
 		{
 			"checksumSHA1": "xZAWEzTF1URPAQiNw6Kp9pQCMOM=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/lion/proto",
 			"path": "go.pedge.io/lion/proto",
-			"revision": "5ce7fd45420954fb8a220b21c8df5cd5636dce9b",
-			"revisionTime": "2016-03-08T21:06:23+01:00"
+			"revision": "7db37edc2411c8ce17649c276621a9e0521867d5",
+			"revisionTime": "2016-03-25T13:30:53+01:00"
 		},
 		{
 			"checksumSHA1": "HaTcOZiTWM6j54t1qJoHZpgBAHk=",
 			"origin": "go.pedge.io/protoeasy/vendor/go.pedge.io/lion/syslog",
 			"path": "go.pedge.io/lion/syslog",
-			"revision": "5ce7fd45420954fb8a220b21c8df5cd5636dce9b",
-			"revisionTime": "2016-03-08T21:06:23+01:00"
+			"revision": "7db37edc2411c8ce17649c276621a9e0521867d5",
+			"revisionTime": "2016-03-25T13:30:53+01:00"
 		},
 		{
 			"checksumSHA1": "LCynpH8ifbnkA+mv7UVkNwALsPc=",
