@@ -73,27 +73,6 @@
 			"revisionTime": "2016-03-23T19:38:48+09:00"
 		},
 		{
-			"checksumSHA1": "RUtjY8eCxhrYkJBR2ma2NjF+D/c=",
-			"origin": "go.pedge.io/protoeasy/vendor/github.com/gogo/letmegrpc/form",
-			"path": "github.com/gogo/letmegrpc/form",
-			"revision": "d9e70ab6c48be9a1a130359784b3c26118a8f52c",
-			"revisionTime": "2015-12-17T11:42:00+02:00"
-		},
-		{
-			"checksumSHA1": "p5YxKmjW1p2wAQJJNWMJM6V/alc=",
-			"origin": "go.pedge.io/protoeasy/vendor/github.com/gogo/letmegrpc/html",
-			"path": "github.com/gogo/letmegrpc/html",
-			"revision": "d9e70ab6c48be9a1a130359784b3c26118a8f52c",
-			"revisionTime": "2015-12-17T11:42:00+02:00"
-		},
-		{
-			"checksumSHA1": "e+2vzdz4Al/VcEMRbD5jfTCK92I=",
-			"origin": "go.pedge.io/protoeasy/vendor/github.com/gogo/letmegrpc/protoc-gen-letmegrpc",
-			"path": "github.com/gogo/letmegrpc/protoc-gen-letmegrpc",
-			"revision": "d9e70ab6c48be9a1a130359784b3c26118a8f52c",
-			"revisionTime": "2015-12-17T11:42:00+02:00"
-		},
-		{
 			"checksumSHA1": "v9pieYA9Vz3i9vYouWGnl56tmIM=",
 			"origin": "go.pedge.io/protoeasy/vendor/github.com/gogo/protobuf/gogoproto",
 			"path": "github.com/gogo/protobuf/gogoproto",

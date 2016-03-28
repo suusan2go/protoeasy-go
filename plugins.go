@@ -39,9 +39,6 @@ func getPlugins(compileOptions *CompileOptions) []plugin {
 	if compileOptions.DescriptorSet {
 		plugins = append(plugins, newDescriptorSetPlugin(compileOptions))
 	}
-	if compileOptions.Letmegrpc {
-		plugins = append(plugins, newLetmegrpcPlugin(compileOptions))
-	}
 	return plugins
 }
 
@@ -86,24 +83,6 @@ func newGogoPlugin(options *CompileOptions) plugin {
 		options.GogoImportPath,
 		"grpc-gateway",
 		true,
-	)
-}
-
-func newLetmegrpcPlugin(options *CompileOptions) plugin {
-	if options == nil {
-		options = &CompileOptions{}
-	}
-	return newBaseGoPlugin(
-		options,
-		options.LetmegrpcRelOut,
-		"letmegrpc",
-		"letmegrpc",
-		defaultGogoModifierOptions,
-		options.LetmegrpcNoDefaultModifiers,
-		options.LetmegrpcModifiers,
-		options.LetmegrpcImportPath,
-		"",
-		false,
 	)
 }
 

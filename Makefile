@@ -9,9 +9,6 @@ EXTRA_PKGS := \
 	github.com/gogo/protobuf/protoc-gen-gogofast/... \
 	github.com/gogo/protobuf/protoc-gen-gogofaster/... \
 	github.com/gogo/protobuf/protoc-gen-gogoslick/... \
-	github.com/gogo/letmegrpc/form/... \
-	github.com/gogo/letmegrpc/html/... \
-	github.com/gogo/letmegrpc/protoc-gen-letmegrpc/... \
 	go.pedge.io/pb/go/google/api/... \
 	go.pedge.io/pb/go/google/datastore/v1beta3/... \
 	go.pedge.io/pb/go/google/devtools/cloudtrace/v1/... \
@@ -56,8 +53,7 @@ EXTRA_CMDS := \
 	go.pedge.io/protoeasy/vendor/github.com/gogo/protobuf/protoc-gen-gogo \
 	go.pedge.io/protoeasy/vendor/github.com/gogo/protobuf/protoc-gen-gogofast \
 	go.pedge.io/protoeasy/vendor/github.com/gogo/protobuf/protoc-gen-gogofaster \
-	go.pedge.io/protoeasy/vendor/github.com/gogo/protobuf/protoc-gen-gogoslick \
-	go.pedge.io/protoeasy/vendor/github.com/gogo/letmegrpc/protoc-gen-letmegrpc
+	go.pedge.io/protoeasy/vendor/github.com/gogo/protobuf/protoc-gen-gogoslick
 
 export GO15VENDOREXPERIMENT=1
 
