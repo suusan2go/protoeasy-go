@@ -8,7 +8,7 @@
 
 I'm currently working on a protocol buffer package management tool and hosting service, similar to RubyGems, that uses components of protoeasy. Feel free to follow development and help out:
 
-http://proto.cafe
+http://proto.cafe  
 https://github.com/protocafe/protocafe
 
 ### Protoeasy
