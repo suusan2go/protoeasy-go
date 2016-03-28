@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"go.pedge.io/protoeasy/pkg/random"
+	"github.com/peter-edge/dockerpkgarchive/random"
 )
 
 var rndSrc = random.NewSource()

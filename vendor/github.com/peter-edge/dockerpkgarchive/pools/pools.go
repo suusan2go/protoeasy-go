@@ -14,7 +14,7 @@ import (
 	"io"
 	"sync"
 
-	"go.pedge.io/protoeasy/pkg/ioutils"
+	"github.com/peter-edge/dockerpkgarchive/ioutils"
 )
 
 var (

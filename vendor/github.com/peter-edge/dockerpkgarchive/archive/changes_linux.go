@@ -9,7 +9,7 @@ import (
 	"syscall"
 	"unsafe"
 
-	"go.pedge.io/protoeasy/pkg/system"
+	"github.com/peter-edge/dockerpkgarchive/system"
 )
 
 // walker is used to implement collectFileInfoForChanges on linux. Where this

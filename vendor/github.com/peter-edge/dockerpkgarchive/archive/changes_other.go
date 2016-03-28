@@ -9,7 +9,7 @@ import (
 	"runtime"
 	"strings"
 
-	"go.pedge.io/protoeasy/pkg/system"
+	"github.com/peter-edge/dockerpkgarchive/system"
 )
 
 func collectFileInfoForChanges(oldDir, newDir string) (*FileInfo, *FileInfo, error) {

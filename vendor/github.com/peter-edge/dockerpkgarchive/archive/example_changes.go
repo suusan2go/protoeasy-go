@@ -14,7 +14,7 @@ import (
 	"path"
 
 	"github.com/Sirupsen/logrus"
-	"go.pedge.io/protoeasy/pkg/archive"
+	"github.com/peter-edge/dockerpkgarchive/archive"
 )
 
 var (

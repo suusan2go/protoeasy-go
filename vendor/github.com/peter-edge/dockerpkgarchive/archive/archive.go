@@ -19,10 +19,10 @@ import (
 
 	"github.com/Sirupsen/logrus"
 
-	"go.pedge.io/protoeasy/pkg/fileutils"
-	"go.pedge.io/protoeasy/pkg/pools"
-	"go.pedge.io/protoeasy/pkg/promise"
-	"go.pedge.io/protoeasy/pkg/system"
+	"github.com/peter-edge/dockerpkgarchive/fileutils"
+	"github.com/peter-edge/dockerpkgarchive/pools"
+	"github.com/peter-edge/dockerpkgarchive/promise"
+	"github.com/peter-edge/dockerpkgarchive/system"
 )
 
 type (

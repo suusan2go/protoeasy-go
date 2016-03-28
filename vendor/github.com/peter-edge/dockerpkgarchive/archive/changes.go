@@ -14,8 +14,8 @@ import (
 	"time"
 
 	"github.com/Sirupsen/logrus"
-	"go.pedge.io/protoeasy/pkg/pools"
-	"go.pedge.io/protoeasy/pkg/system"
+	"github.com/peter-edge/dockerpkgarchive/pools"
+	"github.com/peter-edge/dockerpkgarchive/system"
 )
 
 // ChangeType represents the change type.

@@ -11,8 +11,8 @@ import (
 	"strings"
 
 	"github.com/Sirupsen/logrus"
-	"go.pedge.io/protoeasy/pkg/pools"
-	"go.pedge.io/protoeasy/pkg/system"
+	"github.com/peter-edge/dockerpkgarchive/pools"
+	"github.com/peter-edge/dockerpkgarchive/system"
 )
 
 // UnpackLayer unpack `layer` to a `dest`. The stream `layer` can be

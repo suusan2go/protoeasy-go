@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 	"syscall"
 
-	"go.pedge.io/protoeasy/pkg/system"
+	"github.com/peter-edge/dockerpkgarchive/system"
 )
 
 // fixVolumePathPrefix does platform specific processing to ensure that if

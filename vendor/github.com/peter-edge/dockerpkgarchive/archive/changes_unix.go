@@ -5,7 +5,7 @@ package archive
 import (
 	"syscall"
 
-	"go.pedge.io/protoeasy/pkg/system"
+	"github.com/peter-edge/dockerpkgarchive/system"
 )
 
 func statDifferent(oldStat *system.StatT, newStat *system.StatT) bool {

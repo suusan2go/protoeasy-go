@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"go.pedge.io/protoeasy/pkg/longpath"
+	"github.com/peter-edge/dockerpkgarchive/longpath"
 )
 
 // fixVolumePathPrefix does platform specific processing to ensure that if

@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"strings"
 
-	"go.pedge.io/protoeasy/pkg/units"
+	"github.com/peter-edge/dockerpkgarchive/units"
 )
 
 // ReadMemInfo retrieves memory statistics of the host system and returns a
