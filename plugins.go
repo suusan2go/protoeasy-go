@@ -63,8 +63,6 @@ func newGoPlugin(options *CompileOptions) plugin {
 		options.GoNoDefaultModifiers,
 		options.GoModifiers,
 		options.GoImportPath,
-		"grpc-gateway",
-		true,
 	)
 }
 
@@ -81,8 +79,6 @@ func newGogoPlugin(options *CompileOptions) plugin {
 		options.GogoNoDefaultModifiers,
 		options.GogoModifiers,
 		options.GogoImportPath,
-		"grpc-gateway",
-		true,
 	)
 }
 
@@ -106,8 +102,6 @@ type baseGoPlugin struct {
 	noDefaultModifiers bool
 	modifiers          map[string]string
 	importPath         string
-	grpcGatewayPlugin  string
-	hasGrpc            bool
 }
 
 func newBaseGoPlugin(
@@ -119,8 +113,6 @@ func newBaseGoPlugin(
 	noDefaultModifiers bool,
 	modifiers map[string]string,
 	importPath string,
-	grpcGatewayPlugin string,
-	hasGrpc bool,
 ) *baseGoPlugin {
 	if options == nil {
 		options = &CompileOptions{}
@@ -139,8 +131,6 @@ func newBaseGoPlugin(
 		noDefaultModifiers,
 		modifiers,
 		importPath,
-		grpcGatewayPlugin,
-		hasGrpc,
 	}
 }
 
@@ -150,7 +140,7 @@ func (p *baseGoPlugin) Flags(protoSpec *protoSpec, relDirPath string, outDirPath
 	}
 	modifiers := p.getModifiers(protoSpec, relDirPath)
 	goOutOpts := modifiers
-	if p.hasGrpc && p.options.Grpc {
+	if p.options.Grpc {
 		goOutOpts = fmt.Sprintf("%s,plugins=grpc", goOutOpts)
 	}
 	var flags []string
@@ -159,11 +149,11 @@ func (p *baseGoPlugin) Flags(protoSpec *protoSpec, relDirPath string, outDirPath
 	} else {
 		flags = append(flags, fmt.Sprintf("--%s_out=%s", p.pluginType, outDirPath))
 	}
-	if p.hasGrpc && p.grpcGatewayPlugin != "" && p.options.GrpcGateway {
+	if p.options.GrpcGateway {
 		if len(modifiers) > 0 {
-			flags = append(flags, fmt.Sprintf("--%s_out=%s:%s", p.grpcGatewayPlugin, modifiers, outDirPath))
+			flags = append(flags, fmt.Sprintf("--grpc-gateway_out=%s:%s", modifiers, outDirPath))
 		} else {
-			flags = append(flags, fmt.Sprintf("--%s_out=%s", p.grpcGatewayPlugin, outDirPath))
+			flags = append(flags, fmt.Sprintf("--grpc-gateway_out=%s", outDirPath))
 		}
 	}
 	return flags, nil
