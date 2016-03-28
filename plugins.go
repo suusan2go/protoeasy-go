@@ -141,7 +141,10 @@ func (p *baseGoPlugin) Flags(protoSpec *protoSpec, relDirPath string, outDirPath
 	modifiers := p.getModifiers(protoSpec, relDirPath)
 	goOutOpts := modifiers
 	if p.options.Grpc {
-		goOutOpts = fmt.Sprintf("%s,plugins=grpc", goOutOpts)
+		if goOutOpts != "" {
+			goOutOpts = fmt.Sprintf("%s,", goOutOpts)
+		}
+		goOutOpts = fmt.Sprintf("%splugins=grpc", goOutOpts)
 	}
 	var flags []string
 	if len(goOutOpts) > 0 {

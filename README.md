@@ -4,6 +4,15 @@
 [![GoDoc](http://img.shields.io/badge/GoDoc-Reference-blue.svg)](https://godoc.org/go.pedge.io/protoeasy)
 [![MIT License](http://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/peter-edge/protoeasy-go/blob/master/LICENSE)
 
+### NEWS: Protocafe
+
+I'm currently working on a protocol buffer package management tool and hosting service, similar to RubyGems, that uses components of protoeasy. Feel free to follow development and help out:
+
+http://proto.cafe
+https://github.com/protocafe/protocafe
+
+### Protoeasy
+
 Protoeasy is intended to make compiling protocol buffers files easier, and to optionally offload the compilation
 to a server for consistency and so that protoc and any associated plugins do not have to be installed locally.
 
