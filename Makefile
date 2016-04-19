@@ -1,50 +1,50 @@
 PKGS := $(shell go list ./... | grep -v 'go.pedge.io/protoeasy/vendor')
 
 EXTRA_PKGS := \
-	github.com/gengo/grpc-gateway/protoc-gen-grpc-gateway/... \
-	github.com/gengo/grpc-gateway/runtime/... \
-	github.com/golang/protobuf/protoc-gen-go/... \
-	github.com/gogo/protobuf/protoc-gen-gofast/... \
-	github.com/gogo/protobuf/protoc-gen-gogo/... \
-	github.com/gogo/protobuf/protoc-gen-gogofast/... \
-	github.com/gogo/protobuf/protoc-gen-gogofaster/... \
-	github.com/gogo/protobuf/protoc-gen-gogoslick/... \
-	go.pedge.io/pb/go/google/api/... \
-	go.pedge.io/pb/go/google/datastore/v1beta3/... \
-	go.pedge.io/pb/go/google/devtools/cloudtrace/v1/... \
-	go.pedge.io/pb/go/google/example/library/v1/... \
-	go.pedge.io/pb/go/google/iam/v1/... \
-	go.pedge.io/pb/go/google/logging/type/... \
-	go.pedge.io/pb/go/google/logging/v2/... \
-	go.pedge.io/pb/go/google/longrunning/... \
-	go.pedge.io/pb/go/google/pubsub/v1/... \
-	go.pedge.io/pb/go/google/pubsub/v1beta2/... \
-	go.pedge.io/pb/go/google/rpc/... \
-	go.pedge.io/pb/go/google/type/... \
-	go.pedge.io/pb/go/pb/common/... \
-	go.pedge.io/pb/go/pb/geo/... \
-	go.pedge.io/pb/go/pb/money/... \
-	go.pedge.io/pb/go/pb/net/... \
-	go.pedge.io/pb/go/pb/phone/... \
-	go.pedge.io/pb/go/pb/time/... \
-	go.pedge.io/pb/gogo/google/api/... \
-	go.pedge.io/pb/gogo/google/datastore/v1beta3/... \
-	go.pedge.io/pb/gogo/google/devtools/cloudtrace/v1/... \
-	go.pedge.io/pb/gogo/google/example/library/v1/... \
-	go.pedge.io/pb/gogo/google/iam/v1/... \
-	go.pedge.io/pb/gogo/google/logging/type/... \
-	go.pedge.io/pb/gogo/google/logging/v2/... \
-	go.pedge.io/pb/gogo/google/longrunning/... \
-	go.pedge.io/pb/gogo/google/protobuf/... \
-	go.pedge.io/pb/gogo/google/pubsub/v1/... \
-	go.pedge.io/pb/gogo/google/pubsub/v1beta2/... \
-	go.pedge.io/pb/gogo/google/rpc/... \
-	go.pedge.io/pb/gogo/google/type/... \
-	go.pedge.io/pb/gogo/pb/common/... \
-	go.pedge.io/pb/gogo/pb/geo/... \
-	go.pedge.io/pb/gogo/pb/money/... \
-	go.pedge.io/pb/gogo/pb/net/... \
-	go.pedge.io/pb/gogo/pb/phone/...
+	github.com/gengo/grpc-gateway/protoc-gen-grpc-gateway \
+	github.com/gengo/grpc-gateway/runtime \
+	github.com/golang/protobuf/protoc-gen-go \
+	github.com/gogo/protobuf/protoc-gen-gofast \
+	github.com/gogo/protobuf/protoc-gen-gogo \
+	github.com/gogo/protobuf/protoc-gen-gogofast \
+	github.com/gogo/protobuf/protoc-gen-gogofaster \
+	github.com/gogo/protobuf/protoc-gen-gogoslick \
+	go.pedge.io/pb/go/google/api \
+	go.pedge.io/pb/go/google/datastore/v1beta3 \
+	go.pedge.io/pb/go/google/devtools/cloudtrace/v1 \
+	go.pedge.io/pb/go/google/example/library/v1 \
+	go.pedge.io/pb/go/google/iam/v1 \
+	go.pedge.io/pb/go/google/logging/type \
+	go.pedge.io/pb/go/google/logging/v2 \
+	go.pedge.io/pb/go/google/longrunning \
+	go.pedge.io/pb/go/google/pubsub/v1 \
+	go.pedge.io/pb/go/google/pubsub/v1beta2 \
+	go.pedge.io/pb/go/google/rpc \
+	go.pedge.io/pb/go/google/type \
+	go.pedge.io/pb/go/pb/common \
+	go.pedge.io/pb/go/pb/geo \
+	go.pedge.io/pb/go/pb/money \
+	go.pedge.io/pb/go/pb/net \
+	go.pedge.io/pb/go/pb/phone \
+	go.pedge.io/pb/go/pb/time \
+	go.pedge.io/pb/gogo/google/api \
+	go.pedge.io/pb/gogo/google/datastore/v1beta3 \
+	go.pedge.io/pb/gogo/google/devtools/cloudtrace/v1 \
+	go.pedge.io/pb/gogo/google/example/library/v1 \
+	go.pedge.io/pb/gogo/google/iam/v1 \
+	go.pedge.io/pb/gogo/google/logging/type \
+	go.pedge.io/pb/gogo/google/logging/v2 \
+	go.pedge.io/pb/gogo/google/longrunning \
+	go.pedge.io/pb/gogo/google/protobuf \
+	go.pedge.io/pb/gogo/google/pubsub/v1 \
+	go.pedge.io/pb/gogo/google/pubsub/v1beta2 \
+	go.pedge.io/pb/gogo/google/rpc \
+	go.pedge.io/pb/gogo/google/type \
+	go.pedge.io/pb/gogo/pb/common \
+	go.pedge.io/pb/gogo/pb/geo \
+	go.pedge.io/pb/gogo/pb/money \
+	go.pedge.io/pb/gogo/pb/net \
+	go.pedge.io/pb/gogo/pb/phone
 
 EXTRA_CMDS := \
 	go.pedge.io/protoeasy/vendor/github.com/gengo/grpc-gateway/protoc-gen-grpc-gateway \
@@ -133,7 +133,7 @@ example-proto2:
 		--grpc \
 		example/proto2
 	go build ./example/out/proto2/go/...
-	go build ./example/out/proto2/gogo/...
+	#go build ./example/out/proto2/gogo/...
 	rm -rf example/out
 
 examples: install example-complete example-complete-file example-proto2
