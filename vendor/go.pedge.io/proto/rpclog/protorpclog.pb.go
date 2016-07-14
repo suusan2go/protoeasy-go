@@ -16,7 +16,9 @@ var _ = math.Inf
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the proto package it is being compiled against.
-const _ = proto.ProtoPackageIsVersion1
+// A compilation error at this line likely means your copy of the
+// proto package needs to be updated.
+const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 type Call struct {
 	Service  string                    `protobuf:"bytes,1,opt,name=service" json:"service,omitempty"`
@@ -42,6 +44,8 @@ func (m *Call) GetDuration() *google_protobuf.Duration {
 func init() {
 	proto.RegisterType((*Call)(nil), "protorpclog.Call")
 }
+
+func init() { proto.RegisterFile("rpclog/protorpclog.proto", fileDescriptor0) }
 
 var fileDescriptor0 = []byte{
 	// 192 bytes of a gzipped FileDescriptorProto
