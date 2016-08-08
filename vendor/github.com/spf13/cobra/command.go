@@ -110,7 +110,7 @@ type Command struct {
 	flagErrorBuf *bytes.Buffer
 
 	args          []string                 // actual args parsed from flags
-	output        *io.Writer               // nil means stderr; use Out() method instead
+	output        *io.Writer               // out writer if set in SetOutput(w)
 	usageFunc     func(*Command) error     // Usage can be defined by application
 	usageTemplate string                   // Can be defined by Application
 	helpTemplate  string                   // Can be defined by Application
@@ -176,11 +176,11 @@ func (c *Command) SetGlobalNormalizationFunc(n func(f *flag.FlagSet, name string
 	}
 }
 
-func (c *Command) getOutOrStdout() io.Writer {
+func (c *Command) OutOrStdout() io.Writer {
 	return c.getOut(os.Stdout)
 }
 
-func (c *Command) getOutOrStderr() io.Writer {
+func (c *Command) OutOrStderr() io.Writer {
 	return c.getOut(os.Stderr)
 }
 
@@ -205,7 +205,8 @@ func (c *Command) UsageFunc() (f func(*Command) error) {
 		return c.parent.UsageFunc()
 	}
 	return func(c *Command) error {
-		err := c.Usage()
+		c.mergePersistentFlags()
+		err := tmpl(c.OutOrStderr(), c.UsageTemplate(), c)
 		if err != nil {
 			c.Println(err)
 		}
@@ -213,8 +214,15 @@ func (c *Command) UsageFunc() (f func(*Command) error) {
 	}
 }
 
+// Output the usage for the command
+// Used when a user provides invalid input
+// Can be defined by user by overriding UsageFunc
+func (c *Command) Usage() error {
+	return c.UsageFunc()(c)
+}
+
 // HelpFunc returns either the function set by SetHelpFunc for this command
-// or a parent, or it returns a function which calls c.Help()
+// or a parent, or it returns a function with default help behavior
 func (c *Command) HelpFunc() func(*Command, []string) {
 	cmd := c
 	for cmd != nil {
@@ -224,29 +232,20 @@ func (c *Command) HelpFunc() func(*Command, []string) {
 		cmd = cmd.parent
 	}
 	return func(*Command, []string) {
-		err := c.Help()
+		c.mergePersistentFlags()
+		err := tmpl(c.OutOrStdout(), c.HelpTemplate(), c)
 		if err != nil {
 			c.Println(err)
 		}
 	}
 }
 
-// Output the usage for the command
-// Used when a user provides invalid input
-// Can be defined by user by overriding UsageFunc
-func (c *Command) Usage() error {
-	c.mergePersistentFlags()
-	err := tmpl(c.getOutOrStderr(), c.UsageTemplate(), c)
-	return err
-}
-
 // Output the help for the command
 // Used when a user calls help [command]
-// by the default HelpFunc in the commander
+// Can be defined by user by overriding HelpFunc
 func (c *Command) Help() error {
-	c.mergePersistentFlags()
-	err := tmpl(c.getOutOrStdout(), c.HelpTemplate(), c)
-	return err
+	c.HelpFunc()(c, []string{})
+	return nil
 }
 
 func (c *Command) UsageString() string {
@@ -738,8 +737,7 @@ func (c *Command) initHelpCmd() {
 					c.Printf("Unknown help topic %#q.", args)
 					c.Root().Usage()
 				} else {
-					helpFunc := cmd.HelpFunc()
-					helpFunc(cmd, args)
+					cmd.Help()
 				}
 			},
 		}
@@ -833,18 +831,18 @@ main:
 	}
 }
 
-// Print is a convenience method to Print to the defined output
+// Print is a convenience method to Print to the defined output, fallback to Stderr if not set
 func (c *Command) Print(i ...interface{}) {
-	fmt.Fprint(c.getOutOrStderr(), i...)
+	fmt.Fprint(c.OutOrStderr(), i...)
 }
 
-// Println is a convenience method to Println to the defined output
+// Println is a convenience method to Println to the defined output, fallback to Stderr if not set
 func (c *Command) Println(i ...interface{}) {
 	str := fmt.Sprintln(i...)
 	c.Print(str)
 }
 
-// Printf is a convenience method to Printf to the defined output
+// Printf is a convenience method to Printf to the defined output, fallback to Stderr if not set
 func (c *Command) Printf(format string, i ...interface{}) {
 	str := fmt.Sprintf(format, i...)
 	c.Print(str)

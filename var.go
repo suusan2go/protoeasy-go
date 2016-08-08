@@ -42,7 +42,7 @@ var (
 				"annotations.proto",
 				"http.proto",
 			},
-			"github.com/gengo/grpc-gateway/third_party/googleapis/google/api",
+			"github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis/google/api",
 		),
 		newGoModifierOptions(
 			"google/api",
@@ -219,7 +219,7 @@ var (
 				"annotations.proto",
 				"http.proto",
 			},
-			"github.com/gengo/grpc-gateway/third_party/googleapis/google/api",
+			"github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis/google/api",
 		),
 		newGoModifierOptions(
 			"google/api",

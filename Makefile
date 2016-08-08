@@ -1,8 +1,8 @@
 PKGS := $(shell go list ./... | grep -v 'go.pedge.io/protoeasy/vendor')
 
 EXTRA_PKGS := \
-	github.com/gengo/grpc-gateway/protoc-gen-grpc-gateway \
-	github.com/gengo/grpc-gateway/runtime \
+	github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway \
+	github.com/grpc-ecosystem/grpc-gateway/runtime \
 	github.com/golang/protobuf/protoc-gen-go \
 	github.com/gogo/protobuf/protoc-gen-gofast \
 	github.com/gogo/protobuf/protoc-gen-gogo \
@@ -47,7 +47,7 @@ EXTRA_PKGS := \
 	go.pedge.io/pb/gogo/pb/phone
 
 EXTRA_CMDS := \
-	go.pedge.io/protoeasy/vendor/github.com/gengo/grpc-gateway/protoc-gen-grpc-gateway \
+	go.pedge.io/protoeasy/vendor/github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway \
 	go.pedge.io/protoeasy/vendor/github.com/golang/protobuf/protoc-gen-go \
 	go.pedge.io/protoeasy/vendor/github.com/gogo/protobuf/protoc-gen-gofast \
 	go.pedge.io/protoeasy/vendor/github.com/gogo/protobuf/protoc-gen-gogo \

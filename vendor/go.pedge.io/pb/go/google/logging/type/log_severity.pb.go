@@ -7,7 +7,7 @@ package google_logging_type
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
 import math "math"
-import _ "github.com/gengo/grpc-gateway/third_party/googleapis/google/api"
+import _ "github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis/google/api"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -77,6 +77,8 @@ func (LogSeverity) EnumDescriptor() ([]byte, []int) { return fileDescriptor1, []
 func init() {
 	proto.RegisterEnum("google.logging.type.LogSeverity", LogSeverity_name, LogSeverity_value)
 }
+
+func init() { proto.RegisterFile("google/logging/type/log_severity.proto", fileDescriptor1) }
 
 var fileDescriptor1 = []byte{
 	// 241 bytes of a gzipped FileDescriptorProto
