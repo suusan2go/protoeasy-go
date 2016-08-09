@@ -24,6 +24,7 @@ message CompileOptions {
   bool no_default_includes = 3;
   repeated string exclude_pattern = 4;
   string rel_context = 5;
+  repeated string extra_plugin_flag = 6;
 
   bool cpp = 20;
   string cpp_rel_out = 21;

@@ -39,6 +39,9 @@ func getPlugins(compileOptions *CompileOptions) []plugin {
 	if compileOptions.DescriptorSet {
 		plugins = append(plugins, newDescriptorSetPlugin(compileOptions))
 	}
+	for _, extraPluginFlag := range compileOptions.ExtraPluginFlag {
+		plugins = append(plugins, newExtraPlugin(extraPluginFlag))
+	}
 	return plugins
 }
 
@@ -245,6 +248,22 @@ func (p *basePlugin) Flags(protoSpec *protoSpec, relDirPath string, outDirPath s
 		outDirPath = filepath.Join(outDirPath, p.relOutDirPath)
 	}
 	return []string{fmt.Sprintf("--%s_out=%s", p.name, outDirPath)}, nil
+}
+
+type extraPlugin struct {
+	flagString string
+}
+
+func newExtraPlugin(flagString string) *extraPlugin {
+	return &extraPlugin{flagString}
+}
+
+func (p *extraPlugin) Flags(protoSpec *protoSpec, relDirPath string, outDirPath string) ([]string, error) {
+	split := strings.SplitN(p.flagString, "=", 2)
+	if len(split) == 1 {
+		return []string{fmt.Sprintf("--%s_out=%s", split[0], outDirPath)}, nil
+	}
+	return []string{fmt.Sprintf("--%s_out=%s:%s", split[0], split[1], outDirPath)}, nil
 }
 
 type grpcPlugin struct {

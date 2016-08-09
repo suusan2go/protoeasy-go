@@ -126,6 +126,12 @@ func bindCompileOptions(flagSet *pflag.FlagSet, compileOptions *protoeasy.Compil
 		"",
 		"The directory we are within, must be relative. This directory will be the base of the include path.",
 	)
+	flagSet.StringSliceVar(
+		&compileOptions.ExtraPluginFlag,
+		"extra-plugin-flag",
+		[]string{},
+		"Extra _out flags to pass to protoc. For example, if you have a plugin named foo where you would normally do --foo_out=/path/to/out, you do --extra-plugin-flag=foo. If you would have parameters to foo such as --foo_out=something=one,something_else=two:/path/to/out, you do --extra-plugin-flag=foo=something=one,something_else=two.",
+	)
 
 	flagSet.BoolVar(
 		&compileOptions.Cpp,
