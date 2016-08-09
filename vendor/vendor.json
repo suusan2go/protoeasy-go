@@ -10,6 +10,13 @@
 			"revisionTime": "2016-07-16T02:56:31Z"
 		},
 		{
+			"checksumSHA1": "5rPfda8jFccr3A6heL+JAmi9K9g=",
+			"origin": "github.com/stretchr/testify/vendor/github.com/davecgh/go-spew/spew",
+			"path": "github.com/davecgh/go-spew/spew",
+			"revision": "d77da356e56a7428ad25149ca77381849a6a5232",
+			"revisionTime": "2016-06-15T09:26:46Z"
+		},
+		{
 			"checksumSHA1": "gkRIq2AsG0e/ngNfqW+IF/zr9o8=",
 			"origin": "go.pedge.io/protoeasy/vendor/github.com/fatih/color",
 			"path": "github.com/fatih/color",
@@ -230,50 +237,50 @@
 			"checksumSHA1": "NgOgDwqQnfQhahsECFCsSPEenE0=",
 			"origin": "go.pedge.io/protoeasy/vendor/github.com/golang/protobuf/jsonpb",
 			"path": "github.com/golang/protobuf/jsonpb",
-			"revision": "c3cefd437628a0b7d31b34fe44b3a7a540e98527",
-			"revisionTime": "2016-07-27T17:26:17Z"
+			"revision": "2c1988e8c18d14b142c0b472624f71647cf39adb",
+			"revisionTime": "2016-08-08T18:15:00Z"
 		},
 		{
 			"checksumSHA1": "5MVpi9U1WCrzZ1VMMn61Fc+trE0=",
 			"origin": "go.pedge.io/protoeasy/vendor/github.com/golang/protobuf/proto",
 			"path": "github.com/golang/protobuf/proto",
-			"revision": "c3cefd437628a0b7d31b34fe44b3a7a540e98527",
-			"revisionTime": "2016-07-27T17:26:17Z"
+			"revision": "2c1988e8c18d14b142c0b472624f71647cf39adb",
+			"revisionTime": "2016-08-08T18:15:00Z"
 		},
 		{
 			"checksumSHA1": "ZIqcmeEc/EU9HsKJHuJ1Iy+ZNgE=",
 			"origin": "go.pedge.io/protoeasy/vendor/github.com/golang/protobuf/protoc-gen-go",
 			"path": "github.com/golang/protobuf/protoc-gen-go",
-			"revision": "c3cefd437628a0b7d31b34fe44b3a7a540e98527",
-			"revisionTime": "2016-07-27T17:26:17Z"
+			"revision": "2c1988e8c18d14b142c0b472624f71647cf39adb",
+			"revisionTime": "2016-08-08T18:15:00Z"
 		},
 		{
 			"checksumSHA1": "juNiTc9bfhQYo4BkWc83sW4Z5gw=",
 			"origin": "go.pedge.io/protoeasy/vendor/github.com/golang/protobuf/protoc-gen-go/descriptor",
 			"path": "github.com/golang/protobuf/protoc-gen-go/descriptor",
-			"revision": "c3cefd437628a0b7d31b34fe44b3a7a540e98527",
-			"revisionTime": "2016-07-27T17:26:17Z"
+			"revision": "2c1988e8c18d14b142c0b472624f71647cf39adb",
+			"revisionTime": "2016-08-08T18:15:00Z"
 		},
 		{
 			"checksumSHA1": "KjG8YQtHhJA1Bg6zgVSLB70v3h8=",
 			"origin": "go.pedge.io/protoeasy/vendor/github.com/golang/protobuf/protoc-gen-go/generator",
 			"path": "github.com/golang/protobuf/protoc-gen-go/generator",
-			"revision": "c3cefd437628a0b7d31b34fe44b3a7a540e98527",
-			"revisionTime": "2016-07-27T17:26:17Z"
+			"revision": "2c1988e8c18d14b142c0b472624f71647cf39adb",
+			"revisionTime": "2016-08-08T18:15:00Z"
 		},
 		{
 			"checksumSHA1": "JNLIWRMIE1PfraG3hIw0OoOnllc=",
 			"origin": "go.pedge.io/protoeasy/vendor/github.com/golang/protobuf/protoc-gen-go/grpc",
 			"path": "github.com/golang/protobuf/protoc-gen-go/grpc",
-			"revision": "c3cefd437628a0b7d31b34fe44b3a7a540e98527",
-			"revisionTime": "2016-07-27T17:26:17Z"
+			"revision": "2c1988e8c18d14b142c0b472624f71647cf39adb",
+			"revisionTime": "2016-08-08T18:15:00Z"
 		},
 		{
 			"checksumSHA1": "zps2+aJoFhpFf2F8TsU9zCGXL2c=",
 			"origin": "go.pedge.io/protoeasy/vendor/github.com/golang/protobuf/protoc-gen-go/plugin",
 			"path": "github.com/golang/protobuf/protoc-gen-go/plugin",
-			"revision": "c3cefd437628a0b7d31b34fe44b3a7a540e98527",
-			"revisionTime": "2016-07-27T17:26:17Z"
+			"revision": "2c1988e8c18d14b142c0b472624f71647cf39adb",
+			"revisionTime": "2016-08-08T18:15:00Z"
 		},
 		{
 			"checksumSHA1": "lvAtE86DjH4TCjr192lsYxIclnI=",
@@ -416,6 +423,13 @@
 			"revisionTime": "2016-03-28T13:58:10Z"
 		},
 		{
+			"checksumSHA1": "zKKp5SZ3d3ycKe4EKMNT0BqAWBw=",
+			"origin": "github.com/stretchr/testify/vendor/github.com/pmezard/go-difflib/difflib",
+			"path": "github.com/pmezard/go-difflib/difflib",
+			"revision": "d77da356e56a7428ad25149ca77381849a6a5232",
+			"revisionTime": "2016-06-15T09:26:46Z"
+		},
+		{
 			"checksumSHA1": "zmC8/3V4ls53DJlNTKDZwPSC/dA=",
 			"origin": "go.pedge.io/protoeasy/vendor/github.com/satori/go.uuid",
 			"path": "github.com/satori/go.uuid",
@@ -435,6 +449,20 @@
 			"path": "github.com/spf13/pflag",
 			"revision": "f676131e2660dc8cd88de99f7486d34aa8172635",
 			"revisionTime": "2016-08-04T14:13:50Z"
+		},
+		{
+			"checksumSHA1": "iydUphwYqZRq3WhstEdGsbvBAKs=",
+			"origin": "go.pedge.io/protoeasy/vendor/github.com/stretchr/testify/assert",
+			"path": "github.com/stretchr/testify/assert",
+			"revision": "d77da356e56a7428ad25149ca77381849a6a5232",
+			"revisionTime": "2016-06-15T09:26:46Z"
+		},
+		{
+			"checksumSHA1": "P9FJpir2c4G5PA46qEkaWy3l60U=",
+			"origin": "go.pedge.io/protoeasy/vendor/github.com/stretchr/testify/require",
+			"path": "github.com/stretchr/testify/require",
+			"revision": "d77da356e56a7428ad25149ca77381849a6a5232",
+			"revisionTime": "2016-06-15T09:26:46Z"
 		},
 		{
 			"checksumSHA1": "JM5JaFjNWdB5RW+XlaDxO8ueNF8=",
