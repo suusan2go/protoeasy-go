@@ -1,5 +1,9 @@
 PKGS := $(shell go list ./... | grep -v 'go.pedge.io/protoeasy/vendor')
 
+CMDS := \
+	go.pedge.io/protoeasy/cmd/protoeasy \
+	go.pedge.io/protoeasy/cmd/protoeasyd
+
 EXTRA_PKGS := \
 	github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway \
 	github.com/grpc-ecosystem/grpc-gateway/runtime \
@@ -92,7 +96,7 @@ build:
 	go build $(PKGS)
 
 install:
-	go install $(PKGS) $(EXTRA_CMDS)
+	for i in $(CMDS) $(EXTRA_CMDS); do echo $$i; go install $$i; done
 
 proto:
 	go get -v go.pedge.io/pkg/cmd/strip-package-comments
