@@ -119,6 +119,111 @@ func (m *CompileOptions) String() string            { return proto.CompactTextSt
 func (*CompileOptions) ProtoMessage()               {}
 func (*CompileOptions) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
 
+func (m *CompileOptions) GetGrpc() bool {
+	if m != nil {
+		return m.Grpc
+	}
+	return false
+}
+
+func (m *CompileOptions) GetGrpcGateway() bool {
+	if m != nil {
+		return m.GrpcGateway
+	}
+	return false
+}
+
+func (m *CompileOptions) GetNoDefaultIncludes() bool {
+	if m != nil {
+		return m.NoDefaultIncludes
+	}
+	return false
+}
+
+func (m *CompileOptions) GetExcludePattern() []string {
+	if m != nil {
+		return m.ExcludePattern
+	}
+	return nil
+}
+
+func (m *CompileOptions) GetRelContext() string {
+	if m != nil {
+		return m.RelContext
+	}
+	return ""
+}
+
+func (m *CompileOptions) GetExtraPluginFlag() []string {
+	if m != nil {
+		return m.ExtraPluginFlag
+	}
+	return nil
+}
+
+func (m *CompileOptions) GetCpp() bool {
+	if m != nil {
+		return m.Cpp
+	}
+	return false
+}
+
+func (m *CompileOptions) GetCppRelOut() string {
+	if m != nil {
+		return m.CppRelOut
+	}
+	return ""
+}
+
+func (m *CompileOptions) GetCsharp() bool {
+	if m != nil {
+		return m.Csharp
+	}
+	return false
+}
+
+func (m *CompileOptions) GetCsharpRelOut() string {
+	if m != nil {
+		return m.CsharpRelOut
+	}
+	return ""
+}
+
+func (m *CompileOptions) GetGo() bool {
+	if m != nil {
+		return m.Go
+	}
+	return false
+}
+
+func (m *CompileOptions) GetGoPluginType() GoPluginType {
+	if m != nil {
+		return m.GoPluginType
+	}
+	return GoPluginType_GO_PLUGIN_TYPE_NONE
+}
+
+func (m *CompileOptions) GetGoRelOut() string {
+	if m != nil {
+		return m.GoRelOut
+	}
+	return ""
+}
+
+func (m *CompileOptions) GetGoImportPath() string {
+	if m != nil {
+		return m.GoImportPath
+	}
+	return ""
+}
+
+func (m *CompileOptions) GetGoNoDefaultModifiers() bool {
+	if m != nil {
+		return m.GoNoDefaultModifiers
+	}
+	return false
+}
+
 func (m *CompileOptions) GetGoModifiers() map[string]string {
 	if m != nil {
 		return m.GoModifiers
@@ -126,11 +231,116 @@ func (m *CompileOptions) GetGoModifiers() map[string]string {
 	return nil
 }
 
+func (m *CompileOptions) GetGogo() bool {
+	if m != nil {
+		return m.Gogo
+	}
+	return false
+}
+
+func (m *CompileOptions) GetGogoPluginType() GogoPluginType {
+	if m != nil {
+		return m.GogoPluginType
+	}
+	return GogoPluginType_GOGO_PLUGIN_TYPE_NONE
+}
+
+func (m *CompileOptions) GetGogoRelOut() string {
+	if m != nil {
+		return m.GogoRelOut
+	}
+	return ""
+}
+
+func (m *CompileOptions) GetGogoImportPath() string {
+	if m != nil {
+		return m.GogoImportPath
+	}
+	return ""
+}
+
+func (m *CompileOptions) GetGogoNoDefaultModifiers() bool {
+	if m != nil {
+		return m.GogoNoDefaultModifiers
+	}
+	return false
+}
+
 func (m *CompileOptions) GetGogoModifiers() map[string]string {
 	if m != nil {
 		return m.GogoModifiers
 	}
 	return nil
+}
+
+func (m *CompileOptions) GetObjc() bool {
+	if m != nil {
+		return m.Objc
+	}
+	return false
+}
+
+func (m *CompileOptions) GetObjcRelOut() string {
+	if m != nil {
+		return m.ObjcRelOut
+	}
+	return ""
+}
+
+func (m *CompileOptions) GetPython() bool {
+	if m != nil {
+		return m.Python
+	}
+	return false
+}
+
+func (m *CompileOptions) GetPythonRelOut() string {
+	if m != nil {
+		return m.PythonRelOut
+	}
+	return ""
+}
+
+func (m *CompileOptions) GetRuby() bool {
+	if m != nil {
+		return m.Ruby
+	}
+	return false
+}
+
+func (m *CompileOptions) GetRubyRelOut() string {
+	if m != nil {
+		return m.RubyRelOut
+	}
+	return ""
+}
+
+func (m *CompileOptions) GetDescriptorSet() bool {
+	if m != nil {
+		return m.DescriptorSet
+	}
+	return false
+}
+
+func (m *CompileOptions) GetDescriptorSetRelOut() string {
+	if m != nil {
+		return m.DescriptorSetRelOut
+	}
+	return ""
+}
+
+func (m *CompileOptions) GetDescriptorSetFileName() string {
+	if m != nil {
+		return m.DescriptorSetFileName
+	}
+	return ""
+}
+
+func (m *CompileOptions) GetDescriptorSetIncludeImports() bool {
+	if m != nil {
+		return m.DescriptorSetIncludeImports
+	}
+	return false
 }
 
 type Command struct {
@@ -141,6 +351,13 @@ func (m *Command) Reset()                    { *m = Command{} }
 func (m *Command) String() string            { return proto.CompactTextString(m) }
 func (*Command) ProtoMessage()               {}
 func (*Command) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
+
+func (m *Command) GetArg() []string {
+	if m != nil {
+		return m.Arg
+	}
+	return nil
+}
 
 type CompileInfo struct {
 	Command         []*Command                `protobuf:"bytes,1,rep,name=command" json:"command,omitempty"`
@@ -161,6 +378,20 @@ func (m *CompileInfo) GetCommand() []*Command {
 	return nil
 }
 
+func (m *CompileInfo) GetInputSizeBytes() uint64 {
+	if m != nil {
+		return m.InputSizeBytes
+	}
+	return 0
+}
+
+func (m *CompileInfo) GetOutputSizeBytes() uint64 {
+	if m != nil {
+		return m.OutputSizeBytes
+	}
+	return 0
+}
+
 func (m *CompileInfo) GetDuration() *google_protobuf.Duration {
 	if m != nil {
 		return m.Duration
@@ -178,6 +409,13 @@ func (m *CompileRequest) String() string            { return proto.CompactTextSt
 func (*CompileRequest) ProtoMessage()               {}
 func (*CompileRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{3} }
 
+func (m *CompileRequest) GetTar() []byte {
+	if m != nil {
+		return m.Tar
+	}
+	return nil
+}
+
 func (m *CompileRequest) GetCompileOptions() *CompileOptions {
 	if m != nil {
 		return m.CompileOptions
@@ -194,6 +432,13 @@ func (m *CompileResponse) Reset()                    { *m = CompileResponse{} }
 func (m *CompileResponse) String() string            { return proto.CompactTextString(m) }
 func (*CompileResponse) ProtoMessage()               {}
 func (*CompileResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
+
+func (m *CompileResponse) GetTar() []byte {
+	if m != nil {
+		return m.Tar
+	}
+	return nil
+}
 
 func (m *CompileResponse) GetCompileInfo() *CompileInfo {
 	if m != nil {
@@ -218,7 +463,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for API service
 
@@ -281,7 +526,7 @@ var _API_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor0,
+	Metadata: "protoeasy.proto",
 }
 
 func init() { proto.RegisterFile("protoeasy.proto", fileDescriptor0) }
