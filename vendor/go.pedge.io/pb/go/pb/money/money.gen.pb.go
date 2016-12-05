@@ -74,104 +74,102 @@ const (
 	CurrencyCode_CURRENCY_CODE_GNF  CurrencyCode = 49
 	CurrencyCode_CURRENCY_CODE_GTQ  CurrencyCode = 50
 	CurrencyCode_CURRENCY_CODE_GYD  CurrencyCode = 51
-	CurrencyCode_CURRENCY_CODE_HKD  CurrencyCode = 52
-	CurrencyCode_CURRENCY_CODE_HNL  CurrencyCode = 53
-	CurrencyCode_CURRENCY_CODE_HRK  CurrencyCode = 54
-	CurrencyCode_CURRENCY_CODE_HUF  CurrencyCode = 55
-	CurrencyCode_CURRENCY_CODE_IDR  CurrencyCode = 56
-	CurrencyCode_CURRENCY_CODE_ILS  CurrencyCode = 57
-	CurrencyCode_CURRENCY_CODE_INR  CurrencyCode = 58
-	CurrencyCode_CURRENCY_CODE_IQD  CurrencyCode = 59
-	CurrencyCode_CURRENCY_CODE_IRR  CurrencyCode = 60
-	CurrencyCode_CURRENCY_CODE_ISK  CurrencyCode = 61
-	CurrencyCode_CURRENCY_CODE_JMD  CurrencyCode = 62
-	CurrencyCode_CURRENCY_CODE_JOD  CurrencyCode = 63
-	CurrencyCode_CURRENCY_CODE_JPY  CurrencyCode = 64
-	CurrencyCode_CURRENCY_CODE_KES  CurrencyCode = 65
-	CurrencyCode_CURRENCY_CODE_KGS  CurrencyCode = 66
-	CurrencyCode_CURRENCY_CODE_KHR  CurrencyCode = 67
-	CurrencyCode_CURRENCY_CODE_KMF  CurrencyCode = 68
-	CurrencyCode_CURRENCY_CODE_KPW  CurrencyCode = 69
-	CurrencyCode_CURRENCY_CODE_KRW  CurrencyCode = 70
-	CurrencyCode_CURRENCY_CODE_KWD  CurrencyCode = 71
-	CurrencyCode_CURRENCY_CODE_KYD  CurrencyCode = 72
-	CurrencyCode_CURRENCY_CODE_KZT  CurrencyCode = 73
-	CurrencyCode_CURRENCY_CODE_LAK  CurrencyCode = 74
-	CurrencyCode_CURRENCY_CODE_LBP  CurrencyCode = 75
-	CurrencyCode_CURRENCY_CODE_LKR  CurrencyCode = 76
-	CurrencyCode_CURRENCY_CODE_LRD  CurrencyCode = 77
-	CurrencyCode_CURRENCY_CODE_LYD  CurrencyCode = 78
-	CurrencyCode_CURRENCY_CODE_MAD  CurrencyCode = 79
-	CurrencyCode_CURRENCY_CODE_MDL  CurrencyCode = 80
-	CurrencyCode_CURRENCY_CODE_MGA  CurrencyCode = 81
-	CurrencyCode_CURRENCY_CODE_MKD  CurrencyCode = 82
-	CurrencyCode_CURRENCY_CODE_MMK  CurrencyCode = 83
-	CurrencyCode_CURRENCY_CODE_MNT  CurrencyCode = 84
-	CurrencyCode_CURRENCY_CODE_MOP  CurrencyCode = 85
-	CurrencyCode_CURRENCY_CODE_MRO  CurrencyCode = 86
-	CurrencyCode_CURRENCY_CODE_MUR  CurrencyCode = 87
-	CurrencyCode_CURRENCY_CODE_MVR  CurrencyCode = 88
-	CurrencyCode_CURRENCY_CODE_MWK  CurrencyCode = 89
-	CurrencyCode_CURRENCY_CODE_MXN  CurrencyCode = 90
-	CurrencyCode_CURRENCY_CODE_MYR  CurrencyCode = 91
-	CurrencyCode_CURRENCY_CODE_MZN  CurrencyCode = 92
-	CurrencyCode_CURRENCY_CODE_NGN  CurrencyCode = 93
-	CurrencyCode_CURRENCY_CODE_NIO  CurrencyCode = 94
-	CurrencyCode_CURRENCY_CODE_NOK  CurrencyCode = 95
-	CurrencyCode_CURRENCY_CODE_NPR  CurrencyCode = 96
-	CurrencyCode_CURRENCY_CODE_NZD  CurrencyCode = 97
-	CurrencyCode_CURRENCY_CODE_OMR  CurrencyCode = 98
-	CurrencyCode_CURRENCY_CODE_PEN  CurrencyCode = 99
-	CurrencyCode_CURRENCY_CODE_PGK  CurrencyCode = 100
-	CurrencyCode_CURRENCY_CODE_PHP  CurrencyCode = 101
-	CurrencyCode_CURRENCY_CODE_PKR  CurrencyCode = 102
-	CurrencyCode_CURRENCY_CODE_PLN  CurrencyCode = 103
-	CurrencyCode_CURRENCY_CODE_PYG  CurrencyCode = 104
-	CurrencyCode_CURRENCY_CODE_QAR  CurrencyCode = 105
-	CurrencyCode_CURRENCY_CODE_RON  CurrencyCode = 106
-	CurrencyCode_CURRENCY_CODE_RSD  CurrencyCode = 107
-	CurrencyCode_CURRENCY_CODE_RUB  CurrencyCode = 108
-	CurrencyCode_CURRENCY_CODE_RWF  CurrencyCode = 109
-	CurrencyCode_CURRENCY_CODE_SAR  CurrencyCode = 110
-	CurrencyCode_CURRENCY_CODE_SBD  CurrencyCode = 111
-	CurrencyCode_CURRENCY_CODE_SCR  CurrencyCode = 112
-	CurrencyCode_CURRENCY_CODE_SDG  CurrencyCode = 113
-	CurrencyCode_CURRENCY_CODE_SEK  CurrencyCode = 114
-	CurrencyCode_CURRENCY_CODE_SGD  CurrencyCode = 115
-	CurrencyCode_CURRENCY_CODE_SHP  CurrencyCode = 116
-	CurrencyCode_CURRENCY_CODE_SLL  CurrencyCode = 117
-	CurrencyCode_CURRENCY_CODE_SOS  CurrencyCode = 118
-	CurrencyCode_CURRENCY_CODE_SRD  CurrencyCode = 119
-	CurrencyCode_CURRENCY_CODE_SSP  CurrencyCode = 120
-	CurrencyCode_CURRENCY_CODE_STD  CurrencyCode = 121
-	CurrencyCode_CURRENCY_CODE_SYP  CurrencyCode = 122
-	CurrencyCode_CURRENCY_CODE_SZL  CurrencyCode = 123
-	CurrencyCode_CURRENCY_CODE_THB  CurrencyCode = 124
-	CurrencyCode_CURRENCY_CODE_TJS  CurrencyCode = 125
-	CurrencyCode_CURRENCY_CODE_TMT  CurrencyCode = 126
-	CurrencyCode_CURRENCY_CODE_TND  CurrencyCode = 127
-	CurrencyCode_CURRENCY_CODE_TOP  CurrencyCode = 128
-	CurrencyCode_CURRENCY_CODE_TRY  CurrencyCode = 129
-	CurrencyCode_CURRENCY_CODE_TTD  CurrencyCode = 130
-	CurrencyCode_CURRENCY_CODE_TWD  CurrencyCode = 131
-	CurrencyCode_CURRENCY_CODE_TZS  CurrencyCode = 132
-	CurrencyCode_CURRENCY_CODE_UAH  CurrencyCode = 133
-	CurrencyCode_CURRENCY_CODE_UGX  CurrencyCode = 134
-	CurrencyCode_CURRENCY_CODE_USD  CurrencyCode = 135
-	CurrencyCode_CURRENCY_CODE_UYU  CurrencyCode = 136
-	CurrencyCode_CURRENCY_CODE_UZS  CurrencyCode = 137
-	CurrencyCode_CURRENCY_CODE_VEF  CurrencyCode = 138
-	CurrencyCode_CURRENCY_CODE_VND  CurrencyCode = 139
-	CurrencyCode_CURRENCY_CODE_VUV  CurrencyCode = 140
-	CurrencyCode_CURRENCY_CODE_WST  CurrencyCode = 141
-	CurrencyCode_CURRENCY_CODE_XAF  CurrencyCode = 142
-	CurrencyCode_CURRENCY_CODE_XCD  CurrencyCode = 143
-	CurrencyCode_CURRENCY_CODE_XOF  CurrencyCode = 144
-	CurrencyCode_CURRENCY_CODE_XPF  CurrencyCode = 145
-	CurrencyCode_CURRENCY_CODE_YER  CurrencyCode = 146
-	CurrencyCode_CURRENCY_CODE_ZAR  CurrencyCode = 147
-	CurrencyCode_CURRENCY_CODE_ZMW  CurrencyCode = 148
-	CurrencyCode_CURRENCY_CODE_ZWL  CurrencyCode = 149
+	CurrencyCode_CURRENCY_CODE_HNL  CurrencyCode = 52
+	CurrencyCode_CURRENCY_CODE_HRK  CurrencyCode = 53
+	CurrencyCode_CURRENCY_CODE_HUF  CurrencyCode = 54
+	CurrencyCode_CURRENCY_CODE_IDR  CurrencyCode = 55
+	CurrencyCode_CURRENCY_CODE_ILS  CurrencyCode = 56
+	CurrencyCode_CURRENCY_CODE_INR  CurrencyCode = 57
+	CurrencyCode_CURRENCY_CODE_IQD  CurrencyCode = 58
+	CurrencyCode_CURRENCY_CODE_IRR  CurrencyCode = 59
+	CurrencyCode_CURRENCY_CODE_ISK  CurrencyCode = 60
+	CurrencyCode_CURRENCY_CODE_JMD  CurrencyCode = 61
+	CurrencyCode_CURRENCY_CODE_JOD  CurrencyCode = 62
+	CurrencyCode_CURRENCY_CODE_JPY  CurrencyCode = 63
+	CurrencyCode_CURRENCY_CODE_KES  CurrencyCode = 64
+	CurrencyCode_CURRENCY_CODE_KGS  CurrencyCode = 65
+	CurrencyCode_CURRENCY_CODE_KHR  CurrencyCode = 66
+	CurrencyCode_CURRENCY_CODE_KMF  CurrencyCode = 67
+	CurrencyCode_CURRENCY_CODE_KPW  CurrencyCode = 68
+	CurrencyCode_CURRENCY_CODE_KRW  CurrencyCode = 69
+	CurrencyCode_CURRENCY_CODE_KWD  CurrencyCode = 70
+	CurrencyCode_CURRENCY_CODE_KYD  CurrencyCode = 71
+	CurrencyCode_CURRENCY_CODE_KZT  CurrencyCode = 72
+	CurrencyCode_CURRENCY_CODE_LAK  CurrencyCode = 73
+	CurrencyCode_CURRENCY_CODE_LBP  CurrencyCode = 74
+	CurrencyCode_CURRENCY_CODE_LKR  CurrencyCode = 75
+	CurrencyCode_CURRENCY_CODE_LRD  CurrencyCode = 76
+	CurrencyCode_CURRENCY_CODE_LYD  CurrencyCode = 77
+	CurrencyCode_CURRENCY_CODE_MAD  CurrencyCode = 78
+	CurrencyCode_CURRENCY_CODE_MDL  CurrencyCode = 79
+	CurrencyCode_CURRENCY_CODE_MGA  CurrencyCode = 80
+	CurrencyCode_CURRENCY_CODE_MKD  CurrencyCode = 81
+	CurrencyCode_CURRENCY_CODE_MMK  CurrencyCode = 82
+	CurrencyCode_CURRENCY_CODE_MNT  CurrencyCode = 83
+	CurrencyCode_CURRENCY_CODE_MOP  CurrencyCode = 84
+	CurrencyCode_CURRENCY_CODE_MRO  CurrencyCode = 85
+	CurrencyCode_CURRENCY_CODE_MUR  CurrencyCode = 86
+	CurrencyCode_CURRENCY_CODE_MVR  CurrencyCode = 87
+	CurrencyCode_CURRENCY_CODE_MWK  CurrencyCode = 88
+	CurrencyCode_CURRENCY_CODE_MXN  CurrencyCode = 89
+	CurrencyCode_CURRENCY_CODE_MYR  CurrencyCode = 90
+	CurrencyCode_CURRENCY_CODE_MZN  CurrencyCode = 91
+	CurrencyCode_CURRENCY_CODE_NGN  CurrencyCode = 92
+	CurrencyCode_CURRENCY_CODE_NIO  CurrencyCode = 93
+	CurrencyCode_CURRENCY_CODE_NOK  CurrencyCode = 94
+	CurrencyCode_CURRENCY_CODE_NPR  CurrencyCode = 95
+	CurrencyCode_CURRENCY_CODE_NZD  CurrencyCode = 96
+	CurrencyCode_CURRENCY_CODE_OMR  CurrencyCode = 97
+	CurrencyCode_CURRENCY_CODE_PEN  CurrencyCode = 98
+	CurrencyCode_CURRENCY_CODE_PGK  CurrencyCode = 99
+	CurrencyCode_CURRENCY_CODE_PHP  CurrencyCode = 100
+	CurrencyCode_CURRENCY_CODE_PKR  CurrencyCode = 101
+	CurrencyCode_CURRENCY_CODE_PLN  CurrencyCode = 102
+	CurrencyCode_CURRENCY_CODE_PYG  CurrencyCode = 103
+	CurrencyCode_CURRENCY_CODE_QAR  CurrencyCode = 104
+	CurrencyCode_CURRENCY_CODE_RON  CurrencyCode = 105
+	CurrencyCode_CURRENCY_CODE_RSD  CurrencyCode = 106
+	CurrencyCode_CURRENCY_CODE_RUB  CurrencyCode = 107
+	CurrencyCode_CURRENCY_CODE_RWF  CurrencyCode = 108
+	CurrencyCode_CURRENCY_CODE_SAR  CurrencyCode = 109
+	CurrencyCode_CURRENCY_CODE_SBD  CurrencyCode = 110
+	CurrencyCode_CURRENCY_CODE_SCR  CurrencyCode = 111
+	CurrencyCode_CURRENCY_CODE_SDG  CurrencyCode = 112
+	CurrencyCode_CURRENCY_CODE_SEK  CurrencyCode = 113
+	CurrencyCode_CURRENCY_CODE_SGD  CurrencyCode = 114
+	CurrencyCode_CURRENCY_CODE_SHP  CurrencyCode = 115
+	CurrencyCode_CURRENCY_CODE_SLL  CurrencyCode = 116
+	CurrencyCode_CURRENCY_CODE_SOS  CurrencyCode = 117
+	CurrencyCode_CURRENCY_CODE_SRD  CurrencyCode = 118
+	CurrencyCode_CURRENCY_CODE_SSP  CurrencyCode = 119
+	CurrencyCode_CURRENCY_CODE_STD  CurrencyCode = 120
+	CurrencyCode_CURRENCY_CODE_SYP  CurrencyCode = 121
+	CurrencyCode_CURRENCY_CODE_SZL  CurrencyCode = 122
+	CurrencyCode_CURRENCY_CODE_THB  CurrencyCode = 123
+	CurrencyCode_CURRENCY_CODE_TJS  CurrencyCode = 124
+	CurrencyCode_CURRENCY_CODE_TMT  CurrencyCode = 125
+	CurrencyCode_CURRENCY_CODE_TND  CurrencyCode = 126
+	CurrencyCode_CURRENCY_CODE_TOP  CurrencyCode = 127
+	CurrencyCode_CURRENCY_CODE_TRY  CurrencyCode = 128
+	CurrencyCode_CURRENCY_CODE_TTD  CurrencyCode = 129
+	CurrencyCode_CURRENCY_CODE_TZS  CurrencyCode = 130
+	CurrencyCode_CURRENCY_CODE_UAH  CurrencyCode = 131
+	CurrencyCode_CURRENCY_CODE_UGX  CurrencyCode = 132
+	CurrencyCode_CURRENCY_CODE_USD  CurrencyCode = 133
+	CurrencyCode_CURRENCY_CODE_UYU  CurrencyCode = 134
+	CurrencyCode_CURRENCY_CODE_UZS  CurrencyCode = 135
+	CurrencyCode_CURRENCY_CODE_VEF  CurrencyCode = 136
+	CurrencyCode_CURRENCY_CODE_VND  CurrencyCode = 137
+	CurrencyCode_CURRENCY_CODE_VUV  CurrencyCode = 138
+	CurrencyCode_CURRENCY_CODE_WST  CurrencyCode = 139
+	CurrencyCode_CURRENCY_CODE_XAF  CurrencyCode = 140
+	CurrencyCode_CURRENCY_CODE_XCD  CurrencyCode = 141
+	CurrencyCode_CURRENCY_CODE_XOF  CurrencyCode = 142
+	CurrencyCode_CURRENCY_CODE_XPF  CurrencyCode = 143
+	CurrencyCode_CURRENCY_CODE_YER  CurrencyCode = 144
+	CurrencyCode_CURRENCY_CODE_ZAR  CurrencyCode = 145
+	CurrencyCode_CURRENCY_CODE_ZMW  CurrencyCode = 146
+	CurrencyCode_CURRENCY_CODE_ZWL  CurrencyCode = 147
 )
 
 var CurrencyCode_name = map[int32]string{
@@ -227,104 +225,102 @@ var CurrencyCode_name = map[int32]string{
 	49:  "CURRENCY_CODE_GNF",
 	50:  "CURRENCY_CODE_GTQ",
 	51:  "CURRENCY_CODE_GYD",
-	52:  "CURRENCY_CODE_HKD",
-	53:  "CURRENCY_CODE_HNL",
-	54:  "CURRENCY_CODE_HRK",
-	55:  "CURRENCY_CODE_HUF",
-	56:  "CURRENCY_CODE_IDR",
-	57:  "CURRENCY_CODE_ILS",
-	58:  "CURRENCY_CODE_INR",
-	59:  "CURRENCY_CODE_IQD",
-	60:  "CURRENCY_CODE_IRR",
-	61:  "CURRENCY_CODE_ISK",
-	62:  "CURRENCY_CODE_JMD",
-	63:  "CURRENCY_CODE_JOD",
-	64:  "CURRENCY_CODE_JPY",
-	65:  "CURRENCY_CODE_KES",
-	66:  "CURRENCY_CODE_KGS",
-	67:  "CURRENCY_CODE_KHR",
-	68:  "CURRENCY_CODE_KMF",
-	69:  "CURRENCY_CODE_KPW",
-	70:  "CURRENCY_CODE_KRW",
-	71:  "CURRENCY_CODE_KWD",
-	72:  "CURRENCY_CODE_KYD",
-	73:  "CURRENCY_CODE_KZT",
-	74:  "CURRENCY_CODE_LAK",
-	75:  "CURRENCY_CODE_LBP",
-	76:  "CURRENCY_CODE_LKR",
-	77:  "CURRENCY_CODE_LRD",
-	78:  "CURRENCY_CODE_LYD",
-	79:  "CURRENCY_CODE_MAD",
-	80:  "CURRENCY_CODE_MDL",
-	81:  "CURRENCY_CODE_MGA",
-	82:  "CURRENCY_CODE_MKD",
-	83:  "CURRENCY_CODE_MMK",
-	84:  "CURRENCY_CODE_MNT",
-	85:  "CURRENCY_CODE_MOP",
-	86:  "CURRENCY_CODE_MRO",
-	87:  "CURRENCY_CODE_MUR",
-	88:  "CURRENCY_CODE_MVR",
-	89:  "CURRENCY_CODE_MWK",
-	90:  "CURRENCY_CODE_MXN",
-	91:  "CURRENCY_CODE_MYR",
-	92:  "CURRENCY_CODE_MZN",
-	93:  "CURRENCY_CODE_NGN",
-	94:  "CURRENCY_CODE_NIO",
-	95:  "CURRENCY_CODE_NOK",
-	96:  "CURRENCY_CODE_NPR",
-	97:  "CURRENCY_CODE_NZD",
-	98:  "CURRENCY_CODE_OMR",
-	99:  "CURRENCY_CODE_PEN",
-	100: "CURRENCY_CODE_PGK",
-	101: "CURRENCY_CODE_PHP",
-	102: "CURRENCY_CODE_PKR",
-	103: "CURRENCY_CODE_PLN",
-	104: "CURRENCY_CODE_PYG",
-	105: "CURRENCY_CODE_QAR",
-	106: "CURRENCY_CODE_RON",
-	107: "CURRENCY_CODE_RSD",
-	108: "CURRENCY_CODE_RUB",
-	109: "CURRENCY_CODE_RWF",
-	110: "CURRENCY_CODE_SAR",
-	111: "CURRENCY_CODE_SBD",
-	112: "CURRENCY_CODE_SCR",
-	113: "CURRENCY_CODE_SDG",
-	114: "CURRENCY_CODE_SEK",
-	115: "CURRENCY_CODE_SGD",
-	116: "CURRENCY_CODE_SHP",
-	117: "CURRENCY_CODE_SLL",
-	118: "CURRENCY_CODE_SOS",
-	119: "CURRENCY_CODE_SRD",
-	120: "CURRENCY_CODE_SSP",
-	121: "CURRENCY_CODE_STD",
-	122: "CURRENCY_CODE_SYP",
-	123: "CURRENCY_CODE_SZL",
-	124: "CURRENCY_CODE_THB",
-	125: "CURRENCY_CODE_TJS",
-	126: "CURRENCY_CODE_TMT",
-	127: "CURRENCY_CODE_TND",
-	128: "CURRENCY_CODE_TOP",
-	129: "CURRENCY_CODE_TRY",
-	130: "CURRENCY_CODE_TTD",
-	131: "CURRENCY_CODE_TWD",
-	132: "CURRENCY_CODE_TZS",
-	133: "CURRENCY_CODE_UAH",
-	134: "CURRENCY_CODE_UGX",
-	135: "CURRENCY_CODE_USD",
-	136: "CURRENCY_CODE_UYU",
-	137: "CURRENCY_CODE_UZS",
-	138: "CURRENCY_CODE_VEF",
-	139: "CURRENCY_CODE_VND",
-	140: "CURRENCY_CODE_VUV",
-	141: "CURRENCY_CODE_WST",
-	142: "CURRENCY_CODE_XAF",
-	143: "CURRENCY_CODE_XCD",
-	144: "CURRENCY_CODE_XOF",
-	145: "CURRENCY_CODE_XPF",
-	146: "CURRENCY_CODE_YER",
-	147: "CURRENCY_CODE_ZAR",
-	148: "CURRENCY_CODE_ZMW",
-	149: "CURRENCY_CODE_ZWL",
+	52:  "CURRENCY_CODE_HNL",
+	53:  "CURRENCY_CODE_HRK",
+	54:  "CURRENCY_CODE_HUF",
+	55:  "CURRENCY_CODE_IDR",
+	56:  "CURRENCY_CODE_ILS",
+	57:  "CURRENCY_CODE_INR",
+	58:  "CURRENCY_CODE_IQD",
+	59:  "CURRENCY_CODE_IRR",
+	60:  "CURRENCY_CODE_ISK",
+	61:  "CURRENCY_CODE_JMD",
+	62:  "CURRENCY_CODE_JOD",
+	63:  "CURRENCY_CODE_JPY",
+	64:  "CURRENCY_CODE_KES",
+	65:  "CURRENCY_CODE_KGS",
+	66:  "CURRENCY_CODE_KHR",
+	67:  "CURRENCY_CODE_KMF",
+	68:  "CURRENCY_CODE_KPW",
+	69:  "CURRENCY_CODE_KRW",
+	70:  "CURRENCY_CODE_KWD",
+	71:  "CURRENCY_CODE_KYD",
+	72:  "CURRENCY_CODE_KZT",
+	73:  "CURRENCY_CODE_LAK",
+	74:  "CURRENCY_CODE_LBP",
+	75:  "CURRENCY_CODE_LKR",
+	76:  "CURRENCY_CODE_LRD",
+	77:  "CURRENCY_CODE_LYD",
+	78:  "CURRENCY_CODE_MAD",
+	79:  "CURRENCY_CODE_MDL",
+	80:  "CURRENCY_CODE_MGA",
+	81:  "CURRENCY_CODE_MKD",
+	82:  "CURRENCY_CODE_MMK",
+	83:  "CURRENCY_CODE_MNT",
+	84:  "CURRENCY_CODE_MOP",
+	85:  "CURRENCY_CODE_MRO",
+	86:  "CURRENCY_CODE_MUR",
+	87:  "CURRENCY_CODE_MVR",
+	88:  "CURRENCY_CODE_MWK",
+	89:  "CURRENCY_CODE_MXN",
+	90:  "CURRENCY_CODE_MYR",
+	91:  "CURRENCY_CODE_MZN",
+	92:  "CURRENCY_CODE_NGN",
+	93:  "CURRENCY_CODE_NIO",
+	94:  "CURRENCY_CODE_NOK",
+	95:  "CURRENCY_CODE_NPR",
+	96:  "CURRENCY_CODE_NZD",
+	97:  "CURRENCY_CODE_OMR",
+	98:  "CURRENCY_CODE_PEN",
+	99:  "CURRENCY_CODE_PGK",
+	100: "CURRENCY_CODE_PHP",
+	101: "CURRENCY_CODE_PKR",
+	102: "CURRENCY_CODE_PLN",
+	103: "CURRENCY_CODE_PYG",
+	104: "CURRENCY_CODE_QAR",
+	105: "CURRENCY_CODE_RON",
+	106: "CURRENCY_CODE_RSD",
+	107: "CURRENCY_CODE_RUB",
+	108: "CURRENCY_CODE_RWF",
+	109: "CURRENCY_CODE_SAR",
+	110: "CURRENCY_CODE_SBD",
+	111: "CURRENCY_CODE_SCR",
+	112: "CURRENCY_CODE_SDG",
+	113: "CURRENCY_CODE_SEK",
+	114: "CURRENCY_CODE_SGD",
+	115: "CURRENCY_CODE_SHP",
+	116: "CURRENCY_CODE_SLL",
+	117: "CURRENCY_CODE_SOS",
+	118: "CURRENCY_CODE_SRD",
+	119: "CURRENCY_CODE_SSP",
+	120: "CURRENCY_CODE_STD",
+	121: "CURRENCY_CODE_SYP",
+	122: "CURRENCY_CODE_SZL",
+	123: "CURRENCY_CODE_THB",
+	124: "CURRENCY_CODE_TJS",
+	125: "CURRENCY_CODE_TMT",
+	126: "CURRENCY_CODE_TND",
+	127: "CURRENCY_CODE_TOP",
+	128: "CURRENCY_CODE_TRY",
+	129: "CURRENCY_CODE_TTD",
+	130: "CURRENCY_CODE_TZS",
+	131: "CURRENCY_CODE_UAH",
+	132: "CURRENCY_CODE_UGX",
+	133: "CURRENCY_CODE_USD",
+	134: "CURRENCY_CODE_UYU",
+	135: "CURRENCY_CODE_UZS",
+	136: "CURRENCY_CODE_VEF",
+	137: "CURRENCY_CODE_VND",
+	138: "CURRENCY_CODE_VUV",
+	139: "CURRENCY_CODE_WST",
+	140: "CURRENCY_CODE_XAF",
+	141: "CURRENCY_CODE_XCD",
+	142: "CURRENCY_CODE_XOF",
+	143: "CURRENCY_CODE_XPF",
+	144: "CURRENCY_CODE_YER",
+	145: "CURRENCY_CODE_ZAR",
+	146: "CURRENCY_CODE_ZMW",
+	147: "CURRENCY_CODE_ZWL",
 }
 var CurrencyCode_value = map[string]int32{
 	"CURRENCY_CODE_NONE": 0,
@@ -379,104 +375,102 @@ var CurrencyCode_value = map[string]int32{
 	"CURRENCY_CODE_GNF":  49,
 	"CURRENCY_CODE_GTQ":  50,
 	"CURRENCY_CODE_GYD":  51,
-	"CURRENCY_CODE_HKD":  52,
-	"CURRENCY_CODE_HNL":  53,
-	"CURRENCY_CODE_HRK":  54,
-	"CURRENCY_CODE_HUF":  55,
-	"CURRENCY_CODE_IDR":  56,
-	"CURRENCY_CODE_ILS":  57,
-	"CURRENCY_CODE_INR":  58,
-	"CURRENCY_CODE_IQD":  59,
-	"CURRENCY_CODE_IRR":  60,
-	"CURRENCY_CODE_ISK":  61,
-	"CURRENCY_CODE_JMD":  62,
-	"CURRENCY_CODE_JOD":  63,
-	"CURRENCY_CODE_JPY":  64,
-	"CURRENCY_CODE_KES":  65,
-	"CURRENCY_CODE_KGS":  66,
-	"CURRENCY_CODE_KHR":  67,
-	"CURRENCY_CODE_KMF":  68,
-	"CURRENCY_CODE_KPW":  69,
-	"CURRENCY_CODE_KRW":  70,
-	"CURRENCY_CODE_KWD":  71,
-	"CURRENCY_CODE_KYD":  72,
-	"CURRENCY_CODE_KZT":  73,
-	"CURRENCY_CODE_LAK":  74,
-	"CURRENCY_CODE_LBP":  75,
-	"CURRENCY_CODE_LKR":  76,
-	"CURRENCY_CODE_LRD":  77,
-	"CURRENCY_CODE_LYD":  78,
-	"CURRENCY_CODE_MAD":  79,
-	"CURRENCY_CODE_MDL":  80,
-	"CURRENCY_CODE_MGA":  81,
-	"CURRENCY_CODE_MKD":  82,
-	"CURRENCY_CODE_MMK":  83,
-	"CURRENCY_CODE_MNT":  84,
-	"CURRENCY_CODE_MOP":  85,
-	"CURRENCY_CODE_MRO":  86,
-	"CURRENCY_CODE_MUR":  87,
-	"CURRENCY_CODE_MVR":  88,
-	"CURRENCY_CODE_MWK":  89,
-	"CURRENCY_CODE_MXN":  90,
-	"CURRENCY_CODE_MYR":  91,
-	"CURRENCY_CODE_MZN":  92,
-	"CURRENCY_CODE_NGN":  93,
-	"CURRENCY_CODE_NIO":  94,
-	"CURRENCY_CODE_NOK":  95,
-	"CURRENCY_CODE_NPR":  96,
-	"CURRENCY_CODE_NZD":  97,
-	"CURRENCY_CODE_OMR":  98,
-	"CURRENCY_CODE_PEN":  99,
-	"CURRENCY_CODE_PGK":  100,
-	"CURRENCY_CODE_PHP":  101,
-	"CURRENCY_CODE_PKR":  102,
-	"CURRENCY_CODE_PLN":  103,
-	"CURRENCY_CODE_PYG":  104,
-	"CURRENCY_CODE_QAR":  105,
-	"CURRENCY_CODE_RON":  106,
-	"CURRENCY_CODE_RSD":  107,
-	"CURRENCY_CODE_RUB":  108,
-	"CURRENCY_CODE_RWF":  109,
-	"CURRENCY_CODE_SAR":  110,
-	"CURRENCY_CODE_SBD":  111,
-	"CURRENCY_CODE_SCR":  112,
-	"CURRENCY_CODE_SDG":  113,
-	"CURRENCY_CODE_SEK":  114,
-	"CURRENCY_CODE_SGD":  115,
-	"CURRENCY_CODE_SHP":  116,
-	"CURRENCY_CODE_SLL":  117,
-	"CURRENCY_CODE_SOS":  118,
-	"CURRENCY_CODE_SRD":  119,
-	"CURRENCY_CODE_SSP":  120,
-	"CURRENCY_CODE_STD":  121,
-	"CURRENCY_CODE_SYP":  122,
-	"CURRENCY_CODE_SZL":  123,
-	"CURRENCY_CODE_THB":  124,
-	"CURRENCY_CODE_TJS":  125,
-	"CURRENCY_CODE_TMT":  126,
-	"CURRENCY_CODE_TND":  127,
-	"CURRENCY_CODE_TOP":  128,
-	"CURRENCY_CODE_TRY":  129,
-	"CURRENCY_CODE_TTD":  130,
-	"CURRENCY_CODE_TWD":  131,
-	"CURRENCY_CODE_TZS":  132,
-	"CURRENCY_CODE_UAH":  133,
-	"CURRENCY_CODE_UGX":  134,
-	"CURRENCY_CODE_USD":  135,
-	"CURRENCY_CODE_UYU":  136,
-	"CURRENCY_CODE_UZS":  137,
-	"CURRENCY_CODE_VEF":  138,
-	"CURRENCY_CODE_VND":  139,
-	"CURRENCY_CODE_VUV":  140,
-	"CURRENCY_CODE_WST":  141,
-	"CURRENCY_CODE_XAF":  142,
-	"CURRENCY_CODE_XCD":  143,
-	"CURRENCY_CODE_XOF":  144,
-	"CURRENCY_CODE_XPF":  145,
-	"CURRENCY_CODE_YER":  146,
-	"CURRENCY_CODE_ZAR":  147,
-	"CURRENCY_CODE_ZMW":  148,
-	"CURRENCY_CODE_ZWL":  149,
+	"CURRENCY_CODE_HNL":  52,
+	"CURRENCY_CODE_HRK":  53,
+	"CURRENCY_CODE_HUF":  54,
+	"CURRENCY_CODE_IDR":  55,
+	"CURRENCY_CODE_ILS":  56,
+	"CURRENCY_CODE_INR":  57,
+	"CURRENCY_CODE_IQD":  58,
+	"CURRENCY_CODE_IRR":  59,
+	"CURRENCY_CODE_ISK":  60,
+	"CURRENCY_CODE_JMD":  61,
+	"CURRENCY_CODE_JOD":  62,
+	"CURRENCY_CODE_JPY":  63,
+	"CURRENCY_CODE_KES":  64,
+	"CURRENCY_CODE_KGS":  65,
+	"CURRENCY_CODE_KHR":  66,
+	"CURRENCY_CODE_KMF":  67,
+	"CURRENCY_CODE_KPW":  68,
+	"CURRENCY_CODE_KRW":  69,
+	"CURRENCY_CODE_KWD":  70,
+	"CURRENCY_CODE_KYD":  71,
+	"CURRENCY_CODE_KZT":  72,
+	"CURRENCY_CODE_LAK":  73,
+	"CURRENCY_CODE_LBP":  74,
+	"CURRENCY_CODE_LKR":  75,
+	"CURRENCY_CODE_LRD":  76,
+	"CURRENCY_CODE_LYD":  77,
+	"CURRENCY_CODE_MAD":  78,
+	"CURRENCY_CODE_MDL":  79,
+	"CURRENCY_CODE_MGA":  80,
+	"CURRENCY_CODE_MKD":  81,
+	"CURRENCY_CODE_MMK":  82,
+	"CURRENCY_CODE_MNT":  83,
+	"CURRENCY_CODE_MOP":  84,
+	"CURRENCY_CODE_MRO":  85,
+	"CURRENCY_CODE_MUR":  86,
+	"CURRENCY_CODE_MVR":  87,
+	"CURRENCY_CODE_MWK":  88,
+	"CURRENCY_CODE_MXN":  89,
+	"CURRENCY_CODE_MYR":  90,
+	"CURRENCY_CODE_MZN":  91,
+	"CURRENCY_CODE_NGN":  92,
+	"CURRENCY_CODE_NIO":  93,
+	"CURRENCY_CODE_NOK":  94,
+	"CURRENCY_CODE_NPR":  95,
+	"CURRENCY_CODE_NZD":  96,
+	"CURRENCY_CODE_OMR":  97,
+	"CURRENCY_CODE_PEN":  98,
+	"CURRENCY_CODE_PGK":  99,
+	"CURRENCY_CODE_PHP":  100,
+	"CURRENCY_CODE_PKR":  101,
+	"CURRENCY_CODE_PLN":  102,
+	"CURRENCY_CODE_PYG":  103,
+	"CURRENCY_CODE_QAR":  104,
+	"CURRENCY_CODE_RON":  105,
+	"CURRENCY_CODE_RSD":  106,
+	"CURRENCY_CODE_RUB":  107,
+	"CURRENCY_CODE_RWF":  108,
+	"CURRENCY_CODE_SAR":  109,
+	"CURRENCY_CODE_SBD":  110,
+	"CURRENCY_CODE_SCR":  111,
+	"CURRENCY_CODE_SDG":  112,
+	"CURRENCY_CODE_SEK":  113,
+	"CURRENCY_CODE_SGD":  114,
+	"CURRENCY_CODE_SHP":  115,
+	"CURRENCY_CODE_SLL":  116,
+	"CURRENCY_CODE_SOS":  117,
+	"CURRENCY_CODE_SRD":  118,
+	"CURRENCY_CODE_SSP":  119,
+	"CURRENCY_CODE_STD":  120,
+	"CURRENCY_CODE_SYP":  121,
+	"CURRENCY_CODE_SZL":  122,
+	"CURRENCY_CODE_THB":  123,
+	"CURRENCY_CODE_TJS":  124,
+	"CURRENCY_CODE_TMT":  125,
+	"CURRENCY_CODE_TND":  126,
+	"CURRENCY_CODE_TOP":  127,
+	"CURRENCY_CODE_TRY":  128,
+	"CURRENCY_CODE_TTD":  129,
+	"CURRENCY_CODE_TZS":  130,
+	"CURRENCY_CODE_UAH":  131,
+	"CURRENCY_CODE_UGX":  132,
+	"CURRENCY_CODE_USD":  133,
+	"CURRENCY_CODE_UYU":  134,
+	"CURRENCY_CODE_UZS":  135,
+	"CURRENCY_CODE_VEF":  136,
+	"CURRENCY_CODE_VND":  137,
+	"CURRENCY_CODE_VUV":  138,
+	"CURRENCY_CODE_WST":  139,
+	"CURRENCY_CODE_XAF":  140,
+	"CURRENCY_CODE_XCD":  141,
+	"CURRENCY_CODE_XOF":  142,
+	"CURRENCY_CODE_XPF":  143,
+	"CURRENCY_CODE_YER":  144,
+	"CURRENCY_CODE_ZAR":  145,
+	"CURRENCY_CODE_ZMW":  146,
+	"CURRENCY_CODE_ZWL":  147,
 }
 
 func (x CurrencyCode) String() string {
@@ -491,56 +485,54 @@ func init() {
 func init() { proto.RegisterFile("pb/money/money.gen.proto", fileDescriptor0) }
 
 var fileDescriptor0 = []byte{
-	// 804 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0x6c, 0xd7, 0xc7, 0x9f, 0xdb, 0x44,
-	0x14, 0x07, 0x70, 0x96, 0x92, 0x62, 0x02, 0xfc, 0x62, 0x48, 0x08, 0x84, 0xde, 0x09, 0xb0, 0x01,
-	0x42, 0xef, 0x92, 0x46, 0xc5, 0x1e, 0x69, 0x34, 0x3b, 0x92, 0x2c, 0x4b, 0x94, 0x05, 0x27, 0x26,
-	0xb4, 0xd8, 0xc6, 0x24, 0xc0, 0xd2, 0x7b, 0xef, 0xe5, 0xcc, 0xbf, 0xca, 0xfb, 0x2c, 0x27, 0x32,
-	0xbf, 0x8b, 0x0f, 0xdf, 0xcb, 0x8c, 0x9f, 0x5e, 0x9b, 0xc1, 0x91, 0xd5, 0xec, 0xf8, 0x99, 0xe5,
-	0x62, 0xbe, 0xf3, 0xdf, 0xef, 0xe6, 0xe9, 0xf9, 0x62, 0x73, 0xb5, 0x5e, 0x9e, 0x5d, 0x0e, 0xf7,
-	0xad, 0x66, 0x9b, 0xbb, 0x76, 0xec, 0x9f, 0xa3, 0x83, 0x03, 0xd1, 0xb9, 0xf5, 0x7a, 0xbe, 0x38,
-	0xb9, 0x13, 0x2d, 0x4f, 0xcd, 0x87, 0x87, 0x07, 0xc3, 0xa8, 0x71, 0x2e, 0x36, 0x51, 0xb7, 0x1d,
-	0x95, 0x2a, 0xde, 0x36, 0xa5, 0x89, 0x71, 0xc1, 0xf0, 0xd0, 0xe0, 0xe0, 0xff, 0x3d, 0x88, 0x15,
-	0x36, 0x08, 0x27, 0x06, 0x17, 0x12, 0xce, 0x73, 0x5c, 0x44, 0xb8, 0x50, 0xb8, 0x98, 0xb0, 0x49,
-	0x71, 0x09, 0xe1, 0x32, 0xc0, 0x1e, 0xc2, 0xae, 0xc2, 0x5e, 0xc2, 0x8d, 0xc2, 0x3e, 0xc2, 0x6d,
-	0x8a, 0xfd, 0x84, 0x7b, 0x83, 0x81, 0xcf, 0x61, 0x50, 0xe0, 0x52, 0xc2, 0xa1, 0xc2, 0x01, 0xc2,
-	0xaa, 0xc6, 0x65, 0x84, 0x53, 0x83, 0xcb, 0x09, 0x67, 0x0a, 0x57, 0x10, 0x1e, 0x25, 0x00, 0x61,
-	0x09, 0xd5, 0x41, 0xc2, 0x46, 0x61, 0x48, 0xb8, 0x0c, 0x71, 0x25, 0x61, 0x97, 0xe3, 0x2a, 0xc2,
-	0x95, 0xc2, 0x21, 0xc2, 0xad, 0xc5, 0x61, 0xc2, 0x9d, 0xc3, 0xd5, 0x84, 0x7b, 0x85, 0x23, 0x3e,
-	0x47, 0x81, 0xc2, 0x35, 0x84, 0xb3, 0x04, 0xd7, 0x12, 0xce, 0x2d, 0x8e, 0x12, 0x36, 0x1d, 0xae,
-	0x23, 0x5c, 0x5a, 0x5c, 0x4f, 0xd8, 0x45, 0xb8, 0x81, 0x70, 0x63, 0x71, 0x23, 0xe1, 0x49, 0x8c,
-	0x9b, 0x08, 0xf7, 0x1a, 0x37, 0xfb, 0xac, 0xc6, 0x09, 0x6e, 0x21, 0xac, 0x35, 0x6e, 0x25, 0x2c,
-	0x17, 0xbc, 0x8d, 0xb0, 0x84, 0xea, 0x76, 0x9f, 0xe3, 0xd4, 0xe2, 0x0e, 0xc2, 0xce, 0xe0, 0x4e,
-	0xc2, 0x75, 0x88, 0xbb, 0x08, 0x37, 0x0e, 0x77, 0xfb, 0x9c, 0x8c, 0x15, 0x8e, 0x11, 0xd6, 0x16,
-	0xf7, 0xf8, 0x9c, 0x86, 0x16, 0xf7, 0x12, 0x8e, 0x73, 0xdc, 0x47, 0x38, 0xab, 0xb0, 0x49, 0x78,
-	0x64, 0x71, 0x9c, 0xb0, 0x24, 0xf2, 0xfd, 0x84, 0x4d, 0x82, 0x07, 0x08, 0xd7, 0x5b, 0x78, 0x90,
-	0x70, 0xa7, 0x70, 0xc2, 0xe7, 0x4c, 0x2b, 0x3c, 0x44, 0xd8, 0xe4, 0x78, 0x98, 0xb0, 0xd3, 0x78,
-	0x84, 0x70, 0x93, 0xe0, 0x51, 0x9f, 0x47, 0xca, 0xe1, 0x31, 0xc2, 0x79, 0x85, 0xc7, 0x09, 0x1b,
-	0x87, 0x27, 0x08, 0x6f, 0x29, 0x3c, 0x49, 0xd8, 0x39, 0x3c, 0x45, 0xb8, 0xd2, 0x78, 0xda, 0xe7,
-	0xb1, 0x44, 0xf0, 0x19, 0xc2, 0xa5, 0xc2, 0xb3, 0x84, 0x6d, 0x87, 0xe7, 0x7c, 0xd6, 0x71, 0x85,
-	0x80, 0x70, 0x5a, 0x21, 0x24, 0x9c, 0x39, 0x44, 0x84, 0x8b, 0x04, 0x8a, 0xb0, 0x6d, 0x11, 0x13,
-	0x76, 0x2d, 0x12, 0xc2, 0xad, 0x42, 0x4a, 0x58, 0x3e, 0x71, 0x46, 0xb8, 0xaf, 0x31, 0xf2, 0x39,
-	0x0f, 0x34, 0xc6, 0x84, 0x25, 0x91, 0x35, 0x61, 0xed, 0x90, 0x13, 0x76, 0x0a, 0x05, 0x61, 0xb9,
-	0x89, 0xf1, 0xb9, 0x90, 0xce, 0x56, 0x12, 0x56, 0x39, 0x2c, 0xe1, 0x34, 0xc0, 0x16, 0x61, 0xc9,
-	0x58, 0x47, 0xb8, 0xd0, 0xa8, 0x08, 0x9b, 0x1a, 0x35, 0x61, 0x69, 0x33, 0x0d, 0x61, 0x57, 0x62,
-	0x42, 0x58, 0x3a, 0x44, 0x4b, 0x78, 0xe2, 0x30, 0x25, 0xdc, 0x6a, 0x74, 0x84, 0xa7, 0x06, 0x3d,
-	0x61, 0x99, 0x0d, 0xcf, 0x13, 0x96, 0xe9, 0xfa, 0x82, 0xcf, 0x46, 0x06, 0xe3, 0x8b, 0x84, 0x47,
-	0x25, 0x5e, 0x22, 0x5c, 0x6a, 0x6c, 0x13, 0xb6, 0x0e, 0x2f, 0x13, 0x96, 0x1e, 0xfb, 0x8a, 0xcf,
-	0x65, 0xe1, 0x30, 0xf3, 0xd9, 0xc6, 0x06, 0x27, 0x09, 0xa7, 0x1a, 0xa7, 0x08, 0x67, 0x16, 0x73,
-	0xc2, 0x92, 0x55, 0xaf, 0x12, 0xce, 0x0d, 0x4e, 0x13, 0xee, 0x52, 0xbc, 0xe6, 0xf3, 0x56, 0xe0,
-	0xf0, 0xba, 0xcf, 0xae, 0x34, 0x78, 0x83, 0xb0, 0x4c, 0xee, 0x37, 0x09, 0x37, 0x21, 0xde, 0x22,
-	0xdc, 0x26, 0x38, 0xe3, 0x73, 0x25, 0x47, 0x2e, 0x08, 0xcb, 0x92, 0xb3, 0x24, 0x1c, 0x39, 0xac,
-	0x08, 0xab, 0x14, 0x6f, 0x13, 0x8e, 0x35, 0xd6, 0x84, 0x53, 0x85, 0x77, 0x08, 0x4b, 0x60, 0xcf,
-	0x12, 0x96, 0xed, 0xf1, 0x1c, 0xe1, 0xb2, 0xc2, 0xbb, 0x84, 0xa5, 0x8a, 0xdf, 0x23, 0x5c, 0x59,
-	0xbc, 0x4f, 0xb8, 0x56, 0xd8, 0x21, 0xdc, 0x59, 0x7c, 0x40, 0xb8, 0xcf, 0xf1, 0xa1, 0xcf, 0x75,
-	0x16, 0xe2, 0x23, 0xc2, 0xe3, 0x0a, 0x1f, 0x13, 0x2e, 0x6a, 0x7c, 0x42, 0x58, 0x56, 0xb9, 0x4f,
-	0x65, 0x01, 0x3f, 0x9f, 0xa5, 0xb8, 0x3f, 0xdb, 0x20, 0xee, 0x3a, 0x7c, 0xce, 0x5c, 0xfe, 0xd0,
-	0x17, 0xcc, 0xa5, 0xcd, 0x7e, 0xc9, 0xbc, 0xaf, 0xf0, 0x15, 0xf1, 0x26, 0xc8, 0xf0, 0x35, 0xf3,
-	0x74, 0x8a, 0x6f, 0x98, 0x4b, 0x2a, 0x7e, 0xcb, 0xbc, 0x6b, 0xf0, 0x1d, 0x73, 0x39, 0xf7, 0x7b,
-	0xe2, 0x93, 0x38, 0xc1, 0x0f, 0xcc, 0x25, 0x3c, 0x3f, 0x32, 0x6f, 0x26, 0xf8, 0x89, 0x78, 0x5b,
-	0xd5, 0xf8, 0x99, 0xf8, 0x34, 0x48, 0xf0, 0x0b, 0xf3, 0x48, 0xe1, 0x57, 0xe6, 0x65, 0x82, 0xdf,
-	0x98, 0xdb, 0x04, 0xbf, 0x13, 0xef, 0x62, 0x87, 0x3f, 0x88, 0xf7, 0x52, 0x65, 0x7f, 0x32, 0x2f,
-	0x5a, 0xfc, 0xc5, 0xbc, 0xcd, 0xf1, 0xf7, 0x46, 0xb8, 0xbf, 0xdf, 0xbb, 0x9a, 0xed, 0x3e, 0xd6,
-	0x66, 0x7b, 0x76, 0x5f, 0x6f, 0x27, 0xfe, 0x0d, 0x00, 0x00, 0xff, 0xff, 0x36, 0x3f, 0xa1, 0xc1,
-	0xd9, 0x0d, 0x00, 0x00,
+	// 773 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0x6c, 0xd7, 0x57, 0x76, 0xdd, 0x54,
+	0x18, 0x47, 0x71, 0x42, 0x49, 0x31, 0x01, 0x76, 0x2e, 0xc4, 0x84, 0xd0, 0x3b, 0x04, 0x70, 0x80,
+	0xd0, 0xbb, 0x74, 0x3f, 0x49, 0xd7, 0x96, 0x74, 0x74, 0x7c, 0x24, 0x59, 0x96, 0x28, 0x06, 0x27,
+	0x26, 0xb4, 0xd8, 0xc6, 0x24, 0x80, 0xe9, 0xbd, 0x77, 0x06, 0xca, 0x14, 0x58, 0xcb, 0x3c, 0xb1,
+	0xf4, 0x7f, 0xd9, 0x0f, 0xbf, 0x19, 0xec, 0xb9, 0x63, 0xdb, 0xeb, 0x27, 0xcf, 0x6d, 0x6d, 0x6e,
+	0xec, 0xfe, 0xd7, 0x85, 0xb3, 0x1b, 0x9b, 0x0b, 0xdb, 0x3b, 0x5b, 0xe7, 0xb7, 0x26, 0x07, 0xb7,
+	0xd7, 0x17, 0xf6, 0xec, 0xc4, 0x3f, 0xc7, 0xe7, 0x0e, 0x4f, 0x2f, 0xec, 0xec, 0x6c, 0x6c, 0x9e,
+	0xde, 0x9d, 0x6e, 0x9d, 0xd9, 0x98, 0xcc, 0xcf, 0x4d, 0xa6, 0x6d, 0x08, 0x89, 0x9b, 0xf6, 0x6b,
+	0xd3, 0xca, 0x92, 0x35, 0x57, 0xb9, 0x84, 0x8b, 0x26, 0x47, 0xe7, 0x8e, 0xfc, 0xdf, 0xa3, 0xc4,
+	0xd8, 0x27, 0x38, 0x75, 0x5c, 0x2c, 0xb8, 0x28, 0xb8, 0x44, 0x70, 0x69, 0x5c, 0x2a, 0xd8, 0x65,
+	0x5c, 0x26, 0xb8, 0x8a, 0xd8, 0x2f, 0x38, 0xd4, 0x1c, 0x10, 0xdc, 0x1a, 0x07, 0x05, 0x77, 0x19,
+	0x87, 0x04, 0x0f, 0x8e, 0xb9, 0x31, 0xc7, 0x51, 0xc9, 0xe5, 0x82, 0x63, 0xe3, 0xb0, 0x60, 0x6b,
+	0xb8, 0x42, 0x70, 0xe6, 0xb8, 0x52, 0xf0, 0xcc, 0xb8, 0x4a, 0xf0, 0x62, 0x0a, 0x82, 0x4b, 0xe3,
+	0x88, 0x60, 0x67, 0x4c, 0x04, 0x57, 0x31, 0x57, 0x0b, 0x0e, 0x05, 0xd7, 0x08, 0xae, 0x8d, 0xa3,
+	0x82, 0x3b, 0xcf, 0xbc, 0xe0, 0x3e, 0x70, 0xad, 0xe0, 0xc1, 0x38, 0x36, 0xe6, 0x69, 0x64, 0x5c,
+	0x27, 0x78, 0x96, 0x72, 0x5c, 0x70, 0xe1, 0xb9, 0x5e, 0xb0, 0xeb, 0xb9, 0x41, 0x70, 0xe5, 0xb9,
+	0x51, 0x70, 0x98, 0x72, 0x93, 0xe0, 0xd6, 0x73, 0xb3, 0xe0, 0x95, 0x84, 0x5b, 0x04, 0x0f, 0x39,
+	0xb7, 0x8e, 0xd9, 0x96, 0x52, 0x6e, 0x13, 0x9c, 0xe7, 0xdc, 0x2e, 0xb8, 0xf2, 0xdc, 0x21, 0x78,
+	0x30, 0xee, 0x1c, 0x73, 0x92, 0x79, 0xee, 0x12, 0x1c, 0x1c, 0x77, 0x0b, 0x6e, 0x62, 0xee, 0x11,
+	0xdc, 0x06, 0xee, 0x1d, 0x73, 0xba, 0x64, 0x9c, 0x10, 0x9c, 0x7b, 0xee, 0x1b, 0x73, 0x16, 0x7b,
+	0xee, 0x17, 0x9c, 0x14, 0x3c, 0x20, 0x78, 0x56, 0xb3, 0x20, 0x78, 0xd1, 0x73, 0x52, 0x70, 0x69,
+	0x3c, 0x28, 0xd8, 0xa5, 0x3c, 0x24, 0xb8, 0x59, 0xe6, 0x61, 0xc1, 0xbd, 0x71, 0x6a, 0xcc, 0x33,
+	0x57, 0xf0, 0x88, 0xe0, 0x90, 0xf3, 0xa8, 0xe0, 0x36, 0xe5, 0xb1, 0x31, 0x2f, 0x5a, 0xe0, 0x71,
+	0xc1, 0x45, 0xcd, 0x13, 0x82, 0x5d, 0xe0, 0x49, 0xc1, 0xcb, 0xc6, 0x53, 0x82, 0x43, 0xe0, 0x69,
+	0xc1, 0x75, 0xce, 0x33, 0x63, 0x5e, 0x2a, 0x8d, 0x67, 0x05, 0x57, 0xc6, 0x73, 0x82, 0x7d, 0xcf,
+	0xf3, 0x63, 0xce, 0x93, 0x9a, 0x17, 0x04, 0x67, 0x35, 0x91, 0xe0, 0x59, 0x20, 0x16, 0x5c, 0xa6,
+	0x4c, 0x05, 0xfb, 0x0e, 0x13, 0x1c, 0x3a, 0x12, 0xc1, 0x9d, 0x91, 0x0a, 0xee, 0x8d, 0x4c, 0xf0,
+	0xd0, 0x30, 0x1b, 0x73, 0x11, 0xe5, 0x2c, 0x0a, 0x8e, 0x3d, 0x4b, 0x82, 0xf3, 0x40, 0x2e, 0x38,
+	0x18, 0x85, 0xe0, 0xde, 0x28, 0xc7, 0x5c, 0x46, 0x86, 0x13, 0x6c, 0x05, 0x95, 0xe0, 0x2c, 0xc2,
+	0x0b, 0xce, 0x8d, 0x65, 0xc1, 0x65, 0x4e, 0x10, 0xec, 0x1a, 0x6a, 0xc1, 0x95, 0xa7, 0x11, 0x1c,
+	0x2a, 0x5a, 0xc1, 0x6d, 0x60, 0x45, 0xf0, 0x4a, 0xa0, 0x13, 0xdc, 0xe5, 0xac, 0x0a, 0x5e, 0x75,
+	0xf4, 0x82, 0xfb, 0xc0, 0x20, 0x78, 0x70, 0xbc, 0x38, 0x66, 0x97, 0x39, 0x5e, 0x12, 0xbc, 0x58,
+	0xf1, 0xb2, 0xe0, 0x2a, 0xe7, 0x15, 0xc1, 0x3e, 0xb0, 0x26, 0x78, 0x30, 0x5e, 0x1d, 0x73, 0x55,
+	0x06, 0x5e, 0x1b, 0xb3, 0x4f, 0x1c, 0xeb, 0x82, 0xb3, 0x9c, 0xd3, 0x82, 0x67, 0x9e, 0x33, 0x82,
+	0xf3, 0xc0, 0x86, 0xe0, 0xc2, 0xf1, 0xba, 0xe0, 0x3e, 0xe3, 0xec, 0x98, 0x97, 0xa3, 0xc0, 0x1b,
+	0x63, 0x0e, 0x95, 0xe3, 0x4d, 0xc1, 0xb5, 0xf1, 0x96, 0xe0, 0x36, 0xe6, 0x6d, 0xc1, 0x5d, 0xca,
+	0x3b, 0x63, 0xae, 0xa3, 0xc0, 0x39, 0xc1, 0xb1, 0xb1, 0x29, 0x78, 0x1a, 0xd8, 0x12, 0x6c, 0x19,
+	0xdb, 0x82, 0x93, 0x9c, 0x77, 0x05, 0x67, 0xc6, 0x8e, 0xe0, 0x99, 0xe7, 0x3d, 0xc1, 0x45, 0xc1,
+	0x79, 0xc1, 0x55, 0xcd, 0x05, 0xc1, 0xc1, 0x78, 0x5f, 0x70, 0xed, 0xf9, 0x40, 0x70, 0x63, 0x7c,
+	0x28, 0xb8, 0xf7, 0xec, 0x0a, 0x1e, 0x0a, 0x3e, 0x1a, 0x73, 0x33, 0x8b, 0xf9, 0x58, 0xf0, 0x52,
+	0xcd, 0x27, 0x82, 0xcb, 0x86, 0x4f, 0x05, 0x3b, 0xe3, 0x33, 0xc1, 0x95, 0xe7, 0xf3, 0xc9, 0xfc,
+	0x88, 0x43, 0xcf, 0x17, 0xfb, 0x84, 0x37, 0xc6, 0x97, 0xca, 0x87, 0x9a, 0xaf, 0x84, 0xb7, 0xd1,
+	0x8c, 0xaf, 0x95, 0x67, 0xab, 0x7c, 0xa3, 0xbc, 0x36, 0xbe, 0x55, 0xde, 0xb7, 0x7c, 0xa7, 0x7c,
+	0xa8, 0xf9, 0x5e, 0xf8, 0x4a, 0x92, 0xf2, 0x83, 0x72, 0x67, 0xfc, 0xa8, 0xbc, 0x5d, 0xe1, 0x27,
+	0xe1, 0x5d, 0xdd, 0xf0, 0xb3, 0xf0, 0xd5, 0x28, 0xe5, 0x17, 0xe5, 0x53, 0xe3, 0x57, 0xe5, 0x55,
+	0xca, 0x6f, 0xca, 0x7d, 0xca, 0xef, 0xc2, 0xfb, 0x24, 0xf0, 0x87, 0xf0, 0x21, 0x0a, 0xfc, 0xa9,
+	0xbc, 0xec, 0xf8, 0x4b, 0x79, 0x57, 0xf0, 0xf7, 0xbe, 0xf8, 0xd0, 0x70, 0x60, 0x7b, 0x7d, 0x6f,
+	0xbe, 0xd6, 0xf7, 0xef, 0xdd, 0xd8, 0xa9, 0x7f, 0x03, 0x00, 0x00, 0xff, 0xff, 0x92, 0xad, 0x8e,
+	0xff, 0xa9, 0x0d, 0x00, 0x00,
 }

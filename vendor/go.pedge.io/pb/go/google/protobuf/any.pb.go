@@ -19,8 +19,46 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
-// `Any` contains an arbitrary serialized message along with a URL
-// that describes the type of the serialized message.
+// `Any` contains an arbitrary serialized protocol buffer message along with a
+// URL that describes the type of the serialized message.
+//
+// Protobuf library provides support to pack/unpack Any values in the form
+// of utility functions or additional generated methods of the Any type.
+//
+// Example 1: Pack and unpack a message in C++.
+//
+//     Foo foo = ...;
+//     Any any;
+//     any.PackFrom(foo);
+//     ...
+//     if (any.UnpackTo(&foo)) {
+//       ...
+//     }
+//
+// Example 2: Pack and unpack a message in Java.
+//
+//     Foo foo = ...;
+//     Any any = Any.pack(foo);
+//     ...
+//     if (any.is(Foo.class)) {
+//       foo = any.unpack(Foo.class);
+//     }
+//
+//  Example 3: Pack and unpack a message in Python.
+//
+//     foo = Foo(...)
+//     any = Any()
+//     any.Pack(foo)
+//     ...
+//     if any.Is(Foo.DESCRIPTOR):
+//       any.Unpack(foo)
+//       ...
+//
+// The pack methods provided by protobuf library will by default use
+// 'type.googleapis.com/full.type.name' as the type URL and the unpack
+// methods only use the fully qualified type name after the last '/'
+// in the type URL, for example "foo.bar.com/x/y.z" will yield type
+// name "y.z".
 //
 //
 // JSON
@@ -53,14 +91,16 @@ const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 //
 type Any struct {
 	// A URL/resource name whose content describes the type of the
-	// serialized message.
+	// serialized protocol buffer message.
 	//
-	// For URLs which use the schema `http`, `https`, or no schema, the
+	// For URLs which use the scheme `http`, `https`, or no scheme, the
 	// following restrictions and interpretations apply:
 	//
-	// * If no schema is provided, `https` is assumed.
+	// * If no scheme is provided, `https` is assumed.
 	// * The last segment of the URL's path must represent the fully
 	//   qualified name of the type (as in `path/google.protobuf.Duration`).
+	//   The name should be in a canonical form (e.g., leading "." is
+	//   not accepted).
 	// * An HTTP GET on the URL must yield a [google.protobuf.Type][]
 	//   value in binary format, or produce an error.
 	// * Applications are allowed to cache lookup results based on the
@@ -69,11 +109,11 @@ type Any struct {
 	//   on changes to types. (Use versioned type names to manage
 	//   breaking changes.)
 	//
-	// Schemas other than `http`, `https` (or the empty schema) might be
+	// Schemes other than `http`, `https` (or the empty scheme) might be
 	// used with implementation specific semantics.
 	//
 	TypeUrl string `protobuf:"bytes,1,opt,name=type_url,json=typeUrl" json:"type_url,omitempty"`
-	// Must be valid serialized data of the above specified type.
+	// Must be a valid serialized protocol buffer of the above specified type.
 	Value []byte `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
 }
 
@@ -83,6 +123,20 @@ func (*Any) ProtoMessage()               {}
 func (*Any) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
 func (*Any) XXX_WellKnownType() string   { return "Any" }
 
+func (m *Any) GetTypeUrl() string {
+	if m != nil {
+		return m.TypeUrl
+	}
+	return ""
+}
+
+func (m *Any) GetValue() []byte {
+	if m != nil {
+		return m.Value
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*Any)(nil), "google.protobuf.Any")
 }
@@ -90,15 +144,15 @@ func init() {
 func init() { proto.RegisterFile("google/protobuf/any.proto", fileDescriptor0) }
 
 var fileDescriptor0 = []byte{
-	// 160 bytes of a gzipped FileDescriptorProto
+	// 159 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xe2, 0x92, 0x4c, 0xcf, 0xcf, 0x4f,
 	0xcf, 0x49, 0xd5, 0x2f, 0x28, 0xca, 0x2f, 0xc9, 0x4f, 0x2a, 0x4d, 0xd3, 0x4f, 0xcc, 0xab, 0xd4,
 	0x03, 0x73, 0x84, 0xf8, 0x21, 0x52, 0x7a, 0x30, 0x29, 0x25, 0x33, 0x2e, 0x66, 0xc7, 0xbc, 0x4a,
 	0x21, 0x49, 0x2e, 0x8e, 0x92, 0xca, 0x82, 0xd4, 0xf8, 0xd2, 0xa2, 0x1c, 0x09, 0x46, 0x05, 0x46,
 	0x0d, 0xce, 0x20, 0x76, 0x10, 0x3f, 0xb4, 0x28, 0x47, 0x48, 0x84, 0x8b, 0xb5, 0x2c, 0x31, 0xa7,
-	0x34, 0x55, 0x82, 0x09, 0x28, 0xce, 0x13, 0x04, 0xe1, 0x38, 0x79, 0x73, 0x09, 0x27, 0xe7, 0xe7,
-	0xea, 0xa1, 0x19, 0xe7, 0xc4, 0x01, 0x34, 0x2c, 0x00, 0xc4, 0x09, 0x60, 0x5c, 0xc0, 0xc8, 0xb8,
-	0x88, 0x89, 0xd9, 0x3d, 0xc0, 0x69, 0x15, 0x93, 0x9c, 0x3b, 0x44, 0x59, 0x00, 0x54, 0x99, 0x5e,
-	0x78, 0x6a, 0x4e, 0x8e, 0x77, 0x5e, 0x7e, 0x79, 0x5e, 0x08, 0xd0, 0x92, 0xe2, 0x24, 0x36, 0xb0,
-	0x7e, 0x63, 0x40, 0x00, 0x00, 0x00, 0xff, 0xff, 0x83, 0x49, 0xa8, 0x53, 0xb9, 0x00, 0x00, 0x00,
+	0x34, 0x55, 0x82, 0x49, 0x81, 0x51, 0x83, 0x27, 0x08, 0xc2, 0x71, 0xf2, 0xe0, 0x12, 0x4e, 0xce,
+	0xcf, 0xd5, 0x43, 0x33, 0xce, 0x89, 0xc3, 0x31, 0xaf, 0x32, 0x00, 0xc4, 0x09, 0x60, 0x5c, 0xc4,
+	0xc4, 0xec, 0x1e, 0xe0, 0xb4, 0x8a, 0x49, 0xce, 0x1d, 0xa2, 0x26, 0x00, 0xaa, 0x46, 0x2f, 0x3c,
+	0x35, 0x27, 0xc7, 0x3b, 0x2f, 0xbf, 0x3c, 0x2f, 0xa4, 0xb2, 0x20, 0xb5, 0x38, 0x89, 0x0d, 0xac,
+	0xd9, 0x18, 0x10, 0x00, 0x00, 0xff, 0xff, 0x0a, 0x08, 0xcf, 0xba, 0xb6, 0x00, 0x00, 0x00,
 }

@@ -111,8 +111,6 @@ var (
 	CurrencyCodeGTQ = CurrencyCode_CURRENCY_CODE_GTQ
 	//CurrencyCodeGYD is a simple holder for CurrencyCode_CURRENCY_CODE_GYD for simplicity.
 	CurrencyCodeGYD = CurrencyCode_CURRENCY_CODE_GYD
-	//CurrencyCodeHKD is a simple holder for CurrencyCode_CURRENCY_CODE_HKD for simplicity.
-	CurrencyCodeHKD = CurrencyCode_CURRENCY_CODE_HKD
 	//CurrencyCodeHNL is a simple holder for CurrencyCode_CURRENCY_CODE_HNL for simplicity.
 	CurrencyCodeHNL = CurrencyCode_CURRENCY_CODE_HNL
 	//CurrencyCodeHRK is a simple holder for CurrencyCode_CURRENCY_CODE_HRK for simplicity.
@@ -269,8 +267,6 @@ var (
 	CurrencyCodeTRY = CurrencyCode_CURRENCY_CODE_TRY
 	//CurrencyCodeTTD is a simple holder for CurrencyCode_CURRENCY_CODE_TTD for simplicity.
 	CurrencyCodeTTD = CurrencyCode_CURRENCY_CODE_TTD
-	//CurrencyCodeTWD is a simple holder for CurrencyCode_CURRENCY_CODE_TWD for simplicity.
-	CurrencyCodeTWD = CurrencyCode_CURRENCY_CODE_TWD
 	//CurrencyCodeTZS is a simple holder for CurrencyCode_CURRENCY_CODE_TZS for simplicity.
 	CurrencyCodeTZS = CurrencyCode_CURRENCY_CODE_TZS
 	//CurrencyCodeUAH is a simple holder for CurrencyCode_CURRENCY_CODE_UAH for simplicity.
@@ -361,104 +357,102 @@ var (
 		CurrencyCodeGNF: currency49,
 		CurrencyCodeGTQ: currency50,
 		CurrencyCodeGYD: currency51,
-		CurrencyCodeHKD: currency52,
-		CurrencyCodeHNL: currency53,
-		CurrencyCodeHRK: currency54,
-		CurrencyCodeHUF: currency55,
-		CurrencyCodeIDR: currency56,
-		CurrencyCodeILS: currency57,
-		CurrencyCodeINR: currency58,
-		CurrencyCodeIQD: currency59,
-		CurrencyCodeIRR: currency60,
-		CurrencyCodeISK: currency61,
-		CurrencyCodeJMD: currency62,
-		CurrencyCodeJOD: currency63,
-		CurrencyCodeJPY: currency64,
-		CurrencyCodeKES: currency65,
-		CurrencyCodeKGS: currency66,
-		CurrencyCodeKHR: currency67,
-		CurrencyCodeKMF: currency68,
-		CurrencyCodeKPW: currency69,
-		CurrencyCodeKRW: currency70,
-		CurrencyCodeKWD: currency71,
-		CurrencyCodeKYD: currency72,
-		CurrencyCodeKZT: currency73,
-		CurrencyCodeLAK: currency74,
-		CurrencyCodeLBP: currency75,
-		CurrencyCodeLKR: currency76,
-		CurrencyCodeLRD: currency77,
-		CurrencyCodeLYD: currency78,
-		CurrencyCodeMAD: currency79,
-		CurrencyCodeMDL: currency80,
-		CurrencyCodeMGA: currency81,
-		CurrencyCodeMKD: currency82,
-		CurrencyCodeMMK: currency83,
-		CurrencyCodeMNT: currency84,
-		CurrencyCodeMOP: currency85,
-		CurrencyCodeMRO: currency86,
-		CurrencyCodeMUR: currency87,
-		CurrencyCodeMVR: currency88,
-		CurrencyCodeMWK: currency89,
-		CurrencyCodeMXN: currency90,
-		CurrencyCodeMYR: currency91,
-		CurrencyCodeMZN: currency92,
-		CurrencyCodeNGN: currency93,
-		CurrencyCodeNIO: currency94,
-		CurrencyCodeNOK: currency95,
-		CurrencyCodeNPR: currency96,
-		CurrencyCodeNZD: currency97,
-		CurrencyCodeOMR: currency98,
-		CurrencyCodePEN: currency99,
-		CurrencyCodePGK: currency100,
-		CurrencyCodePHP: currency101,
-		CurrencyCodePKR: currency102,
-		CurrencyCodePLN: currency103,
-		CurrencyCodePYG: currency104,
-		CurrencyCodeQAR: currency105,
-		CurrencyCodeRON: currency106,
-		CurrencyCodeRSD: currency107,
-		CurrencyCodeRUB: currency108,
-		CurrencyCodeRWF: currency109,
-		CurrencyCodeSAR: currency110,
-		CurrencyCodeSBD: currency111,
-		CurrencyCodeSCR: currency112,
-		CurrencyCodeSDG: currency113,
-		CurrencyCodeSEK: currency114,
-		CurrencyCodeSGD: currency115,
-		CurrencyCodeSHP: currency116,
-		CurrencyCodeSLL: currency117,
-		CurrencyCodeSOS: currency118,
-		CurrencyCodeSRD: currency119,
-		CurrencyCodeSSP: currency120,
-		CurrencyCodeSTD: currency121,
-		CurrencyCodeSYP: currency122,
-		CurrencyCodeSZL: currency123,
-		CurrencyCodeTHB: currency124,
-		CurrencyCodeTJS: currency125,
-		CurrencyCodeTMT: currency126,
-		CurrencyCodeTND: currency127,
-		CurrencyCodeTOP: currency128,
-		CurrencyCodeTRY: currency129,
-		CurrencyCodeTTD: currency130,
-		CurrencyCodeTWD: currency131,
-		CurrencyCodeTZS: currency132,
-		CurrencyCodeUAH: currency133,
-		CurrencyCodeUGX: currency134,
-		CurrencyCodeUSD: currency135,
-		CurrencyCodeUYU: currency136,
-		CurrencyCodeUZS: currency137,
-		CurrencyCodeVEF: currency138,
-		CurrencyCodeVND: currency139,
-		CurrencyCodeVUV: currency140,
-		CurrencyCodeWST: currency141,
-		CurrencyCodeXAF: currency142,
-		CurrencyCodeXCD: currency143,
-		CurrencyCodeXOF: currency144,
-		CurrencyCodeXPF: currency145,
-		CurrencyCodeYER: currency146,
-		CurrencyCodeZAR: currency147,
-		CurrencyCodeZMW: currency148,
-		CurrencyCodeZWL: currency149,
+		CurrencyCodeHNL: currency52,
+		CurrencyCodeHRK: currency53,
+		CurrencyCodeHUF: currency54,
+		CurrencyCodeIDR: currency55,
+		CurrencyCodeILS: currency56,
+		CurrencyCodeINR: currency57,
+		CurrencyCodeIQD: currency58,
+		CurrencyCodeIRR: currency59,
+		CurrencyCodeISK: currency60,
+		CurrencyCodeJMD: currency61,
+		CurrencyCodeJOD: currency62,
+		CurrencyCodeJPY: currency63,
+		CurrencyCodeKES: currency64,
+		CurrencyCodeKGS: currency65,
+		CurrencyCodeKHR: currency66,
+		CurrencyCodeKMF: currency67,
+		CurrencyCodeKPW: currency68,
+		CurrencyCodeKRW: currency69,
+		CurrencyCodeKWD: currency70,
+		CurrencyCodeKYD: currency71,
+		CurrencyCodeKZT: currency72,
+		CurrencyCodeLAK: currency73,
+		CurrencyCodeLBP: currency74,
+		CurrencyCodeLKR: currency75,
+		CurrencyCodeLRD: currency76,
+		CurrencyCodeLYD: currency77,
+		CurrencyCodeMAD: currency78,
+		CurrencyCodeMDL: currency79,
+		CurrencyCodeMGA: currency80,
+		CurrencyCodeMKD: currency81,
+		CurrencyCodeMMK: currency82,
+		CurrencyCodeMNT: currency83,
+		CurrencyCodeMOP: currency84,
+		CurrencyCodeMRO: currency85,
+		CurrencyCodeMUR: currency86,
+		CurrencyCodeMVR: currency87,
+		CurrencyCodeMWK: currency88,
+		CurrencyCodeMXN: currency89,
+		CurrencyCodeMYR: currency90,
+		CurrencyCodeMZN: currency91,
+		CurrencyCodeNGN: currency92,
+		CurrencyCodeNIO: currency93,
+		CurrencyCodeNOK: currency94,
+		CurrencyCodeNPR: currency95,
+		CurrencyCodeNZD: currency96,
+		CurrencyCodeOMR: currency97,
+		CurrencyCodePEN: currency98,
+		CurrencyCodePGK: currency99,
+		CurrencyCodePHP: currency100,
+		CurrencyCodePKR: currency101,
+		CurrencyCodePLN: currency102,
+		CurrencyCodePYG: currency103,
+		CurrencyCodeQAR: currency104,
+		CurrencyCodeRON: currency105,
+		CurrencyCodeRSD: currency106,
+		CurrencyCodeRUB: currency107,
+		CurrencyCodeRWF: currency108,
+		CurrencyCodeSAR: currency109,
+		CurrencyCodeSBD: currency110,
+		CurrencyCodeSCR: currency111,
+		CurrencyCodeSDG: currency112,
+		CurrencyCodeSEK: currency113,
+		CurrencyCodeSGD: currency114,
+		CurrencyCodeSHP: currency115,
+		CurrencyCodeSLL: currency116,
+		CurrencyCodeSOS: currency117,
+		CurrencyCodeSRD: currency118,
+		CurrencyCodeSSP: currency119,
+		CurrencyCodeSTD: currency120,
+		CurrencyCodeSYP: currency121,
+		CurrencyCodeSZL: currency122,
+		CurrencyCodeTHB: currency123,
+		CurrencyCodeTJS: currency124,
+		CurrencyCodeTMT: currency125,
+		CurrencyCodeTND: currency126,
+		CurrencyCodeTOP: currency127,
+		CurrencyCodeTRY: currency128,
+		CurrencyCodeTTD: currency129,
+		CurrencyCodeTZS: currency130,
+		CurrencyCodeUAH: currency131,
+		CurrencyCodeUGX: currency132,
+		CurrencyCodeUSD: currency133,
+		CurrencyCodeUYU: currency134,
+		CurrencyCodeUZS: currency135,
+		CurrencyCodeVEF: currency136,
+		CurrencyCodeVND: currency137,
+		CurrencyCodeVUV: currency138,
+		CurrencyCodeWST: currency139,
+		CurrencyCodeXAF: currency140,
+		CurrencyCodeXCD: currency141,
+		CurrencyCodeXOF: currency142,
+		CurrencyCodeXPF: currency143,
+		CurrencyCodeYER: currency144,
+		CurrencyCodeZAR: currency145,
+		CurrencyCodeZMW: currency146,
+		CurrencyCodeZWL: currency147,
 	}
 
 	// CurrencyCodeToSimpleString is a map from CurrencyCode to simple string.
@@ -514,7 +508,6 @@ var (
 		CurrencyCodeGNF: "GNF",
 		CurrencyCodeGTQ: "GTQ",
 		CurrencyCodeGYD: "GYD",
-		CurrencyCodeHKD: "HKD",
 		CurrencyCodeHNL: "HNL",
 		CurrencyCodeHRK: "HRK",
 		CurrencyCodeHUF: "HUF",
@@ -593,7 +586,6 @@ var (
 		CurrencyCodeTOP: "TOP",
 		CurrencyCodeTRY: "TRY",
 		CurrencyCodeTTD: "TTD",
-		CurrencyCodeTWD: "TWD",
 		CurrencyCodeTZS: "TZS",
 		CurrencyCodeUAH: "UAH",
 		CurrencyCodeUGX: "UGX",
@@ -667,7 +659,6 @@ var (
 		"GNF": CurrencyCodeGNF,
 		"GTQ": CurrencyCodeGTQ,
 		"GYD": CurrencyCodeGYD,
-		"HKD": CurrencyCodeHKD,
 		"HNL": CurrencyCodeHNL,
 		"HRK": CurrencyCodeHRK,
 		"HUF": CurrencyCodeHUF,
@@ -746,7 +737,6 @@ var (
 		"TOP": CurrencyCodeTOP,
 		"TRY": CurrencyCodeTRY,
 		"TTD": CurrencyCodeTTD,
-		"TWD": CurrencyCodeTWD,
 		"TZS": CurrencyCodeTZS,
 		"UAH": CurrencyCodeUAH,
 		"UGX": CurrencyCodeUGX,
@@ -1074,588 +1064,576 @@ var (
 		MinorUnit:   2,
 	}
 	currency52 = &Currency{
-		Name:        "Hong Kong Dollar",
-		Code:        CurrencyCodeHKD,
-		NumericCode: 344,
-		MinorUnit:   2,
-	}
-	currency53 = &Currency{
 		Name:        "Lempira",
 		Code:        CurrencyCodeHNL,
 		NumericCode: 340,
 		MinorUnit:   2,
 	}
-	currency54 = &Currency{
+	currency53 = &Currency{
 		Name:        "Croatian Kuna",
 		Code:        CurrencyCodeHRK,
 		NumericCode: 191,
 		MinorUnit:   2,
 	}
-	currency55 = &Currency{
+	currency54 = &Currency{
 		Name:        "Forint",
 		Code:        CurrencyCodeHUF,
 		NumericCode: 348,
 		MinorUnit:   2,
 	}
-	currency56 = &Currency{
+	currency55 = &Currency{
 		Name:        "Rupiah",
 		Code:        CurrencyCodeIDR,
 		NumericCode: 360,
 		MinorUnit:   2,
 	}
-	currency57 = &Currency{
+	currency56 = &Currency{
 		Name:        "New Israeli Sheqel",
 		Code:        CurrencyCodeILS,
 		NumericCode: 376,
 		MinorUnit:   2,
 	}
-	currency58 = &Currency{
+	currency57 = &Currency{
 		Name:        "Indian Rupee",
 		Code:        CurrencyCodeINR,
 		NumericCode: 356,
 		MinorUnit:   2,
 	}
-	currency59 = &Currency{
+	currency58 = &Currency{
 		Name:        "Iraqi Dinar",
 		Code:        CurrencyCodeIQD,
 		NumericCode: 368,
 		MinorUnit:   3,
 	}
-	currency60 = &Currency{
+	currency59 = &Currency{
 		Name:        "Iranian Rial",
 		Code:        CurrencyCodeIRR,
 		NumericCode: 364,
 		MinorUnit:   2,
 	}
-	currency61 = &Currency{
+	currency60 = &Currency{
 		Name:        "Iceland Krona",
 		Code:        CurrencyCodeISK,
 		NumericCode: 352,
 		MinorUnit:   0,
 	}
-	currency62 = &Currency{
+	currency61 = &Currency{
 		Name:        "Jamaican Dollar",
 		Code:        CurrencyCodeJMD,
 		NumericCode: 388,
 		MinorUnit:   2,
 	}
-	currency63 = &Currency{
+	currency62 = &Currency{
 		Name:        "Jordanian Dinar",
 		Code:        CurrencyCodeJOD,
 		NumericCode: 400,
 		MinorUnit:   3,
 	}
-	currency64 = &Currency{
+	currency63 = &Currency{
 		Name:        "Yen",
 		Code:        CurrencyCodeJPY,
 		NumericCode: 392,
 		MinorUnit:   0,
 	}
-	currency65 = &Currency{
+	currency64 = &Currency{
 		Name:        "Kenyan Shilling",
 		Code:        CurrencyCodeKES,
 		NumericCode: 404,
 		MinorUnit:   2,
 	}
-	currency66 = &Currency{
+	currency65 = &Currency{
 		Name:        "Som",
 		Code:        CurrencyCodeKGS,
 		NumericCode: 417,
 		MinorUnit:   2,
 	}
-	currency67 = &Currency{
+	currency66 = &Currency{
 		Name:        "Riel",
 		Code:        CurrencyCodeKHR,
 		NumericCode: 116,
 		MinorUnit:   2,
 	}
-	currency68 = &Currency{
+	currency67 = &Currency{
 		Name:        "Comoro Franc",
 		Code:        CurrencyCodeKMF,
 		NumericCode: 174,
 		MinorUnit:   0,
 	}
-	currency69 = &Currency{
+	currency68 = &Currency{
 		Name:        "North Korean Won",
 		Code:        CurrencyCodeKPW,
 		NumericCode: 408,
 		MinorUnit:   2,
 	}
-	currency70 = &Currency{
+	currency69 = &Currency{
 		Name:        "Won",
 		Code:        CurrencyCodeKRW,
 		NumericCode: 410,
 		MinorUnit:   0,
 	}
-	currency71 = &Currency{
+	currency70 = &Currency{
 		Name:        "Kuwaiti Dinar",
 		Code:        CurrencyCodeKWD,
 		NumericCode: 414,
 		MinorUnit:   3,
 	}
-	currency72 = &Currency{
+	currency71 = &Currency{
 		Name:        "Cayman Islands Dollar",
 		Code:        CurrencyCodeKYD,
 		NumericCode: 136,
 		MinorUnit:   2,
 	}
-	currency73 = &Currency{
+	currency72 = &Currency{
 		Name:        "Tenge",
 		Code:        CurrencyCodeKZT,
 		NumericCode: 398,
 		MinorUnit:   2,
 	}
-	currency74 = &Currency{
+	currency73 = &Currency{
 		Name:        "Kip",
 		Code:        CurrencyCodeLAK,
 		NumericCode: 418,
 		MinorUnit:   2,
 	}
-	currency75 = &Currency{
+	currency74 = &Currency{
 		Name:        "Lebanese Pound",
 		Code:        CurrencyCodeLBP,
 		NumericCode: 422,
 		MinorUnit:   2,
 	}
-	currency76 = &Currency{
+	currency75 = &Currency{
 		Name:        "Sri Lanka Rupee",
 		Code:        CurrencyCodeLKR,
 		NumericCode: 144,
 		MinorUnit:   2,
 	}
-	currency77 = &Currency{
+	currency76 = &Currency{
 		Name:        "Liberian Dollar",
 		Code:        CurrencyCodeLRD,
 		NumericCode: 430,
 		MinorUnit:   2,
 	}
-	currency78 = &Currency{
+	currency77 = &Currency{
 		Name:        "Libyan Dinar",
 		Code:        CurrencyCodeLYD,
 		NumericCode: 434,
 		MinorUnit:   3,
 	}
-	currency79 = &Currency{
+	currency78 = &Currency{
 		Name:        "Moroccan Dirham",
 		Code:        CurrencyCodeMAD,
 		NumericCode: 504,
 		MinorUnit:   2,
 	}
-	currency80 = &Currency{
+	currency79 = &Currency{
 		Name:        "Moldovan Leu",
 		Code:        CurrencyCodeMDL,
 		NumericCode: 498,
 		MinorUnit:   2,
 	}
-	currency81 = &Currency{
+	currency80 = &Currency{
 		Name:        "Malagasy Ariary",
 		Code:        CurrencyCodeMGA,
 		NumericCode: 969,
 		MinorUnit:   2,
 	}
-	currency82 = &Currency{
+	currency81 = &Currency{
 		Name:        "Denar",
 		Code:        CurrencyCodeMKD,
 		NumericCode: 807,
 		MinorUnit:   2,
 	}
-	currency83 = &Currency{
+	currency82 = &Currency{
 		Name:        "Kyat",
 		Code:        CurrencyCodeMMK,
 		NumericCode: 104,
 		MinorUnit:   2,
 	}
-	currency84 = &Currency{
+	currency83 = &Currency{
 		Name:        "Tugrik",
 		Code:        CurrencyCodeMNT,
 		NumericCode: 496,
 		MinorUnit:   2,
 	}
-	currency85 = &Currency{
+	currency84 = &Currency{
 		Name:        "Pataca",
 		Code:        CurrencyCodeMOP,
 		NumericCode: 446,
 		MinorUnit:   2,
 	}
-	currency86 = &Currency{
+	currency85 = &Currency{
 		Name:        "Ouguiya",
 		Code:        CurrencyCodeMRO,
 		NumericCode: 478,
 		MinorUnit:   2,
 	}
-	currency87 = &Currency{
+	currency86 = &Currency{
 		Name:        "Mauritius Rupee",
 		Code:        CurrencyCodeMUR,
 		NumericCode: 480,
 		MinorUnit:   2,
 	}
-	currency88 = &Currency{
+	currency87 = &Currency{
 		Name:        "Rufiyaa",
 		Code:        CurrencyCodeMVR,
 		NumericCode: 462,
 		MinorUnit:   2,
 	}
-	currency89 = &Currency{
+	currency88 = &Currency{
 		Name:        "Kwacha",
 		Code:        CurrencyCodeMWK,
 		NumericCode: 454,
 		MinorUnit:   2,
 	}
-	currency90 = &Currency{
+	currency89 = &Currency{
 		Name:        "Mexican Peso",
 		Code:        CurrencyCodeMXN,
 		NumericCode: 484,
 		MinorUnit:   2,
 	}
-	currency91 = &Currency{
+	currency90 = &Currency{
 		Name:        "Malaysian Ringgit",
 		Code:        CurrencyCodeMYR,
 		NumericCode: 458,
 		MinorUnit:   2,
 	}
-	currency92 = &Currency{
+	currency91 = &Currency{
 		Name:        "Mozambique Metical",
 		Code:        CurrencyCodeMZN,
 		NumericCode: 943,
 		MinorUnit:   2,
 	}
-	currency93 = &Currency{
+	currency92 = &Currency{
 		Name:        "Naira",
 		Code:        CurrencyCodeNGN,
 		NumericCode: 566,
 		MinorUnit:   2,
 	}
-	currency94 = &Currency{
+	currency93 = &Currency{
 		Name:        "Cordoba Oro",
 		Code:        CurrencyCodeNIO,
 		NumericCode: 558,
 		MinorUnit:   2,
 	}
-	currency95 = &Currency{
+	currency94 = &Currency{
 		Name:        "Norwegian Krone",
 		Code:        CurrencyCodeNOK,
 		NumericCode: 578,
 		MinorUnit:   2,
 	}
-	currency96 = &Currency{
+	currency95 = &Currency{
 		Name:        "Nepalese Rupee",
 		Code:        CurrencyCodeNPR,
 		NumericCode: 524,
 		MinorUnit:   2,
 	}
-	currency97 = &Currency{
+	currency96 = &Currency{
 		Name:        "New Zealand Dollar",
 		Code:        CurrencyCodeNZD,
 		NumericCode: 554,
 		MinorUnit:   2,
 	}
-	currency98 = &Currency{
+	currency97 = &Currency{
 		Name:        "Rial Omani",
 		Code:        CurrencyCodeOMR,
 		NumericCode: 512,
 		MinorUnit:   3,
 	}
-	currency99 = &Currency{
+	currency98 = &Currency{
 		Name:        "Nuevo Sol",
 		Code:        CurrencyCodePEN,
 		NumericCode: 604,
 		MinorUnit:   2,
 	}
-	currency100 = &Currency{
+	currency99 = &Currency{
 		Name:        "Kina",
 		Code:        CurrencyCodePGK,
 		NumericCode: 598,
 		MinorUnit:   2,
 	}
-	currency101 = &Currency{
+	currency100 = &Currency{
 		Name:        "Philippine Peso",
 		Code:        CurrencyCodePHP,
 		NumericCode: 608,
 		MinorUnit:   2,
 	}
-	currency102 = &Currency{
+	currency101 = &Currency{
 		Name:        "Pakistan Rupee",
 		Code:        CurrencyCodePKR,
 		NumericCode: 586,
 		MinorUnit:   2,
 	}
-	currency103 = &Currency{
+	currency102 = &Currency{
 		Name:        "Zloty",
 		Code:        CurrencyCodePLN,
 		NumericCode: 985,
 		MinorUnit:   2,
 	}
-	currency104 = &Currency{
+	currency103 = &Currency{
 		Name:        "Guarani",
 		Code:        CurrencyCodePYG,
 		NumericCode: 600,
 		MinorUnit:   0,
 	}
-	currency105 = &Currency{
+	currency104 = &Currency{
 		Name:        "Qatari Rial",
 		Code:        CurrencyCodeQAR,
 		NumericCode: 634,
 		MinorUnit:   2,
 	}
-	currency106 = &Currency{
+	currency105 = &Currency{
 		Name:        "New Romanian Leu",
 		Code:        CurrencyCodeRON,
 		NumericCode: 946,
 		MinorUnit:   2,
 	}
-	currency107 = &Currency{
+	currency106 = &Currency{
 		Name:        "Serbian Dinar",
 		Code:        CurrencyCodeRSD,
 		NumericCode: 941,
 		MinorUnit:   2,
 	}
-	currency108 = &Currency{
+	currency107 = &Currency{
 		Name:        "Russian Ruble",
 		Code:        CurrencyCodeRUB,
 		NumericCode: 643,
 		MinorUnit:   2,
 	}
-	currency109 = &Currency{
+	currency108 = &Currency{
 		Name:        "Rwanda Franc",
 		Code:        CurrencyCodeRWF,
 		NumericCode: 646,
 		MinorUnit:   0,
 	}
-	currency110 = &Currency{
+	currency109 = &Currency{
 		Name:        "Saudi Riyal",
 		Code:        CurrencyCodeSAR,
 		NumericCode: 682,
 		MinorUnit:   2,
 	}
-	currency111 = &Currency{
+	currency110 = &Currency{
 		Name:        "Solomon Islands Dollar",
 		Code:        CurrencyCodeSBD,
 		NumericCode: 90,
 		MinorUnit:   2,
 	}
-	currency112 = &Currency{
+	currency111 = &Currency{
 		Name:        "Seychelles Rupee",
 		Code:        CurrencyCodeSCR,
 		NumericCode: 690,
 		MinorUnit:   2,
 	}
-	currency113 = &Currency{
+	currency112 = &Currency{
 		Name:        "Sudanese Pound",
 		Code:        CurrencyCodeSDG,
 		NumericCode: 938,
 		MinorUnit:   2,
 	}
-	currency114 = &Currency{
+	currency113 = &Currency{
 		Name:        "Swedish Krona",
 		Code:        CurrencyCodeSEK,
 		NumericCode: 752,
 		MinorUnit:   2,
 	}
-	currency115 = &Currency{
+	currency114 = &Currency{
 		Name:        "Singapore Dollar",
 		Code:        CurrencyCodeSGD,
 		NumericCode: 702,
 		MinorUnit:   2,
 	}
-	currency116 = &Currency{
+	currency115 = &Currency{
 		Name:        "Saint Helena Pound",
 		Code:        CurrencyCodeSHP,
 		NumericCode: 654,
 		MinorUnit:   2,
 	}
-	currency117 = &Currency{
+	currency116 = &Currency{
 		Name:        "Leone",
 		Code:        CurrencyCodeSLL,
 		NumericCode: 694,
 		MinorUnit:   2,
 	}
-	currency118 = &Currency{
+	currency117 = &Currency{
 		Name:        "Somali Shilling",
 		Code:        CurrencyCodeSOS,
 		NumericCode: 706,
 		MinorUnit:   2,
 	}
-	currency119 = &Currency{
+	currency118 = &Currency{
 		Name:        "Surinam Dollar",
 		Code:        CurrencyCodeSRD,
 		NumericCode: 968,
 		MinorUnit:   2,
 	}
-	currency120 = &Currency{
+	currency119 = &Currency{
 		Name:        "South Sudanese Pound",
 		Code:        CurrencyCodeSSP,
 		NumericCode: 728,
 		MinorUnit:   2,
 	}
-	currency121 = &Currency{
+	currency120 = &Currency{
 		Name:        "Dobra",
 		Code:        CurrencyCodeSTD,
 		NumericCode: 678,
 		MinorUnit:   2,
 	}
-	currency122 = &Currency{
+	currency121 = &Currency{
 		Name:        "Syrian Pound",
 		Code:        CurrencyCodeSYP,
 		NumericCode: 760,
 		MinorUnit:   2,
 	}
-	currency123 = &Currency{
+	currency122 = &Currency{
 		Name:        "Lilangeni",
 		Code:        CurrencyCodeSZL,
 		NumericCode: 748,
 		MinorUnit:   2,
 	}
-	currency124 = &Currency{
+	currency123 = &Currency{
 		Name:        "Baht",
 		Code:        CurrencyCodeTHB,
 		NumericCode: 764,
 		MinorUnit:   2,
 	}
-	currency125 = &Currency{
+	currency124 = &Currency{
 		Name:        "Somoni",
 		Code:        CurrencyCodeTJS,
 		NumericCode: 972,
 		MinorUnit:   2,
 	}
-	currency126 = &Currency{
+	currency125 = &Currency{
 		Name:        "Turkmenistan New Manat",
 		Code:        CurrencyCodeTMT,
 		NumericCode: 934,
 		MinorUnit:   2,
 	}
-	currency127 = &Currency{
+	currency126 = &Currency{
 		Name:        "Tunisian Dinar",
 		Code:        CurrencyCodeTND,
 		NumericCode: 788,
 		MinorUnit:   3,
 	}
-	currency128 = &Currency{
+	currency127 = &Currency{
 		Name:        "Pa’anga",
 		Code:        CurrencyCodeTOP,
 		NumericCode: 776,
 		MinorUnit:   2,
 	}
-	currency129 = &Currency{
+	currency128 = &Currency{
 		Name:        "Turkish Lira",
 		Code:        CurrencyCodeTRY,
 		NumericCode: 949,
 		MinorUnit:   2,
 	}
-	currency130 = &Currency{
+	currency129 = &Currency{
 		Name:        "Trinidad and Tobago Dollar",
 		Code:        CurrencyCodeTTD,
 		NumericCode: 780,
 		MinorUnit:   2,
 	}
-	currency131 = &Currency{
-		Name:        "New Taiwan Dollar",
-		Code:        CurrencyCodeTWD,
-		NumericCode: 901,
-		MinorUnit:   2,
-	}
-	currency132 = &Currency{
+	currency130 = &Currency{
 		Name:        "Tanzanian Shilling",
 		Code:        CurrencyCodeTZS,
 		NumericCode: 834,
 		MinorUnit:   2,
 	}
-	currency133 = &Currency{
+	currency131 = &Currency{
 		Name:        "Hryvnia",
 		Code:        CurrencyCodeUAH,
 		NumericCode: 980,
 		MinorUnit:   2,
 	}
-	currency134 = &Currency{
+	currency132 = &Currency{
 		Name:        "Uganda Shilling",
 		Code:        CurrencyCodeUGX,
 		NumericCode: 800,
 		MinorUnit:   0,
 	}
-	currency135 = &Currency{
+	currency133 = &Currency{
 		Name:        "US Dollar",
 		Code:        CurrencyCodeUSD,
 		NumericCode: 840,
 		MinorUnit:   2,
 	}
-	currency136 = &Currency{
+	currency134 = &Currency{
 		Name:        "Peso Uruguayo",
 		Code:        CurrencyCodeUYU,
 		NumericCode: 858,
 		MinorUnit:   2,
 	}
-	currency137 = &Currency{
+	currency135 = &Currency{
 		Name:        "Uzbekistan Sum",
 		Code:        CurrencyCodeUZS,
 		NumericCode: 860,
 		MinorUnit:   2,
 	}
-	currency138 = &Currency{
+	currency136 = &Currency{
 		Name:        "Bolivar",
 		Code:        CurrencyCodeVEF,
 		NumericCode: 937,
 		MinorUnit:   2,
 	}
-	currency139 = &Currency{
+	currency137 = &Currency{
 		Name:        "Dong",
 		Code:        CurrencyCodeVND,
 		NumericCode: 704,
 		MinorUnit:   0,
 	}
-	currency140 = &Currency{
+	currency138 = &Currency{
 		Name:        "Vatu",
 		Code:        CurrencyCodeVUV,
 		NumericCode: 548,
 		MinorUnit:   0,
 	}
-	currency141 = &Currency{
+	currency139 = &Currency{
 		Name:        "Tala",
 		Code:        CurrencyCodeWST,
 		NumericCode: 882,
 		MinorUnit:   2,
 	}
-	currency142 = &Currency{
+	currency140 = &Currency{
 		Name:        "CFA Franc BEAC",
 		Code:        CurrencyCodeXAF,
 		NumericCode: 950,
 		MinorUnit:   0,
 	}
-	currency143 = &Currency{
+	currency141 = &Currency{
 		Name:        "East Caribbean Dollar",
 		Code:        CurrencyCodeXCD,
 		NumericCode: 951,
 		MinorUnit:   2,
 	}
-	currency144 = &Currency{
+	currency142 = &Currency{
 		Name:        "CFA Franc BCEAO",
 		Code:        CurrencyCodeXOF,
 		NumericCode: 952,
 		MinorUnit:   0,
 	}
-	currency145 = &Currency{
+	currency143 = &Currency{
 		Name:        "CFP Franc",
 		Code:        CurrencyCodeXPF,
 		NumericCode: 953,
 		MinorUnit:   0,
 	}
-	currency146 = &Currency{
+	currency144 = &Currency{
 		Name:        "Yemeni Rial",
 		Code:        CurrencyCodeYER,
 		NumericCode: 886,
 		MinorUnit:   2,
 	}
-	currency147 = &Currency{
+	currency145 = &Currency{
 		Name:        "Rand",
 		Code:        CurrencyCodeZAR,
 		NumericCode: 710,
 		MinorUnit:   2,
 	}
-	currency148 = &Currency{
+	currency146 = &Currency{
 		Name:        "Zambian Kwacha",
 		Code:        CurrencyCodeZMW,
 		NumericCode: 967,
 		MinorUnit:   2,
 	}
-	currency149 = &Currency{
+	currency147 = &Currency{
 		Name:        "Zimbabwe Dollar",
 		Code:        CurrencyCodeZWL,
 		NumericCode: 932,
@@ -1918,16 +1896,6 @@ func (m *Money) TimesFloat(value float64) MoneyMather {
 // DivFloat does the MoneyMather Div operation.
 func (m *Money) DivFloat(value float64) MoneyMather {
 	return newMoneyMather(m).DivFloat(value)
-}
-
-// GetCurrencyCode returns the CurrencyCode.
-func (m *Money) GetCurrencyCode() CurrencyCode {
-	return m.CurrencyCode
-}
-
-// GetValueMicros returns the ValueMicros.
-func (m *Money) GetValueMicros() int64 {
-	return m.ValueMicros
 }
 
 // Errors returns nil.

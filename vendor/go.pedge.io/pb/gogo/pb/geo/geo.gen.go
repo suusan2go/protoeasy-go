@@ -25,8 +25,6 @@ var (
 	CountryCodeAM = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_AM
 	//CountryCodeAO is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_AO for simplicity.
 	CountryCodeAO = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_AO
-	//CountryCodeAQ is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_AQ for simplicity.
-	CountryCodeAQ = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_AQ
 	//CountryCodeAR is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_AR for simplicity.
 	CountryCodeAR = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_AR
 	//CountryCodeAS is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_AS for simplicity.
@@ -75,8 +73,6 @@ var (
 	CountryCodeBS = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_BS
 	//CountryCodeBT is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_BT for simplicity.
 	CountryCodeBT = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_BT
-	//CountryCodeBV is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_BV for simplicity.
-	CountryCodeBV = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_BV
 	//CountryCodeBW is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_BW for simplicity.
 	CountryCodeBW = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_BW
 	//CountryCodeBY is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_BY for simplicity.
@@ -85,10 +81,6 @@ var (
 	CountryCodeBZ = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_BZ
 	//CountryCodeCA is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_CA for simplicity.
 	CountryCodeCA = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_CA
-	//CountryCodeCC is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_CC for simplicity.
-	CountryCodeCC = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_CC
-	//CountryCodeCD is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_CD for simplicity.
-	CountryCodeCD = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_CD
 	//CountryCodeCF is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_CF for simplicity.
 	CountryCodeCF = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_CF
 	//CountryCodeCG is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_CG for simplicity.
@@ -115,8 +107,6 @@ var (
 	CountryCodeCV = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_CV
 	//CountryCodeCW is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_CW for simplicity.
 	CountryCodeCW = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_CW
-	//CountryCodeCX is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_CX for simplicity.
-	CountryCodeCX = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_CX
 	//CountryCodeCY is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_CY for simplicity.
 	CountryCodeCY = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_CY
 	//CountryCodeCZ is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_CZ for simplicity.
@@ -155,8 +145,6 @@ var (
 	CountryCodeFK = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_FK
 	//CountryCodeFM is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_FM for simplicity.
 	CountryCodeFM = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_FM
-	//CountryCodeFO is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_FO for simplicity.
-	CountryCodeFO = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_FO
 	//CountryCodeFR is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_FR for simplicity.
 	CountryCodeFR = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_FR
 	//CountryCodeGA is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_GA for simplicity.
@@ -187,8 +175,6 @@ var (
 	CountryCodeGQ = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_GQ
 	//CountryCodeGR is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_GR for simplicity.
 	CountryCodeGR = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_GR
-	//CountryCodeGS is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_GS for simplicity.
-	CountryCodeGS = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_GS
 	//CountryCodeGT is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_GT for simplicity.
 	CountryCodeGT = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_GT
 	//CountryCodeGU is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_GU for simplicity.
@@ -197,10 +183,6 @@ var (
 	CountryCodeGW = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_GW
 	//CountryCodeGY is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_GY for simplicity.
 	CountryCodeGY = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_GY
-	//CountryCodeHK is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_HK for simplicity.
-	CountryCodeHK = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_HK
-	//CountryCodeHM is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_HM for simplicity.
-	CountryCodeHM = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_HM
 	//CountryCodeHN is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_HN for simplicity.
 	CountryCodeHN = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_HN
 	//CountryCodeHR is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_HR for simplicity.
@@ -219,8 +201,6 @@ var (
 	CountryCodeIM = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_IM
 	//CountryCodeIN is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_IN for simplicity.
 	CountryCodeIN = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_IN
-	//CountryCodeIO is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_IO for simplicity.
-	CountryCodeIO = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_IO
 	//CountryCodeIQ is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_IQ for simplicity.
 	CountryCodeIQ = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_IQ
 	//CountryCodeIR is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_IR for simplicity.
@@ -373,8 +353,6 @@ var (
 	CountryCodePN = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_PN
 	//CountryCodePR is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_PR for simplicity.
 	CountryCodePR = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_PR
-	//CountryCodePS is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_PS for simplicity.
-	CountryCodePS = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_PS
 	//CountryCodePT is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_PT for simplicity.
 	CountryCodePT = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_PT
 	//CountryCodePW is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_PW for simplicity.
@@ -439,8 +417,6 @@ var (
 	CountryCodeTC = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_TC
 	//CountryCodeTD is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_TD for simplicity.
 	CountryCodeTD = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_TD
-	//CountryCodeTF is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_TF for simplicity.
-	CountryCodeTF = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_TF
 	//CountryCodeTG is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_TG for simplicity.
 	CountryCodeTG = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_TG
 	//CountryCodeTH is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_TH for simplicity.
@@ -463,16 +439,12 @@ var (
 	CountryCodeTT = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_TT
 	//CountryCodeTV is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_TV for simplicity.
 	CountryCodeTV = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_TV
-	//CountryCodeTW is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_TW for simplicity.
-	CountryCodeTW = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_TW
 	//CountryCodeTZ is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_TZ for simplicity.
 	CountryCodeTZ = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_TZ
 	//CountryCodeUA is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_UA for simplicity.
 	CountryCodeUA = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_UA
 	//CountryCodeUG is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_UG for simplicity.
 	CountryCodeUG = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_UG
-	//CountryCodeUM is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_UM for simplicity.
-	CountryCodeUM = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_UM
 	//CountryCodeUS is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_US for simplicity.
 	CountryCodeUS = CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_US
 	//CountryCodeUY is a simple holder for CountryAlpha2Code_COUNTRY_ALPHA_2_CODE_UY for simplicity.
@@ -530,10 +502,6 @@ var (
 	CountryCodeARM = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_ARM
 	//CountryCodeASM is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_ASM for simplicity.
 	CountryCodeASM = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_ASM
-	//CountryCodeATA is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_ATA for simplicity.
-	CountryCodeATA = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_ATA
-	//CountryCodeATF is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_ATF for simplicity.
-	CountryCodeATF = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_ATF
 	//CountryCodeATG is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_ATG for simplicity.
 	CountryCodeATG = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_ATG
 	//CountryCodeAUS is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_AUS for simplicity.
@@ -580,16 +548,12 @@ var (
 	CountryCodeBRN = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_BRN
 	//CountryCodeBTN is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_BTN for simplicity.
 	CountryCodeBTN = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_BTN
-	//CountryCodeBVT is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_BVT for simplicity.
-	CountryCodeBVT = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_BVT
 	//CountryCodeBWA is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_BWA for simplicity.
 	CountryCodeBWA = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_BWA
 	//CountryCodeCAF is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_CAF for simplicity.
 	CountryCodeCAF = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_CAF
 	//CountryCodeCAN is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_CAN for simplicity.
 	CountryCodeCAN = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_CAN
-	//CountryCodeCCK is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_CCK for simplicity.
-	CountryCodeCCK = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_CCK
 	//CountryCodeCHE is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_CHE for simplicity.
 	CountryCodeCHE = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_CHE
 	//CountryCodeCHL is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_CHL for simplicity.
@@ -600,8 +564,6 @@ var (
 	CountryCodeCIV = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_CIV
 	//CountryCodeCMR is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_CMR for simplicity.
 	CountryCodeCMR = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_CMR
-	//CountryCodeCOD is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_COD for simplicity.
-	CountryCodeCOD = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_COD
 	//CountryCodeCOG is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_COG for simplicity.
 	CountryCodeCOG = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_COG
 	//CountryCodeCOK is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_COK for simplicity.
@@ -618,8 +580,6 @@ var (
 	CountryCodeCUB = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_CUB
 	//CountryCodeCUW is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_CUW for simplicity.
 	CountryCodeCUW = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_CUW
-	//CountryCodeCXR is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_CXR for simplicity.
-	CountryCodeCXR = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_CXR
 	//CountryCodeCYM is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_CYM for simplicity.
 	CountryCodeCYM = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_CYM
 	//CountryCodeCYP is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_CYP for simplicity.
@@ -660,8 +620,6 @@ var (
 	CountryCodeFLK = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_FLK
 	//CountryCodeFRA is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_FRA for simplicity.
 	CountryCodeFRA = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_FRA
-	//CountryCodeFRO is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_FRO for simplicity.
-	CountryCodeFRO = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_FRO
 	//CountryCodeFSM is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_FSM for simplicity.
 	CountryCodeFSM = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_FSM
 	//CountryCodeGAB is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_GAB for simplicity.
@@ -700,10 +658,6 @@ var (
 	CountryCodeGUM = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_GUM
 	//CountryCodeGUY is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_GUY for simplicity.
 	CountryCodeGUY = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_GUY
-	//CountryCodeHKG is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_HKG for simplicity.
-	CountryCodeHKG = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_HKG
-	//CountryCodeHMD is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_HMD for simplicity.
-	CountryCodeHMD = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_HMD
 	//CountryCodeHND is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_HND for simplicity.
 	CountryCodeHND = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_HND
 	//CountryCodeHRV is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_HRV for simplicity.
@@ -718,8 +672,6 @@ var (
 	CountryCodeIMN = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_IMN
 	//CountryCodeIND is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_IND for simplicity.
 	CountryCodeIND = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_IND
-	//CountryCodeIOT is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_IOT for simplicity.
-	CountryCodeIOT = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_IOT
 	//CountryCodeIRL is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_IRL for simplicity.
 	CountryCodeIRL = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_IRL
 	//CountryCodeIRN is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_IRN for simplicity.
@@ -876,8 +828,6 @@ var (
 	CountryCodePRT = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_PRT
 	//CountryCodePRY is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_PRY for simplicity.
 	CountryCodePRY = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_PRY
-	//CountryCodePSE is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_PSE for simplicity.
-	CountryCodePSE = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_PSE
 	//CountryCodePYF is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_PYF for simplicity.
 	CountryCodePYF = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_PYF
 	//CountryCodeQAT is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_QAT for simplicity.
@@ -898,8 +848,6 @@ var (
 	CountryCodeSEN = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_SEN
 	//CountryCodeSGP is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_SGP for simplicity.
 	CountryCodeSGP = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_SGP
-	//CountryCodeSGS is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_SGS for simplicity.
-	CountryCodeSGS = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_SGS
 	//CountryCodeSHN is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_SHN for simplicity.
 	CountryCodeSHN = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_SHN
 	//CountryCodeSJM is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_SJM for simplicity.
@@ -964,16 +912,12 @@ var (
 	CountryCodeTUR = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_TUR
 	//CountryCodeTUV is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_TUV for simplicity.
 	CountryCodeTUV = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_TUV
-	//CountryCodeTWN is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_TWN for simplicity.
-	CountryCodeTWN = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_TWN
 	//CountryCodeTZA is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_TZA for simplicity.
 	CountryCodeTZA = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_TZA
 	//CountryCodeUGA is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_UGA for simplicity.
 	CountryCodeUGA = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_UGA
 	//CountryCodeUKR is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_UKR for simplicity.
 	CountryCodeUKR = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_UKR
-	//CountryCodeUMI is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_UMI for simplicity.
-	CountryCodeUMI = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_UMI
 	//CountryCodeURY is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_URY for simplicity.
 	CountryCodeURY = CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_URY
 	//CountryCodeUSA is a simple holder for CountryAlpha3Code_COUNTRY_ALPHA_3_CODE_USA for simplicity.
@@ -1017,247 +961,233 @@ var (
 		CountryCodeAL: country6,
 		CountryCodeAM: country7,
 		CountryCodeAO: country8,
-		CountryCodeAQ: country9,
-		CountryCodeAR: country10,
-		CountryCodeAS: country11,
-		CountryCodeAT: country12,
-		CountryCodeAU: country13,
-		CountryCodeAW: country14,
-		CountryCodeAX: country15,
-		CountryCodeAZ: country16,
-		CountryCodeBA: country17,
-		CountryCodeBB: country18,
-		CountryCodeBD: country19,
-		CountryCodeBE: country20,
-		CountryCodeBF: country21,
-		CountryCodeBG: country22,
-		CountryCodeBH: country23,
-		CountryCodeBI: country24,
-		CountryCodeBJ: country25,
-		CountryCodeBL: country26,
-		CountryCodeBM: country27,
-		CountryCodeBN: country28,
-		CountryCodeBO: country29,
-		CountryCodeBQ: country30,
-		CountryCodeBR: country31,
-		CountryCodeBS: country32,
-		CountryCodeBT: country33,
-		CountryCodeBV: country34,
-		CountryCodeBW: country35,
-		CountryCodeBY: country36,
-		CountryCodeBZ: country37,
-		CountryCodeCA: country38,
-		CountryCodeCC: country39,
-		CountryCodeCD: country40,
-		CountryCodeCF: country41,
-		CountryCodeCG: country42,
-		CountryCodeCH: country43,
-		CountryCodeCI: country44,
-		CountryCodeCK: country45,
-		CountryCodeCL: country46,
-		CountryCodeCM: country47,
-		CountryCodeCN: country48,
-		CountryCodeCO: country49,
-		CountryCodeCR: country50,
-		CountryCodeCU: country51,
-		CountryCodeCV: country52,
-		CountryCodeCW: country53,
-		CountryCodeCX: country54,
-		CountryCodeCY: country55,
-		CountryCodeCZ: country56,
-		CountryCodeDE: country57,
-		CountryCodeDJ: country58,
-		CountryCodeDK: country59,
-		CountryCodeDM: country60,
-		CountryCodeDO: country61,
-		CountryCodeDZ: country62,
-		CountryCodeEC: country63,
-		CountryCodeEE: country64,
-		CountryCodeEG: country65,
-		CountryCodeEH: country66,
-		CountryCodeER: country67,
-		CountryCodeES: country68,
-		CountryCodeET: country69,
-		CountryCodeFI: country70,
-		CountryCodeFJ: country71,
-		CountryCodeFK: country72,
-		CountryCodeFM: country73,
-		CountryCodeFO: country74,
-		CountryCodeFR: country75,
-		CountryCodeGA: country76,
-		CountryCodeGB: country77,
-		CountryCodeGD: country78,
-		CountryCodeGE: country79,
-		CountryCodeGF: country80,
-		CountryCodeGG: country81,
-		CountryCodeGH: country82,
-		CountryCodeGI: country83,
-		CountryCodeGL: country84,
-		CountryCodeGM: country85,
-		CountryCodeGN: country86,
-		CountryCodeGP: country87,
-		CountryCodeGQ: country88,
-		CountryCodeGR: country89,
-		CountryCodeGS: country90,
-		CountryCodeGT: country91,
-		CountryCodeGU: country92,
-		CountryCodeGW: country93,
-		CountryCodeGY: country94,
-		CountryCodeHK: country95,
-		CountryCodeHM: country96,
-		CountryCodeHN: country97,
-		CountryCodeHR: country98,
-		CountryCodeHT: country99,
-		CountryCodeHU: country100,
-		CountryCodeID: country101,
-		CountryCodeIE: country102,
-		CountryCodeIL: country103,
-		CountryCodeIM: country104,
-		CountryCodeIN: country105,
-		CountryCodeIO: country106,
-		CountryCodeIQ: country107,
-		CountryCodeIR: country108,
-		CountryCodeIS: country109,
-		CountryCodeIT: country110,
-		CountryCodeJE: country111,
-		CountryCodeJM: country112,
-		CountryCodeJO: country113,
-		CountryCodeJP: country114,
-		CountryCodeKE: country115,
-		CountryCodeKG: country116,
-		CountryCodeKH: country117,
-		CountryCodeKI: country118,
-		CountryCodeKM: country119,
-		CountryCodeKN: country120,
-		CountryCodeKP: country121,
-		CountryCodeKR: country122,
-		CountryCodeKW: country123,
-		CountryCodeKY: country124,
-		CountryCodeKZ: country125,
-		CountryCodeLA: country126,
-		CountryCodeLB: country127,
-		CountryCodeLC: country128,
-		CountryCodeLI: country129,
-		CountryCodeLK: country130,
-		CountryCodeLR: country131,
-		CountryCodeLS: country132,
-		CountryCodeLT: country133,
-		CountryCodeLU: country134,
-		CountryCodeLV: country135,
-		CountryCodeLY: country136,
-		CountryCodeMA: country137,
-		CountryCodeMC: country138,
-		CountryCodeMD: country139,
-		CountryCodeME: country140,
-		CountryCodeMF: country141,
-		CountryCodeMG: country142,
-		CountryCodeMH: country143,
-		CountryCodeMK: country144,
-		CountryCodeML: country145,
-		CountryCodeMM: country146,
-		CountryCodeMN: country147,
-		CountryCodeMO: country148,
-		CountryCodeMP: country149,
-		CountryCodeMQ: country150,
-		CountryCodeMR: country151,
-		CountryCodeMS: country152,
-		CountryCodeMT: country153,
-		CountryCodeMU: country154,
-		CountryCodeMV: country155,
-		CountryCodeMW: country156,
-		CountryCodeMX: country157,
-		CountryCodeMY: country158,
-		CountryCodeMZ: country159,
-		CountryCodeNA: country160,
-		CountryCodeNC: country161,
-		CountryCodeNE: country162,
-		CountryCodeNF: country163,
-		CountryCodeNG: country164,
-		CountryCodeNI: country165,
-		CountryCodeNL: country166,
-		CountryCodeNO: country167,
-		CountryCodeNP: country168,
-		CountryCodeNR: country169,
-		CountryCodeNU: country170,
-		CountryCodeNZ: country171,
-		CountryCodeOM: country172,
-		CountryCodePA: country173,
-		CountryCodePE: country174,
-		CountryCodePF: country175,
-		CountryCodePG: country176,
-		CountryCodePH: country177,
-		CountryCodePK: country178,
-		CountryCodePL: country179,
-		CountryCodePM: country180,
-		CountryCodePN: country181,
-		CountryCodePR: country182,
-		CountryCodePS: country183,
-		CountryCodePT: country184,
-		CountryCodePW: country185,
-		CountryCodePY: country186,
-		CountryCodeQA: country187,
-		CountryCodeRE: country188,
-		CountryCodeRO: country189,
-		CountryCodeRS: country190,
-		CountryCodeRU: country191,
-		CountryCodeRW: country192,
-		CountryCodeSA: country193,
-		CountryCodeSB: country194,
-		CountryCodeSC: country195,
-		CountryCodeSD: country196,
-		CountryCodeSE: country197,
-		CountryCodeSG: country198,
-		CountryCodeSH: country199,
-		CountryCodeSI: country200,
-		CountryCodeSJ: country201,
-		CountryCodeSK: country202,
-		CountryCodeSL: country203,
-		CountryCodeSM: country204,
-		CountryCodeSN: country205,
-		CountryCodeSO: country206,
-		CountryCodeSR: country207,
-		CountryCodeSS: country208,
-		CountryCodeST: country209,
-		CountryCodeSV: country210,
-		CountryCodeSX: country211,
-		CountryCodeSY: country212,
-		CountryCodeSZ: country213,
-		CountryCodeTC: country214,
-		CountryCodeTD: country215,
-		CountryCodeTF: country216,
-		CountryCodeTG: country217,
-		CountryCodeTH: country218,
-		CountryCodeTJ: country219,
-		CountryCodeTK: country220,
-		CountryCodeTL: country221,
-		CountryCodeTM: country222,
-		CountryCodeTN: country223,
-		CountryCodeTO: country224,
-		CountryCodeTR: country225,
-		CountryCodeTT: country226,
-		CountryCodeTV: country227,
-		CountryCodeTW: country228,
-		CountryCodeTZ: country229,
-		CountryCodeUA: country230,
-		CountryCodeUG: country231,
-		CountryCodeUM: country232,
-		CountryCodeUS: country233,
-		CountryCodeUY: country234,
-		CountryCodeUZ: country235,
-		CountryCodeVA: country236,
-		CountryCodeVC: country237,
-		CountryCodeVE: country238,
-		CountryCodeVG: country239,
-		CountryCodeVI: country240,
-		CountryCodeVN: country241,
-		CountryCodeVU: country242,
-		CountryCodeWF: country243,
-		CountryCodeWS: country244,
-		CountryCodeYE: country245,
-		CountryCodeYT: country246,
-		CountryCodeZA: country247,
-		CountryCodeZM: country248,
-		CountryCodeZW: country249,
+		CountryCodeAR: country9,
+		CountryCodeAS: country10,
+		CountryCodeAT: country11,
+		CountryCodeAU: country12,
+		CountryCodeAW: country13,
+		CountryCodeAX: country14,
+		CountryCodeAZ: country15,
+		CountryCodeBA: country16,
+		CountryCodeBB: country17,
+		CountryCodeBD: country18,
+		CountryCodeBE: country19,
+		CountryCodeBF: country20,
+		CountryCodeBG: country21,
+		CountryCodeBH: country22,
+		CountryCodeBI: country23,
+		CountryCodeBJ: country24,
+		CountryCodeBL: country25,
+		CountryCodeBM: country26,
+		CountryCodeBN: country27,
+		CountryCodeBO: country28,
+		CountryCodeBQ: country29,
+		CountryCodeBR: country30,
+		CountryCodeBS: country31,
+		CountryCodeBT: country32,
+		CountryCodeBW: country33,
+		CountryCodeBY: country34,
+		CountryCodeBZ: country35,
+		CountryCodeCA: country36,
+		CountryCodeCF: country37,
+		CountryCodeCG: country38,
+		CountryCodeCH: country39,
+		CountryCodeCI: country40,
+		CountryCodeCK: country41,
+		CountryCodeCL: country42,
+		CountryCodeCM: country43,
+		CountryCodeCN: country44,
+		CountryCodeCO: country45,
+		CountryCodeCR: country46,
+		CountryCodeCU: country47,
+		CountryCodeCV: country48,
+		CountryCodeCW: country49,
+		CountryCodeCY: country50,
+		CountryCodeCZ: country51,
+		CountryCodeDE: country52,
+		CountryCodeDJ: country53,
+		CountryCodeDK: country54,
+		CountryCodeDM: country55,
+		CountryCodeDO: country56,
+		CountryCodeDZ: country57,
+		CountryCodeEC: country58,
+		CountryCodeEE: country59,
+		CountryCodeEG: country60,
+		CountryCodeEH: country61,
+		CountryCodeER: country62,
+		CountryCodeES: country63,
+		CountryCodeET: country64,
+		CountryCodeFI: country65,
+		CountryCodeFJ: country66,
+		CountryCodeFK: country67,
+		CountryCodeFM: country68,
+		CountryCodeFR: country69,
+		CountryCodeGA: country70,
+		CountryCodeGB: country71,
+		CountryCodeGD: country72,
+		CountryCodeGE: country73,
+		CountryCodeGF: country74,
+		CountryCodeGG: country75,
+		CountryCodeGH: country76,
+		CountryCodeGI: country77,
+		CountryCodeGL: country78,
+		CountryCodeGM: country79,
+		CountryCodeGN: country80,
+		CountryCodeGP: country81,
+		CountryCodeGQ: country82,
+		CountryCodeGR: country83,
+		CountryCodeGT: country84,
+		CountryCodeGU: country85,
+		CountryCodeGW: country86,
+		CountryCodeGY: country87,
+		CountryCodeHN: country88,
+		CountryCodeHR: country89,
+		CountryCodeHT: country90,
+		CountryCodeHU: country91,
+		CountryCodeID: country92,
+		CountryCodeIE: country93,
+		CountryCodeIL: country94,
+		CountryCodeIM: country95,
+		CountryCodeIN: country96,
+		CountryCodeIQ: country97,
+		CountryCodeIR: country98,
+		CountryCodeIS: country99,
+		CountryCodeIT: country100,
+		CountryCodeJE: country101,
+		CountryCodeJM: country102,
+		CountryCodeJO: country103,
+		CountryCodeJP: country104,
+		CountryCodeKE: country105,
+		CountryCodeKG: country106,
+		CountryCodeKH: country107,
+		CountryCodeKI: country108,
+		CountryCodeKM: country109,
+		CountryCodeKN: country110,
+		CountryCodeKP: country111,
+		CountryCodeKR: country112,
+		CountryCodeKW: country113,
+		CountryCodeKY: country114,
+		CountryCodeKZ: country115,
+		CountryCodeLA: country116,
+		CountryCodeLB: country117,
+		CountryCodeLC: country118,
+		CountryCodeLI: country119,
+		CountryCodeLK: country120,
+		CountryCodeLR: country121,
+		CountryCodeLS: country122,
+		CountryCodeLT: country123,
+		CountryCodeLU: country124,
+		CountryCodeLV: country125,
+		CountryCodeLY: country126,
+		CountryCodeMA: country127,
+		CountryCodeMC: country128,
+		CountryCodeMD: country129,
+		CountryCodeME: country130,
+		CountryCodeMF: country131,
+		CountryCodeMG: country132,
+		CountryCodeMH: country133,
+		CountryCodeMK: country134,
+		CountryCodeML: country135,
+		CountryCodeMM: country136,
+		CountryCodeMN: country137,
+		CountryCodeMO: country138,
+		CountryCodeMP: country139,
+		CountryCodeMQ: country140,
+		CountryCodeMR: country141,
+		CountryCodeMS: country142,
+		CountryCodeMT: country143,
+		CountryCodeMU: country144,
+		CountryCodeMV: country145,
+		CountryCodeMW: country146,
+		CountryCodeMX: country147,
+		CountryCodeMY: country148,
+		CountryCodeMZ: country149,
+		CountryCodeNA: country150,
+		CountryCodeNC: country151,
+		CountryCodeNE: country152,
+		CountryCodeNF: country153,
+		CountryCodeNG: country154,
+		CountryCodeNI: country155,
+		CountryCodeNL: country156,
+		CountryCodeNO: country157,
+		CountryCodeNP: country158,
+		CountryCodeNR: country159,
+		CountryCodeNU: country160,
+		CountryCodeNZ: country161,
+		CountryCodeOM: country162,
+		CountryCodePA: country163,
+		CountryCodePE: country164,
+		CountryCodePF: country165,
+		CountryCodePG: country166,
+		CountryCodePH: country167,
+		CountryCodePK: country168,
+		CountryCodePL: country169,
+		CountryCodePM: country170,
+		CountryCodePN: country171,
+		CountryCodePR: country172,
+		CountryCodePT: country173,
+		CountryCodePW: country174,
+		CountryCodePY: country175,
+		CountryCodeQA: country176,
+		CountryCodeRE: country177,
+		CountryCodeRO: country178,
+		CountryCodeRS: country179,
+		CountryCodeRU: country180,
+		CountryCodeRW: country181,
+		CountryCodeSA: country182,
+		CountryCodeSB: country183,
+		CountryCodeSC: country184,
+		CountryCodeSD: country185,
+		CountryCodeSE: country186,
+		CountryCodeSG: country187,
+		CountryCodeSH: country188,
+		CountryCodeSI: country189,
+		CountryCodeSJ: country190,
+		CountryCodeSK: country191,
+		CountryCodeSL: country192,
+		CountryCodeSM: country193,
+		CountryCodeSN: country194,
+		CountryCodeSO: country195,
+		CountryCodeSR: country196,
+		CountryCodeSS: country197,
+		CountryCodeST: country198,
+		CountryCodeSV: country199,
+		CountryCodeSX: country200,
+		CountryCodeSY: country201,
+		CountryCodeSZ: country202,
+		CountryCodeTC: country203,
+		CountryCodeTD: country204,
+		CountryCodeTG: country205,
+		CountryCodeTH: country206,
+		CountryCodeTJ: country207,
+		CountryCodeTK: country208,
+		CountryCodeTL: country209,
+		CountryCodeTM: country210,
+		CountryCodeTN: country211,
+		CountryCodeTO: country212,
+		CountryCodeTR: country213,
+		CountryCodeTT: country214,
+		CountryCodeTV: country215,
+		CountryCodeTZ: country216,
+		CountryCodeUA: country217,
+		CountryCodeUG: country218,
+		CountryCodeUS: country219,
+		CountryCodeUY: country220,
+		CountryCodeUZ: country221,
+		CountryCodeVA: country222,
+		CountryCodeVC: country223,
+		CountryCodeVE: country224,
+		CountryCodeVG: country225,
+		CountryCodeVI: country226,
+		CountryCodeVN: country227,
+		CountryCodeVU: country228,
+		CountryCodeWF: country229,
+		CountryCodeWS: country230,
+		CountryCodeYE: country231,
+		CountryCodeYT: country232,
+		CountryCodeZA: country233,
+		CountryCodeZM: country234,
+		CountryCodeZW: country235,
 	}
 
 	// CountryAlpha3CodeToCountry is a map from CountryAlpha3Code to Country.
@@ -1273,244 +1203,230 @@ var (
 		CountryCodeARG: country9,
 		CountryCodeARM: country10,
 		CountryCodeASM: country11,
-		CountryCodeATA: country12,
-		CountryCodeATF: country13,
-		CountryCodeATG: country14,
-		CountryCodeAUS: country15,
-		CountryCodeAUT: country16,
-		CountryCodeAZE: country17,
-		CountryCodeBDI: country18,
-		CountryCodeBEL: country19,
-		CountryCodeBEN: country20,
-		CountryCodeBES: country21,
-		CountryCodeBFA: country22,
-		CountryCodeBGD: country23,
-		CountryCodeBGR: country24,
-		CountryCodeBHR: country25,
-		CountryCodeBHS: country26,
-		CountryCodeBIH: country27,
-		CountryCodeBLM: country28,
-		CountryCodeBLR: country29,
-		CountryCodeBLZ: country30,
-		CountryCodeBMU: country31,
-		CountryCodeBOL: country32,
-		CountryCodeBRA: country33,
-		CountryCodeBRB: country34,
-		CountryCodeBRN: country35,
-		CountryCodeBTN: country36,
-		CountryCodeBVT: country37,
-		CountryCodeBWA: country38,
-		CountryCodeCAF: country39,
-		CountryCodeCAN: country40,
-		CountryCodeCCK: country41,
-		CountryCodeCHE: country42,
-		CountryCodeCHL: country43,
-		CountryCodeCHN: country44,
-		CountryCodeCIV: country45,
-		CountryCodeCMR: country46,
-		CountryCodeCOD: country47,
-		CountryCodeCOG: country48,
-		CountryCodeCOK: country49,
-		CountryCodeCOL: country50,
-		CountryCodeCOM: country51,
-		CountryCodeCPV: country52,
-		CountryCodeCRI: country53,
-		CountryCodeCUB: country54,
-		CountryCodeCUW: country55,
-		CountryCodeCXR: country56,
-		CountryCodeCYM: country57,
-		CountryCodeCYP: country58,
-		CountryCodeCZE: country59,
-		CountryCodeDEU: country60,
-		CountryCodeDJI: country61,
-		CountryCodeDMA: country62,
-		CountryCodeDNK: country63,
-		CountryCodeDOM: country64,
-		CountryCodeDZA: country65,
-		CountryCodeECU: country66,
-		CountryCodeEGY: country67,
-		CountryCodeERI: country68,
-		CountryCodeESH: country69,
-		CountryCodeESP: country70,
-		CountryCodeEST: country71,
-		CountryCodeETH: country72,
-		CountryCodeFIN: country73,
-		CountryCodeFJI: country74,
-		CountryCodeFLK: country75,
-		CountryCodeFRA: country76,
-		CountryCodeFRO: country77,
-		CountryCodeFSM: country78,
-		CountryCodeGAB: country79,
-		CountryCodeGBR: country80,
-		CountryCodeGEO: country81,
-		CountryCodeGGY: country82,
-		CountryCodeGHA: country83,
-		CountryCodeGIB: country84,
-		CountryCodeGIN: country85,
-		CountryCodeGLP: country86,
-		CountryCodeGMB: country87,
-		CountryCodeGNB: country88,
-		CountryCodeGNQ: country89,
-		CountryCodeGRC: country90,
-		CountryCodeGRD: country91,
-		CountryCodeGRL: country92,
-		CountryCodeGTM: country93,
-		CountryCodeGUF: country94,
-		CountryCodeGUM: country95,
-		CountryCodeGUY: country96,
-		CountryCodeHKG: country97,
-		CountryCodeHMD: country98,
-		CountryCodeHND: country99,
-		CountryCodeHRV: country100,
-		CountryCodeHTI: country101,
-		CountryCodeHUN: country102,
-		CountryCodeIDN: country103,
-		CountryCodeIMN: country104,
-		CountryCodeIND: country105,
-		CountryCodeIOT: country106,
-		CountryCodeIRL: country107,
-		CountryCodeIRN: country108,
-		CountryCodeIRQ: country109,
-		CountryCodeISL: country110,
-		CountryCodeISR: country111,
-		CountryCodeITA: country112,
-		CountryCodeJAM: country113,
-		CountryCodeJEY: country114,
-		CountryCodeJOR: country115,
-		CountryCodeJPN: country116,
-		CountryCodeKAZ: country117,
-		CountryCodeKEN: country118,
-		CountryCodeKGZ: country119,
-		CountryCodeKHM: country120,
-		CountryCodeKIR: country121,
-		CountryCodeKNA: country122,
-		CountryCodeKOR: country123,
-		CountryCodeKWT: country124,
-		CountryCodeLAO: country125,
-		CountryCodeLBN: country126,
-		CountryCodeLBR: country127,
-		CountryCodeLBY: country128,
-		CountryCodeLCA: country129,
-		CountryCodeLIE: country130,
-		CountryCodeLKA: country131,
-		CountryCodeLSO: country132,
-		CountryCodeLTU: country133,
-		CountryCodeLUX: country134,
-		CountryCodeLVA: country135,
-		CountryCodeMAC: country136,
-		CountryCodeMAF: country137,
-		CountryCodeMAR: country138,
-		CountryCodeMCO: country139,
-		CountryCodeMDA: country140,
-		CountryCodeMDG: country141,
-		CountryCodeMDV: country142,
-		CountryCodeMEX: country143,
-		CountryCodeMHL: country144,
-		CountryCodeMKD: country145,
-		CountryCodeMLI: country146,
-		CountryCodeMLT: country147,
-		CountryCodeMMR: country148,
-		CountryCodeMNE: country149,
-		CountryCodeMNG: country150,
-		CountryCodeMNP: country151,
-		CountryCodeMOZ: country152,
-		CountryCodeMRT: country153,
-		CountryCodeMSR: country154,
-		CountryCodeMTQ: country155,
-		CountryCodeMUS: country156,
-		CountryCodeMWI: country157,
-		CountryCodeMYS: country158,
-		CountryCodeMYT: country159,
-		CountryCodeNAM: country160,
-		CountryCodeNCL: country161,
-		CountryCodeNER: country162,
-		CountryCodeNFK: country163,
-		CountryCodeNGA: country164,
-		CountryCodeNIC: country165,
-		CountryCodeNIU: country166,
-		CountryCodeNLD: country167,
-		CountryCodeNOR: country168,
-		CountryCodeNPL: country169,
-		CountryCodeNRU: country170,
-		CountryCodeNZL: country171,
-		CountryCodeOMN: country172,
-		CountryCodePAK: country173,
-		CountryCodePAN: country174,
-		CountryCodePCN: country175,
-		CountryCodePER: country176,
-		CountryCodePHL: country177,
-		CountryCodePLW: country178,
-		CountryCodePNG: country179,
-		CountryCodePOL: country180,
-		CountryCodePRI: country181,
-		CountryCodePRK: country182,
-		CountryCodePRT: country183,
-		CountryCodePRY: country184,
-		CountryCodePSE: country185,
-		CountryCodePYF: country186,
-		CountryCodeQAT: country187,
-		CountryCodeREU: country188,
-		CountryCodeROU: country189,
-		CountryCodeRUS: country190,
-		CountryCodeRWA: country191,
-		CountryCodeSAU: country192,
-		CountryCodeSDN: country193,
-		CountryCodeSEN: country194,
-		CountryCodeSGP: country195,
-		CountryCodeSGS: country196,
-		CountryCodeSHN: country197,
-		CountryCodeSJM: country198,
-		CountryCodeSLB: country199,
-		CountryCodeSLE: country200,
-		CountryCodeSLV: country201,
-		CountryCodeSMR: country202,
-		CountryCodeSOM: country203,
-		CountryCodeSPM: country204,
-		CountryCodeSRB: country205,
-		CountryCodeSSD: country206,
-		CountryCodeSTP: country207,
-		CountryCodeSUR: country208,
-		CountryCodeSVK: country209,
-		CountryCodeSVN: country210,
-		CountryCodeSWE: country211,
-		CountryCodeSWZ: country212,
-		CountryCodeSXM: country213,
-		CountryCodeSYC: country214,
-		CountryCodeSYR: country215,
-		CountryCodeTCA: country216,
-		CountryCodeTCD: country217,
-		CountryCodeTGO: country218,
-		CountryCodeTHA: country219,
-		CountryCodeTJK: country220,
-		CountryCodeTKL: country221,
-		CountryCodeTKM: country222,
-		CountryCodeTLS: country223,
-		CountryCodeTON: country224,
-		CountryCodeTTO: country225,
-		CountryCodeTUN: country226,
-		CountryCodeTUR: country227,
-		CountryCodeTUV: country228,
-		CountryCodeTWN: country229,
-		CountryCodeTZA: country230,
-		CountryCodeUGA: country231,
-		CountryCodeUKR: country232,
-		CountryCodeUMI: country233,
-		CountryCodeURY: country234,
-		CountryCodeUSA: country235,
-		CountryCodeUZB: country236,
-		CountryCodeVAT: country237,
-		CountryCodeVCT: country238,
-		CountryCodeVEN: country239,
-		CountryCodeVGB: country240,
-		CountryCodeVIR: country241,
-		CountryCodeVNM: country242,
-		CountryCodeVUT: country243,
-		CountryCodeWLF: country244,
-		CountryCodeWSM: country245,
-		CountryCodeYEM: country246,
-		CountryCodeZAF: country247,
-		CountryCodeZMB: country248,
-		CountryCodeZWE: country249,
+		CountryCodeATG: country12,
+		CountryCodeAUS: country13,
+		CountryCodeAUT: country14,
+		CountryCodeAZE: country15,
+		CountryCodeBDI: country16,
+		CountryCodeBEL: country17,
+		CountryCodeBEN: country18,
+		CountryCodeBES: country19,
+		CountryCodeBFA: country20,
+		CountryCodeBGD: country21,
+		CountryCodeBGR: country22,
+		CountryCodeBHR: country23,
+		CountryCodeBHS: country24,
+		CountryCodeBIH: country25,
+		CountryCodeBLM: country26,
+		CountryCodeBLR: country27,
+		CountryCodeBLZ: country28,
+		CountryCodeBMU: country29,
+		CountryCodeBOL: country30,
+		CountryCodeBRA: country31,
+		CountryCodeBRB: country32,
+		CountryCodeBRN: country33,
+		CountryCodeBTN: country34,
+		CountryCodeBWA: country35,
+		CountryCodeCAF: country36,
+		CountryCodeCAN: country37,
+		CountryCodeCHE: country38,
+		CountryCodeCHL: country39,
+		CountryCodeCHN: country40,
+		CountryCodeCIV: country41,
+		CountryCodeCMR: country42,
+		CountryCodeCOG: country43,
+		CountryCodeCOK: country44,
+		CountryCodeCOL: country45,
+		CountryCodeCOM: country46,
+		CountryCodeCPV: country47,
+		CountryCodeCRI: country48,
+		CountryCodeCUB: country49,
+		CountryCodeCUW: country50,
+		CountryCodeCYM: country51,
+		CountryCodeCYP: country52,
+		CountryCodeCZE: country53,
+		CountryCodeDEU: country54,
+		CountryCodeDJI: country55,
+		CountryCodeDMA: country56,
+		CountryCodeDNK: country57,
+		CountryCodeDOM: country58,
+		CountryCodeDZA: country59,
+		CountryCodeECU: country60,
+		CountryCodeEGY: country61,
+		CountryCodeERI: country62,
+		CountryCodeESH: country63,
+		CountryCodeESP: country64,
+		CountryCodeEST: country65,
+		CountryCodeETH: country66,
+		CountryCodeFIN: country67,
+		CountryCodeFJI: country68,
+		CountryCodeFLK: country69,
+		CountryCodeFRA: country70,
+		CountryCodeFSM: country71,
+		CountryCodeGAB: country72,
+		CountryCodeGBR: country73,
+		CountryCodeGEO: country74,
+		CountryCodeGGY: country75,
+		CountryCodeGHA: country76,
+		CountryCodeGIB: country77,
+		CountryCodeGIN: country78,
+		CountryCodeGLP: country79,
+		CountryCodeGMB: country80,
+		CountryCodeGNB: country81,
+		CountryCodeGNQ: country82,
+		CountryCodeGRC: country83,
+		CountryCodeGRD: country84,
+		CountryCodeGRL: country85,
+		CountryCodeGTM: country86,
+		CountryCodeGUF: country87,
+		CountryCodeGUM: country88,
+		CountryCodeGUY: country89,
+		CountryCodeHND: country90,
+		CountryCodeHRV: country91,
+		CountryCodeHTI: country92,
+		CountryCodeHUN: country93,
+		CountryCodeIDN: country94,
+		CountryCodeIMN: country95,
+		CountryCodeIND: country96,
+		CountryCodeIRL: country97,
+		CountryCodeIRN: country98,
+		CountryCodeIRQ: country99,
+		CountryCodeISL: country100,
+		CountryCodeISR: country101,
+		CountryCodeITA: country102,
+		CountryCodeJAM: country103,
+		CountryCodeJEY: country104,
+		CountryCodeJOR: country105,
+		CountryCodeJPN: country106,
+		CountryCodeKAZ: country107,
+		CountryCodeKEN: country108,
+		CountryCodeKGZ: country109,
+		CountryCodeKHM: country110,
+		CountryCodeKIR: country111,
+		CountryCodeKNA: country112,
+		CountryCodeKOR: country113,
+		CountryCodeKWT: country114,
+		CountryCodeLAO: country115,
+		CountryCodeLBN: country116,
+		CountryCodeLBR: country117,
+		CountryCodeLBY: country118,
+		CountryCodeLCA: country119,
+		CountryCodeLIE: country120,
+		CountryCodeLKA: country121,
+		CountryCodeLSO: country122,
+		CountryCodeLTU: country123,
+		CountryCodeLUX: country124,
+		CountryCodeLVA: country125,
+		CountryCodeMAC: country126,
+		CountryCodeMAF: country127,
+		CountryCodeMAR: country128,
+		CountryCodeMCO: country129,
+		CountryCodeMDA: country130,
+		CountryCodeMDG: country131,
+		CountryCodeMDV: country132,
+		CountryCodeMEX: country133,
+		CountryCodeMHL: country134,
+		CountryCodeMKD: country135,
+		CountryCodeMLI: country136,
+		CountryCodeMLT: country137,
+		CountryCodeMMR: country138,
+		CountryCodeMNE: country139,
+		CountryCodeMNG: country140,
+		CountryCodeMNP: country141,
+		CountryCodeMOZ: country142,
+		CountryCodeMRT: country143,
+		CountryCodeMSR: country144,
+		CountryCodeMTQ: country145,
+		CountryCodeMUS: country146,
+		CountryCodeMWI: country147,
+		CountryCodeMYS: country148,
+		CountryCodeMYT: country149,
+		CountryCodeNAM: country150,
+		CountryCodeNCL: country151,
+		CountryCodeNER: country152,
+		CountryCodeNFK: country153,
+		CountryCodeNGA: country154,
+		CountryCodeNIC: country155,
+		CountryCodeNIU: country156,
+		CountryCodeNLD: country157,
+		CountryCodeNOR: country158,
+		CountryCodeNPL: country159,
+		CountryCodeNRU: country160,
+		CountryCodeNZL: country161,
+		CountryCodeOMN: country162,
+		CountryCodePAK: country163,
+		CountryCodePAN: country164,
+		CountryCodePCN: country165,
+		CountryCodePER: country166,
+		CountryCodePHL: country167,
+		CountryCodePLW: country168,
+		CountryCodePNG: country169,
+		CountryCodePOL: country170,
+		CountryCodePRI: country171,
+		CountryCodePRK: country172,
+		CountryCodePRT: country173,
+		CountryCodePRY: country174,
+		CountryCodePYF: country175,
+		CountryCodeQAT: country176,
+		CountryCodeREU: country177,
+		CountryCodeROU: country178,
+		CountryCodeRUS: country179,
+		CountryCodeRWA: country180,
+		CountryCodeSAU: country181,
+		CountryCodeSDN: country182,
+		CountryCodeSEN: country183,
+		CountryCodeSGP: country184,
+		CountryCodeSHN: country185,
+		CountryCodeSJM: country186,
+		CountryCodeSLB: country187,
+		CountryCodeSLE: country188,
+		CountryCodeSLV: country189,
+		CountryCodeSMR: country190,
+		CountryCodeSOM: country191,
+		CountryCodeSPM: country192,
+		CountryCodeSRB: country193,
+		CountryCodeSSD: country194,
+		CountryCodeSTP: country195,
+		CountryCodeSUR: country196,
+		CountryCodeSVK: country197,
+		CountryCodeSVN: country198,
+		CountryCodeSWE: country199,
+		CountryCodeSWZ: country200,
+		CountryCodeSXM: country201,
+		CountryCodeSYC: country202,
+		CountryCodeSYR: country203,
+		CountryCodeTCA: country204,
+		CountryCodeTCD: country205,
+		CountryCodeTGO: country206,
+		CountryCodeTHA: country207,
+		CountryCodeTJK: country208,
+		CountryCodeTKL: country209,
+		CountryCodeTKM: country210,
+		CountryCodeTLS: country211,
+		CountryCodeTON: country212,
+		CountryCodeTTO: country213,
+		CountryCodeTUN: country214,
+		CountryCodeTUR: country215,
+		CountryCodeTUV: country216,
+		CountryCodeTZA: country217,
+		CountryCodeUGA: country218,
+		CountryCodeUKR: country219,
+		CountryCodeURY: country220,
+		CountryCodeUSA: country221,
+		CountryCodeUZB: country222,
+		CountryCodeVAT: country223,
+		CountryCodeVCT: country224,
+		CountryCodeVEN: country225,
+		CountryCodeVGB: country226,
+		CountryCodeVIR: country227,
+		CountryCodeVNM: country228,
+		CountryCodeVUT: country229,
+		CountryCodeWLF: country230,
+		CountryCodeWSM: country231,
+		CountryCodeYEM: country232,
+		CountryCodeZAF: country233,
+		CountryCodeZMB: country234,
+		CountryCodeZWE: country235,
 	}
 
 	// CountryAlpha2CodeToSimpleString is a map from CountryAlpha2Code to simple string.
@@ -1523,7 +1439,6 @@ var (
 		CountryCodeAL: "AL",
 		CountryCodeAM: "AM",
 		CountryCodeAO: "AO",
-		CountryCodeAQ: "AQ",
 		CountryCodeAR: "AR",
 		CountryCodeAS: "AS",
 		CountryCodeAT: "AT",
@@ -1548,13 +1463,10 @@ var (
 		CountryCodeBR: "BR",
 		CountryCodeBS: "BS",
 		CountryCodeBT: "BT",
-		CountryCodeBV: "BV",
 		CountryCodeBW: "BW",
 		CountryCodeBY: "BY",
 		CountryCodeBZ: "BZ",
 		CountryCodeCA: "CA",
-		CountryCodeCC: "CC",
-		CountryCodeCD: "CD",
 		CountryCodeCF: "CF",
 		CountryCodeCG: "CG",
 		CountryCodeCH: "CH",
@@ -1568,7 +1480,6 @@ var (
 		CountryCodeCU: "CU",
 		CountryCodeCV: "CV",
 		CountryCodeCW: "CW",
-		CountryCodeCX: "CX",
 		CountryCodeCY: "CY",
 		CountryCodeCZ: "CZ",
 		CountryCodeDE: "DE",
@@ -1588,7 +1499,6 @@ var (
 		CountryCodeFJ: "FJ",
 		CountryCodeFK: "FK",
 		CountryCodeFM: "FM",
-		CountryCodeFO: "FO",
 		CountryCodeFR: "FR",
 		CountryCodeGA: "GA",
 		CountryCodeGB: "GB",
@@ -1604,13 +1514,10 @@ var (
 		CountryCodeGP: "GP",
 		CountryCodeGQ: "GQ",
 		CountryCodeGR: "GR",
-		CountryCodeGS: "GS",
 		CountryCodeGT: "GT",
 		CountryCodeGU: "GU",
 		CountryCodeGW: "GW",
 		CountryCodeGY: "GY",
-		CountryCodeHK: "HK",
-		CountryCodeHM: "HM",
 		CountryCodeHN: "HN",
 		CountryCodeHR: "HR",
 		CountryCodeHT: "HT",
@@ -1620,7 +1527,6 @@ var (
 		CountryCodeIL: "IL",
 		CountryCodeIM: "IM",
 		CountryCodeIN: "IN",
-		CountryCodeIO: "IO",
 		CountryCodeIQ: "IQ",
 		CountryCodeIR: "IR",
 		CountryCodeIS: "IS",
@@ -1697,7 +1603,6 @@ var (
 		CountryCodePM: "PM",
 		CountryCodePN: "PN",
 		CountryCodePR: "PR",
-		CountryCodePS: "PS",
 		CountryCodePT: "PT",
 		CountryCodePW: "PW",
 		CountryCodePY: "PY",
@@ -1730,7 +1635,6 @@ var (
 		CountryCodeSZ: "SZ",
 		CountryCodeTC: "TC",
 		CountryCodeTD: "TD",
-		CountryCodeTF: "TF",
 		CountryCodeTG: "TG",
 		CountryCodeTH: "TH",
 		CountryCodeTJ: "TJ",
@@ -1742,11 +1646,9 @@ var (
 		CountryCodeTR: "TR",
 		CountryCodeTT: "TT",
 		CountryCodeTV: "TV",
-		CountryCodeTW: "TW",
 		CountryCodeTZ: "TZ",
 		CountryCodeUA: "UA",
 		CountryCodeUG: "UG",
-		CountryCodeUM: "UM",
 		CountryCodeUS: "US",
 		CountryCodeUY: "UY",
 		CountryCodeUZ: "UZ",
@@ -1776,7 +1678,6 @@ var (
 		"AL": CountryCodeAL,
 		"AM": CountryCodeAM,
 		"AO": CountryCodeAO,
-		"AQ": CountryCodeAQ,
 		"AR": CountryCodeAR,
 		"AS": CountryCodeAS,
 		"AT": CountryCodeAT,
@@ -1801,13 +1702,10 @@ var (
 		"BR": CountryCodeBR,
 		"BS": CountryCodeBS,
 		"BT": CountryCodeBT,
-		"BV": CountryCodeBV,
 		"BW": CountryCodeBW,
 		"BY": CountryCodeBY,
 		"BZ": CountryCodeBZ,
 		"CA": CountryCodeCA,
-		"CC": CountryCodeCC,
-		"CD": CountryCodeCD,
 		"CF": CountryCodeCF,
 		"CG": CountryCodeCG,
 		"CH": CountryCodeCH,
@@ -1821,7 +1719,6 @@ var (
 		"CU": CountryCodeCU,
 		"CV": CountryCodeCV,
 		"CW": CountryCodeCW,
-		"CX": CountryCodeCX,
 		"CY": CountryCodeCY,
 		"CZ": CountryCodeCZ,
 		"DE": CountryCodeDE,
@@ -1841,7 +1738,6 @@ var (
 		"FJ": CountryCodeFJ,
 		"FK": CountryCodeFK,
 		"FM": CountryCodeFM,
-		"FO": CountryCodeFO,
 		"FR": CountryCodeFR,
 		"GA": CountryCodeGA,
 		"GB": CountryCodeGB,
@@ -1857,13 +1753,10 @@ var (
 		"GP": CountryCodeGP,
 		"GQ": CountryCodeGQ,
 		"GR": CountryCodeGR,
-		"GS": CountryCodeGS,
 		"GT": CountryCodeGT,
 		"GU": CountryCodeGU,
 		"GW": CountryCodeGW,
 		"GY": CountryCodeGY,
-		"HK": CountryCodeHK,
-		"HM": CountryCodeHM,
 		"HN": CountryCodeHN,
 		"HR": CountryCodeHR,
 		"HT": CountryCodeHT,
@@ -1873,7 +1766,6 @@ var (
 		"IL": CountryCodeIL,
 		"IM": CountryCodeIM,
 		"IN": CountryCodeIN,
-		"IO": CountryCodeIO,
 		"IQ": CountryCodeIQ,
 		"IR": CountryCodeIR,
 		"IS": CountryCodeIS,
@@ -1950,7 +1842,6 @@ var (
 		"PM": CountryCodePM,
 		"PN": CountryCodePN,
 		"PR": CountryCodePR,
-		"PS": CountryCodePS,
 		"PT": CountryCodePT,
 		"PW": CountryCodePW,
 		"PY": CountryCodePY,
@@ -1983,7 +1874,6 @@ var (
 		"SZ": CountryCodeSZ,
 		"TC": CountryCodeTC,
 		"TD": CountryCodeTD,
-		"TF": CountryCodeTF,
 		"TG": CountryCodeTG,
 		"TH": CountryCodeTH,
 		"TJ": CountryCodeTJ,
@@ -1995,11 +1885,9 @@ var (
 		"TR": CountryCodeTR,
 		"TT": CountryCodeTT,
 		"TV": CountryCodeTV,
-		"TW": CountryCodeTW,
 		"TZ": CountryCodeTZ,
 		"UA": CountryCodeUA,
 		"UG": CountryCodeUG,
-		"UM": CountryCodeUM,
 		"US": CountryCodeUS,
 		"UY": CountryCodeUY,
 		"UZ": CountryCodeUZ,
@@ -2032,8 +1920,6 @@ var (
 		CountryCodeARG: "ARG",
 		CountryCodeARM: "ARM",
 		CountryCodeASM: "ASM",
-		CountryCodeATA: "ATA",
-		CountryCodeATF: "ATF",
 		CountryCodeATG: "ATG",
 		CountryCodeAUS: "AUS",
 		CountryCodeAUT: "AUT",
@@ -2057,17 +1943,14 @@ var (
 		CountryCodeBRB: "BRB",
 		CountryCodeBRN: "BRN",
 		CountryCodeBTN: "BTN",
-		CountryCodeBVT: "BVT",
 		CountryCodeBWA: "BWA",
 		CountryCodeCAF: "CAF",
 		CountryCodeCAN: "CAN",
-		CountryCodeCCK: "CCK",
 		CountryCodeCHE: "CHE",
 		CountryCodeCHL: "CHL",
 		CountryCodeCHN: "CHN",
 		CountryCodeCIV: "CIV",
 		CountryCodeCMR: "CMR",
-		CountryCodeCOD: "COD",
 		CountryCodeCOG: "COG",
 		CountryCodeCOK: "COK",
 		CountryCodeCOL: "COL",
@@ -2076,7 +1959,6 @@ var (
 		CountryCodeCRI: "CRI",
 		CountryCodeCUB: "CUB",
 		CountryCodeCUW: "CUW",
-		CountryCodeCXR: "CXR",
 		CountryCodeCYM: "CYM",
 		CountryCodeCYP: "CYP",
 		CountryCodeCZE: "CZE",
@@ -2097,7 +1979,6 @@ var (
 		CountryCodeFJI: "FJI",
 		CountryCodeFLK: "FLK",
 		CountryCodeFRA: "FRA",
-		CountryCodeFRO: "FRO",
 		CountryCodeFSM: "FSM",
 		CountryCodeGAB: "GAB",
 		CountryCodeGBR: "GBR",
@@ -2117,8 +1998,6 @@ var (
 		CountryCodeGUF: "GUF",
 		CountryCodeGUM: "GUM",
 		CountryCodeGUY: "GUY",
-		CountryCodeHKG: "HKG",
-		CountryCodeHMD: "HMD",
 		CountryCodeHND: "HND",
 		CountryCodeHRV: "HRV",
 		CountryCodeHTI: "HTI",
@@ -2126,7 +2005,6 @@ var (
 		CountryCodeIDN: "IDN",
 		CountryCodeIMN: "IMN",
 		CountryCodeIND: "IND",
-		CountryCodeIOT: "IOT",
 		CountryCodeIRL: "IRL",
 		CountryCodeIRN: "IRN",
 		CountryCodeIRQ: "IRQ",
@@ -2205,7 +2083,6 @@ var (
 		CountryCodePRK: "PRK",
 		CountryCodePRT: "PRT",
 		CountryCodePRY: "PRY",
-		CountryCodePSE: "PSE",
 		CountryCodePYF: "PYF",
 		CountryCodeQAT: "QAT",
 		CountryCodeREU: "REU",
@@ -2216,7 +2093,6 @@ var (
 		CountryCodeSDN: "SDN",
 		CountryCodeSEN: "SEN",
 		CountryCodeSGP: "SGP",
-		CountryCodeSGS: "SGS",
 		CountryCodeSHN: "SHN",
 		CountryCodeSJM: "SJM",
 		CountryCodeSLB: "SLB",
@@ -2249,11 +2125,9 @@ var (
 		CountryCodeTUN: "TUN",
 		CountryCodeTUR: "TUR",
 		CountryCodeTUV: "TUV",
-		CountryCodeTWN: "TWN",
 		CountryCodeTZA: "TZA",
 		CountryCodeUGA: "UGA",
 		CountryCodeUKR: "UKR",
-		CountryCodeUMI: "UMI",
 		CountryCodeURY: "URY",
 		CountryCodeUSA: "USA",
 		CountryCodeUZB: "UZB",
@@ -2285,8 +2159,6 @@ var (
 		"ARG": CountryCodeARG,
 		"ARM": CountryCodeARM,
 		"ASM": CountryCodeASM,
-		"ATA": CountryCodeATA,
-		"ATF": CountryCodeATF,
 		"ATG": CountryCodeATG,
 		"AUS": CountryCodeAUS,
 		"AUT": CountryCodeAUT,
@@ -2310,17 +2182,14 @@ var (
 		"BRB": CountryCodeBRB,
 		"BRN": CountryCodeBRN,
 		"BTN": CountryCodeBTN,
-		"BVT": CountryCodeBVT,
 		"BWA": CountryCodeBWA,
 		"CAF": CountryCodeCAF,
 		"CAN": CountryCodeCAN,
-		"CCK": CountryCodeCCK,
 		"CHE": CountryCodeCHE,
 		"CHL": CountryCodeCHL,
 		"CHN": CountryCodeCHN,
 		"CIV": CountryCodeCIV,
 		"CMR": CountryCodeCMR,
-		"COD": CountryCodeCOD,
 		"COG": CountryCodeCOG,
 		"COK": CountryCodeCOK,
 		"COL": CountryCodeCOL,
@@ -2329,7 +2198,6 @@ var (
 		"CRI": CountryCodeCRI,
 		"CUB": CountryCodeCUB,
 		"CUW": CountryCodeCUW,
-		"CXR": CountryCodeCXR,
 		"CYM": CountryCodeCYM,
 		"CYP": CountryCodeCYP,
 		"CZE": CountryCodeCZE,
@@ -2350,7 +2218,6 @@ var (
 		"FJI": CountryCodeFJI,
 		"FLK": CountryCodeFLK,
 		"FRA": CountryCodeFRA,
-		"FRO": CountryCodeFRO,
 		"FSM": CountryCodeFSM,
 		"GAB": CountryCodeGAB,
 		"GBR": CountryCodeGBR,
@@ -2370,8 +2237,6 @@ var (
 		"GUF": CountryCodeGUF,
 		"GUM": CountryCodeGUM,
 		"GUY": CountryCodeGUY,
-		"HKG": CountryCodeHKG,
-		"HMD": CountryCodeHMD,
 		"HND": CountryCodeHND,
 		"HRV": CountryCodeHRV,
 		"HTI": CountryCodeHTI,
@@ -2379,7 +2244,6 @@ var (
 		"IDN": CountryCodeIDN,
 		"IMN": CountryCodeIMN,
 		"IND": CountryCodeIND,
-		"IOT": CountryCodeIOT,
 		"IRL": CountryCodeIRL,
 		"IRN": CountryCodeIRN,
 		"IRQ": CountryCodeIRQ,
@@ -2458,7 +2322,6 @@ var (
 		"PRK": CountryCodePRK,
 		"PRT": CountryCodePRT,
 		"PRY": CountryCodePRY,
-		"PSE": CountryCodePSE,
 		"PYF": CountryCodePYF,
 		"QAT": CountryCodeQAT,
 		"REU": CountryCodeREU,
@@ -2469,7 +2332,6 @@ var (
 		"SDN": CountryCodeSDN,
 		"SEN": CountryCodeSEN,
 		"SGP": CountryCodeSGP,
-		"SGS": CountryCodeSGS,
 		"SHN": CountryCodeSHN,
 		"SJM": CountryCodeSJM,
 		"SLB": CountryCodeSLB,
@@ -2502,11 +2364,9 @@ var (
 		"TUN": CountryCodeTUN,
 		"TUR": CountryCodeTUR,
 		"TUV": CountryCodeTUV,
-		"TWN": CountryCodeTWN,
 		"TZA": CountryCodeTZA,
 		"UGA": CountryCodeUGA,
 		"UKR": CountryCodeUKR,
-		"UMI": CountryCodeUMI,
 		"URY": CountryCodeURY,
 		"USA": CountryCodeUSA,
 		"UZB": CountryCodeUZB,
@@ -2547,7 +2407,7 @@ var (
 		CurrencyCode: pbmoney.CurrencyCodeAFN,
 	}
 	country4 = &Country{
-		Name:         "Antigua and Barbuda",
+		Name:         "Antigua & Barbuda",
 		Alpha_2Code:  CountryCodeAG,
 		Alpha_3Code:  CountryCodeATG,
 		NumericCode:  28,
@@ -2582,1686 +2442,1588 @@ var (
 		CurrencyCode: pbmoney.CurrencyCodeAOA,
 	}
 	country9 = &Country{
-		Name:         "Antarctica",
-		Alpha_2Code:  CountryCodeAQ,
-		Alpha_3Code:  CountryCodeATA,
-		NumericCode:  10,
-		CurrencyCode: pbmoney.CurrencyCode_CURRENCY_CODE_NONE,
-	}
-	country10 = &Country{
 		Name:         "Argentina",
 		Alpha_2Code:  CountryCodeAR,
 		Alpha_3Code:  CountryCodeARG,
 		NumericCode:  32,
 		CurrencyCode: pbmoney.CurrencyCodeARS,
 	}
-	country11 = &Country{
+	country10 = &Country{
 		Name:         "American Samoa",
 		Alpha_2Code:  CountryCodeAS,
 		Alpha_3Code:  CountryCodeASM,
 		NumericCode:  16,
 		CurrencyCode: pbmoney.CurrencyCodeUSD,
 	}
-	country12 = &Country{
+	country11 = &Country{
 		Name:         "Austria",
 		Alpha_2Code:  CountryCodeAT,
 		Alpha_3Code:  CountryCodeAUT,
 		NumericCode:  40,
 		CurrencyCode: pbmoney.CurrencyCodeEUR,
 	}
-	country13 = &Country{
+	country12 = &Country{
 		Name:         "Australia",
 		Alpha_2Code:  CountryCodeAU,
 		Alpha_3Code:  CountryCodeAUS,
 		NumericCode:  36,
 		CurrencyCode: pbmoney.CurrencyCodeAUD,
 	}
-	country14 = &Country{
+	country13 = &Country{
 		Name:         "Aruba",
 		Alpha_2Code:  CountryCodeAW,
 		Alpha_3Code:  CountryCodeABW,
 		NumericCode:  533,
 		CurrencyCode: pbmoney.CurrencyCodeAWG,
 	}
-	country15 = &Country{
+	country14 = &Country{
 		Name:         "Åland Islands",
 		Alpha_2Code:  CountryCodeAX,
 		Alpha_3Code:  CountryCodeALA,
 		NumericCode:  248,
 		CurrencyCode: pbmoney.CurrencyCodeEUR,
 	}
-	country16 = &Country{
+	country15 = &Country{
 		Name:         "Azerbaijan",
 		Alpha_2Code:  CountryCodeAZ,
 		Alpha_3Code:  CountryCodeAZE,
 		NumericCode:  31,
 		CurrencyCode: pbmoney.CurrencyCodeAZN,
 	}
-	country17 = &Country{
-		Name:         "Bosnia and Herzegovina",
+	country16 = &Country{
+		Name:         "Bosnia",
 		Alpha_2Code:  CountryCodeBA,
 		Alpha_3Code:  CountryCodeBIH,
 		NumericCode:  70,
 		CurrencyCode: pbmoney.CurrencyCodeBAM,
 	}
-	country18 = &Country{
+	country17 = &Country{
 		Name:         "Barbados",
 		Alpha_2Code:  CountryCodeBB,
 		Alpha_3Code:  CountryCodeBRB,
 		NumericCode:  52,
 		CurrencyCode: pbmoney.CurrencyCodeBBD,
 	}
-	country19 = &Country{
+	country18 = &Country{
 		Name:         "Bangladesh",
 		Alpha_2Code:  CountryCodeBD,
 		Alpha_3Code:  CountryCodeBGD,
 		NumericCode:  50,
 		CurrencyCode: pbmoney.CurrencyCodeBDT,
 	}
-	country20 = &Country{
+	country19 = &Country{
 		Name:         "Belgium",
 		Alpha_2Code:  CountryCodeBE,
 		Alpha_3Code:  CountryCodeBEL,
 		NumericCode:  56,
 		CurrencyCode: pbmoney.CurrencyCodeEUR,
 	}
-	country21 = &Country{
+	country20 = &Country{
 		Name:         "Burkina Faso",
 		Alpha_2Code:  CountryCodeBF,
 		Alpha_3Code:  CountryCodeBFA,
 		NumericCode:  854,
 		CurrencyCode: pbmoney.CurrencyCodeXOF,
 	}
-	country22 = &Country{
+	country21 = &Country{
 		Name:         "Bulgaria",
 		Alpha_2Code:  CountryCodeBG,
 		Alpha_3Code:  CountryCodeBGR,
 		NumericCode:  100,
 		CurrencyCode: pbmoney.CurrencyCodeBGN,
 	}
-	country23 = &Country{
+	country22 = &Country{
 		Name:         "Bahrain",
 		Alpha_2Code:  CountryCodeBH,
 		Alpha_3Code:  CountryCodeBHR,
 		NumericCode:  48,
 		CurrencyCode: pbmoney.CurrencyCodeBHD,
 	}
-	country24 = &Country{
+	country23 = &Country{
 		Name:         "Burundi",
 		Alpha_2Code:  CountryCodeBI,
 		Alpha_3Code:  CountryCodeBDI,
 		NumericCode:  108,
 		CurrencyCode: pbmoney.CurrencyCodeBIF,
 	}
-	country25 = &Country{
+	country24 = &Country{
 		Name:         "Benin",
 		Alpha_2Code:  CountryCodeBJ,
 		Alpha_3Code:  CountryCodeBEN,
 		NumericCode:  204,
 		CurrencyCode: pbmoney.CurrencyCodeXOF,
 	}
-	country26 = &Country{
-		Name:         "Saint Barthélemy",
+	country25 = &Country{
+		Name:         "St. Barthélemy",
 		Alpha_2Code:  CountryCodeBL,
 		Alpha_3Code:  CountryCodeBLM,
 		NumericCode:  652,
 		CurrencyCode: pbmoney.CurrencyCodeEUR,
 	}
-	country27 = &Country{
+	country26 = &Country{
 		Name:         "Bermuda",
 		Alpha_2Code:  CountryCodeBM,
 		Alpha_3Code:  CountryCodeBMU,
 		NumericCode:  60,
 		CurrencyCode: pbmoney.CurrencyCodeBMD,
 	}
-	country28 = &Country{
-		Name:         "Brunei Darussalam",
+	country27 = &Country{
+		Name:         "Brunei",
 		Alpha_2Code:  CountryCodeBN,
 		Alpha_3Code:  CountryCodeBRN,
 		NumericCode:  96,
 		CurrencyCode: pbmoney.CurrencyCodeBND,
 	}
-	country29 = &Country{
-		Name:         "Bolivia, Plurinational State of",
+	country28 = &Country{
+		Name:         "Bolivia",
 		Alpha_2Code:  CountryCodeBO,
 		Alpha_3Code:  CountryCodeBOL,
 		NumericCode:  68,
 		CurrencyCode: pbmoney.CurrencyCodeBOB,
 	}
-	country30 = &Country{
-		Name:         "Bonaire, Sint Eustatius and Saba",
+	country29 = &Country{
+		Name:         "Caribbean Netherlands",
 		Alpha_2Code:  CountryCodeBQ,
 		Alpha_3Code:  CountryCodeBES,
 		NumericCode:  535,
 		CurrencyCode: pbmoney.CurrencyCodeUSD,
 	}
-	country31 = &Country{
+	country30 = &Country{
 		Name:         "Brazil",
 		Alpha_2Code:  CountryCodeBR,
 		Alpha_3Code:  CountryCodeBRA,
 		NumericCode:  76,
 		CurrencyCode: pbmoney.CurrencyCodeBRL,
 	}
-	country32 = &Country{
+	country31 = &Country{
 		Name:         "Bahamas",
 		Alpha_2Code:  CountryCodeBS,
 		Alpha_3Code:  CountryCodeBHS,
 		NumericCode:  44,
 		CurrencyCode: pbmoney.CurrencyCodeBSD,
 	}
-	country33 = &Country{
+	country32 = &Country{
 		Name:         "Bhutan",
 		Alpha_2Code:  CountryCodeBT,
 		Alpha_3Code:  CountryCodeBTN,
 		NumericCode:  64,
 		CurrencyCode: pbmoney.CurrencyCodeINR,
 	}
-	country34 = &Country{
-		Name:         "Bouvet Island",
-		Alpha_2Code:  CountryCodeBV,
-		Alpha_3Code:  CountryCodeBVT,
-		NumericCode:  74,
-		CurrencyCode: pbmoney.CurrencyCodeNOK,
-	}
-	country35 = &Country{
+	country33 = &Country{
 		Name:         "Botswana",
 		Alpha_2Code:  CountryCodeBW,
 		Alpha_3Code:  CountryCodeBWA,
 		NumericCode:  72,
 		CurrencyCode: pbmoney.CurrencyCodeBWP,
 	}
-	country36 = &Country{
+	country34 = &Country{
 		Name:         "Belarus",
 		Alpha_2Code:  CountryCodeBY,
 		Alpha_3Code:  CountryCodeBLR,
 		NumericCode:  112,
 		CurrencyCode: pbmoney.CurrencyCodeBYR,
 	}
-	country37 = &Country{
+	country35 = &Country{
 		Name:         "Belize",
 		Alpha_2Code:  CountryCodeBZ,
 		Alpha_3Code:  CountryCodeBLZ,
 		NumericCode:  84,
 		CurrencyCode: pbmoney.CurrencyCodeBZD,
 	}
-	country38 = &Country{
+	country36 = &Country{
 		Name:         "Canada",
 		Alpha_2Code:  CountryCodeCA,
 		Alpha_3Code:  CountryCodeCAN,
 		NumericCode:  124,
 		CurrencyCode: pbmoney.CurrencyCodeCAD,
 	}
-	country39 = &Country{
-		Name:         "Cocos (Keeling) Islands",
-		Alpha_2Code:  CountryCodeCC,
-		Alpha_3Code:  CountryCodeCCK,
-		NumericCode:  166,
-		CurrencyCode: pbmoney.CurrencyCodeAUD,
-	}
-	country40 = &Country{
-		Name:         "Congo, the Democratic Republic of the",
-		Alpha_2Code:  CountryCodeCD,
-		Alpha_3Code:  CountryCodeCOD,
-		NumericCode:  180,
-		CurrencyCode: pbmoney.CurrencyCode_CURRENCY_CODE_NONE,
-	}
-	country41 = &Country{
+	country37 = &Country{
 		Name:         "Central African Republic",
 		Alpha_2Code:  CountryCodeCF,
 		Alpha_3Code:  CountryCodeCAF,
 		NumericCode:  140,
 		CurrencyCode: pbmoney.CurrencyCodeXAF,
 	}
-	country42 = &Country{
-		Name:         "Congo",
+	country38 = &Country{
+		Name:         "Congo - Brazzaville",
 		Alpha_2Code:  CountryCodeCG,
 		Alpha_3Code:  CountryCodeCOG,
 		NumericCode:  178,
 		CurrencyCode: pbmoney.CurrencyCodeXAF,
 	}
-	country43 = &Country{
+	country39 = &Country{
 		Name:         "Switzerland",
 		Alpha_2Code:  CountryCodeCH,
 		Alpha_3Code:  CountryCodeCHE,
 		NumericCode:  756,
 		CurrencyCode: pbmoney.CurrencyCodeCHF,
 	}
-	country44 = &Country{
-		Name:         "Côte d'Ivoire",
+	country40 = &Country{
+		Name:         "Côte d’Ivoire",
 		Alpha_2Code:  CountryCodeCI,
 		Alpha_3Code:  CountryCodeCIV,
 		NumericCode:  384,
 		CurrencyCode: pbmoney.CurrencyCodeXOF,
 	}
-	country45 = &Country{
+	country41 = &Country{
 		Name:         "Cook Islands",
 		Alpha_2Code:  CountryCodeCK,
 		Alpha_3Code:  CountryCodeCOK,
 		NumericCode:  184,
 		CurrencyCode: pbmoney.CurrencyCodeNZD,
 	}
-	country46 = &Country{
+	country42 = &Country{
 		Name:         "Chile",
 		Alpha_2Code:  CountryCodeCL,
 		Alpha_3Code:  CountryCodeCHL,
 		NumericCode:  152,
 		CurrencyCode: pbmoney.CurrencyCodeCLP,
 	}
-	country47 = &Country{
+	country43 = &Country{
 		Name:         "Cameroon",
 		Alpha_2Code:  CountryCodeCM,
 		Alpha_3Code:  CountryCodeCMR,
 		NumericCode:  120,
 		CurrencyCode: pbmoney.CurrencyCodeXAF,
 	}
-	country48 = &Country{
+	country44 = &Country{
 		Name:         "China",
 		Alpha_2Code:  CountryCodeCN,
 		Alpha_3Code:  CountryCodeCHN,
 		NumericCode:  156,
 		CurrencyCode: pbmoney.CurrencyCodeCNY,
 	}
-	country49 = &Country{
+	country45 = &Country{
 		Name:         "Colombia",
 		Alpha_2Code:  CountryCodeCO,
 		Alpha_3Code:  CountryCodeCOL,
 		NumericCode:  170,
 		CurrencyCode: pbmoney.CurrencyCodeCOP,
 	}
-	country50 = &Country{
+	country46 = &Country{
 		Name:         "Costa Rica",
 		Alpha_2Code:  CountryCodeCR,
 		Alpha_3Code:  CountryCodeCRI,
 		NumericCode:  188,
 		CurrencyCode: pbmoney.CurrencyCodeCRC,
 	}
-	country51 = &Country{
+	country47 = &Country{
 		Name:         "Cuba",
 		Alpha_2Code:  CountryCodeCU,
 		Alpha_3Code:  CountryCodeCUB,
 		NumericCode:  192,
 		CurrencyCode: pbmoney.CurrencyCodeCUP,
 	}
-	country52 = &Country{
+	country48 = &Country{
 		Name:         "Cape Verde",
 		Alpha_2Code:  CountryCodeCV,
 		Alpha_3Code:  CountryCodeCPV,
 		NumericCode:  132,
 		CurrencyCode: pbmoney.CurrencyCodeCVE,
 	}
-	country53 = &Country{
+	country49 = &Country{
 		Name:         "Curaçao",
 		Alpha_2Code:  CountryCodeCW,
 		Alpha_3Code:  CountryCodeCUW,
 		NumericCode:  531,
 		CurrencyCode: pbmoney.CurrencyCodeANG,
 	}
-	country54 = &Country{
-		Name:         "Christmas Island",
-		Alpha_2Code:  CountryCodeCX,
-		Alpha_3Code:  CountryCodeCXR,
-		NumericCode:  162,
-		CurrencyCode: pbmoney.CurrencyCodeAUD,
-	}
-	country55 = &Country{
+	country50 = &Country{
 		Name:         "Cyprus",
 		Alpha_2Code:  CountryCodeCY,
 		Alpha_3Code:  CountryCodeCYP,
 		NumericCode:  196,
 		CurrencyCode: pbmoney.CurrencyCodeEUR,
 	}
-	country56 = &Country{
-		Name:         "Czech Republic",
+	country51 = &Country{
+		Name:         "Czechia",
 		Alpha_2Code:  CountryCodeCZ,
 		Alpha_3Code:  CountryCodeCZE,
 		NumericCode:  203,
 		CurrencyCode: pbmoney.CurrencyCodeCZK,
 	}
-	country57 = &Country{
+	country52 = &Country{
 		Name:         "Germany",
 		Alpha_2Code:  CountryCodeDE,
 		Alpha_3Code:  CountryCodeDEU,
 		NumericCode:  276,
 		CurrencyCode: pbmoney.CurrencyCodeEUR,
 	}
-	country58 = &Country{
+	country53 = &Country{
 		Name:         "Djibouti",
 		Alpha_2Code:  CountryCodeDJ,
 		Alpha_3Code:  CountryCodeDJI,
 		NumericCode:  262,
 		CurrencyCode: pbmoney.CurrencyCodeDJF,
 	}
-	country59 = &Country{
+	country54 = &Country{
 		Name:         "Denmark",
 		Alpha_2Code:  CountryCodeDK,
 		Alpha_3Code:  CountryCodeDNK,
 		NumericCode:  208,
 		CurrencyCode: pbmoney.CurrencyCodeDKK,
 	}
-	country60 = &Country{
+	country55 = &Country{
 		Name:         "Dominica",
 		Alpha_2Code:  CountryCodeDM,
 		Alpha_3Code:  CountryCodeDMA,
 		NumericCode:  212,
 		CurrencyCode: pbmoney.CurrencyCodeXCD,
 	}
-	country61 = &Country{
+	country56 = &Country{
 		Name:         "Dominican Republic",
 		Alpha_2Code:  CountryCodeDO,
 		Alpha_3Code:  CountryCodeDOM,
 		NumericCode:  214,
 		CurrencyCode: pbmoney.CurrencyCodeDOP,
 	}
-	country62 = &Country{
+	country57 = &Country{
 		Name:         "Algeria",
 		Alpha_2Code:  CountryCodeDZ,
 		Alpha_3Code:  CountryCodeDZA,
 		NumericCode:  12,
 		CurrencyCode: pbmoney.CurrencyCodeDZD,
 	}
-	country63 = &Country{
+	country58 = &Country{
 		Name:         "Ecuador",
 		Alpha_2Code:  CountryCodeEC,
 		Alpha_3Code:  CountryCodeECU,
 		NumericCode:  218,
 		CurrencyCode: pbmoney.CurrencyCodeUSD,
 	}
-	country64 = &Country{
+	country59 = &Country{
 		Name:         "Estonia",
 		Alpha_2Code:  CountryCodeEE,
 		Alpha_3Code:  CountryCodeEST,
 		NumericCode:  233,
 		CurrencyCode: pbmoney.CurrencyCodeEUR,
 	}
-	country65 = &Country{
+	country60 = &Country{
 		Name:         "Egypt",
 		Alpha_2Code:  CountryCodeEG,
 		Alpha_3Code:  CountryCodeEGY,
 		NumericCode:  818,
 		CurrencyCode: pbmoney.CurrencyCodeEGP,
 	}
-	country66 = &Country{
+	country61 = &Country{
 		Name:         "Western Sahara",
 		Alpha_2Code:  CountryCodeEH,
 		Alpha_3Code:  CountryCodeESH,
 		NumericCode:  732,
 		CurrencyCode: pbmoney.CurrencyCodeMAD,
 	}
-	country67 = &Country{
+	country62 = &Country{
 		Name:         "Eritrea",
 		Alpha_2Code:  CountryCodeER,
 		Alpha_3Code:  CountryCodeERI,
 		NumericCode:  232,
 		CurrencyCode: pbmoney.CurrencyCodeERN,
 	}
-	country68 = &Country{
+	country63 = &Country{
 		Name:         "Spain",
 		Alpha_2Code:  CountryCodeES,
 		Alpha_3Code:  CountryCodeESP,
 		NumericCode:  724,
 		CurrencyCode: pbmoney.CurrencyCodeEUR,
 	}
-	country69 = &Country{
+	country64 = &Country{
 		Name:         "Ethiopia",
 		Alpha_2Code:  CountryCodeET,
 		Alpha_3Code:  CountryCodeETH,
 		NumericCode:  231,
 		CurrencyCode: pbmoney.CurrencyCodeETB,
 	}
-	country70 = &Country{
+	country65 = &Country{
 		Name:         "Finland",
 		Alpha_2Code:  CountryCodeFI,
 		Alpha_3Code:  CountryCodeFIN,
 		NumericCode:  246,
 		CurrencyCode: pbmoney.CurrencyCodeEUR,
 	}
-	country71 = &Country{
+	country66 = &Country{
 		Name:         "Fiji",
 		Alpha_2Code:  CountryCodeFJ,
 		Alpha_3Code:  CountryCodeFJI,
 		NumericCode:  242,
 		CurrencyCode: pbmoney.CurrencyCodeFJD,
 	}
-	country72 = &Country{
-		Name:         "Falkland Islands (Malvinas)",
+	country67 = &Country{
+		Name:         "Falkland Islands",
 		Alpha_2Code:  CountryCodeFK,
 		Alpha_3Code:  CountryCodeFLK,
 		NumericCode:  238,
 		CurrencyCode: pbmoney.CurrencyCodeFKP,
 	}
-	country73 = &Country{
-		Name:         "Micronesia, Federated States of",
+	country68 = &Country{
+		Name:         "Micronesia",
 		Alpha_2Code:  CountryCodeFM,
 		Alpha_3Code:  CountryCodeFSM,
 		NumericCode:  583,
 		CurrencyCode: pbmoney.CurrencyCodeUSD,
 	}
-	country74 = &Country{
-		Name:         "Faroe Islands",
-		Alpha_2Code:  CountryCodeFO,
-		Alpha_3Code:  CountryCodeFRO,
-		NumericCode:  234,
-		CurrencyCode: pbmoney.CurrencyCodeDKK,
-	}
-	country75 = &Country{
+	country69 = &Country{
 		Name:         "France",
 		Alpha_2Code:  CountryCodeFR,
 		Alpha_3Code:  CountryCodeFRA,
 		NumericCode:  250,
 		CurrencyCode: pbmoney.CurrencyCodeEUR,
 	}
-	country76 = &Country{
+	country70 = &Country{
 		Name:         "Gabon",
 		Alpha_2Code:  CountryCodeGA,
 		Alpha_3Code:  CountryCodeGAB,
 		NumericCode:  266,
 		CurrencyCode: pbmoney.CurrencyCodeXAF,
 	}
-	country77 = &Country{
-		Name:         "United Kingdom",
+	country71 = &Country{
+		Name:         "UK",
 		Alpha_2Code:  CountryCodeGB,
 		Alpha_3Code:  CountryCodeGBR,
 		NumericCode:  826,
 		CurrencyCode: pbmoney.CurrencyCodeGBP,
 	}
-	country78 = &Country{
+	country72 = &Country{
 		Name:         "Grenada",
 		Alpha_2Code:  CountryCodeGD,
 		Alpha_3Code:  CountryCodeGRD,
 		NumericCode:  308,
 		CurrencyCode: pbmoney.CurrencyCodeXCD,
 	}
-	country79 = &Country{
+	country73 = &Country{
 		Name:         "Georgia",
 		Alpha_2Code:  CountryCodeGE,
 		Alpha_3Code:  CountryCodeGEO,
 		NumericCode:  268,
 		CurrencyCode: pbmoney.CurrencyCodeGEL,
 	}
-	country80 = &Country{
+	country74 = &Country{
 		Name:         "French Guiana",
 		Alpha_2Code:  CountryCodeGF,
 		Alpha_3Code:  CountryCodeGUF,
 		NumericCode:  254,
 		CurrencyCode: pbmoney.CurrencyCodeEUR,
 	}
-	country81 = &Country{
+	country75 = &Country{
 		Name:         "Guernsey",
 		Alpha_2Code:  CountryCodeGG,
 		Alpha_3Code:  CountryCodeGGY,
 		NumericCode:  831,
 		CurrencyCode: pbmoney.CurrencyCodeGBP,
 	}
-	country82 = &Country{
+	country76 = &Country{
 		Name:         "Ghana",
 		Alpha_2Code:  CountryCodeGH,
 		Alpha_3Code:  CountryCodeGHA,
 		NumericCode:  288,
 		CurrencyCode: pbmoney.CurrencyCodeGHS,
 	}
-	country83 = &Country{
+	country77 = &Country{
 		Name:         "Gibraltar",
 		Alpha_2Code:  CountryCodeGI,
 		Alpha_3Code:  CountryCodeGIB,
 		NumericCode:  292,
 		CurrencyCode: pbmoney.CurrencyCodeGIP,
 	}
-	country84 = &Country{
+	country78 = &Country{
 		Name:         "Greenland",
 		Alpha_2Code:  CountryCodeGL,
 		Alpha_3Code:  CountryCodeGRL,
 		NumericCode:  304,
 		CurrencyCode: pbmoney.CurrencyCodeDKK,
 	}
-	country85 = &Country{
+	country79 = &Country{
 		Name:         "Gambia",
 		Alpha_2Code:  CountryCodeGM,
 		Alpha_3Code:  CountryCodeGMB,
 		NumericCode:  270,
 		CurrencyCode: pbmoney.CurrencyCodeGMD,
 	}
-	country86 = &Country{
+	country80 = &Country{
 		Name:         "Guinea",
 		Alpha_2Code:  CountryCodeGN,
 		Alpha_3Code:  CountryCodeGIN,
 		NumericCode:  324,
 		CurrencyCode: pbmoney.CurrencyCodeGNF,
 	}
-	country87 = &Country{
+	country81 = &Country{
 		Name:         "Guadeloupe",
 		Alpha_2Code:  CountryCodeGP,
 		Alpha_3Code:  CountryCodeGLP,
 		NumericCode:  312,
 		CurrencyCode: pbmoney.CurrencyCodeEUR,
 	}
-	country88 = &Country{
+	country82 = &Country{
 		Name:         "Equatorial Guinea",
 		Alpha_2Code:  CountryCodeGQ,
 		Alpha_3Code:  CountryCodeGNQ,
 		NumericCode:  226,
 		CurrencyCode: pbmoney.CurrencyCodeXAF,
 	}
-	country89 = &Country{
+	country83 = &Country{
 		Name:         "Greece",
 		Alpha_2Code:  CountryCodeGR,
 		Alpha_3Code:  CountryCodeGRC,
 		NumericCode:  300,
 		CurrencyCode: pbmoney.CurrencyCodeEUR,
 	}
-	country90 = &Country{
-		Name:         "South Georgia and the South Sandwich Islands",
-		Alpha_2Code:  CountryCodeGS,
-		Alpha_3Code:  CountryCodeSGS,
-		NumericCode:  239,
-		CurrencyCode: pbmoney.CurrencyCode_CURRENCY_CODE_NONE,
-	}
-	country91 = &Country{
+	country84 = &Country{
 		Name:         "Guatemala",
 		Alpha_2Code:  CountryCodeGT,
 		Alpha_3Code:  CountryCodeGTM,
 		NumericCode:  320,
 		CurrencyCode: pbmoney.CurrencyCodeGTQ,
 	}
-	country92 = &Country{
+	country85 = &Country{
 		Name:         "Guam",
 		Alpha_2Code:  CountryCodeGU,
 		Alpha_3Code:  CountryCodeGUM,
 		NumericCode:  316,
 		CurrencyCode: pbmoney.CurrencyCodeUSD,
 	}
-	country93 = &Country{
+	country86 = &Country{
 		Name:         "Guinea-Bissau",
 		Alpha_2Code:  CountryCodeGW,
 		Alpha_3Code:  CountryCodeGNB,
 		NumericCode:  624,
 		CurrencyCode: pbmoney.CurrencyCodeXOF,
 	}
-	country94 = &Country{
+	country87 = &Country{
 		Name:         "Guyana",
 		Alpha_2Code:  CountryCodeGY,
 		Alpha_3Code:  CountryCodeGUY,
 		NumericCode:  328,
 		CurrencyCode: pbmoney.CurrencyCodeGYD,
 	}
-	country95 = &Country{
-		Name:         "Hong Kong",
-		Alpha_2Code:  CountryCodeHK,
-		Alpha_3Code:  CountryCodeHKG,
-		NumericCode:  344,
-		CurrencyCode: pbmoney.CurrencyCodeHKD,
-	}
-	country96 = &Country{
-		Name:         "Heard Island and McDonald Islands",
-		Alpha_2Code:  CountryCodeHM,
-		Alpha_3Code:  CountryCodeHMD,
-		NumericCode:  334,
-		CurrencyCode: pbmoney.CurrencyCodeAUD,
-	}
-	country97 = &Country{
+	country88 = &Country{
 		Name:         "Honduras",
 		Alpha_2Code:  CountryCodeHN,
 		Alpha_3Code:  CountryCodeHND,
 		NumericCode:  340,
 		CurrencyCode: pbmoney.CurrencyCodeHNL,
 	}
-	country98 = &Country{
+	country89 = &Country{
 		Name:         "Croatia",
 		Alpha_2Code:  CountryCodeHR,
 		Alpha_3Code:  CountryCodeHRV,
 		NumericCode:  191,
 		CurrencyCode: pbmoney.CurrencyCodeHRK,
 	}
-	country99 = &Country{
+	country90 = &Country{
 		Name:         "Haiti",
 		Alpha_2Code:  CountryCodeHT,
 		Alpha_3Code:  CountryCodeHTI,
 		NumericCode:  332,
 		CurrencyCode: pbmoney.CurrencyCodeUSD,
 	}
-	country100 = &Country{
+	country91 = &Country{
 		Name:         "Hungary",
 		Alpha_2Code:  CountryCodeHU,
 		Alpha_3Code:  CountryCodeHUN,
 		NumericCode:  348,
 		CurrencyCode: pbmoney.CurrencyCodeHUF,
 	}
-	country101 = &Country{
+	country92 = &Country{
 		Name:         "Indonesia",
 		Alpha_2Code:  CountryCodeID,
 		Alpha_3Code:  CountryCodeIDN,
 		NumericCode:  360,
 		CurrencyCode: pbmoney.CurrencyCodeIDR,
 	}
-	country102 = &Country{
+	country93 = &Country{
 		Name:         "Ireland",
 		Alpha_2Code:  CountryCodeIE,
 		Alpha_3Code:  CountryCodeIRL,
 		NumericCode:  372,
 		CurrencyCode: pbmoney.CurrencyCodeEUR,
 	}
-	country103 = &Country{
+	country94 = &Country{
 		Name:         "Israel",
 		Alpha_2Code:  CountryCodeIL,
 		Alpha_3Code:  CountryCodeISR,
 		NumericCode:  376,
 		CurrencyCode: pbmoney.CurrencyCodeILS,
 	}
-	country104 = &Country{
+	country95 = &Country{
 		Name:         "Isle of Man",
 		Alpha_2Code:  CountryCodeIM,
 		Alpha_3Code:  CountryCodeIMN,
 		NumericCode:  833,
 		CurrencyCode: pbmoney.CurrencyCodeGBP,
 	}
-	country105 = &Country{
+	country96 = &Country{
 		Name:         "India",
 		Alpha_2Code:  CountryCodeIN,
 		Alpha_3Code:  CountryCodeIND,
 		NumericCode:  356,
 		CurrencyCode: pbmoney.CurrencyCodeINR,
 	}
-	country106 = &Country{
-		Name:         "British Indian Ocean Territory",
-		Alpha_2Code:  CountryCodeIO,
-		Alpha_3Code:  CountryCodeIOT,
-		NumericCode:  86,
-		CurrencyCode: pbmoney.CurrencyCodeUSD,
-	}
-	country107 = &Country{
+	country97 = &Country{
 		Name:         "Iraq",
 		Alpha_2Code:  CountryCodeIQ,
 		Alpha_3Code:  CountryCodeIRQ,
 		NumericCode:  368,
 		CurrencyCode: pbmoney.CurrencyCodeIQD,
 	}
-	country108 = &Country{
-		Name:         "Iran, Islamic Republic of",
+	country98 = &Country{
+		Name:         "Iran",
 		Alpha_2Code:  CountryCodeIR,
 		Alpha_3Code:  CountryCodeIRN,
 		NumericCode:  364,
 		CurrencyCode: pbmoney.CurrencyCodeIRR,
 	}
-	country109 = &Country{
+	country99 = &Country{
 		Name:         "Iceland",
 		Alpha_2Code:  CountryCodeIS,
 		Alpha_3Code:  CountryCodeISL,
 		NumericCode:  352,
 		CurrencyCode: pbmoney.CurrencyCodeISK,
 	}
-	country110 = &Country{
+	country100 = &Country{
 		Name:         "Italy",
 		Alpha_2Code:  CountryCodeIT,
 		Alpha_3Code:  CountryCodeITA,
 		NumericCode:  380,
 		CurrencyCode: pbmoney.CurrencyCodeEUR,
 	}
-	country111 = &Country{
+	country101 = &Country{
 		Name:         "Jersey",
 		Alpha_2Code:  CountryCodeJE,
 		Alpha_3Code:  CountryCodeJEY,
 		NumericCode:  832,
 		CurrencyCode: pbmoney.CurrencyCodeGBP,
 	}
-	country112 = &Country{
+	country102 = &Country{
 		Name:         "Jamaica",
 		Alpha_2Code:  CountryCodeJM,
 		Alpha_3Code:  CountryCodeJAM,
 		NumericCode:  388,
 		CurrencyCode: pbmoney.CurrencyCodeJMD,
 	}
-	country113 = &Country{
+	country103 = &Country{
 		Name:         "Jordan",
 		Alpha_2Code:  CountryCodeJO,
 		Alpha_3Code:  CountryCodeJOR,
 		NumericCode:  400,
 		CurrencyCode: pbmoney.CurrencyCodeJOD,
 	}
-	country114 = &Country{
+	country104 = &Country{
 		Name:         "Japan",
 		Alpha_2Code:  CountryCodeJP,
 		Alpha_3Code:  CountryCodeJPN,
 		NumericCode:  392,
 		CurrencyCode: pbmoney.CurrencyCodeJPY,
 	}
-	country115 = &Country{
+	country105 = &Country{
 		Name:         "Kenya",
 		Alpha_2Code:  CountryCodeKE,
 		Alpha_3Code:  CountryCodeKEN,
 		NumericCode:  404,
 		CurrencyCode: pbmoney.CurrencyCodeKES,
 	}
-	country116 = &Country{
+	country106 = &Country{
 		Name:         "Kyrgyzstan",
 		Alpha_2Code:  CountryCodeKG,
 		Alpha_3Code:  CountryCodeKGZ,
 		NumericCode:  417,
 		CurrencyCode: pbmoney.CurrencyCodeKGS,
 	}
-	country117 = &Country{
+	country107 = &Country{
 		Name:         "Cambodia",
 		Alpha_2Code:  CountryCodeKH,
 		Alpha_3Code:  CountryCodeKHM,
 		NumericCode:  116,
 		CurrencyCode: pbmoney.CurrencyCodeKHR,
 	}
-	country118 = &Country{
+	country108 = &Country{
 		Name:         "Kiribati",
 		Alpha_2Code:  CountryCodeKI,
 		Alpha_3Code:  CountryCodeKIR,
 		NumericCode:  296,
 		CurrencyCode: pbmoney.CurrencyCodeAUD,
 	}
-	country119 = &Country{
+	country109 = &Country{
 		Name:         "Comoros",
 		Alpha_2Code:  CountryCodeKM,
 		Alpha_3Code:  CountryCodeCOM,
 		NumericCode:  174,
 		CurrencyCode: pbmoney.CurrencyCodeKMF,
 	}
-	country120 = &Country{
-		Name:         "Saint Kitts and Nevis",
+	country110 = &Country{
+		Name:         "St. Kitts & Nevis",
 		Alpha_2Code:  CountryCodeKN,
 		Alpha_3Code:  CountryCodeKNA,
 		NumericCode:  659,
 		CurrencyCode: pbmoney.CurrencyCodeXCD,
 	}
-	country121 = &Country{
-		Name:         "Korea, Democratic People's Republic of",
+	country111 = &Country{
+		Name:         "North Korea",
 		Alpha_2Code:  CountryCodeKP,
 		Alpha_3Code:  CountryCodePRK,
 		NumericCode:  408,
 		CurrencyCode: pbmoney.CurrencyCodeKPW,
 	}
-	country122 = &Country{
-		Name:         "Korea, Republic of",
+	country112 = &Country{
+		Name:         "South Korea",
 		Alpha_2Code:  CountryCodeKR,
 		Alpha_3Code:  CountryCodeKOR,
 		NumericCode:  410,
 		CurrencyCode: pbmoney.CurrencyCodeKRW,
 	}
-	country123 = &Country{
+	country113 = &Country{
 		Name:         "Kuwait",
 		Alpha_2Code:  CountryCodeKW,
 		Alpha_3Code:  CountryCodeKWT,
 		NumericCode:  414,
 		CurrencyCode: pbmoney.CurrencyCodeKWD,
 	}
-	country124 = &Country{
+	country114 = &Country{
 		Name:         "Cayman Islands",
 		Alpha_2Code:  CountryCodeKY,
 		Alpha_3Code:  CountryCodeCYM,
 		NumericCode:  136,
 		CurrencyCode: pbmoney.CurrencyCodeKYD,
 	}
-	country125 = &Country{
+	country115 = &Country{
 		Name:         "Kazakhstan",
 		Alpha_2Code:  CountryCodeKZ,
 		Alpha_3Code:  CountryCodeKAZ,
 		NumericCode:  398,
 		CurrencyCode: pbmoney.CurrencyCodeKZT,
 	}
-	country126 = &Country{
-		Name:         "Lao People's Democratic Republic",
+	country116 = &Country{
+		Name:         "Laos",
 		Alpha_2Code:  CountryCodeLA,
 		Alpha_3Code:  CountryCodeLAO,
 		NumericCode:  418,
 		CurrencyCode: pbmoney.CurrencyCodeLAK,
 	}
-	country127 = &Country{
+	country117 = &Country{
 		Name:         "Lebanon",
 		Alpha_2Code:  CountryCodeLB,
 		Alpha_3Code:  CountryCodeLBN,
 		NumericCode:  422,
 		CurrencyCode: pbmoney.CurrencyCodeLBP,
 	}
-	country128 = &Country{
-		Name:         "Saint Lucia",
+	country118 = &Country{
+		Name:         "St. Lucia",
 		Alpha_2Code:  CountryCodeLC,
 		Alpha_3Code:  CountryCodeLCA,
 		NumericCode:  662,
 		CurrencyCode: pbmoney.CurrencyCodeXCD,
 	}
-	country129 = &Country{
+	country119 = &Country{
 		Name:         "Liechtenstein",
 		Alpha_2Code:  CountryCodeLI,
 		Alpha_3Code:  CountryCodeLIE,
 		NumericCode:  438,
 		CurrencyCode: pbmoney.CurrencyCodeCHF,
 	}
-	country130 = &Country{
+	country120 = &Country{
 		Name:         "Sri Lanka",
 		Alpha_2Code:  CountryCodeLK,
 		Alpha_3Code:  CountryCodeLKA,
 		NumericCode:  144,
 		CurrencyCode: pbmoney.CurrencyCodeLKR,
 	}
-	country131 = &Country{
+	country121 = &Country{
 		Name:         "Liberia",
 		Alpha_2Code:  CountryCodeLR,
 		Alpha_3Code:  CountryCodeLBR,
 		NumericCode:  430,
 		CurrencyCode: pbmoney.CurrencyCodeLRD,
 	}
-	country132 = &Country{
+	country122 = &Country{
 		Name:         "Lesotho",
 		Alpha_2Code:  CountryCodeLS,
 		Alpha_3Code:  CountryCodeLSO,
 		NumericCode:  426,
 		CurrencyCode: pbmoney.CurrencyCodeZAR,
 	}
-	country133 = &Country{
+	country123 = &Country{
 		Name:         "Lithuania",
 		Alpha_2Code:  CountryCodeLT,
 		Alpha_3Code:  CountryCodeLTU,
 		NumericCode:  440,
 		CurrencyCode: pbmoney.CurrencyCodeEUR,
 	}
-	country134 = &Country{
+	country124 = &Country{
 		Name:         "Luxembourg",
 		Alpha_2Code:  CountryCodeLU,
 		Alpha_3Code:  CountryCodeLUX,
 		NumericCode:  442,
 		CurrencyCode: pbmoney.CurrencyCodeEUR,
 	}
-	country135 = &Country{
+	country125 = &Country{
 		Name:         "Latvia",
 		Alpha_2Code:  CountryCodeLV,
 		Alpha_3Code:  CountryCodeLVA,
 		NumericCode:  428,
 		CurrencyCode: pbmoney.CurrencyCodeEUR,
 	}
-	country136 = &Country{
+	country126 = &Country{
 		Name:         "Libya",
 		Alpha_2Code:  CountryCodeLY,
 		Alpha_3Code:  CountryCodeLBY,
 		NumericCode:  434,
 		CurrencyCode: pbmoney.CurrencyCodeLYD,
 	}
-	country137 = &Country{
+	country127 = &Country{
 		Name:         "Morocco",
 		Alpha_2Code:  CountryCodeMA,
 		Alpha_3Code:  CountryCodeMAR,
 		NumericCode:  504,
 		CurrencyCode: pbmoney.CurrencyCodeMAD,
 	}
-	country138 = &Country{
+	country128 = &Country{
 		Name:         "Monaco",
 		Alpha_2Code:  CountryCodeMC,
 		Alpha_3Code:  CountryCodeMCO,
 		NumericCode:  492,
 		CurrencyCode: pbmoney.CurrencyCodeEUR,
 	}
-	country139 = &Country{
-		Name:         "Moldova, Republic of",
+	country129 = &Country{
+		Name:         "Moldova",
 		Alpha_2Code:  CountryCodeMD,
 		Alpha_3Code:  CountryCodeMDA,
 		NumericCode:  498,
 		CurrencyCode: pbmoney.CurrencyCodeMDL,
 	}
-	country140 = &Country{
+	country130 = &Country{
 		Name:         "Montenegro",
 		Alpha_2Code:  CountryCodeME,
 		Alpha_3Code:  CountryCodeMNE,
 		NumericCode:  499,
 		CurrencyCode: pbmoney.CurrencyCodeEUR,
 	}
-	country141 = &Country{
-		Name:         "Saint Martin (French part)",
+	country131 = &Country{
+		Name:         "St. Martin",
 		Alpha_2Code:  CountryCodeMF,
 		Alpha_3Code:  CountryCodeMAF,
 		NumericCode:  663,
 		CurrencyCode: pbmoney.CurrencyCodeEUR,
 	}
-	country142 = &Country{
+	country132 = &Country{
 		Name:         "Madagascar",
 		Alpha_2Code:  CountryCodeMG,
 		Alpha_3Code:  CountryCodeMDG,
 		NumericCode:  450,
 		CurrencyCode: pbmoney.CurrencyCodeMGA,
 	}
-	country143 = &Country{
+	country133 = &Country{
 		Name:         "Marshall Islands",
 		Alpha_2Code:  CountryCodeMH,
 		Alpha_3Code:  CountryCodeMHL,
 		NumericCode:  584,
 		CurrencyCode: pbmoney.CurrencyCodeUSD,
 	}
-	country144 = &Country{
-		Name:         "Macedonia, the Former Yugoslav Republic of",
+	country134 = &Country{
+		Name:         "Macedonia",
 		Alpha_2Code:  CountryCodeMK,
 		Alpha_3Code:  CountryCodeMKD,
 		NumericCode:  807,
 		CurrencyCode: pbmoney.CurrencyCodeMKD,
 	}
-	country145 = &Country{
+	country135 = &Country{
 		Name:         "Mali",
 		Alpha_2Code:  CountryCodeML,
 		Alpha_3Code:  CountryCodeMLI,
 		NumericCode:  466,
 		CurrencyCode: pbmoney.CurrencyCodeXOF,
 	}
-	country146 = &Country{
+	country136 = &Country{
 		Name:         "Myanmar",
 		Alpha_2Code:  CountryCodeMM,
 		Alpha_3Code:  CountryCodeMMR,
 		NumericCode:  104,
 		CurrencyCode: pbmoney.CurrencyCodeMMK,
 	}
-	country147 = &Country{
+	country137 = &Country{
 		Name:         "Mongolia",
 		Alpha_2Code:  CountryCodeMN,
 		Alpha_3Code:  CountryCodeMNG,
 		NumericCode:  496,
 		CurrencyCode: pbmoney.CurrencyCodeMNT,
 	}
-	country148 = &Country{
-		Name:         "Macao",
+	country138 = &Country{
+		Name:         "Macau",
 		Alpha_2Code:  CountryCodeMO,
 		Alpha_3Code:  CountryCodeMAC,
 		NumericCode:  446,
 		CurrencyCode: pbmoney.CurrencyCodeMOP,
 	}
-	country149 = &Country{
+	country139 = &Country{
 		Name:         "Northern Mariana Islands",
 		Alpha_2Code:  CountryCodeMP,
 		Alpha_3Code:  CountryCodeMNP,
 		NumericCode:  580,
 		CurrencyCode: pbmoney.CurrencyCodeUSD,
 	}
-	country150 = &Country{
+	country140 = &Country{
 		Name:         "Martinique",
 		Alpha_2Code:  CountryCodeMQ,
 		Alpha_3Code:  CountryCodeMTQ,
 		NumericCode:  474,
 		CurrencyCode: pbmoney.CurrencyCodeEUR,
 	}
-	country151 = &Country{
+	country141 = &Country{
 		Name:         "Mauritania",
 		Alpha_2Code:  CountryCodeMR,
 		Alpha_3Code:  CountryCodeMRT,
 		NumericCode:  478,
 		CurrencyCode: pbmoney.CurrencyCodeMRO,
 	}
-	country152 = &Country{
+	country142 = &Country{
 		Name:         "Montserrat",
 		Alpha_2Code:  CountryCodeMS,
 		Alpha_3Code:  CountryCodeMSR,
 		NumericCode:  500,
 		CurrencyCode: pbmoney.CurrencyCodeXCD,
 	}
-	country153 = &Country{
+	country143 = &Country{
 		Name:         "Malta",
 		Alpha_2Code:  CountryCodeMT,
 		Alpha_3Code:  CountryCodeMLT,
 		NumericCode:  470,
 		CurrencyCode: pbmoney.CurrencyCodeEUR,
 	}
-	country154 = &Country{
+	country144 = &Country{
 		Name:         "Mauritius",
 		Alpha_2Code:  CountryCodeMU,
 		Alpha_3Code:  CountryCodeMUS,
 		NumericCode:  480,
 		CurrencyCode: pbmoney.CurrencyCodeMUR,
 	}
-	country155 = &Country{
+	country145 = &Country{
 		Name:         "Maldives",
 		Alpha_2Code:  CountryCodeMV,
 		Alpha_3Code:  CountryCodeMDV,
 		NumericCode:  462,
 		CurrencyCode: pbmoney.CurrencyCodeMVR,
 	}
-	country156 = &Country{
+	country146 = &Country{
 		Name:         "Malawi",
 		Alpha_2Code:  CountryCodeMW,
 		Alpha_3Code:  CountryCodeMWI,
 		NumericCode:  454,
 		CurrencyCode: pbmoney.CurrencyCodeMWK,
 	}
-	country157 = &Country{
+	country147 = &Country{
 		Name:         "Mexico",
 		Alpha_2Code:  CountryCodeMX,
 		Alpha_3Code:  CountryCodeMEX,
 		NumericCode:  484,
 		CurrencyCode: pbmoney.CurrencyCodeMXN,
 	}
-	country158 = &Country{
+	country148 = &Country{
 		Name:         "Malaysia",
 		Alpha_2Code:  CountryCodeMY,
 		Alpha_3Code:  CountryCodeMYS,
 		NumericCode:  458,
 		CurrencyCode: pbmoney.CurrencyCodeMYR,
 	}
-	country159 = &Country{
+	country149 = &Country{
 		Name:         "Mozambique",
 		Alpha_2Code:  CountryCodeMZ,
 		Alpha_3Code:  CountryCodeMOZ,
 		NumericCode:  508,
 		CurrencyCode: pbmoney.CurrencyCodeMZN,
 	}
-	country160 = &Country{
+	country150 = &Country{
 		Name:         "Namibia",
 		Alpha_2Code:  CountryCodeNA,
 		Alpha_3Code:  CountryCodeNAM,
 		NumericCode:  516,
 		CurrencyCode: pbmoney.CurrencyCodeZAR,
 	}
-	country161 = &Country{
+	country151 = &Country{
 		Name:         "New Caledonia",
 		Alpha_2Code:  CountryCodeNC,
 		Alpha_3Code:  CountryCodeNCL,
 		NumericCode:  540,
 		CurrencyCode: pbmoney.CurrencyCodeXPF,
 	}
-	country162 = &Country{
+	country152 = &Country{
 		Name:         "Niger",
 		Alpha_2Code:  CountryCodeNE,
 		Alpha_3Code:  CountryCodeNER,
 		NumericCode:  562,
 		CurrencyCode: pbmoney.CurrencyCodeXOF,
 	}
-	country163 = &Country{
+	country153 = &Country{
 		Name:         "Norfolk Island",
 		Alpha_2Code:  CountryCodeNF,
 		Alpha_3Code:  CountryCodeNFK,
 		NumericCode:  574,
 		CurrencyCode: pbmoney.CurrencyCodeAUD,
 	}
-	country164 = &Country{
+	country154 = &Country{
 		Name:         "Nigeria",
 		Alpha_2Code:  CountryCodeNG,
 		Alpha_3Code:  CountryCodeNGA,
 		NumericCode:  566,
 		CurrencyCode: pbmoney.CurrencyCodeNGN,
 	}
-	country165 = &Country{
+	country155 = &Country{
 		Name:         "Nicaragua",
 		Alpha_2Code:  CountryCodeNI,
 		Alpha_3Code:  CountryCodeNIC,
 		NumericCode:  558,
 		CurrencyCode: pbmoney.CurrencyCodeNIO,
 	}
-	country166 = &Country{
+	country156 = &Country{
 		Name:         "Netherlands",
 		Alpha_2Code:  CountryCodeNL,
 		Alpha_3Code:  CountryCodeNLD,
 		NumericCode:  528,
 		CurrencyCode: pbmoney.CurrencyCodeEUR,
 	}
-	country167 = &Country{
+	country157 = &Country{
 		Name:         "Norway",
 		Alpha_2Code:  CountryCodeNO,
 		Alpha_3Code:  CountryCodeNOR,
 		NumericCode:  578,
 		CurrencyCode: pbmoney.CurrencyCodeNOK,
 	}
-	country168 = &Country{
+	country158 = &Country{
 		Name:         "Nepal",
 		Alpha_2Code:  CountryCodeNP,
 		Alpha_3Code:  CountryCodeNPL,
 		NumericCode:  524,
 		CurrencyCode: pbmoney.CurrencyCodeNPR,
 	}
-	country169 = &Country{
+	country159 = &Country{
 		Name:         "Nauru",
 		Alpha_2Code:  CountryCodeNR,
 		Alpha_3Code:  CountryCodeNRU,
 		NumericCode:  520,
 		CurrencyCode: pbmoney.CurrencyCodeAUD,
 	}
-	country170 = &Country{
+	country160 = &Country{
 		Name:         "Niue",
 		Alpha_2Code:  CountryCodeNU,
 		Alpha_3Code:  CountryCodeNIU,
 		NumericCode:  570,
 		CurrencyCode: pbmoney.CurrencyCodeNZD,
 	}
-	country171 = &Country{
+	country161 = &Country{
 		Name:         "New Zealand",
 		Alpha_2Code:  CountryCodeNZ,
 		Alpha_3Code:  CountryCodeNZL,
 		NumericCode:  554,
 		CurrencyCode: pbmoney.CurrencyCodeNZD,
 	}
-	country172 = &Country{
+	country162 = &Country{
 		Name:         "Oman",
 		Alpha_2Code:  CountryCodeOM,
 		Alpha_3Code:  CountryCodeOMN,
 		NumericCode:  512,
 		CurrencyCode: pbmoney.CurrencyCodeOMR,
 	}
-	country173 = &Country{
+	country163 = &Country{
 		Name:         "Panama",
 		Alpha_2Code:  CountryCodePA,
 		Alpha_3Code:  CountryCodePAN,
 		NumericCode:  591,
 		CurrencyCode: pbmoney.CurrencyCodeUSD,
 	}
-	country174 = &Country{
+	country164 = &Country{
 		Name:         "Peru",
 		Alpha_2Code:  CountryCodePE,
 		Alpha_3Code:  CountryCodePER,
 		NumericCode:  604,
 		CurrencyCode: pbmoney.CurrencyCodePEN,
 	}
-	country175 = &Country{
+	country165 = &Country{
 		Name:         "French Polynesia",
 		Alpha_2Code:  CountryCodePF,
 		Alpha_3Code:  CountryCodePYF,
 		NumericCode:  258,
 		CurrencyCode: pbmoney.CurrencyCodeXPF,
 	}
-	country176 = &Country{
+	country166 = &Country{
 		Name:         "Papua New Guinea",
 		Alpha_2Code:  CountryCodePG,
 		Alpha_3Code:  CountryCodePNG,
 		NumericCode:  598,
 		CurrencyCode: pbmoney.CurrencyCodePGK,
 	}
-	country177 = &Country{
+	country167 = &Country{
 		Name:         "Philippines",
 		Alpha_2Code:  CountryCodePH,
 		Alpha_3Code:  CountryCodePHL,
 		NumericCode:  608,
 		CurrencyCode: pbmoney.CurrencyCodePHP,
 	}
-	country178 = &Country{
+	country168 = &Country{
 		Name:         "Pakistan",
 		Alpha_2Code:  CountryCodePK,
 		Alpha_3Code:  CountryCodePAK,
 		NumericCode:  586,
 		CurrencyCode: pbmoney.CurrencyCodePKR,
 	}
-	country179 = &Country{
+	country169 = &Country{
 		Name:         "Poland",
 		Alpha_2Code:  CountryCodePL,
 		Alpha_3Code:  CountryCodePOL,
 		NumericCode:  616,
 		CurrencyCode: pbmoney.CurrencyCodePLN,
 	}
-	country180 = &Country{
-		Name:         "Saint Pierre and Miquelon",
+	country170 = &Country{
+		Name:         "St. Pierre & Miquelon",
 		Alpha_2Code:  CountryCodePM,
 		Alpha_3Code:  CountryCodeSPM,
 		NumericCode:  666,
 		CurrencyCode: pbmoney.CurrencyCodeEUR,
 	}
-	country181 = &Country{
-		Name:         "Pitcairn",
+	country171 = &Country{
+		Name:         "Pitcairn Islands",
 		Alpha_2Code:  CountryCodePN,
 		Alpha_3Code:  CountryCodePCN,
 		NumericCode:  612,
 		CurrencyCode: pbmoney.CurrencyCodeNZD,
 	}
-	country182 = &Country{
+	country172 = &Country{
 		Name:         "Puerto Rico",
 		Alpha_2Code:  CountryCodePR,
 		Alpha_3Code:  CountryCodePRI,
 		NumericCode:  630,
 		CurrencyCode: pbmoney.CurrencyCodeUSD,
 	}
-	country183 = &Country{
-		Name:         "Palestine, State of",
-		Alpha_2Code:  CountryCodePS,
-		Alpha_3Code:  CountryCodePSE,
-		NumericCode:  275,
-		CurrencyCode: pbmoney.CurrencyCode_CURRENCY_CODE_NONE,
-	}
-	country184 = &Country{
+	country173 = &Country{
 		Name:         "Portugal",
 		Alpha_2Code:  CountryCodePT,
 		Alpha_3Code:  CountryCodePRT,
 		NumericCode:  620,
 		CurrencyCode: pbmoney.CurrencyCodeEUR,
 	}
-	country185 = &Country{
+	country174 = &Country{
 		Name:         "Palau",
 		Alpha_2Code:  CountryCodePW,
 		Alpha_3Code:  CountryCodePLW,
 		NumericCode:  585,
 		CurrencyCode: pbmoney.CurrencyCodeUSD,
 	}
-	country186 = &Country{
+	country175 = &Country{
 		Name:         "Paraguay",
 		Alpha_2Code:  CountryCodePY,
 		Alpha_3Code:  CountryCodePRY,
 		NumericCode:  600,
 		CurrencyCode: pbmoney.CurrencyCodePYG,
 	}
-	country187 = &Country{
+	country176 = &Country{
 		Name:         "Qatar",
 		Alpha_2Code:  CountryCodeQA,
 		Alpha_3Code:  CountryCodeQAT,
 		NumericCode:  634,
 		CurrencyCode: pbmoney.CurrencyCodeQAR,
 	}
-	country188 = &Country{
+	country177 = &Country{
 		Name:         "Réunion",
 		Alpha_2Code:  CountryCodeRE,
 		Alpha_3Code:  CountryCodeREU,
 		NumericCode:  638,
 		CurrencyCode: pbmoney.CurrencyCodeEUR,
 	}
-	country189 = &Country{
+	country178 = &Country{
 		Name:         "Romania",
 		Alpha_2Code:  CountryCodeRO,
 		Alpha_3Code:  CountryCodeROU,
 		NumericCode:  642,
 		CurrencyCode: pbmoney.CurrencyCodeRON,
 	}
-	country190 = &Country{
+	country179 = &Country{
 		Name:         "Serbia",
 		Alpha_2Code:  CountryCodeRS,
 		Alpha_3Code:  CountryCodeSRB,
 		NumericCode:  688,
 		CurrencyCode: pbmoney.CurrencyCodeRSD,
 	}
-	country191 = &Country{
-		Name:         "Russian Federation",
+	country180 = &Country{
+		Name:         "Russia",
 		Alpha_2Code:  CountryCodeRU,
 		Alpha_3Code:  CountryCodeRUS,
 		NumericCode:  643,
 		CurrencyCode: pbmoney.CurrencyCodeRUB,
 	}
-	country192 = &Country{
+	country181 = &Country{
 		Name:         "Rwanda",
 		Alpha_2Code:  CountryCodeRW,
 		Alpha_3Code:  CountryCodeRWA,
 		NumericCode:  646,
 		CurrencyCode: pbmoney.CurrencyCodeRWF,
 	}
-	country193 = &Country{
+	country182 = &Country{
 		Name:         "Saudi Arabia",
 		Alpha_2Code:  CountryCodeSA,
 		Alpha_3Code:  CountryCodeSAU,
 		NumericCode:  682,
 		CurrencyCode: pbmoney.CurrencyCodeSAR,
 	}
-	country194 = &Country{
+	country183 = &Country{
 		Name:         "Solomon Islands",
 		Alpha_2Code:  CountryCodeSB,
 		Alpha_3Code:  CountryCodeSLB,
 		NumericCode:  90,
 		CurrencyCode: pbmoney.CurrencyCodeSBD,
 	}
-	country195 = &Country{
+	country184 = &Country{
 		Name:         "Seychelles",
 		Alpha_2Code:  CountryCodeSC,
 		Alpha_3Code:  CountryCodeSYC,
 		NumericCode:  690,
 		CurrencyCode: pbmoney.CurrencyCodeSCR,
 	}
-	country196 = &Country{
+	country185 = &Country{
 		Name:         "Sudan",
 		Alpha_2Code:  CountryCodeSD,
 		Alpha_3Code:  CountryCodeSDN,
 		NumericCode:  729,
 		CurrencyCode: pbmoney.CurrencyCodeSDG,
 	}
-	country197 = &Country{
+	country186 = &Country{
 		Name:         "Sweden",
 		Alpha_2Code:  CountryCodeSE,
 		Alpha_3Code:  CountryCodeSWE,
 		NumericCode:  752,
 		CurrencyCode: pbmoney.CurrencyCodeSEK,
 	}
-	country198 = &Country{
+	country187 = &Country{
 		Name:         "Singapore",
 		Alpha_2Code:  CountryCodeSG,
 		Alpha_3Code:  CountryCodeSGP,
 		NumericCode:  702,
 		CurrencyCode: pbmoney.CurrencyCodeSGD,
 	}
-	country199 = &Country{
-		Name:         "Saint Helena, Ascension and Tristan da Cunha",
+	country188 = &Country{
+		Name:         "St. Helena",
 		Alpha_2Code:  CountryCodeSH,
 		Alpha_3Code:  CountryCodeSHN,
 		NumericCode:  654,
 		CurrencyCode: pbmoney.CurrencyCodeSHP,
 	}
-	country200 = &Country{
+	country189 = &Country{
 		Name:         "Slovenia",
 		Alpha_2Code:  CountryCodeSI,
 		Alpha_3Code:  CountryCodeSVN,
 		NumericCode:  705,
 		CurrencyCode: pbmoney.CurrencyCodeEUR,
 	}
-	country201 = &Country{
-		Name:         "Svalbard and Jan Mayen",
+	country190 = &Country{
+		Name:         "Svalbard & Jan Mayen",
 		Alpha_2Code:  CountryCodeSJ,
 		Alpha_3Code:  CountryCodeSJM,
 		NumericCode:  744,
 		CurrencyCode: pbmoney.CurrencyCodeNOK,
 	}
-	country202 = &Country{
+	country191 = &Country{
 		Name:         "Slovakia",
 		Alpha_2Code:  CountryCodeSK,
 		Alpha_3Code:  CountryCodeSVK,
 		NumericCode:  703,
 		CurrencyCode: pbmoney.CurrencyCodeEUR,
 	}
-	country203 = &Country{
+	country192 = &Country{
 		Name:         "Sierra Leone",
 		Alpha_2Code:  CountryCodeSL,
 		Alpha_3Code:  CountryCodeSLE,
 		NumericCode:  694,
 		CurrencyCode: pbmoney.CurrencyCodeSLL,
 	}
-	country204 = &Country{
+	country193 = &Country{
 		Name:         "San Marino",
 		Alpha_2Code:  CountryCodeSM,
 		Alpha_3Code:  CountryCodeSMR,
 		NumericCode:  674,
 		CurrencyCode: pbmoney.CurrencyCodeEUR,
 	}
-	country205 = &Country{
+	country194 = &Country{
 		Name:         "Senegal",
 		Alpha_2Code:  CountryCodeSN,
 		Alpha_3Code:  CountryCodeSEN,
 		NumericCode:  686,
 		CurrencyCode: pbmoney.CurrencyCodeXOF,
 	}
-	country206 = &Country{
+	country195 = &Country{
 		Name:         "Somalia",
 		Alpha_2Code:  CountryCodeSO,
 		Alpha_3Code:  CountryCodeSOM,
 		NumericCode:  706,
 		CurrencyCode: pbmoney.CurrencyCodeSOS,
 	}
-	country207 = &Country{
+	country196 = &Country{
 		Name:         "Suriname",
 		Alpha_2Code:  CountryCodeSR,
 		Alpha_3Code:  CountryCodeSUR,
 		NumericCode:  740,
 		CurrencyCode: pbmoney.CurrencyCodeSRD,
 	}
-	country208 = &Country{
+	country197 = &Country{
 		Name:         "South Sudan",
 		Alpha_2Code:  CountryCodeSS,
 		Alpha_3Code:  CountryCodeSSD,
 		NumericCode:  728,
 		CurrencyCode: pbmoney.CurrencyCodeSSP,
 	}
-	country209 = &Country{
-		Name:         "Sao Tome and Principe",
+	country198 = &Country{
+		Name:         "São Tomé & Príncipe",
 		Alpha_2Code:  CountryCodeST,
 		Alpha_3Code:  CountryCodeSTP,
 		NumericCode:  678,
 		CurrencyCode: pbmoney.CurrencyCodeSTD,
 	}
-	country210 = &Country{
+	country199 = &Country{
 		Name:         "El Salvador",
 		Alpha_2Code:  CountryCodeSV,
 		Alpha_3Code:  CountryCodeSLV,
 		NumericCode:  222,
 		CurrencyCode: pbmoney.CurrencyCodeUSD,
 	}
-	country211 = &Country{
-		Name:         "Sint Maarten (Dutch part)",
+	country200 = &Country{
+		Name:         "Sint Maarten",
 		Alpha_2Code:  CountryCodeSX,
 		Alpha_3Code:  CountryCodeSXM,
 		NumericCode:  534,
 		CurrencyCode: pbmoney.CurrencyCodeANG,
 	}
-	country212 = &Country{
-		Name:         "Syrian Arab Republic",
+	country201 = &Country{
+		Name:         "Syria",
 		Alpha_2Code:  CountryCodeSY,
 		Alpha_3Code:  CountryCodeSYR,
 		NumericCode:  760,
 		CurrencyCode: pbmoney.CurrencyCodeSYP,
 	}
-	country213 = &Country{
+	country202 = &Country{
 		Name:         "Swaziland",
 		Alpha_2Code:  CountryCodeSZ,
 		Alpha_3Code:  CountryCodeSWZ,
 		NumericCode:  748,
 		CurrencyCode: pbmoney.CurrencyCodeSZL,
 	}
-	country214 = &Country{
-		Name:         "Turks and Caicos Islands",
+	country203 = &Country{
+		Name:         "Turks & Caicos Islands",
 		Alpha_2Code:  CountryCodeTC,
 		Alpha_3Code:  CountryCodeTCA,
 		NumericCode:  796,
 		CurrencyCode: pbmoney.CurrencyCodeUSD,
 	}
-	country215 = &Country{
+	country204 = &Country{
 		Name:         "Chad",
 		Alpha_2Code:  CountryCodeTD,
 		Alpha_3Code:  CountryCodeTCD,
 		NumericCode:  148,
 		CurrencyCode: pbmoney.CurrencyCodeXAF,
 	}
-	country216 = &Country{
-		Name:         "French Southern Territories",
-		Alpha_2Code:  CountryCodeTF,
-		Alpha_3Code:  CountryCodeATF,
-		NumericCode:  260,
-		CurrencyCode: pbmoney.CurrencyCodeEUR,
-	}
-	country217 = &Country{
+	country205 = &Country{
 		Name:         "Togo",
 		Alpha_2Code:  CountryCodeTG,
 		Alpha_3Code:  CountryCodeTGO,
 		NumericCode:  768,
 		CurrencyCode: pbmoney.CurrencyCodeXOF,
 	}
-	country218 = &Country{
+	country206 = &Country{
 		Name:         "Thailand",
 		Alpha_2Code:  CountryCodeTH,
 		Alpha_3Code:  CountryCodeTHA,
 		NumericCode:  764,
 		CurrencyCode: pbmoney.CurrencyCodeTHB,
 	}
-	country219 = &Country{
+	country207 = &Country{
 		Name:         "Tajikistan",
 		Alpha_2Code:  CountryCodeTJ,
 		Alpha_3Code:  CountryCodeTJK,
 		NumericCode:  762,
 		CurrencyCode: pbmoney.CurrencyCodeTJS,
 	}
-	country220 = &Country{
+	country208 = &Country{
 		Name:         "Tokelau",
 		Alpha_2Code:  CountryCodeTK,
 		Alpha_3Code:  CountryCodeTKL,
 		NumericCode:  772,
 		CurrencyCode: pbmoney.CurrencyCodeNZD,
 	}
-	country221 = &Country{
+	country209 = &Country{
 		Name:         "Timor-Leste",
 		Alpha_2Code:  CountryCodeTL,
 		Alpha_3Code:  CountryCodeTLS,
 		NumericCode:  626,
 		CurrencyCode: pbmoney.CurrencyCodeUSD,
 	}
-	country222 = &Country{
+	country210 = &Country{
 		Name:         "Turkmenistan",
 		Alpha_2Code:  CountryCodeTM,
 		Alpha_3Code:  CountryCodeTKM,
 		NumericCode:  795,
 		CurrencyCode: pbmoney.CurrencyCodeTMT,
 	}
-	country223 = &Country{
+	country211 = &Country{
 		Name:         "Tunisia",
 		Alpha_2Code:  CountryCodeTN,
 		Alpha_3Code:  CountryCodeTUN,
 		NumericCode:  788,
 		CurrencyCode: pbmoney.CurrencyCodeTND,
 	}
-	country224 = &Country{
+	country212 = &Country{
 		Name:         "Tonga",
 		Alpha_2Code:  CountryCodeTO,
 		Alpha_3Code:  CountryCodeTON,
 		NumericCode:  776,
 		CurrencyCode: pbmoney.CurrencyCodeTOP,
 	}
-	country225 = &Country{
+	country213 = &Country{
 		Name:         "Turkey",
 		Alpha_2Code:  CountryCodeTR,
 		Alpha_3Code:  CountryCodeTUR,
 		NumericCode:  792,
 		CurrencyCode: pbmoney.CurrencyCodeTRY,
 	}
-	country226 = &Country{
-		Name:         "Trinidad and Tobago",
+	country214 = &Country{
+		Name:         "Trinidad & Tobago",
 		Alpha_2Code:  CountryCodeTT,
 		Alpha_3Code:  CountryCodeTTO,
 		NumericCode:  780,
 		CurrencyCode: pbmoney.CurrencyCodeTTD,
 	}
-	country227 = &Country{
+	country215 = &Country{
 		Name:         "Tuvalu",
 		Alpha_2Code:  CountryCodeTV,
 		Alpha_3Code:  CountryCodeTUV,
 		NumericCode:  798,
 		CurrencyCode: pbmoney.CurrencyCodeAUD,
 	}
-	country228 = &Country{
-		Name:         "Taiwan, Province of China",
-		Alpha_2Code:  CountryCodeTW,
-		Alpha_3Code:  CountryCodeTWN,
-		NumericCode:  158,
-		CurrencyCode: pbmoney.CurrencyCodeTWD,
-	}
-	country229 = &Country{
-		Name:         "Tanzania, United Republic of",
+	country216 = &Country{
+		Name:         "Tanzania",
 		Alpha_2Code:  CountryCodeTZ,
 		Alpha_3Code:  CountryCodeTZA,
 		NumericCode:  834,
 		CurrencyCode: pbmoney.CurrencyCodeTZS,
 	}
-	country230 = &Country{
+	country217 = &Country{
 		Name:         "Ukraine",
 		Alpha_2Code:  CountryCodeUA,
 		Alpha_3Code:  CountryCodeUKR,
 		NumericCode:  804,
 		CurrencyCode: pbmoney.CurrencyCodeUAH,
 	}
-	country231 = &Country{
+	country218 = &Country{
 		Name:         "Uganda",
 		Alpha_2Code:  CountryCodeUG,
 		Alpha_3Code:  CountryCodeUGA,
 		NumericCode:  800,
 		CurrencyCode: pbmoney.CurrencyCodeUGX,
 	}
-	country232 = &Country{
-		Name:         "United States Minor Outlying Islands",
-		Alpha_2Code:  CountryCodeUM,
-		Alpha_3Code:  CountryCodeUMI,
-		NumericCode:  581,
-		CurrencyCode: pbmoney.CurrencyCodeUSD,
-	}
-	country233 = &Country{
-		Name:         "United States",
+	country219 = &Country{
+		Name:         "US",
 		Alpha_2Code:  CountryCodeUS,
 		Alpha_3Code:  CountryCodeUSA,
 		NumericCode:  840,
 		CurrencyCode: pbmoney.CurrencyCodeUSD,
 	}
-	country234 = &Country{
+	country220 = &Country{
 		Name:         "Uruguay",
 		Alpha_2Code:  CountryCodeUY,
 		Alpha_3Code:  CountryCodeURY,
 		NumericCode:  858,
 		CurrencyCode: pbmoney.CurrencyCodeUYU,
 	}
-	country235 = &Country{
+	country221 = &Country{
 		Name:         "Uzbekistan",
 		Alpha_2Code:  CountryCodeUZ,
 		Alpha_3Code:  CountryCodeUZB,
 		NumericCode:  860,
 		CurrencyCode: pbmoney.CurrencyCodeUZS,
 	}
-	country236 = &Country{
-		Name:         "Holy See (Vatican City State)",
+	country222 = &Country{
+		Name:         "Vatican City",
 		Alpha_2Code:  CountryCodeVA,
 		Alpha_3Code:  CountryCodeVAT,
 		NumericCode:  336,
 		CurrencyCode: pbmoney.CurrencyCodeEUR,
 	}
-	country237 = &Country{
-		Name:         "Saint Vincent and the Grenadines",
+	country223 = &Country{
+		Name:         "St. Vincent & Grenadines",
 		Alpha_2Code:  CountryCodeVC,
 		Alpha_3Code:  CountryCodeVCT,
 		NumericCode:  670,
 		CurrencyCode: pbmoney.CurrencyCodeXCD,
 	}
-	country238 = &Country{
-		Name:         "Venezuela, Bolivarian Republic of",
+	country224 = &Country{
+		Name:         "Venezuela",
 		Alpha_2Code:  CountryCodeVE,
 		Alpha_3Code:  CountryCodeVEN,
 		NumericCode:  862,
 		CurrencyCode: pbmoney.CurrencyCodeVEF,
 	}
-	country239 = &Country{
-		Name:         "Virgin Islands, British",
+	country225 = &Country{
+		Name:         "British Virgin Islands",
 		Alpha_2Code:  CountryCodeVG,
 		Alpha_3Code:  CountryCodeVGB,
 		NumericCode:  92,
 		CurrencyCode: pbmoney.CurrencyCodeUSD,
 	}
-	country240 = &Country{
-		Name:         "Virgin Islands, U.S.",
+	country226 = &Country{
+		Name:         "U.S. Virgin Islands",
 		Alpha_2Code:  CountryCodeVI,
 		Alpha_3Code:  CountryCodeVIR,
 		NumericCode:  850,
 		CurrencyCode: pbmoney.CurrencyCodeUSD,
 	}
-	country241 = &Country{
-		Name:         "Viet Nam",
+	country227 = &Country{
+		Name:         "Vietnam",
 		Alpha_2Code:  CountryCodeVN,
 		Alpha_3Code:  CountryCodeVNM,
 		NumericCode:  704,
 		CurrencyCode: pbmoney.CurrencyCodeVND,
 	}
-	country242 = &Country{
+	country228 = &Country{
 		Name:         "Vanuatu",
 		Alpha_2Code:  CountryCodeVU,
 		Alpha_3Code:  CountryCodeVUT,
 		NumericCode:  548,
 		CurrencyCode: pbmoney.CurrencyCodeVUV,
 	}
-	country243 = &Country{
-		Name:         "Wallis and Futuna",
+	country229 = &Country{
+		Name:         "Wallis & Futuna",
 		Alpha_2Code:  CountryCodeWF,
 		Alpha_3Code:  CountryCodeWLF,
 		NumericCode:  876,
 		CurrencyCode: pbmoney.CurrencyCodeXPF,
 	}
-	country244 = &Country{
+	country230 = &Country{
 		Name:         "Samoa",
 		Alpha_2Code:  CountryCodeWS,
 		Alpha_3Code:  CountryCodeWSM,
 		NumericCode:  882,
 		CurrencyCode: pbmoney.CurrencyCodeWST,
 	}
-	country245 = &Country{
+	country231 = &Country{
 		Name:         "Yemen",
 		Alpha_2Code:  CountryCodeYE,
 		Alpha_3Code:  CountryCodeYEM,
 		NumericCode:  887,
 		CurrencyCode: pbmoney.CurrencyCodeYER,
 	}
-	country246 = &Country{
+	country232 = &Country{
 		Name:         "Mayotte",
 		Alpha_2Code:  CountryCodeYT,
 		Alpha_3Code:  CountryCodeMYT,
 		NumericCode:  175,
 		CurrencyCode: pbmoney.CurrencyCodeEUR,
 	}
-	country247 = &Country{
+	country233 = &Country{
 		Name:         "South Africa",
 		Alpha_2Code:  CountryCodeZA,
 		Alpha_3Code:  CountryCodeZAF,
 		NumericCode:  710,
 		CurrencyCode: pbmoney.CurrencyCodeZAR,
 	}
-	country248 = &Country{
+	country234 = &Country{
 		Name:         "Zambia",
 		Alpha_2Code:  CountryCodeZM,
 		Alpha_3Code:  CountryCodeZMB,
 		NumericCode:  894,
 		CurrencyCode: pbmoney.CurrencyCodeZMW,
 	}
-	country249 = &Country{
+	country235 = &Country{
 		Name:         "Zimbabwe",
 		Alpha_2Code:  CountryCodeZW,
 		Alpha_3Code:  CountryCodeZWE,

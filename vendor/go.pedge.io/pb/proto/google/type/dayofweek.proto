@@ -16,10 +16,10 @@ syntax = "proto3";
 
 package google.type;
 
-option java_generate_equals_and_hash = true;
 option java_multiple_files = true;
 option java_outer_classname = "DayOfWeekProto";
 option java_package = "com.google.type";
+option objc_class_prefix = "GTP";
 
 
 // Represents a day of week.

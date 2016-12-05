@@ -56,13 +56,13 @@ var _ = math.Inf
 //     }
 //
 // A repeated field is not allowed except at the last position of a
-// field mask.
+// paths string.
 //
 // If a FieldMask object is not present in a get operation, the
 // operation applies to all fields (as if a FieldMask of all fields
 // had been specified).
 //
-// Note that a field mask does not necessarily applies to the
+// Note that a field mask does not necessarily apply to the
 // top-level response message. In case of a REST get operation, the
 // field mask applies directly to the response, but in case of a REST
 // list operation, the mask instead applies to each individual message
@@ -80,6 +80,58 @@ var _ = math.Inf
 // and leave the others untouched. If a resource is passed in to
 // describe the updated values, the API ignores the values of all
 // fields not covered by the mask.
+//
+// If a repeated field is specified for an update operation, the existing
+// repeated values in the target resource will be overwritten by the new values.
+// Note that a repeated field is only allowed in the last position of a `paths`
+// string.
+//
+// If a sub-message is specified in the last position of the field mask for an
+// update operation, then the existing sub-message in the target resource is
+// overwritten. Given the target message:
+//
+//     f {
+//       b {
+//         d : 1
+//         x : 2
+//       }
+//       c : 1
+//     }
+//
+// And an update message:
+//
+//     f {
+//       b {
+//         d : 10
+//       }
+//     }
+//
+// then if the field mask is:
+//
+//  paths: "f.b"
+//
+// then the result will be:
+//
+//     f {
+//       b {
+//         d : 10
+//       }
+//       c : 1
+//     }
+//
+// However, if the update mask was:
+//
+//  paths: "f.b.d"
+//
+// then the result would be:
+//
+//     f {
+//       b {
+//         d : 10
+//         x : 2
+//       }
+//       c : 1
+//     }
 //
 // In order to reset a field's value to the default, the field must
 // be in the mask and set to the default value in the provided resource.
@@ -136,6 +188,32 @@ var _ = math.Inf
 //       mask: "user.displayName,photo"
 //     }
 //
+// # Field Masks and Oneof Fields
+//
+// Field masks treat fields in oneofs just as regular fields. Consider the
+// following message:
+//
+//     message SampleMessage {
+//       oneof test_oneof {
+//         string name = 4;
+//         SubMessage sub_message = 9;
+//       }
+//     }
+//
+// The field mask can be:
+//
+//     mask {
+//       paths: "name"
+//     }
+//
+// Or:
+//
+//     mask {
+//       paths: "sub_message"
+//     }
+//
+// Note that oneof type names ("test_oneof" in this case) cannot be used in
+// paths.
 type FieldMask struct {
 	// The set of field mask paths.
 	Paths []string `protobuf:"bytes,1,rep,name=paths" json:"paths,omitempty"`
@@ -146,6 +224,13 @@ func (m *FieldMask) String() string            { return proto.CompactTextString(
 func (*FieldMask) ProtoMessage()               {}
 func (*FieldMask) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{0} }
 
+func (m *FieldMask) GetPaths() []string {
+	if m != nil {
+		return m.Paths
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*FieldMask)(nil), "google.protobuf.FieldMask")
 }
@@ -153,15 +238,15 @@ func init() {
 func init() { proto.RegisterFile("google/protobuf/field_mask.proto", fileDescriptor4) }
 
 var fileDescriptor4 = []byte{
-	// 147 bytes of a gzipped FileDescriptorProto
+	// 145 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xe2, 0x52, 0x48, 0xcf, 0xcf, 0x4f,
 	0xcf, 0x49, 0xd5, 0x2f, 0x28, 0xca, 0x2f, 0xc9, 0x4f, 0x2a, 0x4d, 0xd3, 0x4f, 0xcb, 0x4c, 0xcd,
 	0x49, 0x89, 0xcf, 0x4d, 0x2c, 0xce, 0xd6, 0x03, 0x8b, 0x09, 0xf1, 0x43, 0x54, 0xe8, 0xc1, 0x54,
-	0x28, 0x29, 0x72, 0x71, 0xba, 0x81, 0x14, 0xf9, 0x02, 0xd5, 0x08, 0x89, 0x70, 0xb1, 0x16, 0x24,
-	0x96, 0x64, 0x14, 0x4b, 0x30, 0x2a, 0x30, 0x6b, 0x70, 0x06, 0x41, 0x38, 0x4e, 0x81, 0x5c, 0xc2,
-	0xc9, 0xf9, 0xb9, 0x7a, 0x68, 0x3a, 0x9d, 0xf8, 0xe0, 0xfa, 0x02, 0x40, 0x42, 0x01, 0x8c, 0x0b,
-	0x18, 0x19, 0x17, 0x31, 0x31, 0xbb, 0x07, 0x38, 0xad, 0x62, 0x92, 0x73, 0x87, 0x28, 0x0e, 0x80,
-	0x2a, 0xd6, 0x0b, 0x4f, 0xcd, 0xc9, 0xf1, 0xce, 0xcb, 0x2f, 0xcf, 0x0b, 0xa9, 0x2c, 0x48, 0x2d,
-	0x4e, 0x62, 0x03, 0x9b, 0x62, 0x0c, 0x08, 0x00, 0x00, 0xff, 0xff, 0x21, 0xb1, 0xe8, 0x01, 0xb1,
-	0x00, 0x00, 0x00,
+	0x28, 0x29, 0x72, 0x71, 0xba, 0x81, 0x14, 0xf9, 0x26, 0x16, 0x67, 0x0b, 0x89, 0x70, 0xb1, 0x16,
+	0x24, 0x96, 0x64, 0x14, 0x4b, 0x30, 0x2a, 0x30, 0x6b, 0x70, 0x06, 0x41, 0x38, 0x4e, 0x7e, 0x5c,
+	0xc2, 0xc9, 0xf9, 0xb9, 0x7a, 0x68, 0x3a, 0x9d, 0xf8, 0xe0, 0xfa, 0x02, 0x40, 0x42, 0x01, 0x8c,
+	0x8b, 0x98, 0x98, 0xdd, 0x03, 0x9c, 0x56, 0x31, 0xc9, 0xb9, 0x43, 0x54, 0x06, 0x40, 0x55, 0xea,
+	0x85, 0xa7, 0xe6, 0xe4, 0x78, 0xe7, 0xe5, 0x97, 0xe7, 0x85, 0x54, 0x16, 0xa4, 0x16, 0x27, 0xb1,
+	0x81, 0x8d, 0x30, 0x06, 0x04, 0x00, 0x00, 0xff, 0xff, 0x2f, 0xab, 0x35, 0xd0, 0xae, 0x00, 0x00,
+	0x00,
 }

@@ -20,7 +20,7 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 type DoubleValues struct {
-	Value []float64 `protobuf:"fixed64,1,rep,name=value" json:"value,omitempty"`
+	Value []float64 `protobuf:"fixed64,1,rep,packed,name=value" json:"value,omitempty"`
 }
 
 func (m *DoubleValues) Reset()                    { *m = DoubleValues{} }
@@ -28,8 +28,15 @@ func (m *DoubleValues) String() string            { return proto.CompactTextStri
 func (*DoubleValues) ProtoMessage()               {}
 func (*DoubleValues) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
 
+func (m *DoubleValues) GetValue() []float64 {
+	if m != nil {
+		return m.Value
+	}
+	return nil
+}
+
 type FloatValues struct {
-	Value []float32 `protobuf:"fixed32,1,rep,name=value" json:"value,omitempty"`
+	Value []float32 `protobuf:"fixed32,1,rep,packed,name=value" json:"value,omitempty"`
 }
 
 func (m *FloatValues) Reset()                    { *m = FloatValues{} }
@@ -37,8 +44,15 @@ func (m *FloatValues) String() string            { return proto.CompactTextStrin
 func (*FloatValues) ProtoMessage()               {}
 func (*FloatValues) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
 
+func (m *FloatValues) GetValue() []float32 {
+	if m != nil {
+		return m.Value
+	}
+	return nil
+}
+
 type Int64Values struct {
-	Value []int64 `protobuf:"varint,1,rep,name=value" json:"value,omitempty"`
+	Value []int64 `protobuf:"varint,1,rep,packed,name=value" json:"value,omitempty"`
 }
 
 func (m *Int64Values) Reset()                    { *m = Int64Values{} }
@@ -46,8 +60,15 @@ func (m *Int64Values) String() string            { return proto.CompactTextStrin
 func (*Int64Values) ProtoMessage()               {}
 func (*Int64Values) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
 
+func (m *Int64Values) GetValue() []int64 {
+	if m != nil {
+		return m.Value
+	}
+	return nil
+}
+
 type UInt64Values struct {
-	Value []uint64 `protobuf:"varint,1,rep,name=value" json:"value,omitempty"`
+	Value []uint64 `protobuf:"varint,1,rep,packed,name=value" json:"value,omitempty"`
 }
 
 func (m *UInt64Values) Reset()                    { *m = UInt64Values{} }
@@ -55,8 +76,15 @@ func (m *UInt64Values) String() string            { return proto.CompactTextStri
 func (*UInt64Values) ProtoMessage()               {}
 func (*UInt64Values) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{3} }
 
+func (m *UInt64Values) GetValue() []uint64 {
+	if m != nil {
+		return m.Value
+	}
+	return nil
+}
+
 type Int32Values struct {
-	Value []int32 `protobuf:"varint,1,rep,name=value" json:"value,omitempty"`
+	Value []int32 `protobuf:"varint,1,rep,packed,name=value" json:"value,omitempty"`
 }
 
 func (m *Int32Values) Reset()                    { *m = Int32Values{} }
@@ -64,8 +92,15 @@ func (m *Int32Values) String() string            { return proto.CompactTextStrin
 func (*Int32Values) ProtoMessage()               {}
 func (*Int32Values) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
 
+func (m *Int32Values) GetValue() []int32 {
+	if m != nil {
+		return m.Value
+	}
+	return nil
+}
+
 type UInt32Values struct {
-	Value []uint32 `protobuf:"varint,1,rep,name=value" json:"value,omitempty"`
+	Value []uint32 `protobuf:"varint,1,rep,packed,name=value" json:"value,omitempty"`
 }
 
 func (m *UInt32Values) Reset()                    { *m = UInt32Values{} }
@@ -73,14 +108,28 @@ func (m *UInt32Values) String() string            { return proto.CompactTextStri
 func (*UInt32Values) ProtoMessage()               {}
 func (*UInt32Values) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{5} }
 
+func (m *UInt32Values) GetValue() []uint32 {
+	if m != nil {
+		return m.Value
+	}
+	return nil
+}
+
 type BoolValues struct {
-	Value []bool `protobuf:"varint,1,rep,name=value" json:"value,omitempty"`
+	Value []bool `protobuf:"varint,1,rep,packed,name=value" json:"value,omitempty"`
 }
 
 func (m *BoolValues) Reset()                    { *m = BoolValues{} }
 func (m *BoolValues) String() string            { return proto.CompactTextString(m) }
 func (*BoolValues) ProtoMessage()               {}
 func (*BoolValues) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{6} }
+
+func (m *BoolValues) GetValue() []bool {
+	if m != nil {
+		return m.Value
+	}
+	return nil
+}
 
 type StringValues struct {
 	Value []string `protobuf:"bytes,1,rep,name=value" json:"value,omitempty"`
@@ -91,6 +140,13 @@ func (m *StringValues) String() string            { return proto.CompactTextStri
 func (*StringValues) ProtoMessage()               {}
 func (*StringValues) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{7} }
 
+func (m *StringValues) GetValue() []string {
+	if m != nil {
+		return m.Value
+	}
+	return nil
+}
+
 type BytesValues struct {
 	Value [][]byte `protobuf:"bytes,1,rep,name=value,proto3" json:"value,omitempty"`
 }
@@ -99,6 +155,13 @@ func (m *BytesValues) Reset()                    { *m = BytesValues{} }
 func (m *BytesValues) String() string            { return proto.CompactTextString(m) }
 func (*BytesValues) ProtoMessage()               {}
 func (*BytesValues) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{8} }
+
+func (m *BytesValues) GetValue() [][]byte {
+	if m != nil {
+		return m.Value
+	}
+	return nil
+}
 
 func init() {
 	proto.RegisterType((*DoubleValues)(nil), "pb.common.DoubleValues")
@@ -115,16 +178,16 @@ func init() {
 func init() { proto.RegisterFile("pb/common/common.proto", fileDescriptor0) }
 
 var fileDescriptor0 = []byte{
-	// 175 bytes of a gzipped FileDescriptorProto
+	// 176 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xe2, 0x12, 0x2b, 0x48, 0xd2, 0x4f,
 	0xce, 0xcf, 0xcd, 0xcd, 0xcf, 0x83, 0x52, 0x7a, 0x05, 0x45, 0xf9, 0x25, 0xf9, 0x42, 0x9c, 0x05,
 	0x49, 0x7a, 0x10, 0x01, 0x25, 0x15, 0x2e, 0x1e, 0x97, 0xfc, 0xd2, 0xa4, 0x9c, 0xd4, 0xb0, 0xc4,
 	0x9c, 0xd2, 0xd4, 0x62, 0x21, 0x11, 0x2e, 0xd6, 0x32, 0x10, 0x4b, 0x82, 0x51, 0x81, 0x59, 0x83,
 	0x31, 0x08, 0xc2, 0x51, 0x52, 0xe6, 0xe2, 0x76, 0xcb, 0xc9, 0x4f, 0x2c, 0xc1, 0xa6, 0x88, 0x09,
-	0x49, 0x91, 0x67, 0x5e, 0x89, 0x99, 0x09, 0x36, 0x45, 0xcc, 0x30, 0x45, 0x40, 0xfb, 0x42, 0x71,
-	0xaa, 0x62, 0x41, 0x35, 0xca, 0xd8, 0x08, 0x9b, 0x22, 0x56, 0x34, 0xa3, 0xb0, 0xab, 0xe2, 0x85,
-	0xa9, 0x52, 0xe2, 0xe2, 0x72, 0xca, 0xcf, 0xcf, 0xc1, 0xa6, 0x86, 0x03, 0xc9, 0xa4, 0xe0, 0x92,
-	0xa2, 0xcc, 0xbc, 0x74, 0x6c, 0xaa, 0x38, 0x91, 0x1c, 0xe5, 0x54, 0x59, 0x92, 0x5a, 0x8c, 0x4d,
-	0x11, 0x0f, 0x54, 0x91, 0x13, 0x57, 0x14, 0x47, 0x41, 0x12, 0x24, 0x6c, 0x93, 0xd8, 0xc0, 0xa1,
-	0x6d, 0x0c, 0x08, 0x00, 0x00, 0xff, 0xff, 0x3d, 0xad, 0x3f, 0x4b, 0x87, 0x01, 0x00, 0x00,
+	0x49, 0x91, 0x67, 0x5e, 0x89, 0x99, 0x09, 0x36, 0x45, 0xcc, 0x30, 0x45, 0x2a, 0x5c, 0x3c, 0xa1,
+	0x38, 0x55, 0xb1, 0xa0, 0x1a, 0x65, 0x6c, 0x84, 0x4d, 0x11, 0x2b, 0x9a, 0x51, 0xd8, 0x55, 0xf1,
+	0xc2, 0x54, 0x29, 0x71, 0x71, 0x39, 0xe5, 0xe7, 0xe7, 0x60, 0x53, 0xc3, 0x81, 0x64, 0x52, 0x70,
+	0x49, 0x51, 0x66, 0x5e, 0x3a, 0x36, 0x55, 0x9c, 0x48, 0x8e, 0x72, 0xaa, 0x2c, 0x49, 0x2d, 0xc6,
+	0xa6, 0x88, 0x07, 0xaa, 0xc8, 0x89, 0x2b, 0x8a, 0xa3, 0x20, 0x09, 0x12, 0xb6, 0x49, 0x6c, 0xe0,
+	0xd0, 0x36, 0x06, 0x04, 0x00, 0x00, 0xff, 0xff, 0x3d, 0xad, 0x3f, 0x4b, 0x87, 0x01, 0x00, 0x00,
 }
