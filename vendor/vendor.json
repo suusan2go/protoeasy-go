@@ -432,40 +432,40 @@
 			"revisionTime": "2017-12-03T15:56:23Z"
 		},
 		{
-			"checksumSHA1": "FvAtl0Eox5bkj9xk4yakMBPdrPw=",
+			"checksumSHA1": "K2pZ5I2VxXey4CjnYVH8Aj26Nwo=",
 			"path": "go.pedge.io/lion",
-			"revision": "87958e8713f1fa138d993087133b97e976642159",
-			"revisionTime": "2017-04-22T23:48:32Z"
+			"revision": "47898f3f368c63afb172fbf314f289d0f05d72c9",
+			"revisionTime": "2017-12-03T16:44:41Z"
 		},
 		{
 			"checksumSHA1": "6QnBL7to5rYitCaEtSBONJMFdGQ=",
 			"path": "go.pedge.io/lion/current",
-			"revision": "87958e8713f1fa138d993087133b97e976642159",
-			"revisionTime": "2017-04-22T23:48:32Z"
+			"revision": "47898f3f368c63afb172fbf314f289d0f05d72c9",
+			"revisionTime": "2017-12-03T16:44:41Z"
 		},
 		{
 			"checksumSHA1": "QFjRENsAgCJItCcP2jIKR/D16no=",
 			"path": "go.pedge.io/lion/env",
-			"revision": "87958e8713f1fa138d993087133b97e976642159",
-			"revisionTime": "2017-04-22T23:48:32Z"
+			"revision": "47898f3f368c63afb172fbf314f289d0f05d72c9",
+			"revisionTime": "2017-12-03T16:44:41Z"
 		},
 		{
 			"checksumSHA1": "TPl0flgOZR5lDTk17wP97Fjcd4Y=",
 			"path": "go.pedge.io/lion/grpc",
-			"revision": "87958e8713f1fa138d993087133b97e976642159",
-			"revisionTime": "2017-04-22T23:48:32Z"
+			"revision": "47898f3f368c63afb172fbf314f289d0f05d72c9",
+			"revisionTime": "2017-12-03T16:44:41Z"
 		},
 		{
-			"checksumSHA1": "J6eb1g2KyYvaT2UZ9zjmy+mefa4=",
+			"checksumSHA1": "Aq1iWo4XdBVFMTldPDhPNguiJPs=",
 			"path": "go.pedge.io/lion/proto",
-			"revision": "87958e8713f1fa138d993087133b97e976642159",
-			"revisionTime": "2017-04-22T23:48:32Z"
+			"revision": "47898f3f368c63afb172fbf314f289d0f05d72c9",
+			"revisionTime": "2017-12-03T16:44:41Z"
 		},
 		{
 			"checksumSHA1": "HaTcOZiTWM6j54t1qJoHZpgBAHk=",
 			"path": "go.pedge.io/lion/syslog",
-			"revision": "87958e8713f1fa138d993087133b97e976642159",
-			"revisionTime": "2017-04-22T23:48:32Z"
+			"revision": "47898f3f368c63afb172fbf314f289d0f05d72c9",
+			"revisionTime": "2017-12-03T16:44:41Z"
 		},
 		{
 			"checksumSHA1": "MSVGOqfQVF1rLFvM9GJLxgbCgJ4=",
