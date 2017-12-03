@@ -692,14 +692,14 @@
 		{
 			"checksumSHA1": "jENVbOfuDJ08NXhgqLaaGTGVV/Y=",
 			"path": "go.pedge.io/pkg/cobra",
-			"revision": "4e33c9eeda56340b7dfa4180067ca3fde6ee2e0c",
-			"revisionTime": "2017-01-16T18:06:51Z"
+			"revision": "cf378fa530db4fe5026f78e1d69f9a4d2768e3d2",
+			"revisionTime": "2017-12-03T16:40:13Z"
 		},
 		{
-			"checksumSHA1": "OaX22wqUp+0V0YKVzrraLWU1QIw=",
+			"checksumSHA1": "g1A8rHt3vs5P7CX0nVWPSNXx7SE=",
 			"path": "go.pedge.io/pkg/exec",
-			"revision": "4e33c9eeda56340b7dfa4180067ca3fde6ee2e0c",
-			"revisionTime": "2017-01-16T18:06:51Z"
+			"revision": "cf378fa530db4fe5026f78e1d69f9a4d2768e3d2",
+			"revisionTime": "2017-12-03T16:40:13Z"
 		},
 		{
 			"checksumSHA1": "60so4LdQ85e+fY59/VyuAx0P/Tg=",
@@ -930,10 +930,10 @@
 			"revisionTime": "2017-12-01T23:32:05Z"
 		},
 		{
-			"checksumSHA1": "fALlQNY1fM99NesfLJ50KguWsio=",
+			"checksumSHA1": "fRgp9UZPllOlkPssv7frzQx4z9A=",
 			"path": "gopkg.in/yaml.v2",
-			"revision": "cd8b52f8269e0feb286dfeef29f8fe4d5b397e0b",
-			"revisionTime": "2017-04-07T17:21:22Z"
+			"revision": "287cf08546ab5e7e37d55a84f7ed3fd1db036de5",
+			"revisionTime": "2017-11-16T09:02:43Z"
 		}
 	],
 	"rootPath": "go.pedge.io/protoeasy"
