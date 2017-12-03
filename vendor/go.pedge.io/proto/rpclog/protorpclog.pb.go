@@ -7,7 +7,7 @@ package protorpclog
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
 import math "math"
-import google_protobuf "go.pedge.io/pb/go/google/protobuf"
+import durationpb "github.com/golang/protobuf/ptypes/duration"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -21,12 +21,12 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 type Call struct {
-	Service  string                    `protobuf:"bytes,1,opt,name=service" json:"service,omitempty"`
-	Method   string                    `protobuf:"bytes,2,opt,name=method" json:"method,omitempty"`
-	Request  string                    `protobuf:"bytes,3,opt,name=request" json:"request,omitempty"`
-	Response string                    `protobuf:"bytes,4,opt,name=response" json:"response,omitempty"`
-	Error    string                    `protobuf:"bytes,5,opt,name=error" json:"error,omitempty"`
-	Duration *google_protobuf.Duration `protobuf:"bytes,6,opt,name=duration" json:"duration,omitempty"`
+	Service  string               `protobuf:"bytes,1,opt,name=service" json:"service,omitempty"`
+	Method   string               `protobuf:"bytes,2,opt,name=method" json:"method,omitempty"`
+	Request  string               `protobuf:"bytes,3,opt,name=request" json:"request,omitempty"`
+	Response string               `protobuf:"bytes,4,opt,name=response" json:"response,omitempty"`
+	Error    string               `protobuf:"bytes,5,opt,name=error" json:"error,omitempty"`
+	Duration *durationpb.Duration `protobuf:"bytes,6,opt,name=duration" json:"duration,omitempty"`
 }
 
 func (m *Call) Reset()                    { *m = Call{} }
@@ -69,7 +69,7 @@ func (m *Call) GetError() string {
 	return ""
 }
 
-func (m *Call) GetDuration() *google_protobuf.Duration {
+func (m *Call) GetDuration() *durationpb.Duration {
 	if m != nil {
 		return m.Duration
 	}

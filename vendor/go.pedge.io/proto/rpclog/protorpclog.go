@@ -8,9 +8,9 @@ import (
 	"google.golang.org/grpc"
 
 	"go.pedge.io/lion/proto"
-	"go.pedge.io/pb/go/google/protobuf"
 
 	"github.com/golang/protobuf/proto"
+	durationpb "github.com/golang/protobuf/ptypes/duration"
 )
 
 var (
@@ -124,7 +124,7 @@ func event(serviceName string, methodName string, request proto.Message, respons
 	call := &Call{
 		Service:  serviceName,
 		Method:   methodName,
-		Duration: google_protobuf.DurationToProto(duration),
+		Duration: durationToProto(duration),
 	}
 	if request != nil {
 		call.Request = request.String()
@@ -143,4 +143,11 @@ func getMethodName(depth int) string {
 	runtime.Callers(2+depth, pc)
 	split := strings.Split(runtime.FuncForPC(pc[0]).Name(), ".")
 	return split[len(split)-1]
+}
+
+func durationToProto(d time.Duration) *durationpb.Duration {
+	return &durationpb.Duration{
+		Seconds: int64(d) / int64(time.Second),
+		Nanos:   int32(int64(d) % int64(time.Second)),
+	}
 }

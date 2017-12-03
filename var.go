@@ -16,18 +16,54 @@ var (
 		newGoModifierOptions(
 			"google/protobuf",
 			[]string{
-				"any.proto",
 				"api.proto",
-				"duration.proto",
-				"empty.proto",
 				"field_mask.proto",
 				"source_context.proto",
-				"struct.proto",
-				"timestamp.proto",
 				"type.proto",
-				"wrappers.proto",
 			},
 			"go.pedge.io/pb/go/google/protobuf",
+		),
+		newGoModifierOptions(
+			"google/protobuf",
+			[]string{
+				"any.proto",
+			},
+			"github.com/golang/protobuf/ptypes/any",
+		),
+		newGoModifierOptions(
+			"google/protobuf",
+			[]string{
+				"duration.proto",
+			},
+			"github.com/golang/protobuf/ptypes/duration",
+		),
+		newGoModifierOptions(
+			"google/protobuf",
+			[]string{
+				"empty.proto",
+			},
+			"github.com/golang/protobuf/ptypes/empty",
+		),
+		newGoModifierOptions(
+			"google/protobuf",
+			[]string{
+				"struct.proto",
+			},
+			"github.com/golang/protobuf/ptypes/struct",
+		),
+		newGoModifierOptions(
+			"google/protobuf",
+			[]string{
+				"timestamp.proto",
+			},
+			"github.com/golang/protobuf/ptypes/timestamp",
+		),
+		newGoModifierOptions(
+			"google/protobuf",
+			[]string{
+				"wrappers.proto",
+			},
+			"github.com/golang/protobuf/ptypes/wrappers",
 		),
 		newGoModifierOptions(
 			"google/protobuf",
@@ -193,18 +229,24 @@ var (
 		newGoModifierOptions(
 			"google/protobuf",
 			[]string{
-				"any.proto",
 				"api.proto",
+				"source_context.proto",
+				"type.proto",
+			},
+			"go.pedge.io/pb/gogo/google/protobuf",
+		),
+		newGoModifierOptions(
+			"google/protobuf",
+			[]string{
+				"any.proto",
 				"duration.proto",
 				"empty.proto",
 				"field_mask.proto",
-				"source_context.proto",
 				"struct.proto",
 				"timestamp.proto",
-				"type.proto",
 				"wrappers.proto",
 			},
-			"go.pedge.io/pb/gogo/google/protobuf",
+			"github.com/gogo/protobuf/types",
 		),
 		newGoModifierOptions(
 			"google/protobuf",

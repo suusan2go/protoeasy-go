@@ -7,7 +7,7 @@ package protoeasy
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
 import math "math"
-import google_protobuf "go.pedge.io/pb/go/google/protobuf"
+import google_protobuf "github.com/golang/protobuf/ptypes/duration"
 
 import (
 	context "golang.org/x/net/context"
