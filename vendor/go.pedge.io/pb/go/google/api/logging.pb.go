@@ -15,11 +15,9 @@ var _ = math.Inf
 // Logging configuration of the service.
 //
 // The following example shows how to configure logs to be sent to the
-// producer and consumer projects. In the example,
-// the `library.googleapis.com/activity_history` log is
-// sent to both the producer and consumer projects, whereas
-// the `library.googleapis.com/purchase_history` log is only sent to the
-// producer project:
+// producer and consumer projects. In the example, the `activity_history`
+// log is sent to both the producer and consumer projects, whereas the
+// `purchase_history` log is only sent to the producer project.
 //
 //     monitored_resources:
 //     - type: library.googleapis.com/branch
@@ -29,20 +27,20 @@ var _ = math.Inf
 //       - key: /name
 //         description: The name of the branch.
 //     logs:
-//     - name: library.googleapis.com/activity_history
+//     - name: activity_history
 //       labels:
 //       - key: /customer_id
-//     - name: library.googleapis.com/purchase_history
+//     - name: purchase_history
 //     logging:
 //       producer_destinations:
 //       - monitored_resource: library.googleapis.com/branch
 //         logs:
-//         - library.googleapis.com/activity_history
-//         - library.googleapis.com/purchase_history
+//         - activity_history
+//         - purchase_history
 //       consumer_destinations:
 //       - monitored_resource: library.googleapis.com/branch
 //         logs:
-//         - library.googleapis.com/activity_history
+//         - activity_history
 type Logging struct {
 	// Logging configurations for sending logs to the producer project.
 	// There can be multiple producer destinations, each one must have a
@@ -78,11 +76,13 @@ func (m *Logging) GetConsumerDestinations() []*Logging_LoggingDestination {
 // Configuration of a specific logging destination (the producer project
 // or the consumer project).
 type Logging_LoggingDestination struct {
-	// The monitored resource type. The type must be defined in
+	// The monitored resource type. The type must be defined in the
 	// [Service.monitored_resources][google.api.Service.monitored_resources] section.
 	MonitoredResource string `protobuf:"bytes,3,opt,name=monitored_resource,json=monitoredResource" json:"monitored_resource,omitempty"`
 	// Names of the logs to be sent to this destination. Each name must
-	// be defined in the [Service.logs][google.api.Service.logs] section.
+	// be defined in the [Service.logs][google.api.Service.logs] section. If the log name is
+	// not a domain scoped name, it will be automatically prefixed with
+	// the service name followed by "/".
 	Logs []string `protobuf:"bytes,1,rep,name=logs" json:"logs,omitempty"`
 }
 

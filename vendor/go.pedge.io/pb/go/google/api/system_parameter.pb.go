@@ -26,27 +26,26 @@ type SystemParameters struct {
 	// config, default system parameters will be used. Default system parameters
 	// and names is implementation-dependent.
 	//
-	// Example: define api key and alt name for all methods
+	// Example: define api key for all methods
 	//
-	// system_parameters
-	//   rules:
-	//     - selector: "*"
-	//       parameters:
-	//         - name: api_key
-	//           url_query_parameter: api_key
-	//         - name: alt
-	//           http_header: Response-Content-Type
+	//     system_parameters
+	//       rules:
+	//         - selector: "*"
+	//           parameters:
+	//             - name: api_key
+	//               url_query_parameter: api_key
+	//
 	//
 	// Example: define 2 api key names for a specific method.
 	//
-	// system_parameters
-	//   rules:
-	//     - selector: "/ListShelves"
-	//       parameters:
-	//         - name: api_key
-	//           http_header: Api-Key1
-	//         - name: api_key
-	//           http_header: Api-Key2
+	//     system_parameters
+	//       rules:
+	//         - selector: "/ListShelves"
+	//           parameters:
+	//             - name: api_key
+	//               http_header: Api-Key1
+	//             - name: api_key
+	//               http_header: Api-Key2
 	//
 	// **NOTE:** All service configuration rules follow "last one wins" order.
 	Rules []*SystemParameterRule `protobuf:"bytes,1,rep,name=rules" json:"rules,omitempty"`
@@ -55,7 +54,7 @@ type SystemParameters struct {
 func (m *SystemParameters) Reset()                    { *m = SystemParameters{} }
 func (m *SystemParameters) String() string            { return proto.CompactTextString(m) }
 func (*SystemParameters) ProtoMessage()               {}
-func (*SystemParameters) Descriptor() ([]byte, []int) { return fileDescriptor20, []int{0} }
+func (*SystemParameters) Descriptor() ([]byte, []int) { return fileDescriptor22, []int{0} }
 
 func (m *SystemParameters) GetRules() []*SystemParameterRule {
 	if m != nil {
@@ -83,7 +82,7 @@ type SystemParameterRule struct {
 func (m *SystemParameterRule) Reset()                    { *m = SystemParameterRule{} }
 func (m *SystemParameterRule) String() string            { return proto.CompactTextString(m) }
 func (*SystemParameterRule) ProtoMessage()               {}
-func (*SystemParameterRule) Descriptor() ([]byte, []int) { return fileDescriptor20, []int{1} }
+func (*SystemParameterRule) Descriptor() ([]byte, []int) { return fileDescriptor22, []int{1} }
 
 func (m *SystemParameterRule) GetSelector() string {
 	if m != nil {
@@ -103,8 +102,7 @@ func (m *SystemParameterRule) GetParameters() []*SystemParameter {
 // an HTTP header or a URL query parameter, and if both are passed the behavior
 // is implementation-dependent.
 type SystemParameter struct {
-	// Define the name of the parameter, such as "api_key", "alt", "callback",
-	// and etc. It is case sensitive.
+	// Define the name of the parameter, such as "api_key" . It is case sensitive.
 	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 	// Define the HTTP header name to use for the parameter. It is case
 	// insensitive.
@@ -117,7 +115,7 @@ type SystemParameter struct {
 func (m *SystemParameter) Reset()                    { *m = SystemParameter{} }
 func (m *SystemParameter) String() string            { return proto.CompactTextString(m) }
 func (*SystemParameter) ProtoMessage()               {}
-func (*SystemParameter) Descriptor() ([]byte, []int) { return fileDescriptor20, []int{2} }
+func (*SystemParameter) Descriptor() ([]byte, []int) { return fileDescriptor22, []int{2} }
 
 func (m *SystemParameter) GetName() string {
 	if m != nil {
@@ -146,9 +144,9 @@ func init() {
 	proto.RegisterType((*SystemParameter)(nil), "google.api.SystemParameter")
 }
 
-func init() { proto.RegisterFile("google/api/system_parameter.proto", fileDescriptor20) }
+func init() { proto.RegisterFile("google/api/system_parameter.proto", fileDescriptor22) }
 
-var fileDescriptor20 = []byte{
+var fileDescriptor22 = []byte{
 	// 251 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0xcd, 0x4a, 0x03, 0x31,
 	0x14, 0x85, 0x99, 0x69, 0x15, 0xbd, 0x05, 0x7f, 0x6e, 0x5d, 0x04, 0x5d, 0xb4, 0xce, 0xaa, 0xab,

@@ -98,36 +98,39 @@ func (MetricDescriptor_ValueType) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptorMetric, []int{0, 1}
 }
 
-// Defines a metric type and its schema.
+// Defines a metric type and its schema. Once a metric descriptor is created,
+// deleting or altering it stops data collection and makes the metric type's
+// existing data unusable.
 type MetricDescriptor struct {
-	// Resource name. The format of the name may vary between different
-	// implementations. For examples:
+	// The resource name of the metric descriptor. Depending on the
+	// implementation, the name typically includes: (1) the parent resource name
+	// that defines the scope of the metric type or of its data; and (2) the
+	// metric's URL-encoded type, which also appears in the `type` field of this
+	// descriptor. For example, following is the resource name of a custom
+	// metric within the GCP project `my-project-id`:
 	//
-	//     projects/{project_id}/metricDescriptors/{type=**}
-	//     metricDescriptors/{type=**}
+	//     "projects/my-project-id/metricDescriptors/custom.googleapis.com%2Finvoice%2Fpaid%2Famount"
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// The metric type including a DNS name prefix, for example
-	// `"compute.googleapis.com/instance/cpu/utilization"`. Metric types
-	// should use a natural hierarchical grouping such as the following:
+	// The metric type, including its DNS name prefix. The type is not
+	// URL-encoded.  All user-defined custom metric types have the DNS name
+	// `custom.googleapis.com`.  Metric types should use a natural hierarchical
+	// grouping. For example:
 	//
-	//     compute.googleapis.com/instance/cpu/utilization
-	//     compute.googleapis.com/instance/disk/read_ops_count
-	//     compute.googleapis.com/instance/network/received_bytes_count
-	//
-	// Note that if the metric type changes, the monitoring data will be
-	// discontinued, and anything depends on it will break, such as monitoring
-	// dashboards, alerting rules and quota limits. Therefore, once a metric has
-	// been published, its type should be immutable.
+	//     "custom.googleapis.com/invoice/paid/amount"
+	//     "appengine.googleapis.com/http/server/response_latencies"
 	Type string `protobuf:"bytes,8,opt,name=type,proto3" json:"type,omitempty"`
-	// The set of labels that can be used to describe a specific instance of this
-	// metric type. For example, the
-	// `compute.googleapis.com/instance/network/received_bytes_count` metric type
-	// has a label, `loadbalanced`, that specifies whether the traffic was
-	// received through a load balanced IP address.
+	// The set of labels that can be used to describe a specific
+	// instance of this metric type. For example, the
+	// `appengine.googleapis.com/http/server/response_latencies` metric
+	// type has a label for the HTTP response code, `response_code`, so
+	// you can look at latencies for successful responses or just
+	// for responses that failed.
 	Labels []*LabelDescriptor `protobuf:"bytes,2,rep,name=labels" json:"labels,omitempty"`
 	// Whether the metric records instantaneous values, changes to a value, etc.
+	// Some combinations of `metric_kind` and `value_type` might not be supported.
 	MetricKind MetricDescriptor_MetricKind `protobuf:"varint,3,opt,name=metric_kind,json=metricKind,proto3,enum=google.api.MetricDescriptor_MetricKind" json:"metric_kind,omitempty"`
 	// Whether the measurement is an integer, a floating-point number, etc.
+	// Some combinations of `metric_kind` and `value_type` might not be supported.
 	ValueType MetricDescriptor_ValueType `protobuf:"varint,4,opt,name=value_type,json=valueType,proto3,enum=google.api.MetricDescriptor_ValueType" json:"value_type,omitempty"`
 	// The unit in which the metric value is reported. It is only applicable
 	// if the `value_type` is `INT64`, `DOUBLE`, or `DISTRIBUTION`. The
@@ -262,15 +265,14 @@ func (m *MetricDescriptor) GetDisplayName() string {
 	return ""
 }
 
-// A specific metric identified by specifying values for all of the
+// A specific metric, identified by specifying values for all of the
 // labels of a [`MetricDescriptor`][google.api.MetricDescriptor].
 type Metric struct {
 	// An existing metric type, see [google.api.MetricDescriptor][google.api.MetricDescriptor].
-	// For example, `compute.googleapis.com/instance/cpu/usage_time`.
+	// For example, `custom.googleapis.com/invoice/paid/amount`.
 	Type string `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
-	// The set of labels that uniquely identify a metric. To specify a
-	// metric, all labels enumerated in the `MetricDescriptor` must be
-	// assigned values.
+	// The set of label values that uniquely identify this metric. All
+	// labels listed in the `MetricDescriptor` must be assigned values.
 	Labels map[string]string `protobuf:"bytes,2,rep,name=labels" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 

@@ -1,4 +1,4 @@
-// Copyright 2016 Google Inc.
+// Copyright 2017 Google Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package google.api;
 
 import "google/api/annotations.proto";
 
+//option go_package = "google.golang.org/genproto/googleapis/api/serviceconfig;serviceconfig";
 option java_multiple_files = true;
 option java_outer_classname = "UsageProto";
 option java_package = "com.google.api";
@@ -35,6 +36,16 @@ message Usage {
   //
   // **NOTE:** All service configuration rules follow "last one wins" order.
   repeated UsageRule rules = 6;
+
+  // The full resource name of a channel used for sending notifications to the
+  // service producer.
+  //
+  // Google Service Management currently only supports
+  // [Google Cloud Pub/Sub](https://cloud.google.com/pubsub) as a notification
+  // channel. To use Google Cloud Pub/Sub as the channel, this must be the name
+  // of a Cloud Pub/Sub topic that uses the Cloud Pub/Sub topic name format
+  // documented in https://cloud.google.com/pubsub/docs/overview.
+  string producer_notification_channel = 7;
 }
 
 // Usage configuration rules for the service.
@@ -71,4 +82,8 @@ message UsageRule {
 
   // True, if the method allows unregistered calls; false otherwise.
   bool allow_unregistered_calls = 2;
+
+  // True, if the method should skip service control. If so, no control plane
+  // feature (like quota and billing) will be enabled.
+  bool skip_service_control = 3;
 }

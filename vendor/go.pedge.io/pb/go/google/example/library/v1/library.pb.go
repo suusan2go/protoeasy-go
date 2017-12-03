@@ -7,7 +7,7 @@ import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
 import math "math"
 import _ "go.pedge.io/pb/go/google/api"
-import _ "go.pedge.io/pb/go/google/protobuf"
+import _ "github.com/golang/protobuf/ptypes/empty"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal

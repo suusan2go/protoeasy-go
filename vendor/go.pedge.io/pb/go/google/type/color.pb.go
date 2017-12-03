@@ -6,7 +6,7 @@ package google_type
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
 import math "math"
-import google_protobuf "go.pedge.io/pb/go/google/protobuf"
+import google_protobuf "github.com/golang/protobuf/ptypes/wrappers"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal

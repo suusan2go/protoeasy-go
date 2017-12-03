@@ -1,4 +1,4 @@
-// Copyright 2016 Google Inc.
+// Copyright 2017 Google Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ package google.cloud.functions.v1beta2;
 import "google/api/annotations.proto";
 import "google/protobuf/any.proto";
 
+//option go_package = "google.golang.org/genproto/googleapis/cloud/functions/v1beta2;functions";
 option java_multiple_files = true;
 option java_outer_classname = "FunctionsOperationsProto";
 option java_package = "com.google.cloud.functions.v1beta2";

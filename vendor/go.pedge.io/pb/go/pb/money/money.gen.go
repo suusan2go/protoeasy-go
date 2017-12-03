@@ -53,12 +53,14 @@ var (
 	CurrencyCodeBSD = CurrencyCode_CURRENCY_CODE_BSD
 	//CurrencyCodeBWP is a simple holder for CurrencyCode_CURRENCY_CODE_BWP for simplicity.
 	CurrencyCodeBWP = CurrencyCode_CURRENCY_CODE_BWP
-	//CurrencyCodeBYR is a simple holder for CurrencyCode_CURRENCY_CODE_BYR for simplicity.
-	CurrencyCodeBYR = CurrencyCode_CURRENCY_CODE_BYR
+	//CurrencyCodeBYN is a simple holder for CurrencyCode_CURRENCY_CODE_BYN for simplicity.
+	CurrencyCodeBYN = CurrencyCode_CURRENCY_CODE_BYN
 	//CurrencyCodeBZD is a simple holder for CurrencyCode_CURRENCY_CODE_BZD for simplicity.
 	CurrencyCodeBZD = CurrencyCode_CURRENCY_CODE_BZD
 	//CurrencyCodeCAD is a simple holder for CurrencyCode_CURRENCY_CODE_CAD for simplicity.
 	CurrencyCodeCAD = CurrencyCode_CURRENCY_CODE_CAD
+	//CurrencyCodeCDF is a simple holder for CurrencyCode_CURRENCY_CODE_CDF for simplicity.
+	CurrencyCodeCDF = CurrencyCode_CURRENCY_CODE_CDF
 	//CurrencyCodeCHF is a simple holder for CurrencyCode_CURRENCY_CODE_CHF for simplicity.
 	CurrencyCodeCHF = CurrencyCode_CURRENCY_CODE_CHF
 	//CurrencyCodeCLP is a simple holder for CurrencyCode_CURRENCY_CODE_CLP for simplicity.
@@ -69,8 +71,6 @@ var (
 	CurrencyCodeCOP = CurrencyCode_CURRENCY_CODE_COP
 	//CurrencyCodeCRC is a simple holder for CurrencyCode_CURRENCY_CODE_CRC for simplicity.
 	CurrencyCodeCRC = CurrencyCode_CURRENCY_CODE_CRC
-	//CurrencyCodeCUP is a simple holder for CurrencyCode_CURRENCY_CODE_CUP for simplicity.
-	CurrencyCodeCUP = CurrencyCode_CURRENCY_CODE_CUP
 	//CurrencyCodeCVE is a simple holder for CurrencyCode_CURRENCY_CODE_CVE for simplicity.
 	CurrencyCodeCVE = CurrencyCode_CURRENCY_CODE_CVE
 	//CurrencyCodeCZK is a simple holder for CurrencyCode_CURRENCY_CODE_CZK for simplicity.
@@ -93,8 +93,6 @@ var (
 	CurrencyCodeEUR = CurrencyCode_CURRENCY_CODE_EUR
 	//CurrencyCodeFJD is a simple holder for CurrencyCode_CURRENCY_CODE_FJD for simplicity.
 	CurrencyCodeFJD = CurrencyCode_CURRENCY_CODE_FJD
-	//CurrencyCodeFKP is a simple holder for CurrencyCode_CURRENCY_CODE_FKP for simplicity.
-	CurrencyCodeFKP = CurrencyCode_CURRENCY_CODE_FKP
 	//CurrencyCodeGBP is a simple holder for CurrencyCode_CURRENCY_CODE_GBP for simplicity.
 	CurrencyCodeGBP = CurrencyCode_CURRENCY_CODE_GBP
 	//CurrencyCodeGEL is a simple holder for CurrencyCode_CURRENCY_CODE_GEL for simplicity.
@@ -111,6 +109,8 @@ var (
 	CurrencyCodeGTQ = CurrencyCode_CURRENCY_CODE_GTQ
 	//CurrencyCodeGYD is a simple holder for CurrencyCode_CURRENCY_CODE_GYD for simplicity.
 	CurrencyCodeGYD = CurrencyCode_CURRENCY_CODE_GYD
+	//CurrencyCodeHKD is a simple holder for CurrencyCode_CURRENCY_CODE_HKD for simplicity.
+	CurrencyCodeHKD = CurrencyCode_CURRENCY_CODE_HKD
 	//CurrencyCodeHNL is a simple holder for CurrencyCode_CURRENCY_CODE_HNL for simplicity.
 	CurrencyCodeHNL = CurrencyCode_CURRENCY_CODE_HNL
 	//CurrencyCodeHRK is a simple holder for CurrencyCode_CURRENCY_CODE_HRK for simplicity.
@@ -328,15 +328,15 @@ var (
 		CurrencyCodeBRL: currency20,
 		CurrencyCodeBSD: currency21,
 		CurrencyCodeBWP: currency22,
-		CurrencyCodeBYR: currency23,
+		CurrencyCodeBYN: currency23,
 		CurrencyCodeBZD: currency24,
 		CurrencyCodeCAD: currency25,
-		CurrencyCodeCHF: currency26,
-		CurrencyCodeCLP: currency27,
-		CurrencyCodeCNY: currency28,
-		CurrencyCodeCOP: currency29,
-		CurrencyCodeCRC: currency30,
-		CurrencyCodeCUP: currency31,
+		CurrencyCodeCDF: currency26,
+		CurrencyCodeCHF: currency27,
+		CurrencyCodeCLP: currency28,
+		CurrencyCodeCNY: currency29,
+		CurrencyCodeCOP: currency30,
+		CurrencyCodeCRC: currency31,
 		CurrencyCodeCVE: currency32,
 		CurrencyCodeCZK: currency33,
 		CurrencyCodeDJF: currency34,
@@ -348,15 +348,15 @@ var (
 		CurrencyCodeETB: currency40,
 		CurrencyCodeEUR: currency41,
 		CurrencyCodeFJD: currency42,
-		CurrencyCodeFKP: currency43,
-		CurrencyCodeGBP: currency44,
-		CurrencyCodeGEL: currency45,
-		CurrencyCodeGHS: currency46,
-		CurrencyCodeGIP: currency47,
-		CurrencyCodeGMD: currency48,
-		CurrencyCodeGNF: currency49,
-		CurrencyCodeGTQ: currency50,
-		CurrencyCodeGYD: currency51,
+		CurrencyCodeGBP: currency43,
+		CurrencyCodeGEL: currency44,
+		CurrencyCodeGHS: currency45,
+		CurrencyCodeGIP: currency46,
+		CurrencyCodeGMD: currency47,
+		CurrencyCodeGNF: currency48,
+		CurrencyCodeGTQ: currency49,
+		CurrencyCodeGYD: currency50,
+		CurrencyCodeHKD: currency51,
 		CurrencyCodeHNL: currency52,
 		CurrencyCodeHRK: currency53,
 		CurrencyCodeHUF: currency54,
@@ -479,15 +479,15 @@ var (
 		CurrencyCodeBRL: "BRL",
 		CurrencyCodeBSD: "BSD",
 		CurrencyCodeBWP: "BWP",
-		CurrencyCodeBYR: "BYR",
+		CurrencyCodeBYN: "BYN",
 		CurrencyCodeBZD: "BZD",
 		CurrencyCodeCAD: "CAD",
+		CurrencyCodeCDF: "CDF",
 		CurrencyCodeCHF: "CHF",
 		CurrencyCodeCLP: "CLP",
 		CurrencyCodeCNY: "CNY",
 		CurrencyCodeCOP: "COP",
 		CurrencyCodeCRC: "CRC",
-		CurrencyCodeCUP: "CUP",
 		CurrencyCodeCVE: "CVE",
 		CurrencyCodeCZK: "CZK",
 		CurrencyCodeDJF: "DJF",
@@ -499,7 +499,6 @@ var (
 		CurrencyCodeETB: "ETB",
 		CurrencyCodeEUR: "EUR",
 		CurrencyCodeFJD: "FJD",
-		CurrencyCodeFKP: "FKP",
 		CurrencyCodeGBP: "GBP",
 		CurrencyCodeGEL: "GEL",
 		CurrencyCodeGHS: "GHS",
@@ -508,6 +507,7 @@ var (
 		CurrencyCodeGNF: "GNF",
 		CurrencyCodeGTQ: "GTQ",
 		CurrencyCodeGYD: "GYD",
+		CurrencyCodeHKD: "HKD",
 		CurrencyCodeHNL: "HNL",
 		CurrencyCodeHRK: "HRK",
 		CurrencyCodeHUF: "HUF",
@@ -630,15 +630,15 @@ var (
 		"BRL": CurrencyCodeBRL,
 		"BSD": CurrencyCodeBSD,
 		"BWP": CurrencyCodeBWP,
-		"BYR": CurrencyCodeBYR,
+		"BYN": CurrencyCodeBYN,
 		"BZD": CurrencyCodeBZD,
 		"CAD": CurrencyCodeCAD,
+		"CDF": CurrencyCodeCDF,
 		"CHF": CurrencyCodeCHF,
 		"CLP": CurrencyCodeCLP,
 		"CNY": CurrencyCodeCNY,
 		"COP": CurrencyCodeCOP,
 		"CRC": CurrencyCodeCRC,
-		"CUP": CurrencyCodeCUP,
 		"CVE": CurrencyCodeCVE,
 		"CZK": CurrencyCodeCZK,
 		"DJF": CurrencyCodeDJF,
@@ -650,7 +650,6 @@ var (
 		"ETB": CurrencyCodeETB,
 		"EUR": CurrencyCodeEUR,
 		"FJD": CurrencyCodeFJD,
-		"FKP": CurrencyCodeFKP,
 		"GBP": CurrencyCodeGBP,
 		"GEL": CurrencyCodeGEL,
 		"GHS": CurrencyCodeGHS,
@@ -659,6 +658,7 @@ var (
 		"GNF": CurrencyCodeGNF,
 		"GTQ": CurrencyCodeGTQ,
 		"GYD": CurrencyCodeGYD,
+		"HKD": CurrencyCodeHKD,
 		"HNL": CurrencyCodeHNL,
 		"HRK": CurrencyCodeHRK,
 		"HUF": CurrencyCodeHUF,
@@ -812,7 +812,7 @@ var (
 		MinorUnit:   2,
 	}
 	currency10 = &Currency{
-		Name:        "Azerbaijanian Manat",
+		Name:        "Azerbaijan Manat",
 		Code:        CurrencyCodeAZN,
 		NumericCode: 944,
 		MinorUnit:   2,
@@ -890,10 +890,10 @@ var (
 		MinorUnit:   2,
 	}
 	currency23 = &Currency{
-		Name:        "Belarussian Ruble",
-		Code:        CurrencyCodeBYR,
-		NumericCode: 974,
-		MinorUnit:   0,
+		Name:        "Belarusian Ruble",
+		Code:        CurrencyCodeBYN,
+		NumericCode: 933,
+		MinorUnit:   2,
 	}
 	currency24 = &Currency{
 		Name:        "Belize Dollar",
@@ -908,39 +908,39 @@ var (
 		MinorUnit:   2,
 	}
 	currency26 = &Currency{
+		Name:        "Congolese Franc",
+		Code:        CurrencyCodeCDF,
+		NumericCode: 976,
+		MinorUnit:   2,
+	}
+	currency27 = &Currency{
 		Name:        "Swiss Franc",
 		Code:        CurrencyCodeCHF,
 		NumericCode: 756,
 		MinorUnit:   2,
 	}
-	currency27 = &Currency{
+	currency28 = &Currency{
 		Name:        "Chilean Peso",
 		Code:        CurrencyCodeCLP,
 		NumericCode: 152,
 		MinorUnit:   0,
 	}
-	currency28 = &Currency{
+	currency29 = &Currency{
 		Name:        "Yuan Renminbi",
 		Code:        CurrencyCodeCNY,
 		NumericCode: 156,
 		MinorUnit:   2,
 	}
-	currency29 = &Currency{
+	currency30 = &Currency{
 		Name:        "Colombian Peso",
 		Code:        CurrencyCodeCOP,
 		NumericCode: 170,
 		MinorUnit:   2,
 	}
-	currency30 = &Currency{
+	currency31 = &Currency{
 		Name:        "Costa Rican Colon",
 		Code:        CurrencyCodeCRC,
 		NumericCode: 188,
-		MinorUnit:   2,
-	}
-	currency31 = &Currency{
-		Name:        "Cuban Peso",
-		Code:        CurrencyCodeCUP,
-		NumericCode: 192,
 		MinorUnit:   2,
 	}
 	currency32 = &Currency{
@@ -1010,57 +1010,57 @@ var (
 		MinorUnit:   2,
 	}
 	currency43 = &Currency{
-		Name:        "Falkland Islands Pound",
-		Code:        CurrencyCodeFKP,
-		NumericCode: 238,
-		MinorUnit:   2,
-	}
-	currency44 = &Currency{
 		Name:        "Pound Sterling",
 		Code:        CurrencyCodeGBP,
 		NumericCode: 826,
 		MinorUnit:   2,
 	}
-	currency45 = &Currency{
+	currency44 = &Currency{
 		Name:        "Lari",
 		Code:        CurrencyCodeGEL,
 		NumericCode: 981,
 		MinorUnit:   2,
 	}
-	currency46 = &Currency{
+	currency45 = &Currency{
 		Name:        "Ghana Cedi",
 		Code:        CurrencyCodeGHS,
 		NumericCode: 936,
 		MinorUnit:   2,
 	}
-	currency47 = &Currency{
+	currency46 = &Currency{
 		Name:        "Gibraltar Pound",
 		Code:        CurrencyCodeGIP,
 		NumericCode: 292,
 		MinorUnit:   2,
 	}
-	currency48 = &Currency{
+	currency47 = &Currency{
 		Name:        "Dalasi",
 		Code:        CurrencyCodeGMD,
 		NumericCode: 270,
 		MinorUnit:   2,
 	}
-	currency49 = &Currency{
-		Name:        "Guinea Franc",
+	currency48 = &Currency{
+		Name:        "Guinean Franc",
 		Code:        CurrencyCodeGNF,
 		NumericCode: 324,
 		MinorUnit:   0,
 	}
-	currency50 = &Currency{
+	currency49 = &Currency{
 		Name:        "Quetzal",
 		Code:        CurrencyCodeGTQ,
 		NumericCode: 320,
 		MinorUnit:   2,
 	}
-	currency51 = &Currency{
+	currency50 = &Currency{
 		Name:        "Guyana Dollar",
 		Code:        CurrencyCodeGYD,
 		NumericCode: 328,
+		MinorUnit:   2,
+	}
+	currency51 = &Currency{
+		Name:        "Hong Kong Dollar",
+		Code:        CurrencyCodeHKD,
+		NumericCode: 344,
 		MinorUnit:   2,
 	}
 	currency52 = &Currency{
@@ -1070,7 +1070,7 @@ var (
 		MinorUnit:   2,
 	}
 	currency53 = &Currency{
-		Name:        "Croatian Kuna",
+		Name:        "Kuna",
 		Code:        CurrencyCodeHRK,
 		NumericCode: 191,
 		MinorUnit:   2,
@@ -1154,7 +1154,7 @@ var (
 		MinorUnit:   2,
 	}
 	currency67 = &Currency{
-		Name:        "Comoro Franc",
+		Name:        "Comorian Franc",
 		Code:        CurrencyCodeKMF,
 		NumericCode: 174,
 		MinorUnit:   0,
@@ -1190,7 +1190,7 @@ var (
 		MinorUnit:   2,
 	}
 	currency73 = &Currency{
-		Name:        "Kip",
+		Name:        "Lao Kip",
 		Code:        CurrencyCodeLAK,
 		NumericCode: 418,
 		MinorUnit:   2,
@@ -1280,7 +1280,7 @@ var (
 		MinorUnit:   2,
 	}
 	currency88 = &Currency{
-		Name:        "Kwacha",
+		Name:        "Malawi Kwacha",
 		Code:        CurrencyCodeMWK,
 		NumericCode: 454,
 		MinorUnit:   2,
@@ -1340,7 +1340,7 @@ var (
 		MinorUnit:   3,
 	}
 	currency98 = &Currency{
-		Name:        "Nuevo Sol",
+		Name:        "Sol",
 		Code:        CurrencyCodePEN,
 		NumericCode: 604,
 		MinorUnit:   2,
@@ -1352,7 +1352,7 @@ var (
 		MinorUnit:   2,
 	}
 	currency100 = &Currency{
-		Name:        "Philippine Peso",
+		Name:        "Philippine Piso",
 		Code:        CurrencyCodePHP,
 		NumericCode: 608,
 		MinorUnit:   2,
@@ -1382,7 +1382,7 @@ var (
 		MinorUnit:   2,
 	}
 	currency105 = &Currency{
-		Name:        "New Romanian Leu",
+		Name:        "Romanian Leu",
 		Code:        CurrencyCodeRON,
 		NumericCode: 946,
 		MinorUnit:   2,
@@ -1568,7 +1568,7 @@ var (
 		MinorUnit:   2,
 	}
 	currency136 = &Currency{
-		Name:        "Bolivar",
+		Name:        "Bolívar",
 		Code:        CurrencyCodeVEF,
 		NumericCode: 937,
 		MinorUnit:   2,

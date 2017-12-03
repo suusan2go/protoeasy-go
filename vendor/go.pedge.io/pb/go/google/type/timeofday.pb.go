@@ -31,7 +31,7 @@ type TimeOfDay struct {
 func (m *TimeOfDay) Reset()                    { *m = TimeOfDay{} }
 func (m *TimeOfDay) String() string            { return proto.CompactTextString(m) }
 func (*TimeOfDay) ProtoMessage()               {}
-func (*TimeOfDay) Descriptor() ([]byte, []int) { return fileDescriptor5, []int{0} }
+func (*TimeOfDay) Descriptor() ([]byte, []int) { return fileDescriptor6, []int{0} }
 
 func (m *TimeOfDay) GetHours() int32 {
 	if m != nil {
@@ -65,9 +65,9 @@ func init() {
 	proto.RegisterType((*TimeOfDay)(nil), "google.type.TimeOfDay")
 }
 
-func init() { proto.RegisterFile("google/type/timeofday.proto", fileDescriptor5) }
+func init() { proto.RegisterFile("google/type/timeofday.proto", fileDescriptor6) }
 
-var fileDescriptor5 = []byte{
+var fileDescriptor6 = []byte{
 	// 166 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x92, 0x4e, 0xcf, 0xcf, 0x4f,
 	0xcf, 0x49, 0xd5, 0x2f, 0xa9, 0x2c, 0x48, 0xd5, 0x2f, 0xc9, 0xcc, 0x4d, 0xcd, 0x4f, 0x4b, 0x49,

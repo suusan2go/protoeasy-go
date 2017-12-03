@@ -6,8 +6,8 @@ package google_api
 import proto "github.com/gogo/protobuf/proto"
 import fmt "fmt"
 import math "math"
-import _ "go.pedge.io/pb/gogo/google/protobuf"
-import _ "go.pedge.io/pb/gogo/google/protobuf"
+import _ "github.com/gogo/protobuf/types"
+import _ "github.com/gogo/protobuf/types"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal

@@ -14,7 +14,6 @@ EXTRA_PKGS := \
 	github.com/gogo/protobuf/protoc-gen-gogofaster \
 	github.com/gogo/protobuf/protoc-gen-gogoslick \
 	go.pedge.io/pb/go/google/api \
-	go.pedge.io/pb/go/google/datastore/v1beta3 \
 	go.pedge.io/pb/go/google/devtools/cloudtrace/v1 \
 	go.pedge.io/pb/go/google/example/library/v1 \
 	go.pedge.io/pb/go/google/iam/v1 \
@@ -32,7 +31,6 @@ EXTRA_PKGS := \
 	go.pedge.io/pb/go/pb/phone \
 	go.pedge.io/pb/go/pb/time \
 	go.pedge.io/pb/gogo/google/api \
-	go.pedge.io/pb/gogo/google/datastore/v1beta3 \
 	go.pedge.io/pb/gogo/google/devtools/cloudtrace/v1 \
 	go.pedge.io/pb/gogo/google/example/library/v1 \
 	go.pedge.io/pb/gogo/google/iam/v1 \

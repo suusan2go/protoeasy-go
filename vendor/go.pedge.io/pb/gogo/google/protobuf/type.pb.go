@@ -6,6 +6,7 @@ package google_protobuf
 import proto "github.com/gogo/protobuf/proto"
 import fmt "fmt"
 import math "math"
+import google_protobuf1 "github.com/gogo/protobuf/types"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -417,10 +418,16 @@ func (m *EnumValue) GetOptions() []*Option {
 // A protocol buffer option, which can be attached to a message, field,
 // enumeration, etc.
 type Option struct {
-	// The option's name. For example, `"java_package"`.
+	// The option's name. For protobuf built-in options (options defined in
+	// descriptor.proto), this is the short name. For example, `"map_entry"`.
+	// For custom options, it should be the fully-qualified name. For example,
+	// `"google.api.http"`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// The option's value. For example, `"com.google.protobuf"`.
-	Value *Any `protobuf:"bytes,2,opt,name=value" json:"value,omitempty"`
+	// The option's value packed in an Any message. If the value is a primitive,
+	// the corresponding wrapper type defined in google/protobuf/wrappers.proto
+	// should be used. If the value is an enum, it should be stored as an int32
+	// value using the google.protobuf.Int32Value type.
+	Value *google_protobuf1.Any `protobuf:"bytes,2,opt,name=value" json:"value,omitempty"`
 }
 
 func (m *Option) Reset()                    { *m = Option{} }
@@ -435,7 +442,7 @@ func (m *Option) GetName() string {
 	return ""
 }
 
-func (m *Option) GetValue() *Any {
+func (m *Option) GetValue() *google_protobuf1.Any {
 	if m != nil {
 		return m.Value
 	}

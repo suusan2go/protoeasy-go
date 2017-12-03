@@ -213,6 +213,12 @@ var _ = math.Inf
 //
 // Note that oneof type names ("test_oneof" in this case) cannot be used in
 // paths.
+//
+// ## Field Mask Verification
+//
+// The implementation of the all the API methods, which have any FieldMask type
+// field in the request, should verify the included field paths, and return
+// `INVALID_ARGUMENT` error if any path is duplicated or unmappable.
 type FieldMask struct {
 	// The set of field mask paths.
 	Paths []string `protobuf:"bytes,1,rep,name=paths" json:"paths,omitempty"`
@@ -221,7 +227,7 @@ type FieldMask struct {
 func (m *FieldMask) Reset()                    { *m = FieldMask{} }
 func (m *FieldMask) String() string            { return proto.CompactTextString(m) }
 func (*FieldMask) ProtoMessage()               {}
-func (*FieldMask) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{0} }
+func (*FieldMask) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{0} }
 
 func (m *FieldMask) GetPaths() []string {
 	if m != nil {
@@ -234,9 +240,9 @@ func init() {
 	proto.RegisterType((*FieldMask)(nil), "google.protobuf.FieldMask")
 }
 
-func init() { proto.RegisterFile("google/protobuf/field_mask.proto", fileDescriptor4) }
+func init() { proto.RegisterFile("google/protobuf/field_mask.proto", fileDescriptor1) }
 
-var fileDescriptor4 = []byte{
+var fileDescriptor1 = []byte{
 	// 145 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x52, 0x48, 0xcf, 0xcf, 0x4f,
 	0xcf, 0x49, 0xd5, 0x2f, 0x28, 0xca, 0x2f, 0xc9, 0x4f, 0x2a, 0x4d, 0xd3, 0x4f, 0xcb, 0x4c, 0xcd,

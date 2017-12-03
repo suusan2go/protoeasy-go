@@ -23,7 +23,7 @@ type SourceContext struct {
 func (m *SourceContext) Reset()                    { *m = SourceContext{} }
 func (m *SourceContext) String() string            { return proto.CompactTextString(m) }
 func (*SourceContext) ProtoMessage()               {}
-func (*SourceContext) Descriptor() ([]byte, []int) { return fileDescriptor5, []int{0} }
+func (*SourceContext) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{0} }
 
 func (m *SourceContext) GetFileName() string {
 	if m != nil {
@@ -36,9 +36,9 @@ func init() {
 	proto.RegisterType((*SourceContext)(nil), "google.protobuf.SourceContext")
 }
 
-func init() { proto.RegisterFile("google/protobuf/source_context.proto", fileDescriptor5) }
+func init() { proto.RegisterFile("google/protobuf/source_context.proto", fileDescriptor2) }
 
-var fileDescriptor5 = []byte{
+var fileDescriptor2 = []byte{
 	// 158 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x52, 0x49, 0xcf, 0xcf, 0x4f,
 	0xcf, 0x49, 0xd5, 0x2f, 0x28, 0xca, 0x2f, 0xc9, 0x4f, 0x2a, 0x4d, 0xd3, 0x2f, 0xce, 0x2f, 0x2d,
