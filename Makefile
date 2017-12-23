@@ -6,6 +6,7 @@ CMDS := \
 
 EXTRA_PKGS := \
 	github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway \
+	github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger \
 	github.com/grpc-ecosystem/grpc-gateway/runtime \
 	github.com/golang/protobuf/protoc-gen-go \
 	github.com/gogo/protobuf/protoc-gen-gofast \
@@ -50,6 +51,7 @@ EXTRA_PKGS := \
 
 EXTRA_CMDS := \
 	go.pedge.io/protoeasy/vendor/github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway \
+	go.pedge.io/protoeasy/vendor/github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger \
 	go.pedge.io/protoeasy/vendor/github.com/golang/protobuf/protoc-gen-go \
 	go.pedge.io/protoeasy/vendor/github.com/gogo/protobuf/protoc-gen-gofast \
 	go.pedge.io/protoeasy/vendor/github.com/gogo/protobuf/protoc-gen-gogo \
@@ -113,7 +115,7 @@ example-complete:
 		--ruby --ruby-rel-out=ruby \
 		--go --go-rel-out=go --go-import-path=go.pedge.io/protoeasy/example/out/complete/go \
 		--grpc \
-		--grpc-gateway \
+		--grpc-gateway --extra-plugin-flag=swagger\
 		example/complete
 	go build ./example/out/complete/go/...
 	rm -rf example/out

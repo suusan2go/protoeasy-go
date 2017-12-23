@@ -124,8 +124,5 @@ func Chown(filePath string) error {
 	if err := RunIO(IO{Stdout: os.Stderr, Stderr: os.Stderr}, "sudo", "chown", uid, filePath); err != nil {
 		return err
 	}
-	if err := RunIO(IO{Stdout: os.Stderr, Stderr: os.Stderr}, "sudo", "chgrp", gid, filePath); err != nil {
-		return err
-	}
-	return nil
+	return RunIO(IO{Stdout: os.Stderr, Stderr: os.Stderr}, "sudo", "chgrp", gid, filePath)
 }
