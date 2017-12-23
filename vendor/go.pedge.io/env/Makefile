@@ -44,7 +44,7 @@ errcheck: testdeps
 pretest: lint vet errcheck
 
 test: testdeps pretest
-	go test -test.v ./...
+	go test ./...
 
 cov: testdeps
 	go get -v github.com/axw/gocov/gocov
