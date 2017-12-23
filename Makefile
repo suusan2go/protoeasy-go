@@ -115,7 +115,7 @@ example-complete:
 		--ruby --ruby-rel-out=ruby \
 		--go --go-rel-out=go --go-import-path=go.pedge.io/protoeasy/example/out/complete/go \
 		--grpc \
-		--grpc-gateway \
+		--grpc-gateway --extra-plugin-flag=swagger\
 		example/complete
 	go build ./example/out/complete/go/...
 	rm -rf example/out
